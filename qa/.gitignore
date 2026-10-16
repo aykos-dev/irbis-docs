@@ -1,0 +1,8 @@
+# Media stays on this machine; Markdown, scripts, step times and events are versioned.
+*.mp4
+*.png
+*.jpg
+*.raw*
+.rec*.json
+.check*.png
+**/proof/_run/review/

@@ -8,7 +8,12 @@ Read STATUS.md, PROJECT.md, and only the relevant files in decisions/ first. For
 feature touches, skim that repo's docs/architecture.md so the spec fits the existing structure.
 
 PHASE 1 — SPEC (then STOP)
-Write features/<slug>.md from features/_TEMPLATE.md: goal, surfaces touched (api/web/app),
+First, list every point the request leaves unclear that would change an acceptance criterion's expected
+result (a value, which side of a boundary is inclusive, what happens at empty / offline / midnight /
+permission denied). Ask me those with AskUserQuestion before writing: up to 4 per round, max 3 rounds,
+options are concrete behaviours (the one the request best supports first, "Leave open" last). Never ask
+what PROJECT.md, ADRs or code already answer. Record answers in Assumptions as `Q{n} (owner, date): …`.
+Then write features/<slug>.md from features/_TEMPLATE.md: goal, surfaces touched (api/web/app),
 endpoints, data model changes, acceptance criteria (incl. loading/empty/error/offline),
 out of scope. List your assumptions and open questions. Note any engineering-standards item you
 propose to waive, with the reason.
@@ -30,6 +35,8 @@ Max 2 fix rounds; if still blocked, stop and report to me.
 
 PHASE 5 — WRAP UP
 Mark the spec Done. Update STATUS.md (Done line with short commit hashes per repo; Next).
+If the app is touched: say "Next: `/qa-plan <slug>` then `/qa-run <slug> build` on the Android phone"
+(a separate session after `/clear`).
 Commit in irbis-docs. Do not push anything.
 Reply with: what changed per repo, final `npm run check` output per repo, anything skipped or
 deferred, and a reminder to `/clear` before the next feature.

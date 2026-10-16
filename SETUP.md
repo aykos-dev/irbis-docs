@@ -9,6 +9,9 @@
 - Each code repo: short CLAUDE.md, `docs/architecture.md`, `docs/engineering-standards.md`, and
   `.claude/settings.json` (same deny rules + its own Stop hook).
 - User-level (global): plugin `andrej-karpathy-skills`, MCP `context7` (current framework docs).
+- Android device QA (2026-10-16): `scripts/qa/` toolkit (adapted from the Bellissimo QA runner), commands
+  `/qa-plan`, `/qa-run`, `/qa-retest`, workspace `qa/`. Installed: scrcpy, ffmpeg, venv `~/.claude/venvs/qa`.
+  Details: `scripts/qa/README.md`.
 
 ## Launch
 ```bash
@@ -54,6 +57,12 @@ Generators refuse non-empty folders, so scaffold into a temp dir and copy over (
    `irbis-web/src/shared/styles/tokens.css`; add 2–3 reference screens in `design/`.
 9. **Reference feature** `health` end to end by hand (API endpoint → openapi → gen:api → web + app screen
    with all four states). Every later feature copies this pattern.
+
+## Before the first /qa-run
+- Set the real Android `applicationId` in `qa/qa.config.json` (placeholder `com.irbis`).
+- App scaffold includes `src/shared/utils/qaLog.ts` + `location_received` event (app standards §16).
+- Phone: USB debugging on, device UI in English, test account signed in. Export `IRBIS_QA_PHONE` /
+  `IRBIS_QA_OTP` in your shell profile only if scripts must type them.
 
 ## Later (not day one)
 - **Graphify**: once a repo is big enough that Claude wanders, build the graph and enable its post-commit hook.

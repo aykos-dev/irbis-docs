@@ -1,7 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
-    "additionalDirectories": ["../irbis-api", "../irbis-web", "../irbis-app"],
+    "additionalDirectories": [
+      "../irbis-api",
+      "../irbis-web",
+      "../irbis-app"
+    ],
     "deny": [
       "Read(**/.env)",
       "Read(**/.env.*)",
@@ -18,18 +22,42 @@
       "Bash(npm install:*)",
       "Bash(npm i:*)",
       "Bash(npx expo install:*)"
+    ],
+    "allow": [
+      "Bash(adb devices:*)",
+      "Bash(adb shell:*)",
+      "Bash(adb exec-out:*)",
+      "Bash(adb logcat:*)",
+      "Bash(adb install:*)",
+      "Bash(adb get-state:*)",
+      "Bash(adb reverse:*)",
+      "Bash(adb pull:*)",
+      "Bash(python3 scripts/qa/:*)",
+      "Bash(~/.claude/venvs/qa/bin/python:*)",
+      "Bash(scrcpy --version:*)"
     ]
   },
   "hooks": {
     "PreToolUse": [
       {
         "matcher": "Read|Edit|Write|Grep|Glob|Bash",
-        "hooks": [{ "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/hooks/block-secrets.sh" }]
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/hooks/block-secrets.sh"
+          }
+        ]
       }
     ],
     "Stop": [
       {
-        "hooks": [{ "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/hooks/check-changed.sh", "timeout": 600 }]
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/scripts/hooks/check-changed.sh",
+            "timeout": 600
+          }
+        ]
       }
     ]
   }

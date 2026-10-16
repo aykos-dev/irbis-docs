@@ -1,0 +1,6 @@
+{
+  "package": "com.irbis",
+  "activity": ".MainActivity",
+  "event_tag": "IRBIS_QA",
+  "location_event": "location_received"
+}
