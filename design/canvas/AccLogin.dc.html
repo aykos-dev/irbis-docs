@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Log in</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.h1{font-weight:900;font-size:28px;line-height:1.15;color:var(--ink)}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.t{font-weight:700;font-size:15px;line-height:1.45}
+.lbl{font-weight:900;font-size:14px;color:var(--ink);display:block}
+.f{display:flex;flex-direction:column;gap:8px}
+.in{width:100%;min-height:52px;border-radius:14px;border:2px solid var(--line);background:var(--card);padding:12px 14px;font:700 16px 'Nunito',sans-serif;color:var(--ink)}
+.pw{position:relative;display:flex;align-items:center}
+.eye{position:absolute;right:4px;width:44px;height:44px;border:0;background:transparent;color:#8A979C;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:8px 20px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;line-height:1.15;letter-spacing:.05em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none;width:100%}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.bw{background:var(--card);color:#0C807A;border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.lnk{font-weight:900;font-size:15px;color:#0C807A;text-decoration:none}
+.bubble{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:12px 16px;font-weight:800;font-size:17px;line-height:1.35;color:var(--ink)}
+.x{width:44px;height:44px;border:0;background:transparent;color:#8A979C;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 844px; padding: 16px 20px 32px; gap: 22px">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <a class="x" href="Onb1Welcome.dc.html" aria-label="Back"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path d="M15 5l-7 7 7 7" style="fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round"></path></svg></a>
+    <a class="lnk" href="Home.dc.html">Continue as guest</a>
+  </div>
+  <div style="display: flex; align-items: flex-end; gap: 10px">
+    <img src="/_blob/9ebec15f083abbb36876b1b8a577ea1b" alt="Irbis" style="width: 96px; height: 96px; flex: none">
+    <div class="bubble" style="margin-bottom: 22px">Welcome back, explorer!</div>
+  </div>
+  <h1 class="h1">Log in</h1>
+  <form style="display: flex; flex-direction: column; gap: 18px">
+    <div class="f">
+      <label class="lbl" for="u">Username</label>
+      <input class="in" id="u" type="text" autocomplete="username" value="aziz_hikes">
+    </div>
+    <div class="f">
+      <label class="lbl" for="p">Password</label>
+      <div class="pw">
+        <input class="in" id="p" type="password" autocomplete="current-password" value="••••••••••" style="padding-right: 52px">
+        <button class="eye" type="button" aria-label="Show password"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" style="fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linejoin: round"></path><circle cx="12" cy="12" r="3" style="fill: none; stroke: currentColor; stroke-width: 2.2"></circle></svg></button>
+      </div>
+    </div>
+    <a class="lnk" href="AccForgot.dc.html" style="align-self: flex-end">Forgot password?</a>
+  </form>
+  <div style="margin-top: auto; display: flex; flex-direction: column; gap: 14px">
+    <a class="btn bp" href="Home.dc.html">Log in</a>
+    <a class="btn bw" href="AccSignup.dc.html">Create an account</a>
+    <p class="s" style="text-align: center">No account needed to look around — places, conditions and lessons are open to everyone.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

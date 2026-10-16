@@ -1,755 +1,1257 @@
 {
-  "v": 3,
-  "attachments": {},
-  "boards": {
-    "Settings.dc.html": {"h": 1560, "page": "more", "title": "S1 Settings", "w": 390, "x": 0, "y": 0},
-    "Notifs.dc.html": {"h": 1180, "page": "more", "title": "S2 Notifications", "w": 390, "x": 470, "y": 0},
-    "Search.dc.html": {"h": 1200, "page": "more", "title": "S3 Search results", "w": 390, "x": 940, "y": 0},
-    "EditProfile.dc.html": {"h": 1180, "page": "more", "title": "S4 Edit profile", "w": 390, "x": 1410, "y": 0},
-    "ReportSheet.dc.html": {"h": 844, "page": "more", "title": "S5 Report a post", "w": 390, "x": 1880, "y": 0},
-    "ReportDone.dc.html": {"h": 844, "page": "more", "title": "S6 Report sent", "w": 390, "x": 2350, "y": 0},
-    "PlusPaywall.dc.html": {"h": 1100, "page": "more", "title": "S7 Irbis Plus", "w": 390, "x": 2820, "y": 0},
-    "OperatorDash.dc.html": {"h": 1040, "page": "more", "title": "W1 Operator dashboard (web)", "w": 1440, "x": 0, "y": 1900, "expand": "fill"},
-    "FeedSpec.dc.html": {"h": 1380, "page": "feed", "title": "Feed & Top Shots — rules and rewards", "w": 1240, "x": 0, "y": 0},
-    "Feed.dc.html": {"h": 2100, "page": "feed", "title": "F1 Community feed", "w": 390, "x": 0, "y": 1700},
-    "PostDetail.dc.html": {"h": 1260, "page": "feed", "title": "F2 Post detail", "w": 390, "x": 470, "y": 1700},
-    "PostPhotos.dc.html": {"h": 844, "page": "feed", "title": "F3 New post — pick up to 10 photos", "w": 390, "x": 940, "y": 1700},
-    "PostDetails.dc.html": {"h": 1180, "page": "feed", "title": "F4 New post — details", "w": 390, "x": 1410, "y": 1700},
-    "TopShots.dc.html": {"h": 1480, "page": "feed", "title": "F5 Top Shots leaderboard", "w": 390, "x": 1880, "y": 1700},
-    "TopShotWin.dc.html": {"h": 844, "page": "feed", "title": "F6 You made the Top 10", "w": 390, "x": 2350, "y": 1700},
-    "CampSpec.dc.html": {"h": 1500, "page": "camp", "title": "Campfire games — how offline play works", "w": 1240, "x": 0, "y": 0},
-    "CampHub.dc.html": {"h": 1100, "page": "camp", "title": "C1 Campfire games hub", "w": 390, "x": 0, "y": 1960},
-    "CampLobby.dc.html": {"h": 1240, "page": "camp", "title": "C2 Host lobby (hotspot + QR)", "w": 390, "x": 470, "y": 1960},
-    "CampJoin.dc.html": {"h": 844, "page": "camp", "title": "C3 Join a game", "w": 390, "x": 940, "y": 1960},
-    "ImpReveal.dc.html": {"h": 844, "page": "camp", "title": "C4 Imposter — your word", "w": 390, "x": 1410, "y": 1960},
-    "ImpImposter.dc.html": {"h": 844, "page": "camp", "title": "C5 Imposter — you're the imposter", "w": 390, "x": 1880, "y": 1960},
-    "ImpVote.dc.html": {"h": 844, "page": "camp", "title": "C6 Imposter — vote", "w": 390, "x": 2350, "y": 1960},
-    "WhoAmI.dc.html": {"h": 1040, "page": "camp", "title": "C7 Who am I?", "w": 390, "x": 2820, "y": 1960},
-    "WYR.dc.html": {"h": 844, "page": "camp", "title": "C8 Would you rather", "w": 390, "x": 3290, "y": 1960},
-    "MafSetup.dc.html": {"h": 1380, "page": "camp", "title": "M1 Mafia — choose roles (host)", "w": 390, "x": 0, "y": 3740},
-    "MafRole.dc.html": {"h": 844, "page": "camp", "title": "M2 Mafia — your role", "w": 390, "x": 470, "y": 3740},
-    "MafNight.dc.html": {"h": 844, "page": "camp", "title": "M3 Mafia — night action", "w": 390, "x": 940, "y": 3740},
-    "MafDay.dc.html": {"h": 844, "page": "camp", "title": "M4 Mafia — day vote", "w": 390, "x": 1410, "y": 3740},
-    "MafEnd.dc.html": {"h": 1140, "page": "camp", "title": "M5 Mafia — game over", "w": 390, "x": 1880, "y": 3740},
-    "GameSpec.dc.html": {"h": 1600, "page": "game", "title": "Bu qayer? — game design & retention", "w": 1240, "x": 0, "y": 0},
-    "GameHub.dc.html": {"h": 1300, "page": "game", "title": "G1 Game hub", "w": 390, "x": 0, "y": 1720},
-    "GameRound.dc.html": {"h": 844, "page": "game", "title": "G2 360° view", "w": 390, "x": 470, "y": 1720},
-    "GameGuess.dc.html": {"h": 844, "page": "game", "title": "G3 Place your guess", "w": 390, "x": 940, "y": 1720},
-    "GameResult.dc.html": {"h": 844, "page": "game", "title": "G4 Round result", "w": 390, "x": 1410, "y": 1720},
-    "GameSummary.dc.html": {"h": 1160, "page": "game", "title": "G5 Daily complete", "w": 390, "x": 1880, "y": 1720},
-    "GameBadges.dc.html": {"h": 1160, "page": "game", "title": "G6 Game badges", "w": 390, "x": 2350, "y": 1720},
-    "GameDuel.dc.html": {"h": 844, "page": "game", "title": "G7 Friend duel", "w": 390, "x": 2820, "y": 1720},
-    "GameEntry.dc.html": {"h": 900, "page": "game", "title": "G8 Entry points", "w": 390, "x": 3290, "y": 1720},
-    "ActiveTrip.dc.html": {
-      "h": 844,
-      "page": "trips",
-      "title": "Active trip",
-      "w": 390,
-      "x": 470,
-      "y": 0
-    },
-    "Badges.dc.html": {
-      "h": 1400,
-      "page": "learn",
-      "title": "Badges",
-      "w": 390,
-      "x": 2820,
-      "y": 0
-    },
-    "Buddies.dc.html": {
-      "h": 1200,
-      "page": "social",
-      "title": "Find buddies",
-      "w": 390,
-      "x": 940,
-      "y": 0
-    },
-    "Companions.dc.html": {
-      "h": 820,
-      "page": "brand",
-      "title": "Companion evolution line",
-      "w": 1720,
-      "x": 1320,
-      "y": 0
-    },
-    "CreateTrip.dc.html": {
-      "h": 1200,
-      "page": "social",
-      "title": "Create trip event",
-      "w": 390,
-      "x": 1410,
-      "y": 0
-    },
-    "Explore.dc.html": {
-      "h": 844,
-      "page": "explore",
-      "title": "Explore map",
-      "w": 390,
-      "x": 1880,
-      "y": 0
-    },
-    "Gear.dc.html": {
-      "h": 1140,
-      "page": "profile",
-      "title": "Marketplace — gear rental (preview)",
-      "w": 390,
-      "x": 1410,
-      "y": 0
-    },
-    "GroupChat.dc.html": {
-      "h": 844,
-      "page": "social",
-      "title": "Group chat",
-      "w": 390,
-      "x": 470,
-      "y": 0
-    },
-    "Groups.dc.html": {
-      "h": 1260,
-      "page": "social",
-      "title": "Groups",
-      "w": 390,
-      "x": 0,
-      "y": 0
-    },
-    "Home.dc.html": {
-      "h": 1640,
-      "page": "explore",
-      "title": "Home — This Week's Path",
-      "w": 390,
-      "x": 0,
-      "y": 0
-    },
-    "HomeDark.dc.html": {
-      "h": 1640,
-      "page": "explore",
-      "title": "Home — dark",
-      "w": 390,
-      "x": 470,
-      "y": 0
-    },
-    "Irbis.dc.html": {
-      "h": 900,
-      "page": "brand",
-      "title": "Irbis mascot — expressions & usage",
-      "w": 1240,
-      "x": 0,
-      "y": 1120
-    },
-    "Leagues.dc.html": {
-      "h": 1320,
-      "page": "learn",
-      "title": "Leagues",
-      "w": 390,
-      "x": 3290,
-      "y": 0
-    },
-    "LessonsHub.dc.html": {
-      "h": 1240,
-      "page": "learn",
-      "title": "Lessons hub",
-      "w": 390,
-      "x": 0,
-      "y": 0
-    },
-    "Level.dc.html": {
-      "h": 1080,
-      "page": "learn",
-      "title": "Level progress",
-      "w": 390,
-      "x": 1880,
-      "y": 0
-    },
-    "LevelUp.dc.html": {
-      "h": 844,
-      "page": "learn",
-      "title": "Level-up evolution",
-      "w": 390,
-      "x": 2350,
-      "y": 0
-    },
-    "Main.dc.html": {
-      "h": 1000,
-      "page": "brand",
-      "title": "Design system",
-      "w": 1240,
-      "x": 0,
-      "y": 0
-    },
-    "MySpots.dc.html": {
-      "h": 1080,
-      "page": "spots",
-      "title": "My submitted spots",
-      "w": 390,
-      "x": 2350,
-      "y": 0
-    },
-    "Nav.dc.html": {
-      "h": 84,
-      "page": "brand",
-      "title": "Component · Bottom nav",
-      "w": 390,
-      "x": 1320,
-      "y": 940
-    },
-    "Onb1Welcome.dc.html": {
-      "h": 844,
-      "page": "onboard",
-      "title": "01 Meet Irbis",
-      "w": 390,
-      "x": 470,
-      "y": 0
-    },
-    "Onb2Language.dc.html": {
-      "h": 844,
-      "page": "onboard",
-      "title": "02 Language",
-      "w": 390,
-      "x": 940,
-      "y": 0
-    },
-    "Onb3Experience.dc.html": {
-      "h": 844,
-      "page": "onboard",
-      "title": "03 Experience",
-      "w": 390,
-      "x": 1410,
-      "y": 0
-    },
-    "Onb4Interests.dc.html": {
-      "h": 844,
-      "page": "onboard",
-      "title": "04 Interests",
-      "w": 390,
-      "x": 1880,
-      "y": 0
-    },
-    "Onb5Companion.dc.html": {
-      "h": 844,
-      "page": "onboard",
-      "title": "05 Companion reveal",
-      "w": 390,
-      "x": 2350,
-      "y": 0
-    },
-    "Place.dc.html": {
-      "h": 3000,
-      "page": "explore",
-      "title": "Place detail",
-      "w": 390,
-      "x": 940,
-      "y": 0
-    },
-    "PlaceDark.dc.html": {
-      "h": 3000,
-      "page": "explore",
-      "title": "Place detail — dark",
-      "w": 390,
-      "x": 1410,
-      "y": 0
-    },
-    "Profile.dc.html": {
-      "h": 1360,
-      "page": "profile",
-      "title": "Profile",
-      "w": 390,
-      "x": 0,
-      "y": 0
-    },
-    "ProfileDark.dc.html": {
-      "h": 1360,
-      "page": "profile",
-      "title": "Profile — dark",
-      "w": 390,
-      "x": 470,
-      "y": 0
-    },
-    "Quiz.dc.html": {
-      "h": 844,
-      "page": "learn",
-      "title": "Micro-lesson",
-      "is_interactive": true,
-      "w": 390,
-      "x": 470,
-      "y": 0
-    },
-    "QuizCorrect.dc.html": {
-      "h": 844,
-      "page": "learn",
-      "title": "Micro-lesson — correct",
-      "is_interactive": true,
-      "w": 390,
-      "x": 940,
-      "y": 0
-    },
-    "QuizWrong.dc.html": {
-      "h": 844,
-      "page": "learn",
-      "title": "Micro-lesson — incorrect",
-      "is_interactive": true,
-      "w": 390,
-      "x": 1410,
-      "y": 0
-    },
-    "Safety.dc.html": {
-      "h": 1180,
-      "page": "trips",
-      "title": "Safety center",
-      "w": 390,
-      "x": 1410,
-      "y": 0
-    },
-    "Splash.dc.html": {
-      "h": 844,
-      "page": "onboard",
-      "title": "00 Splash",
-      "w": 390,
-      "x": 0,
-      "y": 0
-    },
-    "Spot1Gps.dc.html": {
-      "h": 844,
-      "page": "spots",
-      "title": "Add a Spot 1 — GPS pin",
-      "w": 390,
-      "x": 0,
-      "y": 0
-    },
-    "Spot2Photos.dc.html": {
-      "h": 844,
-      "page": "spots",
-      "title": "Add a Spot 2 — Photos",
-      "w": 390,
-      "x": 470,
-      "y": 0
-    },
-    "Spot3Details.dc.html": {
-      "h": 1560,
-      "page": "spots",
-      "title": "Add a Spot 3 — Details",
-      "w": 390,
-      "x": 940,
-      "y": 0
-    },
-    "Spot4Duplicate.dc.html": {
-      "h": 1080,
-      "page": "spots",
-      "title": "Add a Spot 4 — Duplicate & visibility",
-      "w": 390,
-      "x": 1410,
-      "y": 0
-    },
-    "Spot5Submitted.dc.html": {
-      "h": 844,
-      "page": "spots",
-      "title": "Add a Spot — Submitted",
-      "w": 390,
-      "x": 1880,
-      "y": 0
-    },
-    "Summit.dc.html": {
-      "h": 844,
-      "page": "trips",
-      "title": "Summit celebration",
-      "w": 390,
-      "x": 940,
-      "y": 0
-    },
-    "Tours.dc.html": {
-      "h": 1140,
-      "page": "profile",
-      "title": "Marketplace — tours (preview)",
-      "w": 390,
-      "x": 940,
-      "y": 0
-    },
-    "TrailMap.dc.html": {
-      "h": 844,
-      "page": "explore",
-      "title": "Trail map",
-      "w": 390,
-      "x": 2350,
-      "y": 0
-    },
-    "TripPlan.dc.html": {
-      "h": 1200,
-      "page": "trips",
-      "title": "Trip plan & safety check-in",
-      "w": 390,
-      "x": 0,
-      "y": 0
-    }
+ "v": 3,
+ "attachments": {},
+ "boards": {
+  "Settings.dc.html": {
+   "h": 1560,
+   "page": "more",
+   "title": "S1 Settings",
+   "w": 390,
+   "x": 0,
+   "y": 0
   },
-  "createdOnFiles": {
-    "at": "2026-10-04T11:46:09Z",
-    "v": 1
+  "Notifs.dc.html": {
+   "h": 1180,
+   "page": "more",
+   "title": "S2 Notifications",
+   "w": 390,
+   "x": 470,
+   "y": 0
   },
-  "designSystems": [],
-  "launch": {
-    "page": "brand",
-    "view": "canvas"
+  "Search.dc.html": {
+   "h": 1200,
+   "page": "more",
+   "title": "S3 Search results",
+   "w": 390,
+   "x": 940,
+   "y": 0
   },
-  "notes": {
-    "t_more": {"kind": "title1", "maxW": 3210, "page": "more", "text": "Settings, notifications, search, profile, reporting & Plus", "x": 0, "y": -300},
-    "t_ops": {"kind": "title1", "maxW": 1440, "page": "more", "text": "Irbis for Operators (web)", "x": 0, "y": 1640},
-    "n_report": {"fill": "red", "maxH": 340, "page": "more", "w": 390, "x": 1880, "y": 904, "text": "Moderation: 3 reports from trusted accounts (7+ days, verified phone) hide a post for everyone until the Irbis team reviews it, within 24 h. Strikes: warning → 7-day posting mute → ban, with appeal. Public groups over 500 members need 2+ admins; new accounts can post 3 times a day and can't share links or phone numbers."},
-    "n_plus": {"fill": "orange", "maxH": 300, "page": "more", "w": 390, "x": 2820, "y": 1160, "text": "Irbis Plus: 29,000 so'm a month or 249,000 so'm a year, 7-day free trial — starting price to test. Never paywall safety, conditions, lessons or levels."},
-    "t_feed": {"kind": "title1", "maxW": 2740, "page": "feed", "text": "Feed & Top Shots", "x": 0, "y": -300},
-    "t_feed_a": {"kind": "title1", "maxW": 2740, "page": "feed", "text": "Post, browse, compete every two weeks", "x": 0, "y": 1440},
-    "n_f_photos": {"fill": "teal", "maxH": 300, "page": "feed", "w": 390, "x": 940, "y": 2604, "text": "Picker opens on photos from the trip you just checked out of (matched by date). Max 10: an 11th tap shakes the counter. Upload continues in the background, even offline, and posts when back online."},
-    "n_f_win": {"fill": "orange", "maxH": 300, "page": "feed", "w": 390, "x": 2350, "y": 2604, "text": "Shown on the first app open after results (Monday morning): the photo drops in, the rank badge stamps on, XP counts up, the badge flips in. Everyone in the Top 10 gets one push; nobody else is notified."},
-    "t_camp": {"kind": "title1", "maxW": 3680, "page": "camp", "text": "Campfire games — offline multiplayer over one hotspot", "x": 0, "y": -300},
-    "t_camp_a": {"kind": "title1", "maxW": 3680, "page": "camp", "text": "Host & join · Imposter · Who am I? · Would you rather", "x": 0, "y": 1700},
-    "t_camp_b": {"kind": "title1", "maxW": 2270, "page": "camp", "text": "Mafia", "x": 0, "y": 3480},
-    "n_c_join": {"fill": "teal", "maxH": 300, "page": "camp", "w": 390, "x": 940, "y": 2864, "text": "The QR holds the hotspot name + password and the room address (room code + host IP and port). One scan: join Wi-Fi, open the room. Code entry finds the host on the local network if the player joined the hotspot by hand."},
-    "n_c_reveal": {"fill": "purple", "maxH": 300, "page": "camp", "w": 390, "x": 1410, "y": 2864, "text": "Hold to reveal: the secret shows only while a thumb is on the card, with a soft haptic tick. Screenshots are blocked on Android; on iOS the card blurs when screen recording is detected."},
-    "n_c_wyr": {"fill": "orange", "maxH": 300, "page": "camp", "w": 390, "x": 3290, "y": 2864, "text": "Votes stay hidden until everyone has picked, then both bars fill at once with a short drumroll and the avatars drop into place."},
-    "n_m_night": {"fill": "gray", "maxH": 320, "page": "camp", "w": 390, "x": 940, "y": 4644, "text": "Night: the app voice narrates (\"Mafia, wake up…\"). Every phone shows a night screen at the same time — players without an action get a quick tap task — so screen activity never gives a role away."},
-    "n_m_day": {"fill": "red", "maxH": 300, "page": "camp", "w": 390, "x": 1410, "y": 4644, "text": "Day vote: majority exiles. A tie means a revote between the tied players; a second tie means nobody is exiled. The host can pause the timer."},
-    "t_game": {"kind": "title1", "maxW": 3680, "page": "game", "text": "Bu qayer? — Where is this? mini-game", "x": 0, "y": -300},
-    "n_g_round": {"fill": "orange", "maxH": 300, "page": "game", "w": 390, "x": 470, "y": 2624, "text": "360° viewer: drag/gyro to look around, pinch to zoom. The drag hint shows on the first round only. Compass needle follows the heading. The mini-map grows into the guess screen with a spring."},
-    "n_g_result": {"fill": "orange", "maxH": 320, "page": "game", "w": 390, "x": 1410, "y": 2624, "text": "Reveal: the dashed line draws from your pin to the flag (0.6s), distance counts up, then points. Companion reacts by score: cheering ≥4,500, happy ≥3,000, thinking ≥1,500, worried below — never mocking."},
-    "n_g_sum": {"fill": "orange", "maxH": 300, "page": "game", "w": 390, "x": 1880, "y": 2940, "text": "Daily complete: total rolls up, confetti, the streak flame grows by one. Share card is generated as an image with colored squares only — no place names, so it never spoils the daily."},
-    "n_g_entry": {"fill": "teal", "maxH": 300, "page": "game", "w": 390, "x": 3290, "y": 2680, "text": "Retention hooks: a Home card every day, one 19:00 push (or the user's usual open time), the streak reminder only when the streak is at risk, and friend challenges as their own push. Max 1 game push per day."},
-    "n_active": {
-      "fill": "red",
-      "maxH": 300,
-      "page": "trips",
-      "text": "Waypoint check-in: the ring fills and a +10 XP chip floats up. SOS needs a 3s press-and-hold with a radial progress ring, to avoid false alarms.",
-      "w": 390,
-      "x": 470,
-      "y": 904
-    },
-    "n_chat": {
-      "fill": "gray",
-      "maxH": 260,
-      "page": "social",
-      "text": "Trip card status updates live. Companion avatars show the group's experience mix at a glance.",
-      "w": 390,
-      "x": 470,
-      "y": 904
-    },
-    "n_home": {
-      "fill": "orange",
-      "maxH": 360,
-      "page": "explore",
-      "text": "Animations: tapping a node bounces it and opens a popover. A completed node flips to gold with a coin shower. On the red node, worried Irbis sways under the umbrella with rain particles. The weather shield on the streak pulses once when it protects the streak.",
-      "w": 390,
-      "x": 0,
-      "y": 1700
-    },
-    "n_homedk": {
-      "fill": "gray",
-      "maxH": 260,
-      "page": "explore",
-      "text": "Dark mode: status rings switch to brighter tints so they keep 3:1 against #131D22; every status keeps its icon + label.",
-      "w": 390,
-      "x": 470,
-      "y": 1700
-    },
-    "n_league": {
-      "fill": "gray",
-      "maxH": 260,
-      "page": "learn",
-      "text": "Sunday results: promotion rows shimmer green; demotion zone shows the sad-but-cute Irbis with a gentle message.",
-      "w": 390,
-      "x": 3290,
-      "y": 1380
-    },
-    "n_lvlup": {
-      "fill": "orange",
-      "maxH": 300,
-      "page": "learn",
-      "text": "Evolution sequence (3s, skippable after 1s): old companion glows, hands over the backpack, white flash, new companion catches it and strikes a pose.",
-      "w": 390,
-      "x": 2350,
-      "y": 904
-    },
-    "n_onb1": {
-      "fill": "orange",
-      "maxH": 260,
-      "page": "onboard",
-      "text": "Mascot: Irbis waves on a 2s loop and blinks every 4s. The speech bubble types in word by word.",
-      "w": 390,
-      "x": 470,
-      "y": 904
-    },
-    "n_onb2": {
-      "fill": "gray",
-      "maxH": 260,
-      "page": "onboard",
-      "text": "Selecting a language re-renders the screen instantly; Irbis nods. Strings in all three languages fit without truncation.",
-      "w": 390,
-      "x": 940,
-      "y": 904
-    },
-    "n_onb5": {
-      "fill": "orange",
-      "maxH": 300,
-      "page": "onboard",
-      "text": "Celebration: backpack shakes 3×, pops open with confetti (0.8s spring) and the panda cub tumbles out and waves. Success haptic. Irbis claps in the corner.",
-      "w": 390,
-      "x": 2350,
-      "y": 904
-    },
-    "n_place": {
-      "fill": "orange",
-      "maxH": 260,
-      "page": "explore",
-      "text": "Start Adventure: the button sinks 4px on press, the companion cheers, then the trip plan sheet slides up.",
-      "w": 390,
-      "x": 940,
-      "y": 3060
-    },
-    "n_prof": {
-      "fill": "orange",
-      "maxH": 260,
-      "page": "profile",
-      "text": "Badge showcase tilts on drag; tapping a badge replays its unlock animation.",
-      "w": 390,
-      "x": 0,
-      "y": 1420
-    },
-    "n_quiz": {
-      "fill": "orange",
-      "maxH": 300,
-      "page": "learn",
-      "text": "Correct: green sheet slides up, companion hops, chime. Incorrect: red sheet, one heart cracks with a small shake, companion looks concerned — never mocking.",
-      "w": 390,
-      "x": 940,
-      "y": 904
-    },
-    "n_spot": {
-      "fill": "orange",
-      "maxH": 260,
-      "page": "spots",
-      "text": "Submit: the companion plants a flag; the 'Pending review' chip pulses softly. Discoverer XP is paid on verification, not on submit.",
-      "w": 390,
-      "x": 1880,
-      "y": 904
-    },
-    "n_summit": {
-      "fill": "orange",
-      "maxH": 320,
-      "page": "trips",
-      "text": "Confetti burst 1.2s; the companion hops onto the peak and the flag waves. XP counts up. The badge flips in 3D, then flies into the collection tray. Success haptic.",
-      "w": 390,
-      "x": 940,
-      "y": 904
-    },
-    "n_type": {
-      "fill": "teal",
-      "maxH": 300,
-      "page": "brand",
-      "text": "Type: Nunito 600–900. Headings 900, body 700. Stats use tabular numbers at 28–48px. Every text container is sized for Russian (≈30% longer than English) and Uzbek Latin; buttons wrap to two lines rather than truncate.",
-      "w": 420,
-      "x": 1760,
-      "y": 940
-    },
-    "t_brand": {
-      "kind": "title1",
-      "maxW": 3040,
-      "page": "brand",
-      "text": "Irbis — brand, mascot & companions",
-      "w": 240,
-      "x": 0,
-      "y": -300
-    },
-    "t_exp": {
-      "kind": "title1",
-      "maxW": 2740,
-      "page": "explore",
-      "text": "This Week's Path, places & maps",
-      "w": 240,
-      "x": 0,
-      "y": -300
-    },
-    "t_learn": {
-      "kind": "title1",
-      "maxW": 3680,
-      "page": "learn",
-      "text": "Lessons, levels, badges & leagues",
-      "w": 240,
-      "x": 0,
-      "y": -300
-    },
-    "t_onb": {
-      "kind": "title1",
-      "maxW": 2740,
-      "page": "onboard",
-      "text": "Onboarding",
-      "w": 240,
-      "x": 0,
-      "y": -300
-    },
-    "t_prof": {
-      "kind": "title1",
-      "maxW": 1800,
-      "page": "profile",
-      "text": "Profile & marketplace preview",
-      "w": 240,
-      "x": 0,
-      "y": -300
-    },
-    "t_social": {
-      "kind": "title1",
-      "maxW": 1800,
-      "page": "social",
-      "text": "Groups & buddies",
-      "w": 240,
-      "x": 0,
-      "y": -300
-    },
-    "t_spots": {
-      "kind": "title1",
-      "maxW": 2740,
-      "page": "spots",
-      "text": "Add a Spot & discoveries",
-      "w": 240,
-      "x": 0,
-      "y": -300
-    },
-    "t_trip": {
-      "kind": "title1",
-      "maxW": 1800,
-      "page": "trips",
-      "text": "Trips & safety",
-      "w": 240,
-      "x": 0,
-      "y": -300
-    }
+  "EditProfile.dc.html": {
+   "h": 1180,
+   "page": "more",
+   "title": "S4 Edit profile",
+   "w": 390,
+   "x": 1410,
+   "y": 0
   },
-  "order": [
-    "Main.dc.html",
-    "Irbis.dc.html",
-    "Companions.dc.html",
-    "Nav.dc.html",
-    "Splash.dc.html",
-    "Onb1Welcome.dc.html",
-    "Onb2Language.dc.html",
-    "Onb3Experience.dc.html",
-    "Onb4Interests.dc.html",
-    "Onb5Companion.dc.html",
-    "Home.dc.html",
-    "HomeDark.dc.html",
-    "Place.dc.html",
-    "PlaceDark.dc.html",
-    "Explore.dc.html",
-    "TrailMap.dc.html",
-    "TripPlan.dc.html",
-    "ActiveTrip.dc.html",
-    "Summit.dc.html",
-    "Safety.dc.html",
-    "LessonsHub.dc.html",
-    "Quiz.dc.html",
-    "QuizCorrect.dc.html",
-    "QuizWrong.dc.html",
-    "Level.dc.html",
-    "LevelUp.dc.html",
-    "Badges.dc.html",
-    "Leagues.dc.html",
-    "Spot1Gps.dc.html",
-    "Spot2Photos.dc.html",
-    "Spot3Details.dc.html",
-    "Spot4Duplicate.dc.html",
-    "Spot5Submitted.dc.html",
-    "MySpots.dc.html",
-    "Groups.dc.html",
-    "GroupChat.dc.html",
-    "Buddies.dc.html",
-    "CreateTrip.dc.html",
-    "Profile.dc.html",
-    "ProfileDark.dc.html",
-    "Tours.dc.html",
-    "Gear.dc.html",
-    "GameSpec.dc.html",
-    "GameHub.dc.html",
-    "GameRound.dc.html",
-    "GameGuess.dc.html",
-    "GameResult.dc.html",
-    "GameSummary.dc.html",
-    "GameBadges.dc.html",
-    "GameDuel.dc.html",
-    "GameEntry.dc.html",
-    "CampSpec.dc.html",
-    "CampHub.dc.html",
-    "CampLobby.dc.html",
-    "CampJoin.dc.html",
-    "ImpReveal.dc.html",
-    "ImpImposter.dc.html",
-    "ImpVote.dc.html",
-    "WhoAmI.dc.html",
-    "WYR.dc.html",
-    "MafSetup.dc.html",
-    "MafRole.dc.html",
-    "MafNight.dc.html",
-    "MafDay.dc.html",
-    "MafEnd.dc.html",
-    "FeedSpec.dc.html",
-    "Feed.dc.html",
-    "PostDetail.dc.html",
-    "PostPhotos.dc.html",
-    "PostDetails.dc.html",
-    "TopShots.dc.html",
-    "TopShotWin.dc.html",
-    "Settings.dc.html",
-    "Notifs.dc.html",
-    "Search.dc.html",
-    "EditProfile.dc.html",
-    "ReportSheet.dc.html",
-    "ReportDone.dc.html",
-    "PlusPaywall.dc.html",
-    "OperatorDash.dc.html"
-  ],
-  "pages": [
-    {
-      "id": "brand",
-      "name": "Brand & characters"
-    },
-    {
-      "id": "onboard",
-      "name": "Onboarding"
-    },
-    {
-      "id": "explore",
-      "name": "Path & places"
-    },
-    {
-      "id": "trips",
-      "name": "Trips & safety"
-    },
-    {
-      "id": "learn",
-      "name": "Lessons & progress"
-    },
-    {
-      "id": "spots",
-      "name": "Add a Spot"
-    },
-    {
-      "id": "social",
-      "name": "Groups"
-    },
-    {
-      "id": "profile",
-      "name": "Profile & marketplace"
-    },
-    {
-      "id": "game",
-      "name": "Bu qayer? game"
-    },
-    {
-      "id": "camp",
-      "name": "Campfire games (offline)"
-    },
-    {
-      "id": "feed",
-      "name": "Feed & Top Shots"
-    },
-    {
-      "id": "more",
-      "name": "Settings, search & business"
-    }
-  ],
-  "title": "Irbis — Mobile App UI"
+  "ReportSheet.dc.html": {
+   "h": 844,
+   "page": "more",
+   "title": "S5 Report a post",
+   "w": 390,
+   "x": 1880,
+   "y": 0
+  },
+  "ReportDone.dc.html": {
+   "h": 844,
+   "page": "more",
+   "title": "S6 Report sent",
+   "w": 390,
+   "x": 2350,
+   "y": 0
+  },
+  "PlusPaywall.dc.html": {
+   "h": 1100,
+   "page": "more",
+   "title": "S7 Irbis Plus",
+   "w": 390,
+   "x": 2820,
+   "y": 0
+  },
+  "OperatorDash.dc.html": {
+   "h": 1040,
+   "page": "more",
+   "title": "W1 Operator dashboard (web)",
+   "w": 1440,
+   "x": 0,
+   "y": 1900,
+   "expand": "fill"
+  },
+  "FeedSpec.dc.html": {
+   "h": 1380,
+   "page": "feed",
+   "title": "Feed & Top Shots — rules and rewards",
+   "w": 1240,
+   "x": 0,
+   "y": 0
+  },
+  "Feed.dc.html": {
+   "h": 2100,
+   "page": "feed",
+   "title": "F1 Community feed",
+   "w": 390,
+   "x": 0,
+   "y": 1700
+  },
+  "PostDetail.dc.html": {
+   "h": 1260,
+   "page": "feed",
+   "title": "F2 Post detail",
+   "w": 390,
+   "x": 470,
+   "y": 1700
+  },
+  "PostPhotos.dc.html": {
+   "h": 844,
+   "page": "feed",
+   "title": "F3 New post — pick up to 10 photos",
+   "w": 390,
+   "x": 940,
+   "y": 1700
+  },
+  "PostDetails.dc.html": {
+   "h": 1180,
+   "page": "feed",
+   "title": "F4 New post — details",
+   "w": 390,
+   "x": 1410,
+   "y": 1700
+  },
+  "TopShots.dc.html": {
+   "h": 1480,
+   "page": "feed",
+   "title": "F5 Top Shots leaderboard",
+   "w": 390,
+   "x": 1880,
+   "y": 1700
+  },
+  "TopShotWin.dc.html": {
+   "h": 844,
+   "page": "feed",
+   "title": "F6 You made the Top 10",
+   "w": 390,
+   "x": 2350,
+   "y": 1700
+  },
+  "CampSpec.dc.html": {
+   "h": 1500,
+   "page": "camp",
+   "title": "Campfire games — how offline play works",
+   "w": 1240,
+   "x": 0,
+   "y": 0
+  },
+  "CampHub.dc.html": {
+   "h": 1100,
+   "page": "camp",
+   "title": "C1 Campfire games hub",
+   "w": 390,
+   "x": 0,
+   "y": 1960
+  },
+  "CampLobby.dc.html": {
+   "h": 1240,
+   "page": "camp",
+   "title": "C2 Host lobby (hotspot + QR)",
+   "w": 390,
+   "x": 470,
+   "y": 1960
+  },
+  "CampJoin.dc.html": {
+   "h": 844,
+   "page": "camp",
+   "title": "C3 Join a game",
+   "w": 390,
+   "x": 940,
+   "y": 1960
+  },
+  "ImpReveal.dc.html": {
+   "h": 844,
+   "page": "camp",
+   "title": "C4 Imposter — your word",
+   "w": 390,
+   "x": 1410,
+   "y": 1960
+  },
+  "ImpImposter.dc.html": {
+   "h": 844,
+   "page": "camp",
+   "title": "C5 Imposter — you're the imposter",
+   "w": 390,
+   "x": 1880,
+   "y": 1960
+  },
+  "ImpVote.dc.html": {
+   "h": 844,
+   "page": "camp",
+   "title": "C6 Imposter — vote",
+   "w": 390,
+   "x": 2350,
+   "y": 1960
+  },
+  "WhoAmI.dc.html": {
+   "h": 1040,
+   "page": "camp",
+   "title": "C7 Who am I?",
+   "w": 390,
+   "x": 2820,
+   "y": 1960
+  },
+  "WYR.dc.html": {
+   "h": 844,
+   "page": "camp",
+   "title": "C8 Would you rather",
+   "w": 390,
+   "x": 3290,
+   "y": 1960
+  },
+  "MafSetup.dc.html": {
+   "h": 1380,
+   "page": "camp",
+   "title": "M1 Mafia — choose roles (host)",
+   "w": 390,
+   "x": 0,
+   "y": 3740
+  },
+  "MafRole.dc.html": {
+   "h": 844,
+   "page": "camp",
+   "title": "M2 Mafia — your role",
+   "w": 390,
+   "x": 470,
+   "y": 3740
+  },
+  "MafNight.dc.html": {
+   "h": 844,
+   "page": "camp",
+   "title": "M3 Mafia — night action",
+   "w": 390,
+   "x": 940,
+   "y": 3740
+  },
+  "MafDay.dc.html": {
+   "h": 844,
+   "page": "camp",
+   "title": "M4 Mafia — day vote",
+   "w": 390,
+   "x": 1410,
+   "y": 3740
+  },
+  "MafEnd.dc.html": {
+   "h": 1140,
+   "page": "camp",
+   "title": "M5 Mafia — game over",
+   "w": 390,
+   "x": 1880,
+   "y": 3740
+  },
+  "GameSpec.dc.html": {
+   "h": 1600,
+   "page": "game",
+   "title": "Bu qayer? — game design & retention",
+   "w": 1240,
+   "x": 0,
+   "y": 0
+  },
+  "GameHub.dc.html": {
+   "h": 1300,
+   "page": "game",
+   "title": "G1 Game hub",
+   "w": 390,
+   "x": 0,
+   "y": 1720
+  },
+  "GameRound.dc.html": {
+   "h": 844,
+   "page": "game",
+   "title": "G2 360° view",
+   "w": 390,
+   "x": 470,
+   "y": 1720
+  },
+  "GameGuess.dc.html": {
+   "h": 844,
+   "page": "game",
+   "title": "G3 Place your guess",
+   "w": 390,
+   "x": 940,
+   "y": 1720
+  },
+  "GameResult.dc.html": {
+   "h": 844,
+   "page": "game",
+   "title": "G4 Round result",
+   "w": 390,
+   "x": 1410,
+   "y": 1720
+  },
+  "GameSummary.dc.html": {
+   "h": 1160,
+   "page": "game",
+   "title": "G5 Daily complete",
+   "w": 390,
+   "x": 1880,
+   "y": 1720
+  },
+  "GameBadges.dc.html": {
+   "h": 1160,
+   "page": "game",
+   "title": "G6 Game badges",
+   "w": 390,
+   "x": 2350,
+   "y": 1720
+  },
+  "GameDuel.dc.html": {
+   "h": 844,
+   "page": "game",
+   "title": "G7 Friend duel",
+   "w": 390,
+   "x": 2820,
+   "y": 1720
+  },
+  "GameEntry.dc.html": {
+   "h": 900,
+   "page": "game",
+   "title": "G8 Entry points",
+   "w": 390,
+   "x": 3290,
+   "y": 1720
+  },
+  "ActiveTrip.dc.html": {
+   "h": 844,
+   "page": "trips",
+   "title": "Active trip",
+   "w": 390,
+   "x": 470,
+   "y": 0
+  },
+  "Badges.dc.html": {
+   "h": 1400,
+   "page": "learn",
+   "title": "Badges",
+   "w": 390,
+   "x": 2820,
+   "y": 0
+  },
+  "Buddies.dc.html": {
+   "h": 1200,
+   "page": "social",
+   "title": "Find buddies",
+   "w": 390,
+   "x": 940,
+   "y": 0
+  },
+  "Companions.dc.html": {
+   "h": 820,
+   "page": "brand",
+   "title": "Companion evolution line",
+   "w": 1720,
+   "x": 1320,
+   "y": 0
+  },
+  "CreateTrip.dc.html": {
+   "h": 1200,
+   "page": "social",
+   "title": "Create trip event",
+   "w": 390,
+   "x": 1410,
+   "y": 0
+  },
+  "Explore.dc.html": {
+   "h": 844,
+   "page": "explore",
+   "title": "Explore map",
+   "w": 390,
+   "x": 1880,
+   "y": 0
+  },
+  "Gear.dc.html": {
+   "h": 1140,
+   "page": "profile",
+   "title": "Marketplace — gear rental (preview)",
+   "w": 390,
+   "x": 1410,
+   "y": 0
+  },
+  "GroupChat.dc.html": {
+   "h": 844,
+   "page": "social",
+   "title": "Group chat",
+   "w": 390,
+   "x": 470,
+   "y": 0
+  },
+  "Groups.dc.html": {
+   "h": 1260,
+   "page": "social",
+   "title": "Groups",
+   "w": 390,
+   "x": 0,
+   "y": 0
+  },
+  "Home.dc.html": {
+   "h": 1640,
+   "page": "explore",
+   "title": "Home — This Week's Path",
+   "w": 390,
+   "x": 0,
+   "y": 0
+  },
+  "HomeDark.dc.html": {
+   "h": 1640,
+   "page": "explore",
+   "title": "Home — dark",
+   "w": 390,
+   "x": 470,
+   "y": 0
+  },
+  "Irbis.dc.html": {
+   "h": 900,
+   "page": "brand",
+   "title": "Irbis mascot — expressions & usage",
+   "w": 1240,
+   "x": 0,
+   "y": 1120
+  },
+  "Leagues.dc.html": {
+   "h": 1320,
+   "page": "learn",
+   "title": "Leagues",
+   "w": 390,
+   "x": 3290,
+   "y": 0
+  },
+  "LessonsHub.dc.html": {
+   "h": 1240,
+   "page": "learn",
+   "title": "Lessons hub",
+   "w": 390,
+   "x": 0,
+   "y": 0
+  },
+  "Level.dc.html": {
+   "h": 1080,
+   "page": "learn",
+   "title": "Level progress",
+   "w": 390,
+   "x": 1880,
+   "y": 0
+  },
+  "LevelUp.dc.html": {
+   "h": 844,
+   "page": "learn",
+   "title": "Level-up evolution",
+   "w": 390,
+   "x": 2350,
+   "y": 0
+  },
+  "Main.dc.html": {
+   "h": 1000,
+   "page": "brand",
+   "title": "Design system",
+   "w": 1240,
+   "x": 0,
+   "y": 0
+  },
+  "MySpots.dc.html": {
+   "h": 1080,
+   "page": "spots",
+   "title": "My submitted spots",
+   "w": 390,
+   "x": 2350,
+   "y": 0
+  },
+  "Nav.dc.html": {
+   "h": 84,
+   "page": "brand",
+   "title": "Component · Bottom nav",
+   "w": 390,
+   "x": 1320,
+   "y": 940
+  },
+  "Onb1Welcome.dc.html": {
+   "h": 844,
+   "page": "onboard",
+   "title": "01 Meet Irbis",
+   "w": 390,
+   "x": 470,
+   "y": 0
+  },
+  "Onb2Language.dc.html": {
+   "h": 844,
+   "page": "onboard",
+   "title": "02 Language",
+   "w": 390,
+   "x": 940,
+   "y": 0
+  },
+  "Onb3Experience.dc.html": {
+   "h": 844,
+   "page": "onboard",
+   "title": "03 Experience",
+   "w": 390,
+   "x": 1410,
+   "y": 0
+  },
+  "Onb4Interests.dc.html": {
+   "h": 844,
+   "page": "onboard",
+   "title": "04 Interests",
+   "w": 390,
+   "x": 1880,
+   "y": 0
+  },
+  "Onb5Companion.dc.html": {
+   "h": 844,
+   "page": "onboard",
+   "title": "05 Companion reveal",
+   "w": 390,
+   "x": 2350,
+   "y": 0
+  },
+  "Place.dc.html": {
+   "h": 3000,
+   "page": "explore",
+   "title": "Place detail",
+   "w": 390,
+   "x": 940,
+   "y": 0
+  },
+  "PlaceDark.dc.html": {
+   "h": 3000,
+   "page": "explore",
+   "title": "Place detail — dark",
+   "w": 390,
+   "x": 1410,
+   "y": 0
+  },
+  "Profile.dc.html": {
+   "h": 1360,
+   "page": "profile",
+   "title": "Profile",
+   "w": 390,
+   "x": 0,
+   "y": 0
+  },
+  "ProfileDark.dc.html": {
+   "h": 1360,
+   "page": "profile",
+   "title": "Profile — dark",
+   "w": 390,
+   "x": 470,
+   "y": 0
+  },
+  "Quiz.dc.html": {
+   "h": 844,
+   "page": "learn",
+   "title": "Micro-lesson",
+   "is_interactive": true,
+   "w": 390,
+   "x": 470,
+   "y": 0
+  },
+  "QuizCorrect.dc.html": {
+   "h": 844,
+   "page": "learn",
+   "title": "Micro-lesson — correct",
+   "is_interactive": true,
+   "w": 390,
+   "x": 940,
+   "y": 0
+  },
+  "QuizWrong.dc.html": {
+   "h": 844,
+   "page": "learn",
+   "title": "Micro-lesson — incorrect",
+   "is_interactive": true,
+   "w": 390,
+   "x": 1410,
+   "y": 0
+  },
+  "Safety.dc.html": {
+   "h": 1180,
+   "page": "trips",
+   "title": "Safety center",
+   "w": 390,
+   "x": 1410,
+   "y": 0
+  },
+  "Splash.dc.html": {
+   "h": 844,
+   "page": "onboard",
+   "title": "00 Splash",
+   "w": 390,
+   "x": 0,
+   "y": 0
+  },
+  "Spot1Gps.dc.html": {
+   "h": 844,
+   "page": "spots",
+   "title": "Add a Spot 1 — GPS pin",
+   "w": 390,
+   "x": 0,
+   "y": 0
+  },
+  "Spot2Photos.dc.html": {
+   "h": 844,
+   "page": "spots",
+   "title": "Add a Spot 2 — Photos",
+   "w": 390,
+   "x": 470,
+   "y": 0
+  },
+  "Spot3Details.dc.html": {
+   "h": 1560,
+   "page": "spots",
+   "title": "Add a Spot 3 — Details",
+   "w": 390,
+   "x": 940,
+   "y": 0
+  },
+  "Spot4Duplicate.dc.html": {
+   "h": 1080,
+   "page": "spots",
+   "title": "Add a Spot 4 — Duplicate & visibility",
+   "w": 390,
+   "x": 1410,
+   "y": 0
+  },
+  "Spot5Submitted.dc.html": {
+   "h": 844,
+   "page": "spots",
+   "title": "Add a Spot — Submitted",
+   "w": 390,
+   "x": 1880,
+   "y": 0
+  },
+  "Summit.dc.html": {
+   "h": 844,
+   "page": "trips",
+   "title": "Summit celebration",
+   "w": 390,
+   "x": 940,
+   "y": 0
+  },
+  "Tours.dc.html": {
+   "h": 1140,
+   "page": "profile",
+   "title": "Marketplace — tours (preview)",
+   "w": 390,
+   "x": 940,
+   "y": 0
+  },
+  "TrailMap.dc.html": {
+   "h": 844,
+   "page": "explore",
+   "title": "Trail map",
+   "w": 390,
+   "x": 2350,
+   "y": 0
+  },
+  "TripPlan.dc.html": {
+   "h": 1200,
+   "page": "trips",
+   "title": "Trip plan & safety check-in",
+   "w": 390,
+   "x": 0,
+   "y": 0
+  },
+  "AccLogin.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "A1 Log in",
+   "page": "account"
+  },
+  "AccSignup.dc.html": {
+   "x": 470,
+   "y": 0,
+   "w": 390,
+   "h": 980,
+   "title": "A2 Create account",
+   "page": "account"
+  },
+  "AccGate.dc.html": {
+   "x": 940,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "A3 Log-in prompt (when needed)",
+   "page": "account"
+  },
+  "AccForgot.dc.html": {
+   "x": 1410,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "A4 Forgot password",
+   "page": "account"
+  },
+  "AccReset.dc.html": {
+   "x": 1880,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "A5 Reset with SMS code",
+   "page": "account"
+  },
+  "AccGuestProfile.dc.html": {
+   "x": 2350,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "A6 Profile — guest",
+   "page": "account"
+  }
+ },
+ "createdOnFiles": {
+  "at": "2026-10-04T11:46:09Z",
+  "v": 1
+ },
+ "designSystems": [],
+ "launch": {
+  "page": "brand",
+  "view": "canvas"
+ },
+ "notes": {
+  "t_more": {
+   "kind": "title1",
+   "maxW": 3210,
+   "page": "more",
+   "text": "Settings, notifications, search, profile, reporting & Plus",
+   "x": 0,
+   "y": -300
+  },
+  "t_ops": {
+   "kind": "title1",
+   "maxW": 1440,
+   "page": "more",
+   "text": "Irbis for Operators (web)",
+   "x": 0,
+   "y": 1640
+  },
+  "n_report": {
+   "fill": "red",
+   "maxH": 340,
+   "page": "more",
+   "w": 390,
+   "x": 1880,
+   "y": 904,
+   "text": "Moderation: 3 reports from trusted accounts (accounts older than 7 days) hide a post for everyone until the Irbis team reviews it, within 24 h. Strikes: warning → 7-day posting mute → ban, with appeal. Public groups over 500 members need 2+ admins; new accounts can post 3 times a day and can't share links or phone numbers."
+  },
+  "n_plus": {
+   "fill": "orange",
+   "maxH": 300,
+   "page": "more",
+   "w": 390,
+   "x": 2820,
+   "y": 1160,
+   "text": "Irbis Plus: 29,000 so'm a month or 249,000 so'm a year, 7-day free trial — starting price to test. Never paywall safety, conditions, lessons or levels."
+  },
+  "t_feed": {
+   "kind": "title1",
+   "maxW": 2740,
+   "page": "feed",
+   "text": "Feed & Top Shots",
+   "x": 0,
+   "y": -300
+  },
+  "t_feed_a": {
+   "kind": "title1",
+   "maxW": 2740,
+   "page": "feed",
+   "text": "Post, browse, compete every two weeks",
+   "x": 0,
+   "y": 1440
+  },
+  "n_f_photos": {
+   "fill": "teal",
+   "maxH": 300,
+   "page": "feed",
+   "w": 390,
+   "x": 940,
+   "y": 2604,
+   "text": "Picker opens on photos from the trip you just checked out of (matched by date). Max 10: an 11th tap shakes the counter. Upload continues in the background, even offline, and posts when back online."
+  },
+  "n_f_win": {
+   "fill": "orange",
+   "maxH": 300,
+   "page": "feed",
+   "w": 390,
+   "x": 2350,
+   "y": 2604,
+   "text": "Shown on the first app open after results (Monday morning): the photo drops in, the rank badge stamps on, XP counts up, the badge flips in. Everyone in the Top 10 gets one push; nobody else is notified."
+  },
+  "t_camp": {
+   "kind": "title1",
+   "maxW": 3680,
+   "page": "camp",
+   "text": "Campfire games — offline multiplayer over one hotspot",
+   "x": 0,
+   "y": -300
+  },
+  "t_camp_a": {
+   "kind": "title1",
+   "maxW": 3680,
+   "page": "camp",
+   "text": "Host & join · Imposter · Who am I? · Would you rather",
+   "x": 0,
+   "y": 1700
+  },
+  "t_camp_b": {
+   "kind": "title1",
+   "maxW": 2270,
+   "page": "camp",
+   "text": "Mafia",
+   "x": 0,
+   "y": 3480
+  },
+  "n_c_join": {
+   "fill": "teal",
+   "maxH": 300,
+   "page": "camp",
+   "w": 390,
+   "x": 940,
+   "y": 2864,
+   "text": "The QR holds the hotspot name + password and the room address (room code + host IP and port). One scan: join Wi-Fi, open the room. Code entry finds the host on the local network if the player joined the hotspot by hand."
+  },
+  "n_c_reveal": {
+   "fill": "purple",
+   "maxH": 300,
+   "page": "camp",
+   "w": 390,
+   "x": 1410,
+   "y": 2864,
+   "text": "Hold to reveal: the secret shows only while a thumb is on the card, with a soft haptic tick. Screenshots are blocked on Android; on iOS the card blurs when screen recording is detected."
+  },
+  "n_c_wyr": {
+   "fill": "orange",
+   "maxH": 300,
+   "page": "camp",
+   "w": 390,
+   "x": 3290,
+   "y": 2864,
+   "text": "Votes stay hidden until everyone has picked, then both bars fill at once with a short drumroll and the avatars drop into place."
+  },
+  "n_m_night": {
+   "fill": "gray",
+   "maxH": 320,
+   "page": "camp",
+   "w": 390,
+   "x": 940,
+   "y": 4644,
+   "text": "Night: the app voice narrates (\"Mafia, wake up…\"). Every phone shows a night screen at the same time — players without an action get a quick tap task — so screen activity never gives a role away."
+  },
+  "n_m_day": {
+   "fill": "red",
+   "maxH": 300,
+   "page": "camp",
+   "w": 390,
+   "x": 1410,
+   "y": 4644,
+   "text": "Day vote: majority exiles. A tie means a revote between the tied players; a second tie means nobody is exiled. The host can pause the timer."
+  },
+  "t_game": {
+   "kind": "title1",
+   "maxW": 3680,
+   "page": "game",
+   "text": "Bu qayer? — Where is this? mini-game",
+   "x": 0,
+   "y": -300
+  },
+  "n_g_round": {
+   "fill": "orange",
+   "maxH": 300,
+   "page": "game",
+   "w": 390,
+   "x": 470,
+   "y": 2624,
+   "text": "360° viewer: drag/gyro to look around, pinch to zoom. The drag hint shows on the first round only. Compass needle follows the heading. The mini-map grows into the guess screen with a spring."
+  },
+  "n_g_result": {
+   "fill": "orange",
+   "maxH": 320,
+   "page": "game",
+   "w": 390,
+   "x": 1410,
+   "y": 2624,
+   "text": "Reveal: the dashed line draws from your pin to the flag (0.6s), distance counts up, then points. Companion reacts by score: cheering ≥4,500, happy ≥3,000, thinking ≥1,500, worried below — never mocking."
+  },
+  "n_g_sum": {
+   "fill": "orange",
+   "maxH": 300,
+   "page": "game",
+   "w": 390,
+   "x": 1880,
+   "y": 2940,
+   "text": "Daily complete: total rolls up, confetti, the streak flame grows by one. Share card is generated as an image with colored squares only — no place names, so it never spoils the daily."
+  },
+  "n_g_entry": {
+   "fill": "teal",
+   "maxH": 300,
+   "page": "game",
+   "w": 390,
+   "x": 3290,
+   "y": 2680,
+   "text": "Retention hooks: a Home card every day, one 19:00 push (or the user's usual open time), the streak reminder only when the streak is at risk, and friend challenges as their own push. Max 1 game push per day."
+  },
+  "n_active": {
+   "fill": "red",
+   "maxH": 300,
+   "page": "trips",
+   "text": "Waypoint check-in: the ring fills and a +10 XP chip floats up. SOS needs a 3s press-and-hold with a radial progress ring, to avoid false alarms.",
+   "w": 390,
+   "x": 470,
+   "y": 904
+  },
+  "n_chat": {
+   "fill": "gray",
+   "maxH": 260,
+   "page": "social",
+   "text": "Trip card status updates live. Companion avatars show the group's experience mix at a glance.",
+   "w": 390,
+   "x": 470,
+   "y": 904
+  },
+  "n_home": {
+   "fill": "orange",
+   "maxH": 360,
+   "page": "explore",
+   "text": "Animations: tapping a node bounces it and opens a popover. A completed node flips to gold with a coin shower. On the red node, worried Irbis sways under the umbrella with rain particles. The weather shield on the streak pulses once when it protects the streak.",
+   "w": 390,
+   "x": 0,
+   "y": 1700
+  },
+  "n_homedk": {
+   "fill": "gray",
+   "maxH": 260,
+   "page": "explore",
+   "text": "Dark mode: status rings switch to brighter tints so they keep 3:1 against #131D22; every status keeps its icon + label.",
+   "w": 390,
+   "x": 470,
+   "y": 1700
+  },
+  "n_league": {
+   "fill": "gray",
+   "maxH": 260,
+   "page": "learn",
+   "text": "Sunday results: promotion rows shimmer green; demotion zone shows the sad-but-cute Irbis with a gentle message.",
+   "w": 390,
+   "x": 3290,
+   "y": 1380
+  },
+  "n_lvlup": {
+   "fill": "orange",
+   "maxH": 300,
+   "page": "learn",
+   "text": "Evolution sequence (3s, skippable after 1s): old companion glows, hands over the backpack, white flash, new companion catches it and strikes a pose.",
+   "w": 390,
+   "x": 2350,
+   "y": 904
+  },
+  "n_onb1": {
+   "fill": "orange",
+   "maxH": 260,
+   "page": "onboard",
+   "text": "Mascot: Irbis waves on a 2s loop and blinks every 4s. The speech bubble types in word by word.",
+   "w": 390,
+   "x": 470,
+   "y": 904
+  },
+  "n_onb2": {
+   "fill": "gray",
+   "maxH": 260,
+   "page": "onboard",
+   "text": "Selecting a language re-renders the screen instantly; Irbis nods. Strings in all three languages fit without truncation.",
+   "w": 390,
+   "x": 940,
+   "y": 904
+  },
+  "n_onb5": {
+   "fill": "orange",
+   "maxH": 300,
+   "page": "onboard",
+   "text": "Celebration: backpack shakes 3×, pops open with confetti (0.8s spring) and the panda cub tumbles out and waves. Success haptic. Irbis claps in the corner.",
+   "w": 390,
+   "x": 2350,
+   "y": 904
+  },
+  "n_place": {
+   "fill": "orange",
+   "maxH": 260,
+   "page": "explore",
+   "text": "Start Adventure: the button sinks 4px on press, the companion cheers, then the trip plan sheet slides up.",
+   "w": 390,
+   "x": 940,
+   "y": 3060
+  },
+  "n_prof": {
+   "fill": "orange",
+   "maxH": 260,
+   "page": "profile",
+   "text": "Badge showcase tilts on drag; tapping a badge replays its unlock animation.",
+   "w": 390,
+   "x": 0,
+   "y": 1420
+  },
+  "n_quiz": {
+   "fill": "orange",
+   "maxH": 300,
+   "page": "learn",
+   "text": "Correct: green sheet slides up, companion hops, chime. Incorrect: red sheet, one heart cracks with a small shake, companion looks concerned — never mocking.",
+   "w": 390,
+   "x": 940,
+   "y": 904
+  },
+  "n_spot": {
+   "fill": "orange",
+   "maxH": 260,
+   "page": "spots",
+   "text": "Submit: the companion plants a flag; the 'Pending review' chip pulses softly. Discoverer XP is paid on verification, not on submit.",
+   "w": 390,
+   "x": 1880,
+   "y": 904
+  },
+  "n_summit": {
+   "fill": "orange",
+   "maxH": 320,
+   "page": "trips",
+   "text": "Confetti burst 1.2s; the companion hops onto the peak and the flag waves. XP counts up. The badge flips in 3D, then flies into the collection tray. Success haptic.",
+   "w": 390,
+   "x": 940,
+   "y": 904
+  },
+  "n_type": {
+   "fill": "teal",
+   "maxH": 300,
+   "page": "brand",
+   "text": "Type: Nunito 600–900. Headings 900, body 700. Stats use tabular numbers at 28–48px. Every text container is sized for Russian (≈30% longer than English) and Uzbek Latin; buttons wrap to two lines rather than truncate.",
+   "w": 420,
+   "x": 1760,
+   "y": 940
+  },
+  "t_brand": {
+   "kind": "title1",
+   "maxW": 3040,
+   "page": "brand",
+   "text": "Irbis — brand, mascot & companions",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "t_exp": {
+   "kind": "title1",
+   "maxW": 2740,
+   "page": "explore",
+   "text": "This Week's Path, places & maps",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "t_learn": {
+   "kind": "title1",
+   "maxW": 3680,
+   "page": "learn",
+   "text": "Lessons, levels, badges & leagues",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "t_onb": {
+   "kind": "title1",
+   "maxW": 2740,
+   "page": "onboard",
+   "text": "Onboarding",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "t_prof": {
+   "kind": "title1",
+   "maxW": 1800,
+   "page": "profile",
+   "text": "Profile & marketplace preview",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "t_social": {
+   "kind": "title1",
+   "maxW": 1800,
+   "page": "social",
+   "text": "Groups & buddies",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "t_spots": {
+   "kind": "title1",
+   "maxW": 2740,
+   "page": "spots",
+   "text": "Add a Spot & discoveries",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "t_trip": {
+   "kind": "title1",
+   "maxW": 1800,
+   "page": "trips",
+   "text": "Trips & safety",
+   "w": 240,
+   "x": 0,
+   "y": -300
+  },
+  "t_account": {
+   "kind": "title1",
+   "maxW": 2740,
+   "page": "account",
+   "text": "Accounts: username + password, no login wall",
+   "x": 0,
+   "y": -300
+  },
+  "n_account": {
+   "fill": "teal",
+   "page": "account",
+   "w": 390,
+   "maxH": 620,
+   "x": 2820,
+   "y": 0,
+   "text": "Guests can explore everything without an account: places, conditions, Explore map, feed, lessons. SOS and Safety work without an account, always.\n\nLog-in is asked only when an action saves or earns: check in, start a trip plan, earn XP or badges, post, like, comment, join a group, play online games (A3 sheet; \"Not now\" returns to where they were).\n\nWhat a guest did (onboarding choices, lesson progress, saved places) stays on the phone and moves into the account on sign-up or log-in.\n\nSign-up: username + password; recovery phone optional, used only for a 6-digit SMS reset code (A4, A5). No phone = no self-service reset.\n\nTrusted account (fair likes, reports) = older than 7 days."
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "Irbis.dc.html",
+  "Companions.dc.html",
+  "Nav.dc.html",
+  "Splash.dc.html",
+  "Onb1Welcome.dc.html",
+  "Onb2Language.dc.html",
+  "Onb3Experience.dc.html",
+  "Onb4Interests.dc.html",
+  "Onb5Companion.dc.html",
+  "Home.dc.html",
+  "HomeDark.dc.html",
+  "Place.dc.html",
+  "PlaceDark.dc.html",
+  "Explore.dc.html",
+  "TrailMap.dc.html",
+  "TripPlan.dc.html",
+  "ActiveTrip.dc.html",
+  "Summit.dc.html",
+  "Safety.dc.html",
+  "LessonsHub.dc.html",
+  "Quiz.dc.html",
+  "QuizCorrect.dc.html",
+  "QuizWrong.dc.html",
+  "Level.dc.html",
+  "LevelUp.dc.html",
+  "Badges.dc.html",
+  "Leagues.dc.html",
+  "Spot1Gps.dc.html",
+  "Spot2Photos.dc.html",
+  "Spot3Details.dc.html",
+  "Spot4Duplicate.dc.html",
+  "Spot5Submitted.dc.html",
+  "MySpots.dc.html",
+  "Groups.dc.html",
+  "GroupChat.dc.html",
+  "Buddies.dc.html",
+  "CreateTrip.dc.html",
+  "Profile.dc.html",
+  "ProfileDark.dc.html",
+  "Tours.dc.html",
+  "Gear.dc.html",
+  "GameSpec.dc.html",
+  "GameHub.dc.html",
+  "GameRound.dc.html",
+  "GameGuess.dc.html",
+  "GameResult.dc.html",
+  "GameSummary.dc.html",
+  "GameBadges.dc.html",
+  "GameDuel.dc.html",
+  "GameEntry.dc.html",
+  "CampSpec.dc.html",
+  "CampHub.dc.html",
+  "CampLobby.dc.html",
+  "CampJoin.dc.html",
+  "ImpReveal.dc.html",
+  "ImpImposter.dc.html",
+  "ImpVote.dc.html",
+  "WhoAmI.dc.html",
+  "WYR.dc.html",
+  "MafSetup.dc.html",
+  "MafRole.dc.html",
+  "MafNight.dc.html",
+  "MafDay.dc.html",
+  "MafEnd.dc.html",
+  "FeedSpec.dc.html",
+  "Feed.dc.html",
+  "PostDetail.dc.html",
+  "PostPhotos.dc.html",
+  "PostDetails.dc.html",
+  "TopShots.dc.html",
+  "TopShotWin.dc.html",
+  "Settings.dc.html",
+  "Notifs.dc.html",
+  "Search.dc.html",
+  "EditProfile.dc.html",
+  "ReportSheet.dc.html",
+  "ReportDone.dc.html",
+  "PlusPaywall.dc.html",
+  "OperatorDash.dc.html",
+  "AccLogin.dc.html",
+  "AccSignup.dc.html",
+  "AccGate.dc.html",
+  "AccForgot.dc.html",
+  "AccReset.dc.html",
+  "AccGuestProfile.dc.html"
+ ],
+ "pages": [
+  {
+   "id": "brand",
+   "name": "Brand & characters"
+  },
+  {
+   "id": "onboard",
+   "name": "Onboarding"
+  },
+  {
+   "id": "account",
+   "name": "Accounts & sign-in"
+  },
+  {
+   "id": "explore",
+   "name": "Path & places"
+  },
+  {
+   "id": "trips",
+   "name": "Trips & safety"
+  },
+  {
+   "id": "learn",
+   "name": "Lessons & progress"
+  },
+  {
+   "id": "spots",
+   "name": "Add a Spot"
+  },
+  {
+   "id": "social",
+   "name": "Groups"
+  },
+  {
+   "id": "profile",
+   "name": "Profile & marketplace"
+  },
+  {
+   "id": "game",
+   "name": "Bu qayer? game"
+  },
+  {
+   "id": "camp",
+   "name": "Campfire games (offline)"
+  },
+  {
+   "id": "feed",
+   "name": "Feed & Top Shots"
+  },
+  {
+   "id": "more",
+   "name": "Settings, search & business"
+  }
+ ],
+ "title": "Irbis — Mobile App UI"
 }

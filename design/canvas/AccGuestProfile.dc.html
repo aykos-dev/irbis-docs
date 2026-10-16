@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Profile — guest</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.h2{font-weight:900;font-size:24px;line-height:1.2;color:var(--ink)}
+.h3{font-weight:800;font-size:17px;line-height:1.25;color:var(--ink)}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.t{font-weight:700;font-size:15px;line-height:1.45}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--card);border:2px solid var(--line);border-bottom-width:4px;border-radius:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:8px 20px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;line-height:1.15;letter-spacing:.05em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none;width:100%}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.bw{background:var(--card);color:#0C807A;border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.row{display:flex;align-items:center;gap:12px;padding:14px 16px;text-decoration:none;color:inherit}
+.row + .row{border-top:2px solid #EEF0E8}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 844px">
+  <div style="flex-grow: 1; padding: 22px 20px 18px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; padding-top: 18px">
+      <div style="width: 132px; height: 132px; border-radius: 50%; background: #E4F5E7; border: 5px solid #58B368; display: flex; align-items: center; justify-content: center">
+        <img src="/_blob/44b792e405b2dce67f0743e4be0fc2e1" alt="Panda cub companion" style="width: 108px; height: 108px">
+      </div>
+      <p class="h2">You're exploring as a guest</p>
+      <p class="t" style="color: #5E6E74; max-width: 320px">Make a free account to keep your XP, level up your panda and plan trips that alert your contact.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <a class="btn bp" href="AccSignup.dc.html">Create free account</a>
+      <a class="btn bw" href="AccLogin.dc.html">Log in</a>
+    </div>
+    <div class="card" style="padding: 0; margin-top: 4px">
+      <a class="row" href="Settings.dc.html"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #5E6E74"><circle cx="12" cy="12" r="9" style="fill: none; stroke: currentColor; stroke-width: 2.2"></circle><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18" style="fill: none; stroke: currentColor; stroke-width: 2.2"></path></svg><span class="h3" style="font-size: 15px; flex-grow: 1">Language</span><span class="s">Oʻzbekcha</span></a>
+      <a class="row" href="Safety.dc.html"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #D93636"><path d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z" style="fill: currentColor"></path></svg><span class="h3" style="font-size: 15px; flex-grow: 1">Safety &amp; SOS</span><span class="s">Works without an account</span></a>
+    </div>
+  </div>
+  <dc-import name="Nav" active="profile" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

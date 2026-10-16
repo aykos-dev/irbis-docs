@@ -1,7 +1,7 @@
 # Irbis design canvas — snapshot
 
 - Source: https://claude.ai/artifact/CuodB816iZnDTUej2UiALf (claude.ai Design canvas, owner: Sardor)
-- Canvas version: `1792126344-9e9d`
+- Canvas version: `1792177844-3325 (2026-10-17: + Accounts & sign-in page)`
 - Snapshot date: 2026-10-16
 - **Snapshot — the canvas is the source of truth; re-sync when it changes.**
 - Files: `*.dc.html` are the boards (design-canvas component format, not runnable as-is; `/_blob/<id>` image references are canvas assets, see `../assets.md`). `canvas.json` holds board titles, pages, sizes and canvas notes (rules and animation notes; see `../canvas-rules.md`).
@@ -146,3 +146,13 @@
 | ReportDone.dc.html | S6 Report sent | 390 x 844 |
 | PlusPaywall.dc.html | S7 Irbis Plus | 390 x 1100 |
 | OperatorDash.dc.html | W1 Operator dashboard (web) | 1440 x 1040 |
+
+### Accounts & sign-in (added 2026-10-17)
+| File | Title | Size |
+|---|---|---|
+| AccLogin.dc.html | A1 Log in | 390×844 |
+| AccSignup.dc.html | A2 Create account | 390×980 |
+| AccGate.dc.html | A3 Log-in prompt (when needed) | 390×844 |
+| AccForgot.dc.html | A4 Forgot password | 390×844 |
+| AccReset.dc.html | A5 Reset with SMS code | 390×844 |
+| AccGuestProfile.dc.html | A6 Profile — guest | 390×844 |

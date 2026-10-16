@@ -46,6 +46,10 @@ Design tokens for web and app: `design/design.md`. Canvas rules and numbers beyo
 - **Money:** UZS (so'm), integers. XP, gems, elevation: integers.
 
 ## Product rules every feature must respect
+- **Guest-first (ADR-001):** everything readable works without an account; log-in is asked only when an action saves
+  or earns (check in, trip plan, XP/badges, post, like, comment, join a group, online games) via the log-in prompt
+  sheet. SOS and the Safety center never require an account. Guest progress merges into the account on sign-up.
+- **Accounts:** username + password; recovery phone optional (SMS reset code only). Trusted account = older than 7 days.
 - Safety features (trip plans, auto-alerts, SOS, condition statuses) are free forever; no ads on safety screens.
 - Condition status is always colour + icon + label (Go / Caution / Not now / Seasonal lock).
 - "Not now" places never get a "Go there" button. Fragile spots never get map pins in feed or games.

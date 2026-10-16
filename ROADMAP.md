@@ -16,7 +16,7 @@ proposal — reorder freely. Screens refer to `design/canvas/`.
 ## Phase 1 — Launch (Tashkent region): weekly path, places & safety, lessons, levels
 | # | Slug | What | Screens | Surfaces |
 |---|---|---|---|---|
-| 1 | `auth` | Phone sign-in (OTP), session, sign-out | — (not designed) | api, app |
+| 1 | `auth` | Guest mode + log-in prompt, username/password sign-up & log-in, optional recovery phone + SMS reset, guest-data merge, sign-out | AccLogin, AccSignup, AccGate, AccForgot, AccReset, AccGuestProfile | api, app |
 | 2 | `onboarding` | Splash → meet Irbis → language → experience → interests → companion reveal | Splash, Onb1–5 | app, api |
 | 3 | `places` | Place catalogue: types, difficulty boots, required level, trails, season bar, hazards; admin CRUD | Place, Explore, TrailMap | api, web, app |
 | 4 | `conditions` | Go / Caution / Not now / Seasonal lock from forecast, hazard rules, closures, community reports | Place (condition), Home rings | api, web, app |
@@ -69,8 +69,8 @@ proposal — reorder freely. Screens refer to `design/canvas/`.
 All Uzbekistan → Kazakhstan → Kyrgyzstan → park partners (B2B trends with consent).
 
 ## Open questions that block the order
-- **Sign-in:** the canvas has no sign-in screens. Phone + SMS OTP (the doc's moderation relies on a "verified phone")?
-  Which SMS provider? → asked when `auth` starts.
+- **Sign-in:** decided 2026-10-17 (ADR-001) — guest-first, username + password, optional recovery phone. Still to
+  pick at `auth`: SMS provider for reset codes.
 - **Admin web panel:** not designed. Build from tokens, or design first? → asked when `places` starts.
 
 ## Doc ↔ canvas conflicts — asked when their feature starts (details: `design/canvas-rules.md`)

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Log in to keep your progress</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.h2{font-weight:900;font-size:24px;line-height:1.2;color:var(--ink)}
+.h3{font-weight:800;font-size:17px;line-height:1.25;color:var(--ink)}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.t{font-weight:700;font-size:15px;line-height:1.45}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:8px 20px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;line-height:1.15;letter-spacing:.05em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none;width:100%}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.bw{background:var(--card);color:#0C807A;border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.lnk{font-weight:900;font-size:15px;color:#5E6E74;text-decoration:none;text-align:center;padding:10px}
+.perk{display:flex;align-items:center;gap:12px}
+.pi{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 844px">
+  <div aria-hidden="true" style="position: absolute; inset: 0; padding: 60px 24px; display: flex; flex-direction: column; align-items: center; gap: 18px; background: #F7F7F2">
+    <img src="/_blob/28945aeb0b5964efc16a541c4886feb8" alt="" style="width: 150px; height: 150px">
+    <p class="h2" style="text-align: center">Lesson complete!</p>
+    <div style="display: flex; gap: 12px"><span style="height: 40px; padding: 0 16px; border-radius: 12px; background: #FFF1DA; color: #8A4B00; font-weight: 900; display: flex; align-items: center">+10 XP</span><span style="height: 40px; padding: 0 16px; border-radius: 12px; background: #E3F7F5; color: #0C807A; font-weight: 900; display: flex; align-items: center">5 / 5 correct</span></div>
+  </div>
+  <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(19, 29, 34, .55)"></div>
+  <div role="dialog" aria-modal="true" aria-labelledby="gate-t" style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 12px 22px 30px; display: flex; flex-direction: column; gap: 16px">
+    <div style="align-self: center; width: 44px; height: 5px; border-radius: 99px; background: #E5E5DC"></div>
+    <div style="display: flex; gap: 14px; align-items: center">
+      <img src="/_blob/443552c224036e8da76bd042b4971bf8" alt="Irbis, proud" style="width: 84px; height: 84px; flex: none">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <p class="h2" id="gate-t">Keep your +10 XP</p>
+        <p class="t" style="color: #5E6E74">Make a free account so your XP, lessons and streak don't get lost.</p>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; padding: 4px 0">
+      <div class="perk"><span class="pi" style="background: #FFF1DA"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #CC7A00"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z" style="fill: currentColor"></path></svg></span><p class="h3" style="font-size: 15px">Level up your companion</p></div>
+      <div class="perk"><span class="pi" style="background: #E3F7F5"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #0C807A"><path d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z" style="fill: currentColor"></path></svg></span><p class="h3" style="font-size: 15px">Trip plans that alert your contact</p></div>
+      <div class="perk"><span class="pi" style="background: #EEEAFF"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #5B42DB"><circle cx="9" cy="8" r="3.6" style="fill: currentColor"></circle><path d="M2 20.5c.4-4.4 3.2-6.6 7-6.6s6.6 2.2 7 6.6z" style="fill: currentColor"></path></svg></span><p class="h3" style="font-size: 15px">Post, join groups, climb leagues</p></div>
+    </div>
+    <a class="btn bp" href="AccSignup.dc.html">Create free account</a>
+    <a class="btn bw" href="AccLogin.dc.html">I have an account</a>
+    <a class="lnk" href="LessonsHub.dc.html">Not now</a>
+    <p class="s" style="text-align: center">Your progress stays on this phone until you sign up.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
