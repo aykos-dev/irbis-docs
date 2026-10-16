@@ -2,11 +2,12 @@
 
 | | |
 |---|---|
-| Status | Open · reproduced 2026-10-17 |
+| Status | Fixed · retest 2026-10-17 |
 | Severity | 3 - Medium |
 | Feature | [features/health.md](../../../../features/health.md) |
 | Found | run [2026-10-17_0117](../../runs/2026-10-17_0117/run.md), TC-006, TC-007, TC-009 |
 | Build | uz.irbis.app.dev 0.0.1 devRelease arm64, irbis-app commit 2141d96; irbis-api 8fb74fa |
+| Retest 2026-10-17 | ✅ Fixed on uz.irbis.app.dev devRelease, irbis-app 10701d9 ([video](video/D2_wrapped-chip-overflows-card__retest-2026-10-17.mp4)) |
 | Video | [D2_wrapped-chip-overflows-card.mp4](video/D2_wrapped-chip-overflows-card.mp4) (step captions under the screen) |
 
 ## Bug
@@ -41,6 +42,15 @@ The chip stays inside the card: the label wraps within the chip and the chip's w
 ---
 
 ## Internal notes
+
+### Retest 2026-10-17
+- **Result:** ✅ Fixed. Build: devRelease arm64, irbis-app `10701d9` (branch `fix/health-d2`, merged to main), API `8fb74fa`.
+- **Code change since the found build (2141d96):** only `10701d9` — `StatusChip` gets `maxWidth: '100%'` and the label
+  `flexShrink: 1`, i.e. the bug's code path; the old steps still reach it.
+- **Seen:** Russian at font 1.15 — the two-line "База данных работает" chip ends inside the card
+  ([image](image/01_ru_status__retest-2026-10-17.png), video t=00:05). Run
+  [2026-10-17_0127](../../runs/2026-10-17_0127/run.md) re-ran TC-006 (ru), TC-007 (uz), TC-009 (en, font 2.0): all Pass.
+- **Unit test:** `src/shared/components/__tests__/StatusChip.test.tsx` (fails on the old code, passes on the fix).
 
 ### Recording
 - Re-record: `~/.claude/venvs/qa/bin/python others/repro.py` (retest: `… repro.py retest-YYYY-MM-DD`)

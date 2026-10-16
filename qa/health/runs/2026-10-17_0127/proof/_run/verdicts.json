@@ -1,0 +1,5 @@
+{
+ "TC-006": {"verdict": "Pass", "line": "Russian copy complete; wrapped DB chip now inside the card", "conclusion": "D2 fixed for Russian at font 1.15. (Script flagged 'Окружение: dev' — env value; check fixed in the library script.)", "caption": "Russian copy OK, chip inside the card", "ok": {"1": true, "2": true}, "actual": {"1": "Статус, API работает, База данных работает, Проверено в 01:27 — no English UI copy", "2": "health.db-chip wraps to 2 lines and ends inside the card border"}},
+ "TC-007": {"verdict": "Pass", "line": "Uzbek copy complete; wrapped chip inside the card", "conclusion": "D2 fixed for Uzbek.", "caption": "Uzbek copy OK, chip inside the card"},
+ "TC-009": {"verdict": "Pass", "line": "font 2.0: texts wrap, 'Database is up' chip inside the card", "conclusion": "D2 fixed at the largest font.", "caption": "font 2.0, chip inside the card", "ok": {"1": true}, "actual": {"1": "all card texts readable and wrapped; health.db-chip ends inside the card border"}}
+}

@@ -1,0 +1,50 @@
+{
+ "meta": {
+  "title": "Largest font size does not clip the card",
+  "group": "Supplementary",
+  "priority": "P3",
+  "env": "Android · auto (adb) · resources: API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-009--p3--largest-font-size-does-not-clip-the-card",
+  "source": "standards §12",
+  "expected": [
+   "All card texts fully visible (wrap or scroll, no clipped words), Retry/refresh still reachable — screenshot"
+  ],
+  "caption": {
+   "expected": "All card texts fully visible (wrap or scroll, no clipped words), Retry/refresh s"
+  },
+  "plan_hash": "a9a3b2b7f0",
+  "tc": "TC-009"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Not run",
+ "duration_s": 6.4,
+ "events": 3,
+ "done": [
+  "API-UP",
+  "1. Font scale 2.0, cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": null,
+   "observed": "clipping at 2.0: judge from the screenshot",
+   "proof": [
+    "1_font2.png"
+   ],
+   "t": 3.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "status shown",
+   "ok": true,
+   "seen": "['01:27', 'IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1']",
+   "t": 2.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_font2.png"
+ ]
+}

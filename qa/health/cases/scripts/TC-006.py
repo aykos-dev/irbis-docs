@@ -38,7 +38,7 @@ def run(c):
         time.sleep(1)
         texts = card_texts()
         shot = c.shot("1_ru")
-        latin = [t for t in texts if re.search(r"[A-Za-z]{3,}", t) and not re.fullmatch(r"v[\d.]+|IRBIS|Irbis|dev|API.*", t)]
+        latin = [t for t in texts if re.search(r"[A-Za-z]{3,}", t.split(": ")[0] if ": " in t else t) and not re.fullmatch(r"v[\d.]+|IRBIS|Irbis|dev|API.*", t)]  # value after ": " is data (e.g. env "dev")
         c.result(1, not latin, f"English-looking texts left: {latin}; all: {texts[:10]}", [shot])
         c.result(2, None, "clipping: judge from the screenshot", [shot])
     finally:
