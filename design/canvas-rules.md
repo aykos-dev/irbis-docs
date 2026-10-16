@@ -55,7 +55,7 @@ Campfire (CampSpec, CampHub, Camp*)
 Community
 - Top Shot badge tiers: Bronze first Top 10; Silver 5; Gold 10; "Shot of the Fortnight" for #1; #1 gets "Gold frame on profile for 2 weeks" (FeedSpec, TopShotWin "1 / 5 to Silver").
 - Winner eligibility: posted during the round, tagged with a place where the author has a verified check-in, own photos only (no reposts or operator marketing), ties go to the post that reached the count first (FeedSpec).
-- Like rules: only likes from accounts older than 7 days with verified phone count; no self-likes; ranks (not counts) shown in the last 24 hours; "max one push per round"; Top 10 get one push, nobody else (FeedSpec, notes `n_f_win`).
+- Like rules: only likes from accounts older than 7 days count (verified phone removed 2026-10-17, ADR-001); no self-likes; ranks (not counts) shown in the last 24 hours; "max one push per round"; Top 10 get one push, nobody else (FeedSpec, notes `n_f_win`).
 - Posts: up to 10 photos, 11th tap shakes the counter, upload queues offline (notes `n_f_photos`); tagged people must approve; operators have a "Tour stories" tab.
 - Moderation: reports reviewed "within 24 h"; strikes "warning → 7-day posting mute → ban, with appeal"; new accounts "can't share links or phone numbers" (notes `n_report`). Report reasons (7): Unsafe behaviour, Wrong or fake place, Not their photo, Reveals a fragile place, Spam or advertising, Harassment or hate, Inappropriate content (ReportSheet). Reporter can "Hide all posts from" or "Block" the author (ReportDone).
 - Weekly chest reward is not specified; only "Check in at 3 places" (Home).
@@ -99,3 +99,6 @@ Inside the canvas (the implementation will have to pick one)
 - Notifs: tabs All / Trips / Social / Rewards, "Mark all read".
 - Tours/Gear: date chips, "Reserve for Sat 10 Oct", pickup points with opening hours, level-gated rentals.
 - Animation notes in canvas.json (`n_summit` confetti 1.2 s, `n_lvlup` 3 s skippable after 1 s, `n_g_result` line draws 0.6 s, etc.) are motion specs, not business rules.
+
+## Updates
+- 2026-10-17: auth changed to guest-first username + password (ADR-001). Canvas page **Accounts & sign-in** added (A1–A6); "verified phone" removed from the trusted-account rule on FeedSpec and the moderation note — trusted = account older than 7 days.

@@ -1,7 +1,7 @@
 # Irbis — Project
 
 ## Sources of truth
-- **Requirements:** Claude Doc [Irbis — Product Overview](https://claude.ai/artifact/3Y8X76bzR6UE58fHkAdm1p) (read 2026-10-16, rev 28).
+- **Requirements:** Claude Doc [Irbis — Product Overview](https://claude.ai/artifact/3Y8X76bzR6UE58fHkAdm1p) (read 2026-10-16; Accounts & sign-in added 2026-10-17, rev 32).
 - **Design:** canvas [Irbis — Mobile App UI](https://claude.ai/artifact/CuodB816iZnDTUej2UiALf) (snapshot in `design/canvas/`, version 1792126344-9e9d).
 - When those change, re-sync the affected spec in `features/` — the specs, not memory, drive the code.
 

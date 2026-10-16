@@ -1,7 +1,7 @@
 # Irbis design canvas — snapshot
 
 - Source: https://claude.ai/artifact/CuodB816iZnDTUej2UiALf (claude.ai Design canvas, owner: Sardor)
-- Canvas version: `1792177844-3325 (2026-10-17: + Accounts & sign-in page)`
+- Canvas version: `1792177973-b00f (2026-10-17: + Accounts & sign-in page, fair-likes rule)`
 - Snapshot date: 2026-10-16
 - **Snapshot — the canvas is the source of truth; re-sync when it changes.**
 - Files: `*.dc.html` are the boards (design-canvas component format, not runnable as-is; `/_blob/<id>` image references are canvas assets, see `../assets.md`). `canvas.json` holds board titles, pages, sizes and canvas notes (rules and animation notes; see `../canvas-rules.md`).
