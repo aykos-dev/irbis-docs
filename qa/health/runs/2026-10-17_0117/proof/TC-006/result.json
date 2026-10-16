@@ -1,0 +1,59 @@
+{
+ "meta": {
+  "title": "Russian copy",
+  "group": "Supplementary",
+  "priority": "P2",
+  "env": "Android · auto (adb) · resources: API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-006--p2--russian-copy",
+  "source": "AC4",
+  "expected": [
+   "Every text on the Status screen is Russian, matching `src/shared/i18n/ru` — no English left — screenshot",
+   "Layout does not clip or truncate any Russian label — screenshot"
+  ],
+  "caption": {
+   "expected": "Every text on the Status screen is Russian, matching `src/shared/i18n/ru`"
+  },
+  "plan_hash": "b763662730",
+  "tc": "TC-006"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 4.4,
+ "events": 2,
+ "done": [
+  "API-UP",
+  "1. Set the app language to Russian and cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "English-looking texts left: ['Окружение: dev']; all: ['01:19', 'IRBIS', 'Статус', 'API работает', 'База данных работает', 'v0.0.1', 'Проверено в 01:19', 'Окружение: dev']",
+   "proof": [
+    "1_ru.png"
+   ],
+   "t": 2.7
+  },
+  "2": {
+   "ok": null,
+   "observed": "clipping: judge from the screenshot",
+   "proof": [
+    "1_ru.png"
+   ],
+   "t": 2.7
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "app relaunched",
+   "ok": true,
+   "seen": "['01:19', 'IRBIS', 'Статус', 'API работает', 'База данных работает', 'v0.0.1']",
+   "t": 1.2
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_ru.png"
+ ]
+}

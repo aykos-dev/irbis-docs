@@ -1,0 +1,4 @@
+0.03	1: Set the app language to Russian and cold start
+4.27	Expected: Every text on the Status screen is Russian, matching `src/shared/i18n/ru`
+9.27	Result: FAIL — Russian copy OK, DB chip overflows card
+15.27	END

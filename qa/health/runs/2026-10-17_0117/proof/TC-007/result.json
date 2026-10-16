@@ -1,0 +1,50 @@
+{
+ "meta": {
+  "title": "Uzbek copy",
+  "group": "Supplementary",
+  "priority": "P2",
+  "env": "Android · auto (adb) · resources: API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-007--p2--uzbek-copy",
+  "source": "AC4",
+  "expected": [
+   "Every text on the Status screen is Uzbek (Latin), matching `src/shared/i18n/uz` — screenshot"
+  ],
+  "caption": {
+   "expected": "Every text on the Status screen is Uzbek (Latin), matching `src/shared/i18n/uz`"
+  },
+  "plan_hash": "7ed22be193",
+  "tc": "TC-007"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 4.4,
+ "events": 2,
+ "done": [
+  "API-UP",
+  "1. Set the app language to Uzbek and cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "English texts left: []; all: ['01:19', 'IRBIS', 'Holat', 'API ishlayapti', 'Ma’lumotlar bazasi ishlayapti', 'v0.0.1', '01:19 da tekshirildi', 'Muhit: dev']",
+   "proof": [
+    "1_uz.png"
+   ],
+   "t": 2.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "app relaunched",
+   "ok": true,
+   "seen": "['01:19', 'IRBIS', 'Holat', 'API ishlayapti', 'Ma’lumotlar bazasi ishlayapti', 'v0.0.1']",
+   "t": 1.2
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_uz.png"
+ ]
+}

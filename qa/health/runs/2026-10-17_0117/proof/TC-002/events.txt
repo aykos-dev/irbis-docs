@@ -1,0 +1,2 @@
+01:18:29.887 health_checked {"status": "ok", "db": "up"}
+01:18:32.469 health_checked {"status": "degraded", "db": "down"}

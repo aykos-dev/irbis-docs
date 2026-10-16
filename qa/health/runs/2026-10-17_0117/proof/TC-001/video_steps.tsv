@@ -1,0 +1,4 @@
+0.56	1: Cold start the app
+3.87	Expected: Card `health.status-card` shows `health.api-chip` and `health.db-chip` in the Go
+8.87	Result: PASS — API is up, Database is up, v0.0.1
+14.87	END

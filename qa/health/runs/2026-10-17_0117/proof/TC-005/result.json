@@ -1,0 +1,57 @@
+{
+ "meta": {
+  "title": "Pull to refresh refetches",
+  "group": "Supplementary",
+  "priority": "P2",
+  "env": "Android · auto (adb) · resources: API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-005--p2--pull-to-refresh-refetches",
+  "source": "AC3",
+  "expected": [
+   "A new `health_checked` { status: \"ok\" } event after the swipe — event log",
+   "The refresh indicator appears and then hides — screenrecord+frames"
+  ],
+  "caption": {
+   "expected": "A new `health_checked` { status: \"ok\" } event after the swipe"
+  },
+  "plan_hash": "ceef57a784",
+  "tc": "TC-005"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Not run",
+ "duration_s": 5.2,
+ "events": 2,
+ "done": [
+  "App open on the Status screen showing ok, online",
+  "1. Pull to refresh"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event after swipe: {'status': 'ok', 'db': 'up'}",
+   "proof": [],
+   "t": 3.2
+  },
+  "2": {
+   "ok": null,
+   "observed": "refresh indicator: judge from video frames around the swipe",
+   "proof": [
+    "1_after_refresh.png"
+   ],
+   "t": 3.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "status ok first",
+   "ok": true,
+   "seen": "['IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1', 'Checked at 1:19\\u202fAM']",
+   "t": 0.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_after_refresh.png"
+ ]
+}

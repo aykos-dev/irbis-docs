@@ -8,10 +8,10 @@ Android QA loop. The next feature starts only when the owner says so. The split 
 proposal — reorder freely. Screens refer to `design/canvas/`.
 
 ## M0 — Foundation (before feature 1)
-- [ ] Scaffold irbis-api, irbis-web, irbis-app (`SETUP.md`), `npm run check` + `gen:api`, `qaLog`, real Android package id
-- [ ] ADR-001..003 accepted (ADR-001 sign-in method — see open question below)
-- [ ] `design/design.md` tokens mirrored in app (`shared/constants`) and web (`tokens.css`); Nunito bundled
-- [ ] Reference feature `health` end to end (api endpoint → openapi → gen:api → app + web screen, all 4 states)
+- [x] Scaffold irbis-api, irbis-web, irbis-app (`SETUP.md`), `npm run check` + `gen:api`, `qaLog`, real Android package id
+- [x] ADR-001..003 accepted (ADR-001 sign-in method — see open question below)
+- [x] `design/design.md` tokens mirrored in app (`shared/constants`) and web (`tokens.css`); Nunito bundled
+- [~] Reference feature `health` end to end (built; QA run 2026-10-17_0117: 6 pass, 3 fail → health/D1, health/D2) (api endpoint → openapi → gen:api → app + web screen, all 4 states)
 
 ## Phase 1 — Launch (Tashkent region): weekly path, places & safety, lessons, levels
 | # | Slug | What | Screens | Surfaces |

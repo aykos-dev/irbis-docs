@@ -1,0 +1,5 @@
+1.13	1: Turn Wi-Fi and mobile data off
+14.68	Setup: Restore network
+18.39	Expected: `app.offline-banner` visible and still visible after 15 s (persistent, not a toa
+23.39	Result: PASS — offline banner persists, result kept
+29.39	END

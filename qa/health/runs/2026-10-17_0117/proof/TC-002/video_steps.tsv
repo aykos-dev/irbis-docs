@@ -1,0 +1,7 @@
+1.06	1: Stop the database container
+2.2	2: Pull to refresh
+3.64	Observed: db chip down: True
+3.9	Setup: Restore: start the database container
+6.17	Expected: `health.db-chip` shows the Not-now style (red, × icon, label "Database is down" 
+11.17	Result: FAIL — API chip red 'API is degraded' + DB chip red
+17.17	END

@@ -1,0 +1,7 @@
+0.03	Setup: API and database running; phone font size 1.15 (this phone's normal setting)
+1.6	Step 1: Set the app language to Russian
+1.66	Step 2: Open the app
+5.07	Observed: the database chip label 'База данных работает' wraps to two lines; look at the chip's right end against the card's right border
+9.57	Expected: chips stay inside the card when their label wraps
+14.57	Result: FAIL — the database chip runs past the card's right border
+20.57	END

@@ -107,6 +107,10 @@ by family name (`Nunito-Black` …), never `fontWeight`.
 - Spacing scale (px): 4 · 6 · 8 · 10 · 12 · 14 · 16 · 18 · 20 · 22 · 24 · 28 · 32 · 44 · 48 · 56 — screen padding 22–24.
 - Icons: 2.5 px stroke, round caps and joins, 20 px default (inline SVG on the canvas → `shared/components/Icon`).
 - Touch targets ≥ 44 pt.
+- Mascot on a card: 88 (`sizes.mascotCard`, added by M0 `health`).
+- Skeleton pulse: opacity 1 ↔ 0.5, 900 ms per half-cycle *(added by M0 — confirm)*.
+- Press feedback: scale 0.97 + opacity 0.9, 150 ms (engineering standards §1).
+- `maxFontSizeMultiplier` per typography token: not set yet — decide with the first text-heavy feature.
 
 ## Motion
 Press 150 ms (and the 4 px press-down), enter/exit 200–250 ms, layout 300 ms; easing out-cubic in, in-cubic out.

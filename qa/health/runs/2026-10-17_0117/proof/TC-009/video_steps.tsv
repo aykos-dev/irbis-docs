@@ -1,0 +1,4 @@
+0.03	1: Font scale 2.0, cold start
+6.1	Expected: All card texts fully visible (wrap or scroll, no clipped words), Retry/refresh s
+11.1	Result: FAIL — DB chip overflows card at font 2.0
+17.1	END
