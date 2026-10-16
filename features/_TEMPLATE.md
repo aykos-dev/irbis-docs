@@ -3,6 +3,7 @@
 - Status: Draft | Approved | Done
 - Surfaces: api | web | app
 - Related ADRs:
+- Requirements: Product Overview § <section> · Screens: `design/canvas/<Board>.dc.html` …
 
 ## Goal
 One or two sentences of user-visible behaviour.
@@ -36,6 +37,10 @@ Full list: each repo's `docs/engineering-standards.md` Quick gate. Waivers go in
 - [ ] Permissions denied (if location/camera/etc.)
 - [ ] App: keyboard does not cover inputs; safe areas respected; haptics; press states
 - [ ] Uses design tokens and `src/shared/components` primitives only
+
+## Media
+From `design/media/<slug>/MEDIA.md`: every image / animation / video the screens use, with status
+(final · placeholder until <date / owner>).
 
 ## Waivers
 - none

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Imposter — vote</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#9AA8AD}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.pc{display:flex;align-items:center;gap:10px;padding:10px;border-radius:18px;border-style:solid;border-width:2px 2px 4px;font-family:'Nunito',sans-serif;cursor:pointer;text-align:left}
+.pa{width:44px;height:44px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;flex:none}
+.pa img{width:50px;height:50px;margin-top:10px}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #131D22; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; display: flex; flex-direction: column; gap: 16px; padding: 16px 16px 26px">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <div><p style="font-weight: 900; font-size: 26px; color: #F1F5F4">Who's the imposter?</p><p class="s">Tap a player · votes are secret until everyone's in</p></div>
+  </div>
+  <div style="display: flex; align-items: center; gap: 10px">
+    <div style="flex-grow: 1; height: 12px; border-radius: 99px; background: #2B3B42; overflow: hidden"><div style="width: 62%; height: 100%; border-radius: 99px; background: #7B61FF"></div></div>
+    <span style="font-weight: 900; font-size: 14px; color: #F1F5F4">5 / 8 voted</span>
+  </div>
+
+  <div role="radiogroup" aria-label="Players" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+    <sc-for list="{{players}}" as="p" hint-placeholder-count="7">
+      <button class="pc" role="radio" aria-checked="{{p.sel}}" style="background: {{p.bg}}; border-color: {{p.bd}}">
+        <span class="pa" style="background: {{p.tint}}"><img src="{{p.img}}" alt=""></span>
+        <span style="display: flex; flex-direction: column; gap: 2px; min-width: 0">
+          <span style="font-weight: 900; font-size: 15px; color: #F1F5F4">{{p.name}}</span>
+          <span class="s" style="font-size: 12px">clue: "{{p.clue}}"</span>
+        </span>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 18px; background: #1C2A30; border: 2px solid #2B3B42">
+    <img src="/_blob/9ebec15f083abbb36876b1b8a577ea1b" alt="" style="width: 48px; height: 48px; flex: none">
+    <p class="s" style="color: #D5DEDD">"Sunset" for a reservoir? Hmm… Bekzod looks suspicious.</p>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <button class="btn" style="background: #6A4FE8; color: #FFFFFF; box-shadow: 0 4px 0 #4330B0">Lock vote · Bekzod</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = {
+      fox: ['/_blob/d1b0d6198561f208461b0f6704094021', '#FFE9D9'], bear: ['/_blob/ffe227711df8d0445b9dfe0a9534a6f4', '#E3ECFB'],
+      marmot: ['/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5', '#F7EADB'], eagle: ['/_blob/55d73e65f5c5f754c2cbb05b4ea4a0ce', '#ECE8FF'],
+      panda: ['/_blob/44b792e405b2dce67f0743e4be0fc2e1', '#E4F5E7']
+    };
+    const list = [['Aziz', 'bear', 'Dam'], ['Laylo', 'marmot', 'Swimming'], ['Kamila', 'fox', 'Mountains'], ['Bekzod', 'eagle', 'Sunset', true], ['Otabek', 'panda', 'Boats'], ['Madina', 'marmot', 'Chimgan'], ['Timur', 'fox', 'Blue']];
+    return { players: list.map(([name, a, clue, sel]) => ({ name, clue, img: P[a][0], tint: P[a][1], sel: sel ? 'true' : 'false', bg: sel ? '#2A2550' : '#1C2A30', bd: sel ? '#7B61FF' : '#2B3B42' })) };
+  }
+}
+</script>
+</body>
+</html>

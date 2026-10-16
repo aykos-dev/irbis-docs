@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bu qayer? — badges</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:12px;line-height:1.3;color:#5E6E74;text-align:center}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 8px;padding:0 16px}
+.b{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative}
+.hex{width:84px;height:94px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;align-items:center;justify-content:center}
+.hexin{width:70px;height:78px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;align-items:center;justify-content:center}
+.n{font-weight:800;font-size:13px;line-height:1.2;color:#1F2A2E;text-align:center}
+.pb{width:76px;height:8px;border-radius:99px;background:#E5E5DC;overflow:hidden}
+.lt{position:absolute;top:-8px;z-index:1;padding:2px 8px;border-radius:8px;background:#FF9F1C;color:#3A2200;font-weight:900;font-size:10px;white-space:nowrap}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 390px; height: 1160px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 18px">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 16px 0">
+    <a href="GameHub.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <div><h1 style="font-weight: 900; font-size: 24px; color: #1F2A2E">Game badges</h1><p class="cap" style="font-size: 11px">4 of 12 · they also show on your profile</p></div>
+  </div>
+
+  <sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+    <section style="display: flex; flex-direction: column; gap: 14px">
+      <p class="cap" style="padding: 0 16px">{{g.title}}</p>
+      <div class="grid">
+        <sc-for list="{{g.items}}" as="b" hint-placeholder-count="3">
+          <div class="b">
+            <sc-if value="{{b.limited}}" hint-placeholder-val="{{ false }}"><span class="lt">LIMITED · 22 DAYS</span></sc-if>
+            <div style="filter: drop-shadow(0 4px 0 {{b.shadow}})">
+              <div class="hex" style="background: {{b.rim}}">
+                <div class="hexin" style="background: {{b.fill}}; color: {{b.ic}}">
+                  <svg viewBox="0 0 24 24" style="width: 34px; height: 34px"><path d="{{b.path}}" style="fill: currentColor; fill-rule: evenodd"></path></svg>
+                </div>
+              </div>
+            </div>
+            <span class="n">{{b.name}}</span>
+            <sc-if value="{{b.locked}}" hint-placeholder-val="{{ false }}">
+              <div class="pb"><div style="width: {{b.pct}}; height: 100%; border-radius: 99px; background: #1CB0A8"></div></div>
+            </sc-if>
+            <span class="s">{{b.sub}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-for>
+
+  <div style="margin: 0 16px; padding: 14px; border-radius: 18px; background: #E3F7F5; display: flex; gap: 12px; align-items: center">
+    <img src="/_blob/28945aeb0b5964efc16a541c4886feb8" alt="" style="width: 56px; height: 56px; flex: none">
+    <p style="font-weight: 700; font-size: 13px; line-height: 1.4; color: #0B5B57"><b>Seen It For Real</b> links the game to the trail: check in at places you've guessed to earn it.</p>
+  </div>
+  <div style="flex-grow: 1"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1160}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = {
+      eye: 'M12 4a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm0 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z',
+      star: 'M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z',
+      flame: 'M12 1.8c1.4 3.6 6 6 6 11.7A6 6 0 0 1 6 13.5c0-2.8 1.6-4.6 2.8-5.6.2 1.8 1 2.9 2.2 3.2C11.7 8.4 10.8 5 12 1.8z',
+      pin: 'M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z',
+      swords: 'M4 3l8 8-2 2-8-8V3zM20 3h2v2l-8 8-2-2zM6 15l3 3-3 3-3-3zM18 15l3 3-3 3-3-3z',
+      peak: 'M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z',
+      flag: 'M5 21V3h2v1h12l-3 5 3 5H7v7z',
+      leaf: 'M12 2c1.5 2.5 1.8 4 1.5 5.5 1.6-1 3.4-1.2 5-.8-.5 1.8-1.6 3.1-3.2 3.8 1.8.4 3.2 1.6 3.9 3.3-1.9.6-3.6.3-5-.6.4 1.8-.1 3.6-1.2 5V22h-2v-3.8c-1.1-1.4-1.6-3.2-1.2-5-1.4.9-3.1 1.2-5 .6.7-1.7 2.1-2.9 3.9-3.3C6.1 9.8 5 8.5 4.5 6.7c1.6-.4 3.4-.2 5 .8C9.2 6 9.5 4.5 12 2z'
+    };
+    const on = (name, sub, path, rim, fill, shadow, ic, limited) => ({ name, sub, path, rim, fill, shadow, ic: ic || '#FFFFFF', locked: false, pct: '100%', limited: !!limited });
+    const off = (name, sub, path, pct) => ({ name, sub, path, rim: '#D6D8D0', fill: '#E7E8E2', shadow: '#BFC2B8', ic: '#9AA3A6', locked: true, pct, limited: false });
+    const groups = [
+      { title: 'Skill', items: [
+        on('Eagle Eye', 'Within 1 km · ×3', P.eye, '#0E8A83', '#1CB0A8', '#08635E'),
+        off('Perfect Day', 'Best 18,420 / 20,000', P.star, '92%'),
+        on('Region Expert', 'Tashkent region', P.pin, '#2B8545', '#3DAA5C', '#1F6233'),
+        off('Region Expert', 'Fergana Valley', P.pin, '35%'),
+        off('Bullseye', 'Within 100 m', P.eye, '0%'),
+        off('Duelist', '4 / 10 wins', P.swords, '40%')
+      ]},
+      { title: 'Habit', items: [
+        off('Daily Explorer I', '6 / 7 days', P.flame, '86%'),
+        off('Daily Explorer II', '30 days', P.flame, '20%'),
+        off('Daily Explorer III', '100 days', P.flame, '6%')
+      ]},
+      { title: 'Beyond the game', items: [
+        off('Seen It For Real', '2 / 5 visited', P.peak, '40%'),
+        on('Puzzle Maker', 'Your spot was a daily', P.flag, '#B88600', '#FFC800', '#8A6500', '#5C4000'),
+        on('Autumn Colors', 'Seasonal pack', P.leaf, '#CC7A00', '#FF9F1C', '#9A5B00', '#FFFFFF', true)
+      ]}
+    ];
+    return { groups };
+  }
+}
+</script>
+</body>
+</html>

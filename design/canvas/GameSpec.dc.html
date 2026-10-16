@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bu qayer? game design</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.h3{font-weight:900;font-size:18px;line-height:1.25;color:#1F2A2E}
+.t{font-weight:700;font-size:15px;line-height:1.45;color:#3C4A4F}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#5E6E74}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.step{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:16px 10px;border-radius:20px;background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px}
+.si{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#FFFFFF}
+.arr{align-self:center;color:#AEB8BC;flex:none}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5E6E74;padding:6px 8px;border-bottom:2px solid #E5E5DC}
+.tbl td{padding:8px;border-bottom:2px solid #F0F0EA;font-weight:700;color:#1F2A2E}
+.li{display:flex;gap:10px;align-items:flex-start}
+.dot{width:24px;height:24px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;color:#FFFFFF;font-weight:900;font-size:12px;margin-top:1px}
+.hex{width:46px;height:52px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;align-items:center;justify-content:center;color:#FFFFFF;flex:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 1240px; height: 1600px; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; padding: 48px 56px; display: flex; flex-direction: column; gap: 26px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 22px">
+    <img src="/_blob/28945aeb0b5964efc16a541c4886feb8" alt="" style="width: 112px; height: 112px">
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+      <p class="cap">Mini-game · retention feature</p>
+      <h1 style="font-weight: 900; font-size: 46px; line-height: 1; color: #1F2A2E">Bu qayer? <span style="color: #5E6E74; font-size: 30px">— Where is this?</span></h1>
+      <p class="t" style="max-width: 820px; font-size: 17px">A 3-minute daily geo-guess: look around a 360° view of a real place in Central Asia, drop a pin on the map, score by distance. It gives people a reason to open Irbis every day — on weekdays, in winter, in bad weather — and turns guessed places into real trips.</p>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <p class="cap">Core loop</p>
+    <div style="display: flex; gap: 10px">
+      <div class="step"><span class="si" style="background: #FF9F1C"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="st" d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9zM10 20a2 2 0 0 0 4 0"></path></svg></span><p class="h3" style="font-size: 16px">Daily nudge</p><p class="s">19:00 or the user's usual open time. Sleepy Irbis if the streak is at risk.</p></div>
+      <svg class="arr" viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M5 12h14M13 6l6 6-6 6" style="stroke-width: 3"></path></svg>
+      <div class="step"><span class="si" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M3 12c3 2 15 2 18 0M12 3c-3 3-3 15 0 18"></path></svg></span><p class="h3" style="font-size: 16px">Look around</p><p class="s">5 rounds of 360° views. Drag, zoom, look for clues.</p></div>
+      <svg class="arr" viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M5 12h14M13 6l6 6-6 6" style="stroke-width: 3"></path></svg>
+      <div class="step"><span class="si" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"></path></svg></span><p class="h3" style="font-size: 16px">Drop a pin</p><p class="s">Closer = more points, up to 5,000 per round.</p></div>
+      <svg class="arr" viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M5 12h14M13 6l6 6-6 6" style="stroke-width: 3"></path></svg>
+      <div class="step"><span class="si" style="background: #FFC800; color: #5C4000"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z"></path></svg></span><p class="h3" style="font-size: 16px">Reveal &amp; reward</p><p class="s">See the real place, small XP, badge progress, friends' scores.</p></div>
+      <svg class="arr" viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M5 12h14M13 6l6 6-6 6" style="stroke-width: 3"></path></svg>
+      <div class="step" style="border-color: #3DAA5C"><span class="si" style="background: #3DAA5C"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></span><p class="h3" style="font-size: 16px">Go there for real</p><p class="s">"Save to my path" — first real check-in at a guessed place earns 2× XP.</p></div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+    <div class="card">
+      <p class="cap">Scoring</p>
+      <p class="h3">points = 5000 · e<sup>−d / k</sup></p>
+      <p class="s">d = distance from the true spot. k = pack scale: 30 km for Uzbekistan packs, 120 km for "All Central Asia", 8 km for city/park packs.</p>
+      <table class="tbl">
+        <tr><th>Distance (k = 30)</th><th>Points</th></tr>
+        <tr><td>1 km</td><td>4,836</td></tr>
+        <tr><td>5 km</td><td>4,232</td></tr>
+        <tr><td>15 km</td><td>3,033</td></tr>
+        <tr><td>30 km</td><td>1,839</td></tr>
+        <tr><td>60 km</td><td>677</td></tr>
+      </table>
+      <p class="s">Daily mode has no timer (relaxed). Duels add a 60 s timer.</p>
+    </div>
+    <div class="card">
+      <p class="cap">XP — smaller than real places</p>
+      <table class="tbl">
+        <tr><th>Action</th><th>XP</th></tr>
+        <tr><td>Real check-in</td><td>40–120</td></tr>
+        <tr><td>Safety lesson</td><td>10–15</td></tr>
+        <tr><td>Round: ≥4,500 / ≥3,000 / ≥1,500 / less</td><td>5 / 4 / 3 / 1</td></tr>
+        <tr><td>Finish daily challenge</td><td>+5</td></tr>
+        <tr><td>Daily cap from the game</td><td>30</td></tr>
+      </table>
+      <p class="s">Game XP fills the XP bar, but levels also need safety lessons and verified real check-ins — guessing can never unlock harder mountains on its own. League elevation is untouched.</p>
+    </div>
+    <div class="card">
+      <p class="cap">Retention levers</p>
+      <div class="li"><span class="dot" style="background: #FF9F1C">1</span><p class="s"><b style="color: #1F2A2E">Same 5 places for everyone</b>, reset at 00:00 Tashkent — people compare and talk about it.</p></div>
+      <div class="li"><span class="dot" style="background: #FF9F1C">2</span><p class="s"><b style="color: #1F2A2E">Counts for the daily streak</b> (lesson OR daily guess) — keeps streaks alive in winter.</p></div>
+      <div class="li"><span class="dot" style="background: #FF9F1C">3</span><p class="s"><b style="color: #1F2A2E">Friends board &amp; async duels</b> — a challenge from a friend is a strong open trigger.</p></div>
+      <div class="li"><span class="dot" style="background: #FF9F1C">4</span><p class="s"><b style="color: #1F2A2E">Weekly region packs + seasonal packs</b> tied to collections like Autumn Colors.</p></div>
+      <div class="li"><span class="dot" style="background: #FF9F1C">5</span><p class="s"><b style="color: #1F2A2E">Spoiler-free share card</b> (score grid, no answers) — organic acquisition.</p></div>
+      <div class="li"><span class="dot" style="background: #FF9F1C">6</span><p class="s"><b style="color: #1F2A2E">Your spots become rounds</b> — "Your discovery was guessed 214 times" pulls creators back.</p></div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1.15fr 1fr 1fr; gap: 20px; flex-grow: 1">
+    <div class="card">
+      <p class="cap">Badges</p>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <div class="li" style="align-items: center"><span class="hex" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><circle class="st" cx="12" cy="12" r="8"></circle><circle class="fl" cx="12" cy="12" r="3"></circle></svg></span><div><p class="h3" style="font-size: 15px">Eagle Eye</p><p class="s">Guess within 1 km</p></div></div>
+        <div class="li" style="align-items: center"><span class="hex" style="background: #FFC800; color: #5C4000"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z"></path></svg></span><div><p class="h3" style="font-size: 15px">Perfect Day</p><p class="s">20,000+ in a daily</p></div></div>
+        <div class="li" style="align-items: center"><span class="hex" style="background: #FF9F1C"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 1.8c1.4 3.6 6 6 6 11.7A6 6 0 0 1 6 13.5c0-2.8 1.6-4.6 2.8-5.6.2 1.8 1 2.9 2.2 3.2C11.7 8.4 10.8 5 12 1.8z"></path></svg></span><div><p class="h3" style="font-size: 15px">Daily Explorer I–III</p><p class="s">7 / 30 / 100 daily games</p></div></div>
+        <div class="li" style="align-items: center"><span class="hex" style="background: #3DAA5C"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"></path></svg></span><div><p class="h3" style="font-size: 15px">Region Expert</p><p class="s">Avg 4,000+ in a region pack</p></div></div>
+        <div class="li" style="align-items: center"><span class="hex" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M6 4l12 16M18 4L6 20"></path></svg></span><div><p class="h3" style="font-size: 15px">Duelist</p><p class="s">Win 10 friend duels</p></div></div>
+        <div class="li" style="align-items: center"><span class="hex" style="background: #4CA9FF"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></span><div><p class="h3" style="font-size: 15px">Seen It For Real</p><p class="s">Check in at 5 guessed places</p></div></div>
+        <div class="li" style="align-items: center"><span class="hex" style="background: #B88600"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M5 21V3h2v1h12l-3 5 3 5H7v7z"></path></svg></span><div><p class="h3" style="font-size: 15px">Puzzle Maker</p><p class="s">Your spot used in a daily</p></div></div>
+        <div class="li" style="align-items: center"><span class="hex" style="background: #F06292"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 2c1.5 2.5 1.8 4 1.5 5.5 1.6-1 3.4-1.2 5-.8-.5 1.8-1.6 3.1-3.2 3.8 1.8.4 3.2 1.6 3.9 3.3-1.9.6-3.6.3-5-.6.4 1.8-.1 3.6-1.2 5V22h-2v-3.8c-1.1-1.4-1.6-3.2-1.2-5-1.4.9-3.1 1.2-5 .6.7-1.7 2.1-2.9 3.9-3.3C6.1 9.8 5 8.5 4.5 6.7c1.6-.4 3.4-.2 5 .8C9.2 6 9.5 4.5 12 2z"></path></svg></span><div><p class="h3" style="font-size: 15px">Seasonal packs</p><p class="s">Limited, like Autumn Colors</p></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <p class="cap">360° imagery source</p>
+      <p class="s"><b style="color: #1F2A2E">Worldwide packs, decided:</b> open-source first, Google only where needed.</p>
+      <div class="li"><span class="dot" style="background: #2E8B57">1</span><p class="s"><b style="color: #1F2A2E">Mapillary (primary, free)</b> — global crowd-sourced 360° imagery, CC BY-SA. Register the app, show the Mapillary logo + link on every view.</p></div>
+      <div class="li"><span class="dot" style="background: #2E8B57">2</span><p class="s"><b style="color: #1F2A2E">Irbis community 360s</b> — optional 360° step in Add a Spot (+20 XP); fills mountain gaps.</p></div>
+      <div class="li"><span class="dot" style="background: #FF9F1C; color: #3A2200">3</span><p class="s"><b style="color: #1F2A2E">Google Street View (paid fallback)</b> — only for curated rounds Mapillary lacks. Interactive views cost about $14 per 1,000 loads after 5,000 free a month ≈ $0.07 per 5-round daily.</p></div>
+      <p class="s" style="padding-top: 6px; border-top: 2px solid #F0F0EA"><b style="color: #1F2A2E">Anti-cheat:</b> strip EXIF/GPS, serve images via opaque IDs, score on the server, hide labels and signs that name the place.</p>
+    </div>
+    <div class="card">
+      <p class="cap">Measure</p>
+      <div class="li"><span class="dot" style="background: #1CB0A8">↗</span><p class="s"><b style="color: #1F2A2E">D1 / D7 / D30 retention</b> — players vs. non-players, same signup week</p></div>
+      <div class="li"><span class="dot" style="background: #1CB0A8">↗</span><p class="s"><b style="color: #1F2A2E">DAU / MAU</b> and days active per week, especially Nov–Mar</p></div>
+      <div class="li"><span class="dot" style="background: #1CB0A8">↗</span><p class="s"><b style="color: #1F2A2E">Daily completion rate</b> (started → 5 rounds)</p></div>
+      <div class="li"><span class="dot" style="background: #1CB0A8">↗</span><p class="s"><b style="color: #1F2A2E">Game → trip conversion</b>: guessed places saved, then visited within 30 days</p></div>
+      <div class="li"><span class="dot" style="background: #1CB0A8">↗</span><p class="s"><b style="color: #1F2A2E">Notification opt-in</b> and streak length</p></div>
+      <p class="s" style="padding-top: 6px; border-top: 2px solid #F0F0EA"><b style="color: #1F2A2E">Safety rules:</b> never use Fragile spots as rounds; when a revealed place is "Not now", the Go-there button becomes "Save for later".</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":1600}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

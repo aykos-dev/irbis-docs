@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mafia — your role</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#9AA8AD}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #0E1518; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; display: flex; flex-direction: column; gap: 16px; padding: 16px 16px 26px">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <p style="font-weight: 900; font-size: 13px; letter-spacing: .1em; color: #FF8A8A">MAFIA · 10 PLAYERS</p>
+    <span class="s">Seat 3 · Dilnoza</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <p style="font-weight: 900; font-size: 28px; color: #F1F5F4">Your role is ready</p>
+    <p class="s">Hold the card to look. Make sure nobody can see your screen.</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 12px; align-items: stretch">
+    <div style="border-radius: 22px; background: #1C2A30; border: 2px solid #2B3B42; border-bottom-width: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 14px; text-align: center; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 10px, transparent 10px 20px)">
+      <svg viewBox="0 0 24 24" style="width: 46px; height: 46px; color: #5E6E74"><path class="st" d="M12 11v3M8.5 6.5A6 6 0 0 1 18 11v1M6 11a6 6 0 0 1 .5-2.4M6 15c.5 2.2 1.5 4 3 5.5M15 21c1.5-2 2.5-4.5 3-7M9 11a3 3 0 0 1 6 0v2a10 10 0 0 1-1.5 5.5"></path></svg>
+      <p style="font-weight: 900; font-size: 13px; color: #9AA8AD">Hidden</p>
+      <p class="s" style="font-size: 11px">default state</p>
+    </div>
+    <div style="border-radius: 24px; background: #2E8B57; box-shadow: 0 6px 0 #1F6233; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 18px 14px; text-align: center">
+      <span style="width: 72px; height: 72px; border-radius: 22px; background: #FFFFFF; color: #2E8B57; display: flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" style="width: 42px; height: 42px"><path class="fl" d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"></path></svg></span>
+      <p style="font-weight: 900; font-size: 12px; letter-spacing: .12em; color: #DFF6E7">YOU ARE THE</p>
+      <p style="font-weight: 900; font-size: 30px; line-height: 1; color: #FFFFFF">Doctor</p>
+      <span style="display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border-radius: 8px; background: rgba(0,0,0,.2); color: #FFFFFF; font-weight: 900; font-size: 11px; letter-spacing: .06em">TEAM TOWN</span>
+      <p style="display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 12px; color: #DFF6E7; margin-top: 2px"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M9 11V5a1.5 1.5 0 0 1 3 0v6M12 10V4a1.5 1.5 0 0 1 3 0v6M15 10.5V6a1.5 1.5 0 0 1 3 0v8a7 7 0 0 1-7 7c-2.5 0-4-1-5.5-3L3 14.5a1.5 1.5 0 0 1 2.3-1.9L7 14.5V7a1.5 1.5 0 0 1 3 0"></path></svg>Holding</p>
+    </div>
+  </div>
+
+  <div style="border-radius: 20px; background: #1C2A30; border: 2px solid #2B3B42; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; gap: 10px"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #F7D774; flex: none"><path class="fl" d="M14 3a9 9 0 1 0 7 13A7 7 0 0 1 14 3z"></path></svg><p class="s" style="color: #D5DEDD"><b style="color: #F1F5F4">At night</b> pick one player to save. If the mafia picked them, nobody dies.</p></div>
+    <div style="display: flex; gap: 10px"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #FFC800; flex: none"><circle class="fl" cx="12" cy="12" r="4.5"></circle><path class="st" d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" style="stroke-width: 2"></path></svg><p class="s" style="color: #D5DEDD"><b style="color: #F1F5F4">By day</b> you're a normal townsperson. Keep your role quiet — the mafia hunts doctors.</p></div>
+    <div style="display: flex; gap: 10px"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #7BE0A2; flex: none"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3"></path></svg><p class="s" style="color: #D5DEDD"><b style="color: #F1F5F4">You win</b> when every mafia member and the maniac are out.</p></div>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <a class="btn" href="MafNight.dc.html" style="background: #D93636; color: #FFFFFF; box-shadow: 0 4px 0 #8F1F1F">I'm ready · 7 / 10</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

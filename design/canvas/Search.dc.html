@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Search</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px;padding:2px 12px}
+.f{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:12px;border:2px solid #E5E5DC;border-bottom-width:4px;background:#FFFFFF;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:#3C4A4F;flex:none;cursor:pointer}
+.f.on{border-color:#1CB0A8;background:#E3F7F5;color:#0B5B57}
+.r{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:2px solid #F0F0EA;text-decoration:none}
+.r:last-child{border-bottom:0}
+.th{width:48px;height:48px;border-radius:14px;object-fit:cover;flex:none}
+.pa{width:44px;height:44px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;flex:none}
+.pa img{width:48px;height:48px;margin-top:8px}
+.nm{font-weight:900;font-size:15px;color:#1F2A2E}
+.mark{background:#FFF1BF;color:#1F2A2E;border-radius:4px;padding:0 2px}
+.chip{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border-radius:99px;font-weight:800;font-size:11px;flex:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1200px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 14px; padding: 14px 16px 0">
+  <div style="display: flex; align-items: center; gap: 8px">
+    <label style="flex-grow: 1; display: flex; align-items: center; gap: 8px; height: 50px; padding: 0 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid #1CB0A8; border-bottom-width: 4px">
+      <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #5E6E74; flex: none"><circle class="st" cx="11" cy="11" r="7"></circle><path class="st" d="M20 20l-4-4"></path></svg>
+      <input aria-label="Search" value="chim" style="border: 0; outline: 0; background: transparent; font: 800 16px 'Nunito', sans-serif; color: #1F2A2E; width: 100%">
+      <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #AEB8BC; flex: none" aria-label="Clear"><circle class="fl" cx="12" cy="12" r="10"></circle><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" style="stroke: #FFFFFF; stroke-width: 2.4; stroke-linecap: round"></path></svg>
+    </label>
+    <a href="Explore.dc.html" style="font-weight: 900; font-size: 14px; color: #0C807A; text-decoration: none; padding: 12px 4px">Cancel</a>
+  </div>
+  <div style="display: flex; gap: 8px; overflow: hidden; margin-right: -16px"><button class="f on">All</button><button class="f">Places</button><button class="f">People</button><button class="f">Groups</button><button class="f">Tours</button></div>
+
+  <p class="cap">Places · 4</p>
+  <div class="card">
+    <a class="r" href="Place.dc.html"><img class="th" src="/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57" alt=""><div style="flex-grow: 1; min-width: 0"><p class="nm">Big <span class="mark">Chim</span>gan</p><p class="s">Peak · 3,309 m · 85 km</p></div><span class="chip" style="background: #FFE1E1; color: #B32424">Not now</span></a>
+    <a class="r" href="Place.dc.html"><img class="th" src="/_blob/bb7e61cdec3acfef22cb18e86375ffbb" alt=""><div style="flex-grow: 1; min-width: 0"><p class="nm"><span class="mark">Chim</span>gan plateau camp</p><p class="s">Camping · 82 km</p></div><span class="chip" style="background: #DFF6E7; color: #1B6B3E">Go</span></a>
+    <a class="r" href="Place.dc.html"><img class="th" src="/_blob/6bbbc6ee6ced1a3bc81f1d2ce372f0fe" alt=""><div style="flex-grow: 1; min-width: 0"><p class="nm">Small <span class="mark">Chim</span>gan trail</p><p class="s">Trail · 84 km</p></div><span class="chip" style="background: #FFF1BF; color: #6E4E00">Caution</span></a>
+    <div class="r"><span class="th" style="background: #EEF0E8; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><rect class="st" x="5" y="11" width="14" height="10" rx="2.5"></rect><path class="st" d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"></path></svg></span><div style="flex-grow: 1; min-width: 0"><p class="nm"><span class="mark">Chim</span>gan winter couloir</p><p class="s">Peak · needs Level 5</p></div><span class="chip" style="background: #ECEEEF; color: #56646A">Opens Jan</span></div>
+  </div>
+
+  <p class="cap">People · 2</p>
+  <div class="card">
+    <div class="r"><span class="pa" style="background: #E3ECFB"><img src="/_blob/ffe227711df8d0445b9dfe0a9534a6f4" alt=""></span><div style="flex-grow: 1"><p class="nm"><span class="mark">Chim</span>gan Guide Aziz</p><p class="s">Mountain Guardian · verified leader</p></div><button style="min-height: 38px; padding: 0 14px; border-radius: 12px; border: 0; background: #0C807A; color: #FFFFFF; box-shadow: 0 3px 0 #075B56; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 12px; text-transform: uppercase; cursor: pointer">Follow</button></div>
+    <div class="r"><span class="pa" style="background: #F7EADB"><img src="/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5" alt=""></span><div style="flex-grow: 1"><p class="nm">Laylo <span class="mark">Chim</span>ova</p><p class="s">Burrower · 3 mutual groups</p></div><button style="min-height: 38px; padding: 0 14px; border-radius: 12px; border: 0; background: #0C807A; color: #FFFFFF; box-shadow: 0 3px 0 #075B56; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 12px; text-transform: uppercase; cursor: pointer">Follow</button></div>
+  </div>
+
+  <p class="cap">Groups &amp; tours</p>
+  <div class="card">
+    <a class="r" href="Groups.dc.html"><span class="th" style="background: #1CB0A8; display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></span><div style="flex-grow: 1"><p class="nm"><span class="mark">Chim</span>gan Weekend Club</p><p class="s">Group · 840 members</p></div></a>
+    <a class="r" href="Tours.dc.html"><img class="th" src="/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57" alt="" style="object-position: 50% 30%"><div style="flex-grow: 1"><p class="nm">Big <span class="mark">Chim</span>gan summit day</p><p class="s">Tour · Chimgan Trails Co. · Sat 17 Oct</p></div></a>
+  </div>
+
+  <p class="cap">Recent</p>
+  <div style="display: flex; gap: 8px; flex-wrap: wrap"><span class="f" style="height: 32px; font-size: 13px">Urungach</span><span class="f" style="height: 32px; font-size: 13px">caves near Tashkent</span><span class="f" style="height: 32px; font-size: 13px">Dilnoza R.</span></div>
+  <div style="flex-grow: 1"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

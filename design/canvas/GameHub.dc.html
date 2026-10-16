@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bu qayer? — game hub</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.h3{font-weight:900;font-size:16px;line-height:1.25;color:#1F2A2E}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.mode{display:flex;flex-direction:column;gap:8px;padding:14px;text-decoration:none;position:relative}
+.mi{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.tagp{position:absolute;top:10px;right:10px;height:22px;padding:0 8px;border-radius:8px;font-weight:900;font-size:11px;display:flex;align-items:center}
+.wd{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.wc{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.av{width:30px;height:30px;border-radius:50%;border:2px solid #FFFFFF;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-left:-8px}
+.av img{width:34px;height:34px;margin-top:6px}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:2px solid #F0F0EA}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1300px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 16px">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 16px 16px 0">
+    <div><h1 style="font-weight: 900; font-size: 28px; line-height: 1; color: #1F2A2E">Bu qayer?</h1><p class="s">Where is this? · daily geo-guess</p></div>
+    <div style="display: flex; gap: 14px">
+      <span style="display: flex; align-items: center; gap: 4px; font-weight: 900; font-size: 16px; color: #1F2A2E"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #FF9F1C"><path class="fl" d="M12 1.8c1.4 3.6 6 6 6 11.7A6 6 0 0 1 6 13.5c0-2.8 1.6-4.6 2.8-5.6.2 1.8 1 2.9 2.2 3.2C11.7 8.4 10.8 5 12 1.8z"></path></svg>12</span>
+      <span style="display: flex; align-items: center; gap: 4px; font-weight: 900; font-size: 16px; color: #1F2A2E"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #4CA9FF"><path class="fl" d="M6.5 3h11l4 6-10 12.5L1.5 9z"></path></svg>380</span>
+    </div>
+  </header>
+
+  <div class="card" style="margin: 0 16px; overflow: hidden; border-color: #1CB0A8">
+    <div style="position: relative; height: 170px">
+      <img src="/_blob/adc9df09c7edf6477c00ce2f292fe37a" alt="Teaser of today's first place" style="width: 100%; height: 170px; object-fit: cover; object-position: 30% 60%; display: block; filter: saturate(1.05)">
+      <span style="position: absolute; left: 12px; top: 12px; height: 28px; padding: 0 10px; border-radius: 99px; background: #FFFFFF; color: #0C807A; font-weight: 900; font-size: 12px; letter-spacing: .06em; display: flex; align-items: center">DAILY #142 · FRI 9 OCT</span>
+      <span style="position: absolute; right: 12px; top: 12px; width: 40px; height: 40px; border-radius: 50%; background: rgba(31,42,46,.75); color: #FFFFFF; display: flex; align-items: center; justify-content: center" aria-label="360 degree view"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M3 12c3 2 15 2 18 0M12 3c-3 3-3 15 0 18"></path></svg></span>
+      <img src="/_blob/28945aeb0b5964efc16a541c4886feb8" alt="" style="position: absolute; right: 6px; bottom: -14px; width: 96px; height: 96px">
+    </div>
+    <div style="padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 12px">
+      <div>
+        <p style="font-weight: 900; font-size: 22px; color: #1F2A2E">Today's 5 places</p>
+        <p class="s">Same for everyone · about 3 minutes · up to 30 XP</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px">
+        <div style="display: flex; padding-left: 8px"><span class="av" style="background: #DDF5F3"><img src="/_blob/dba7b9623f9af9c690bf93a6ddc5f60b" alt=""></span><span class="av" style="background: #E3ECFB"><img src="/_blob/ffe227711df8d0445b9dfe0a9534a6f4" alt=""></span><span class="av" style="background: #F7EADB"><img src="/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5" alt=""></span></div>
+        <p class="s"><b style="color: #1F2A2E">14 friends</b> played · best 21,450</p>
+      </div>
+      <a class="btn bp" href="GameRound.dc.html"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M7 4l13 8-13 8z"></path></svg>Play daily</a>
+    </div>
+  </div>
+
+  <div class="card" style="margin: 0 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline"><p class="h3">Keeps your streak alive</p><p class="s">Lesson <b>or</b> daily guess</p></div>
+    <div style="display: flex">
+      <div class="wd"><span class="wc" style="background: #FF9F1C; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.4"></path></svg></span><span class="s" style="font-size: 11px">Sa</span></div>
+      <div class="wd"><span class="wc" style="background: #FF9F1C; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.4"></path></svg></span><span class="s" style="font-size: 11px">Su</span></div>
+      <div class="wd"><span class="wc" style="background: #FF9F1C; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.4"></path></svg></span><span class="s" style="font-size: 11px">Mo</span></div>
+      <div class="wd"><span class="wc" style="background: #1F74C7; color: #FFFFFF" aria-label="Protected by weather shield"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg></span><span class="s" style="font-size: 11px">Tu</span></div>
+      <div class="wd"><span class="wc" style="background: #FF9F1C; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.4"></path></svg></span><span class="s" style="font-size: 11px">We</span></div>
+      <div class="wd"><span class="wc" style="background: #FF9F1C; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.4"></path></svg></span><span class="s" style="font-size: 11px">Th</span></div>
+      <div class="wd"><span class="wc" style="border: 3px dashed #FF9F1C; color: #CC7A00"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="fl" d="M12 1.8c1.4 3.6 6 6 6 11.7A6 6 0 0 1 6 13.5c0-2.8 1.6-4.6 2.8-5.6.2 1.8 1 2.9 2.2 3.2C11.7 8.4 10.8 5 12 1.8z"></path></svg></span><span class="s" style="font-size: 11px; color: #1F2A2E; font-weight: 900">Fr</span></div>
+    </div>
+  </div>
+
+  <section style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px">
+    <p class="cap">More ways to play</p>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <a class="card mode" href="GameDuel.dc.html"><span class="tagp" style="background: #D93636; color: #FFFFFF">2 WAITING</span><span class="mi" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M4 4l9 9M20 4l-9 9M7 17l-3 3M17 17l3 3M9 15l-2-2M15 15l2-2" style="stroke-width: 2.8"></path></svg></span><p class="h3">Friend duel</p><p class="s">Same 5 places, 60 s each</p></a>
+      <div class="card mode"><span class="tagp" style="background: #DFF6E7; color: #1B6B3E">NEW</span><span class="mi" style="background: #3DAA5C"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="fl" d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"></path></svg></span><p class="h3">Fergana Valley pack</p><p class="s">10 places · this week</p></div>
+      <div class="card mode" style="background: #FFF6E5; border-color: #FFD39A"><span class="tagp" style="background: #FF9F1C; color: #3A2200">LIMITED</span><span class="mi" style="background: #FF9F1C"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="fl" d="M12 2c1.5 2.5 1.8 4 1.5 5.5 1.6-1 3.4-1.2 5-.8-.5 1.8-1.6 3.1-3.2 3.8 1.8.4 3.2 1.6 3.9 3.3-1.9.6-3.6.3-5-.6.4 1.8-.1 3.6-1.2 5V22h-2v-3.8c-1.1-1.4-1.6-3.2-1.2-5-1.4.9-3.1 1.2-5 .6.7-1.7 2.1-2.9 3.9-3.3C6.1 9.8 5 8.5 4.5 6.7c1.6-.4 3.4-.2 5 .8C9.2 6 9.5 4.5 12 2z"></path></svg></span><p class="h3">Autumn Colors pack</p><p class="s">Counts for the collection</p></div>
+      <div class="card mode"><span class="mi" style="background: #8A979C"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4"></path></svg></span><p class="h3">Practice</p><p class="s">Endless · no XP after the daily cap</p></div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px">
+    <div style="display: flex; justify-content: space-between"><p class="cap">Friends this week</p><a href="GameBadges.dc.html" class="cap" style="color: #0C807A; text-decoration: none">My game badges</a></div>
+    <div class="card" style="padding: 2px 14px">
+      <div class="row"><span style="width: 22px; font-weight: 900; color: #B88600">1</span><span class="av" style="width: 36px; height: 36px; margin: 0; background: #DDF5F3"><img src="/_blob/dba7b9623f9af9c690bf93a6ddc5f60b" alt="" style="width: 40px; height: 40px"></span><span class="h3" style="flex-grow: 1; font-size: 15px">Dilnoza R.</span><span class="h3" style="font-size: 15px">98,310</span></div>
+      <div class="row"><span style="width: 22px; font-weight: 900; color: #B88600">2</span><span class="av" style="width: 36px; height: 36px; margin: 0; background: #E3ECFB"><img src="/_blob/ffe227711df8d0445b9dfe0a9534a6f4" alt="" style="width: 40px; height: 40px"></span><span class="h3" style="flex-grow: 1; font-size: 15px">Aziz M.</span><span class="h3" style="font-size: 15px">91,744</span></div>
+      <div class="row" style="background: #E3F7F5; margin: 0 -14px; padding: 10px 14px; border-bottom: 0; border-radius: 0 0 16px 16px"><span style="width: 22px; font-weight: 900; color: #0C6E69">3</span><span class="av" style="width: 36px; height: 36px; margin: 0; background: #FFE9D9"><img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="" style="width: 40px; height: 40px"></span><span class="h3" style="flex-grow: 1; font-size: 15px">Timur (you)</span><span class="h3" style="font-size: 15px">84,026</span></div>
+    </div>
+  </section>
+
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="lessons" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1300}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

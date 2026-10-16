@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Add a Spot — GPS pin</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;letter-spacing:.05em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.bw{background:#FFFFFF;color:#0C807A;border:2px solid #E5E5DC;box-shadow:0 4px 0 #E5E5DC}
+.seg{flex:1;height:10px;border-radius:99px;background:#E5E5DC}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #E9F2E3; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column">
+  <img src="/_blob/3c359f247bc28d3c219d502ed9bcf7f1" alt="" style="position: absolute; inset: 0; width: 390px; height: 844px; object-fit: cover">
+  <div style="position: relative; margin: 14px 16px 0; padding: 12px 14px; border-radius: 20px; background: #FFFFFF; border: 2px solid #E5E5DC; border-bottom-width: 4px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; gap: 8px">
+      <a href="MySpots.dc.html" aria-label="Cancel" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M6 6l12 12M18 6L6 18" style="stroke-width: 3"></path></svg></a>
+      <p style="flex-grow: 1; font-weight: 900; font-size: 18px; color: #1F2A2E">Add a Spot</p>
+      <span class="s">Step 1 of 4</span>
+    </div>
+    <div style="display: flex; gap: 6px" aria-hidden="true"><span class="seg" style="background: #1CB0A8"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div>
+  </div>
+
+  <div style="position: absolute; left: 95px; top: 280px; width: 200px; height: 200px; border-radius: 50%; background: rgba(28,176,168,.14); border: 2px dashed #1CB0A8"></div>
+  <div style="position: absolute; left: 160px; top: 300px; display: flex; flex-direction: column; align-items: center">
+    <div style="width: 70px; height: 70px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: #0C807A; border: 4px solid #FFFFFF; box-shadow: -3px 5px 0 rgba(0,0,0,.2); display: flex; align-items: center; justify-content: center">
+      <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; transform: rotate(45deg); color: #FFFFFF"><path class="st" d="M12 5v14M5 12h14" style="stroke-width: 3.4"></path></svg>
+    </div>
+    <span style="width: 14px; height: 6px; border-radius: 50%; background: rgba(0,0,0,.25); margin-top: 18px"></span>
+  </div>
+  <div style="position: absolute; left: 120px; top: 230px; padding: 6px 12px; border-radius: 12px; background: #1F2A2E; color: #FFFFFF; font-weight: 800; font-size: 13px">Drag the map to fine-tune</div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-radius: 26px 26px 0 0; border-top: 2px solid #E5E5DC; padding: 18px 16px 26px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="" style="width: 64px; height: 64px">
+      <div><p style="font-weight: 900; font-size: 20px; color: #1F2A2E">You're on site</p><p class="s">GPS confirmed · spots must be added in person</p></div>
+    </div>
+    <div style="display: flex; gap: 8px">
+      <div style="flex: 1.6; padding: 10px 12px; border-radius: 14px; background: #F2F3EE"><p class="s" style="font-size: 12px">Coordinates</p><p style="font-weight: 900; font-size: 15px; color: #1F2A2E; font-variant-numeric: tabular-nums">41.6142° N, 70.0219° E</p></div>
+      <div style="flex: 1; padding: 10px 12px; border-radius: 14px; background: #F2F3EE"><p class="s" style="font-size: 12px">Elevation</p><p style="font-weight: 900; font-size: 15px; color: #1F2A2E">1,845 m</p></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 12px; background: #DFF6E7; color: #1B6B3E; font-weight: 800; font-size: 13px">
+      <svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Accuracy ± 6 m · 9 satellites
+    </div>
+    <div style="display: flex; gap: 12px">
+      <button class="btn bw" style="flex: 1">Adjust pin</button>
+      <a class="btn bp" href="Spot2Photos.dc.html" style="flex: 1.4">Confirm location</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

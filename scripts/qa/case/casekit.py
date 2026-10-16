@@ -2,7 +2,7 @@
 
     META = {"title": "Check-in succeeds 150 m from a verified spot", "group": "Core", "priority": "P1",
             "env": "Android · auto (adb + mock location) · resources: ACC-A, SPOT-1",
-            "plan": "Test_spot-checkin.md", "anchor": "tc-003--p1--…", "source": "AC2",
+            "plan": "Test_check-in.md", "anchor": "tc-003--p1--…", "source": "AC2",
             "expected": ["Success sheet \\"+50 XP\\" within 5 s — screenshot",
                          "Event `checkin_succeeded` {xp_awarded: 50} — event log"],
             "caption": {"expected": "success sheet with +50 XP"}, "plan_hash": "…"}

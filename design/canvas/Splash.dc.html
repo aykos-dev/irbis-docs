@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Splash</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #0E8A83; font-family: 'Nunito', system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px">
+  <svg viewBox="0 0 390 300" style="position: absolute; left: 0; bottom: 0; width: 390px; height: 300px"><path d="M0 140 L70 70 L130 120 L210 30 L290 110 L340 80 L390 120 L390 300 L0 300Z" style="fill: #1CB0A8; opacity: .45"></path><path d="M0 210 L90 150 L160 190 L250 120 L330 180 L390 160 L390 300 L0 300Z" style="fill: #14928B"></path><path d="M210 30 L192 52 L204 50 L212 60 L222 48 L232 54Z" style="fill: #FFFFFF; opacity: .8"></path></svg>
+  <div style="width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; position: relative">
+    <img src="/_blob/9ebec15f083abbb36876b1b8a577ea1b" alt="Irbis the snow leopard cub" style="width: 200px; height: 200px">
+  </div>
+  <h1 style="font-weight: 900; font-size: 56px; letter-spacing: -0.01em; color: #FFFFFF; line-height: 1; position: relative">irbis</h1>
+  <p style="font-weight: 800; font-size: 17px; color: #E3F7F5; position: relative">Explore. Learn. Come back safe.</p>
+  <div style="position: absolute; bottom: 64px; display: flex; gap: 8px">
+    <span style="width: 10px; height: 10px; border-radius: 50%; background: #FFFFFF"></span>
+    <span style="width: 10px; height: 10px; border-radius: 50%; background: #FFFFFF; opacity: .55"></span>
+    <span style="width: 10px; height: 10px; border-radius: 50%; background: #FFFFFF; opacity: .3"></span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

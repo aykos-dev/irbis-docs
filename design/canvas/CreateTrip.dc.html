@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Create trip event</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.lbl{font-weight:900;font-size:15px;color:#1F2A2E;display:block}
+.f{display:flex;flex-direction:column;gap:8px}
+.in{width:100%;min-height:52px;border-radius:14px;border:2px solid #E5E5DC;background:#FFFFFF;padding:12px 14px;font:700 15px 'Nunito',sans-serif;color:#1F2A2E;display:flex;align-items:center;gap:10px;resize:none}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px}
+.stp{width:48px;height:48px;border-radius:14px;border:2px solid #E5E5DC;border-bottom-width:4px;background:#FFFFFF;color:#0C807A;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.g{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:12px;border:2px solid #E5E5DC;border-bottom-width:4px;background:#FFFFFF;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:#3C4A4F;cursor:pointer}
+.g.on{border-color:#1CB0A8;background:#E3F7F5;color:#0B5B57}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1200px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; padding: 14px 16px 26px; gap: 18px">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="Groups.dc.html" aria-label="Cancel" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M6 6l12 12M18 6L6 18" style="stroke-width: 3"></path></svg></a>
+    <h1 style="font-weight: 900; font-size: 24px; color: #1F2A2E">Create a trip</h1>
+  </div>
+
+  <div class="f">
+    <span class="lbl">Place</span>
+    <div class="card" style="padding: 10px; display: flex; align-items: center; gap: 12px">
+      <img src="/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57" alt="" style="width: 56px; height: 56px; border-radius: 12px; object-fit: cover">
+      <div style="flex-grow: 1"><p style="font-weight: 900; font-size: 16px; color: #1F2A2E">Beldersay Ridge</p><p class="s">Peak · difficulty 3 · Go on Sat</p></div>
+      <span class="s" style="color: #0C807A; font-weight: 900; padding: 8px">Change</span>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 10px">
+    <label class="f" style="flex: 1.3"><span class="lbl">Date</span><span class="in"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #5E6E74"><rect class="st" x="3" y="5" width="18" height="16" rx="3"></rect><path class="st" d="M3 10h18M8 3v4M16 3v4"></path></svg>Sat, 10 Oct</span></label>
+    <label class="f" style="flex: 1"><span class="lbl">Start</span><span class="in"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #5E6E74"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M12 7v5l3 2"></path></svg>05:30</span></label>
+  </div>
+
+  <div class="f">
+    <span class="lbl">Meeting point</span>
+    <div class="card" style="overflow: hidden">
+      <div style="position: relative; height: 100px; overflow: hidden"><img src="/_blob/3c359f247bc28d3c219d502ed9bcf7f1" alt="" style="width: 100%; height: 300px; object-fit: cover; margin-top: -120px"><span style="position: absolute; left: 50%; top: 30px; width: 30px; height: 30px; margin-left: -15px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: #FF9F1C; border: 3px solid #FFFFFF"></span></div>
+      <div style="padding: 10px 12px"><p style="font-weight: 800; font-size: 15px; color: #1F2A2E">Chimgan bus stop, Gazalkent road</p><p class="s">Shared carpool from 04:30 · 3 seats offered</p></div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 12px">
+    <div class="f" style="flex: 1">
+      <span class="lbl">Max people</span>
+      <div style="display: flex; align-items: center; gap: 8px">
+        <button class="stp" aria-label="Fewer"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M5 12h14" style="stroke-width: 3"></path></svg></button>
+        <span style="flex-grow: 1; text-align: center; font-weight: 900; font-size: 24px; color: #1F2A2E">10</span>
+        <button class="stp" aria-label="More"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M12 5v14M5 12h14" style="stroke-width: 3"></path></svg></button>
+      </div>
+    </div>
+    <div class="f" style="flex: 1.1">
+      <span class="lbl">Minimum level</span>
+      <span class="in" style="border-color: #F2802E; padding: 6px 10px"><img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="" style="width: 34px; height: 34px">L3 Pathfinder<svg viewBox="0 0 24 24" style="width: 14px; height: 14px; margin-left: auto"><path class="st" d="M6 9l6 6 6-6"></path></svg></span>
+    </div>
+  </div>
+  <p class="s" style="margin-top: -8px">Suggested from the trail's difficulty. Lower levels can request to join with a leader's approval.</p>
+
+  <div class="f">
+    <span class="lbl">Gear required</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <button class="g on" aria-pressed="true"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Headlamp</button>
+      <button class="g on" aria-pressed="true"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Warm layer</button>
+      <button class="g on" aria-pressed="true"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>2 L water</button>
+      <button class="g" aria-pressed="false">Trekking poles</button>
+      <button class="g" aria-pressed="false">Helmet</button>
+      <button class="g" aria-pressed="false"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M12 5v14M5 12h14"></path></svg>Add</button>
+    </div>
+  </div>
+
+  <label class="f"><span class="lbl">Description</span><textarea class="in" rows="3">Sunrise from the ridge, back by noon. Steady pace with breaks; I'll share the trip plan with everyone's emergency contacts.</textarea></label>
+
+  <div style="flex-grow: 1"></div>
+  <a class="btn bp" href="GroupChat.dc.html">Publish trip</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

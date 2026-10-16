@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Top Shots leaderboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#5E6E74}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px}
+.pod{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.ph{position:relative;border-radius:18px;overflow:hidden;border:3px solid #FFFFFF}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.medal{position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;border:3px solid #FFFFFF}
+.row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:2px solid #F0F0EA}
+.rk{width:24px;font-weight:900;font-size:16px;color:#5E6E74;text-align:center;flex:none}
+.th{width:50px;height:50px;border-radius:12px;object-fit:cover;flex:none}
+.rw{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border-radius:16px}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1480px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 16px">
+  <div style="background: #FFF6D6; padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 14px; border-bottom: 2px solid #F2D77A">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <a href="Feed.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #6E4E00"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+      <div style="flex-grow: 1"><p class="cap" style="color: #7A5800">Round 21 · Oct 12–25</p><h1 style="font-weight: 900; font-size: 26px; color: #3A2A00">Top Shots</h1></div>
+      <svg viewBox="0 0 24 24" style="width: 44px; height: 44px; color: #E5A800"><path class="fl" d="M6 3h12v3a6 6 0 0 1-12 0zM4 4h2v3H4a2 2 0 0 1 0-3zm14 0h2a2 2 0 0 1 0 3h-2zM10 13h4v4h3v3H7v-3h3z"></path></svg>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <div style="display: flex; justify-content: space-between"><span style="font-weight: 900; font-size: 15px; color: #3A2A00">Ends in 9 d 6 h</span><span class="s" style="color: #6E4E00">Winners announced Mon, Oct 26</span></div>
+      <div style="height: 12px; border-radius: 99px; background: rgba(204,122,0,.2); overflow: hidden"><div style="width: 34%; height: 100%; border-radius: 99px; background: #FF9F1C"></div></div>
+    </div>
+
+    <div style="display: flex; align-items: flex-end; gap: 8px; margin-top: 4px">
+      <div class="pod">
+        <div class="ph" style="width: 104px; height: 120px"><img src="/_blob/2ea0b851b548b4dce9228408142b7d82" alt="Urungach Lakes by Dilnoza"><span class="medal" style="background: #AEB8BC; color: #1F2A2E">2</span></div>
+        <p style="font-weight: 900; font-size: 13px; color: #1F2A2E">Dilnoza R.</p><p class="s" style="font-size: 12px">♥ 1,248</p>
+      </div>
+      <div class="pod">
+        <div class="ph" style="width: 118px; height: 150px; border-color: #FFC800"><img src="/_blob/adc9df09c7edf6477c00ce2f292fe37a" alt="Ugam valley by Bekzod" style="object-position: 70% 60%"><span class="medal" style="background: #FFC800; color: #3A2A00">1</span></div>
+        <p style="font-weight: 900; font-size: 14px; color: #1F2A2E">Bekzod T.</p><p class="s" style="font-size: 12px">♥ 1,402</p>
+      </div>
+      <div class="pod">
+        <div class="ph" style="width: 104px; height: 110px"><img src="/_blob/7000c508ed65b0395bc9ba13d1d81dcd" alt="Cave entrance by Madina"><span class="medal" style="background: #C98B4E; color: #FFFFFF">3</span></div>
+        <p style="font-weight: 900; font-size: 13px; color: #1F2A2E">Madina Y.</p><p class="s" style="font-size: 12px">♥ 1,090</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 8px; padding: 0 16px">
+    <div class="rw" style="background: #FFF6D6"><span style="font-weight: 900; font-size: 13px; color: #7A5800">#1</span><span style="font-weight: 900; font-size: 17px; color: #1F2A2E">150 XP</span><span class="s" style="font-size: 11px">+ gold frame</span></div>
+    <div class="rw" style="background: #F2F3EE"><span style="font-weight: 900; font-size: 13px; color: #5E6E74">#2–3</span><span style="font-weight: 900; font-size: 17px; color: #1F2A2E">100 XP</span><span class="s" style="font-size: 11px">+ podium</span></div>
+    <div class="rw" style="background: #E3F7F5"><span style="font-weight: 900; font-size: 13px; color: #0C6E69">#4–10</span><span style="font-weight: 900; font-size: 17px; color: #1F2A2E">50 XP</span><span class="s" style="font-size: 11px">+ Top Shot badge</span></div>
+  </div>
+
+  <div class="card" style="margin: 0 16px; padding: 2px 14px">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="7">
+      <div class="row">
+        <span class="rk">{{r.rank}}</span>
+        <img class="th" src="{{r.img}}" alt="" style="object-position: {{r.pos}}">
+        <div style="flex-grow: 1; min-width: 0"><p style="font-weight: 900; font-size: 15px; color: #1F2A2E">{{r.name}}</p><p class="s" style="font-size: 12px">{{r.place}}</p></div>
+        <span style="font-weight: 900; font-size: 14px; color: #1F2A2E">♥ {{r.likes}}</span>
+      </div>
+    </sc-for>
+    <div style="display: flex; align-items: center; gap: 8px; padding: 10px 0"><span style="flex: 1; height: 2px; background: repeating-linear-gradient(90deg, #1CB0A8 0 8px, transparent 8px 14px)"></span><span class="cap" style="color: #0C6E69">Top 10 line</span><span style="flex: 1; height: 2px; background: repeating-linear-gradient(90deg, #1CB0A8 0 8px, transparent 8px 14px)"></span></div>
+  </div>
+
+  <div class="card" style="margin: 0 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; background: #E3F7F5; border-color: #1CB0A8">
+    <span class="rk" style="color: #0C6E69">14</span>
+    <img class="th" src="/_blob/6bbbc6ee6ced1a3bc81f1d2ce372f0fe" alt="">
+    <div style="flex-grow: 1"><p style="font-weight: 900; font-size: 15px; color: #08403D">Your best post</p><p class="s" style="color: #0B5B57"><b>46 likes</b> to reach the Top 10</p></div>
+    <span style="font-weight: 900; font-size: 14px; color: #08403D">♥ 462</span>
+  </div>
+
+  <a href="TopShotWin.dc.html" class="card" style="margin: 0 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; text-decoration: none">
+    <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; color: #E5A800; flex: none"><path class="fl" d="M6 3h12v3a6 6 0 0 1-12 0zM10 13h4v4h3v3H7v-3h3z"></path></svg>
+    <div style="flex-grow: 1"><p style="font-weight: 900; font-size: 15px; color: #1F2A2E">Past rounds · winners' wall</p><p class="s">Round 20 · #1 Kamila S., Charvak Shore Camp</p></div>
+    <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #8A979C"><path class="st" d="M9 6l6 6-6 6"></path></svg>
+  </a>
+  <p class="s" style="padding: 0 16px; text-align: center">Counts only likes from verified accounts. Exact counts hide in the last 24 h.</p>
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="groups" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1480}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const I = {
+      lake: '/_blob/2ea0b851b548b4dce9228408142b7d82', pano: '/_blob/adc9df09c7edf6477c00ce2f292fe37a', trail: '/_blob/6bbbc6ee6ced1a3bc81f1d2ce372f0fe',
+      peak: '/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57', camp: '/_blob/bb7e61cdec3acfef22cb18e86375ffbb', cave: '/_blob/7000c508ed65b0395bc9ba13d1d81dcd'
+    };
+    const data = [
+      [4, 'Aziz M.', 'Big Chimgan · tour', 'peak', '50% 30%', '980'],
+      [5, 'Nodira A.', 'Paltau Waterfall', 'trail', '60% 50%', '911'],
+      [6, 'Sherzod U.', 'Ugam valley', 'pano', '20% 60%', '860'],
+      [7, 'Otabek N.', 'Pulatkhan Plateau', 'peak', '80% 50%', '804'],
+      [8, 'Laylo K.', 'Aydarkul shore', 'lake', '80% 80%', '721'],
+      [9, 'Kamila S.', 'Charvak Shore Camp', 'camp', '50% 60%', '540'],
+      [10, 'Rustam O.', 'Kyzylsay Cave', 'cave', '50% 60%', '508']
+    ];
+    return { rows: data.map(([rank, name, place, k, pos, likes]) => ({ rank, name, place, img: I[k], pos, likes })) };
+  }
+}
+</script>
+</body>
+</html>

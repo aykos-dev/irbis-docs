@@ -25,7 +25,8 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 - Design tokens: `design/design.md` is the source of truth for web and app.
 
 ## Commands
-- `/feature <slug> — <behaviour>`: spec → approval gate → api → clients → review → wrap up.
+- `/feature <slug>`: read doc + canvas → **ask rules and media (stop)** → spec (short approval) → api → app/web →
+  review → Android QA loop until no open defects → wrap up and **stop** (next feature only when the owner says so).
 - `/bugfix <error/log + failing behaviour> | <slug>/D{n}`: reproduce with a failing test, then fix.
 - `/qa-plan <slug>`: concrete, AC-traced Android test plan → `qa/<slug>/cases/`.
 - `/qa-run <slug> [build]`: run it on the Android phone, proof per case, defects → `qa/<slug>/bugs/D{n}_…/`.

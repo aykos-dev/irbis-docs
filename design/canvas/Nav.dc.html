@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bottom navigation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<nav aria-label="Main" style="width: 390px; height: 84px; box-sizing: border-box; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 8px 6px 10px; background: {{bg}}; border-top: 2px solid {{line}}; font-family: 'Nunito', system-ui, sans-serif">
+  <a href="Home.dc.html" aria-label="Path" style="display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; color: {{c.path.fg}}">
+    <span style="width: 54px; height: 42px; border-radius: 14px; border: 2px solid {{c.path.bd}}; background: {{c.path.bg}}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path d="M6 21c0-4.5 12-3.5 12-8.5S6 8.5 6 4" style="fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: 0.1 4.4"></path><circle cx="6" cy="21" r="2.4" style="fill: currentColor"></circle><circle cx="6" cy="3.6" r="2.4" style="fill: currentColor"></circle></svg>
+    </span>
+    <span style="font-weight: 800; font-size: 11px">Path</span>
+  </a>
+  <a href="Explore.dc.html" aria-label="Explore" style="display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; color: {{c.explore.fg}}">
+    <span style="width: 54px; height: 42px; border-radius: 14px; border: 2px solid {{c.explore.bd}}; background: {{c.explore.bg}}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path d="M3 6.5l6-3 6 3 6-3V18l-6 3-6-3-6 3zM9 3.5V18M15 6.5V21" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linejoin: round"></path></svg>
+    </span>
+    <span style="font-weight: 800; font-size: 11px">Explore</span>
+  </a>
+  <a href="LessonsHub.dc.html" aria-label="Lessons" style="display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; color: {{c.lessons.fg}}">
+    <span style="width: 54px; height: 42px; border-radius: 14px; border: 2px solid {{c.lessons.bd}}; background: {{c.lessons.bg}}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5M9 8h7" style="fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+    </span>
+    <span style="font-weight: 800; font-size: 11px">Lessons</span>
+  </a>
+  <a href="Feed.dc.html" aria-label="Community" style="display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; color: {{c.groups.fg}}">
+    <span style="width: 54px; height: 42px; border-radius: 14px; border: 2px solid {{c.groups.bd}}; background: {{c.groups.bg}}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><circle cx="9" cy="8" r="3.6" style="fill: currentColor"></circle><path d="M2 20.5c.4-4.4 3.2-6.6 7-6.6s6.6 2.2 7 6.6z" style="fill: currentColor"></path><circle cx="17.5" cy="9" r="2.7" style="fill: currentColor; opacity: .6"></circle><path d="M17 13.6c2.9 0 4.6 2 5 5.4h-4.2" style="fill: currentColor; opacity: .6"></path></svg>
+    </span>
+    <span style="font-weight: 800; font-size: 11px">Community</span>
+  </a>
+  <a href="Profile.dc.html" aria-label="Profile" style="display: flex; flex-direction: column; align-items: center; gap: 3px; text-decoration: none; color: {{c.profile.fg}}">
+    <span style="width: 54px; height: 42px; border-radius: 14px; border: 2px solid {{c.profile.bd}}; background: {{c.profile.bg}}; display: flex; align-items: center; justify-content: center; box-sizing: border-box">
+      <img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="" style="width: 34px; height: 34px">
+    </span>
+    <span style="font-weight: 800; font-size: 11px">Profile</span>
+  </a>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["path","explore","lessons","groups","profile"],"default":"path"},"dark":{"editor":"boolean","default":false},"$preview":{"width":390,"height":84}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const a = this.props.active ?? 'path';
+    const d = !!this.props.dark;
+    const on = d ? { bg: '#123B3A', bd: '#1CB0A8', fg: '#5FD6CE' } : { bg: '#E3F7F5', bd: '#1CB0A8', fg: '#0C807A' };
+    const off = d ? { bg: 'transparent', bd: 'transparent', fg: '#9AA8AD' } : { bg: 'transparent', bd: 'transparent', fg: '#5E6E74' };
+    const c = {};
+    ['path', 'explore', 'lessons', 'groups', 'profile'].forEach((k) => { c[k] = a === k ? on : off; });
+    return { c, bg: d ? '#1C2A30' : '#FFFFFF', line: d ? '#2B3B42' : '#E5E5DC' };
+  }
+}
+</script>
+</body>
+</html>

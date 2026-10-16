@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74;padding:0 4px}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px;padding:0 14px}
+.row{display:flex;align-items:center;gap:12px;min-height:56px;padding:8px 0;border-bottom:2px solid #F0F0EA;text-decoration:none}
+.row:last-child{border-bottom:0}
+.ic{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex:none;color:#FFFFFF}
+.t{flex-grow:1;font-weight:800;font-size:15px;color:#1F2A2E}
+.v{font-weight:800;font-size:14px;color:#5E6E74}
+.tg{width:52px;height:32px;border-radius:99px;position:relative;flex:none}
+.tg.on{background:#1CB0A8}.tg.off{background:#D6D8D0}.tg.lock{background:#9FD9D5}
+.tg.on::after,.tg.lock::after{content:'';position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF}
+.tg.off::after{content:'';position:absolute;left:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF}
+.seg{display:flex;padding:3px;border-radius:12px;background:#EEF0E8;gap:3px}
+.seg span{padding:6px 10px;border-radius:9px;font-weight:800;font-size:13px;color:#5E6E74}
+.seg .on{background:#FFFFFF;color:#0C807A;box-shadow:0 2px 0 #E5E5DC}
+.st{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.chev{width:20px;height:20px;color:#AEB8BC;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 1560px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 14px; padding: 14px 16px 26px">
+  <div style="display: flex; align-items: center; gap: 8px">
+    <a href="Profile.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <h1 style="font-weight: 900; font-size: 26px; color: #1F2A2E">Settings</h1>
+  </div>
+
+  <a href="PlusPaywall.dc.html" style="display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 20px; background: #1F2A2E; text-decoration: none; box-shadow: 0 4px 0 #0E1518">
+    <img src="/_blob/28945aeb0b5964efc16a541c4886feb8" alt="" style="width: 56px; height: 56px; flex: none">
+    <div style="flex-grow: 1"><p style="font-weight: 900; font-size: 17px; color: #FFFFFF">Irbis Plus</p><p style="font-weight: 700; font-size: 13px; color: #B8C4C8">Unlimited offline maps, 7-day forecasts, streak freezes</p></div>
+    <span style="height: 32px; padding: 0 12px; border-radius: 10px; background: #FFC800; color: #3A2A00; font-weight: 900; font-size: 13px; display: flex; align-items: center">Try free</span>
+  </a>
+
+  <p class="cap">Account</p>
+  <div class="card">
+    <a class="row" href="EditProfile.dc.html"><span class="ic" style="background: #4C7BD9"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M12 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zM4 21c.6-4.4 3.8-6.5 8-6.5s7.4 2.1 8 6.5z"></path></svg></span><span class="t">Edit profile</span><svg class="chev" viewBox="0 0 24 24"><path class="st" d="M9 6l6 6-6 6"></path></svg></a>
+    <div class="row"><span class="ic" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"></path></svg></span><span class="t">Language</span><div class="seg"><span class="on">UZ</span><span>RU</span><span>EN</span></div></div>
+    <div class="row"><span class="ic" style="background: #8A979C"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M4 18l5-6 4 3 7-9"></path></svg></span><span class="t">Units</span><div class="seg"><span class="on">km · m</span><span>mi · ft</span></div></div>
+    <div class="row"><span class="ic" style="background: #1F2A2E"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M14 3a9 9 0 1 0 7 13A7 7 0 0 1 14 3z"></path></svg></span><span class="t">Appearance</span><div class="seg"><span>Light</span><span>Dark</span><span class="on">Auto</span></div></div>
+  </div>
+
+  <p class="cap">Notifications</p>
+  <div class="card">
+    <div class="row"><span class="t">Trip &amp; safety alerts<br><span class="s">Condition changes, check-out reminders. Always on.</span></span><span class="tg lock" role="switch" aria-checked="true" aria-disabled="true"></span></div>
+    <div class="row"><span class="t">Streak reminders<br><span class="s">Only when your streak is at risk</span></span><span class="tg on" role="switch" aria-checked="true"></span></div>
+    <div class="row"><span class="t">Bu qayer? daily<br><span class="s">19:00 · change time</span></span><span class="tg on" role="switch" aria-checked="true"></span></div>
+    <div class="row"><span class="t">Groups &amp; messages</span><span class="tg on" role="switch" aria-checked="true"></span></div>
+    <div class="row"><span class="t">Likes, comments, Top Shots</span><span class="tg on" role="switch" aria-checked="true"></span></div>
+    <div class="row"><span class="t">Tours &amp; offers</span><span class="tg off" role="switch" aria-checked="false"></span></div>
+  </div>
+
+  <p class="cap">Privacy</p>
+  <div class="card">
+    <div class="row"><span class="t">Public profile<br><span class="s">Others can see your stats and posts</span></span><span class="tg on" role="switch" aria-checked="true"></span></div>
+    <div class="row"><span class="t">Show me in Find buddies</span><span class="tg on" role="switch" aria-checked="true"></span></div>
+    <div class="row"><span class="t">Share location<br><span class="s">Only during an active trip, with your contact</span></span><span class="v">Trips only</span></div>
+    <div class="row"><span class="t">Blocked people</span><span class="v">2</span><svg class="chev" viewBox="0 0 24 24"><path class="st" d="M9 6l6 6-6 6"></path></svg></div>
+  </div>
+
+  <p class="cap">More</p>
+  <div class="card">
+    <a class="row" href="Safety.dc.html"><span class="ic" style="background: #D93636"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg></span><span class="t">Safety center &amp; offline maps</span><svg class="chev" viewBox="0 0 24 24"><path class="st" d="M9 6l6 6-6 6"></path></svg></a>
+    <div class="row"><span class="ic" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M4 5h16v11H9l-5 4z"></path></svg></span><span class="t">Community guidelines</span><svg class="chev" viewBox="0 0 24 24"><path class="st" d="M9 6l6 6-6 6"></path></svg></div>
+    <div class="row"><span class="ic" style="background: #FF9F1C; color: #3A2200"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17v.3"></path></svg></span><span class="t">Help &amp; feedback</span><svg class="chev" viewBox="0 0 24 24"><path class="st" d="M9 6l6 6-6 6"></path></svg></div>
+  </div>
+
+  <button style="min-height: 52px; border-radius: 16px; border: 2px solid #E5E5DC; border-bottom-width: 4px; background: #FFFFFF; color: #B32424; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 15px; letter-spacing: .05em; text-transform: uppercase; cursor: pointer">Log out</button>
+  <p class="s" style="text-align: center">Irbis 1.0 · Delete account in Help</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

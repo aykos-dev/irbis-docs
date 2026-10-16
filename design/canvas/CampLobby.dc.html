@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Host a game — lobby</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.h3{font-weight:900;font-size:16px;line-height:1.25;color:#F1F5F4}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#9AA8AD}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9AA8AD}
+.card{background:#1C2A30;border:2px solid #2B3B42;border-bottom-width:4px;border-radius:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.bo{background:#FF9F1C;color:#3A2200;box-shadow:0 4px 0 #B86E00}
+.pl{display:flex;flex-direction:column;align-items:center;gap:4px;width:64px}
+.pa{width:52px;height:52px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pa img{width:58px;height:58px;margin-top:10px}
+.gt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 4px;border-radius:16px;border:2px solid #2B3B42;border-bottom-width:4px;background:#1C2A30;font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;color:#D5DEDD;cursor:pointer;flex:1}
+.gt.on{border-color:#7B61FF;background:#2A2550;color:#F1F5F4}
+.gi{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#FFFFFF}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:2px solid #2B3B42}
+.stp{display:flex;align-items:center;gap:10px}
+.sb{width:36px;height:36px;border-radius:12px;border:2px solid #2B3B42;border-bottom-width:4px;background:#22323A;color:#F1F5F4;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+.tg{width:52px;height:32px;border-radius:99px;background:#7B61FF;position:relative;flex:none}
+.tg::after{content:'';position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.q{fill:#1F2A2E}
+</style>
+</helmet>
+<div style="width: 390px; height: 1240px; position: relative; overflow: hidden; background: #131D22; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; display: flex; flex-direction: column; gap: 16px; padding-bottom: 26px">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 16px 0">
+    <a href="CampHub.dc.html" aria-label="Close room" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #9AA8AD"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M6 6l12 12M18 6L6 18" style="stroke-width: 3"></path></svg></a>
+    <div style="flex-grow: 1"><p class="cap" style="color: #FFB547">You're the host</p><h1 style="font-weight: 900; font-size: 24px; color: #F1F5F4">Campfire room</h1></div>
+    <span style="display: inline-flex; align-items: center; gap: 5px; height: 30px; padding: 0 10px; border-radius: 99px; background: #173F2A; color: #7BE0A2; font-weight: 800; font-size: 12px"><span style="width: 8px; height: 8px; border-radius: 50%; background: #7BE0A2"></span>Hotspot on</span>
+  </div>
+
+  <div class="card" style="margin: 0 16px; padding: 16px; display: flex; gap: 16px; align-items: center">
+    <div style="width: 132px; height: 132px; border-radius: 16px; background: #FFFFFF; padding: 10px; flex: none" role="img" aria-label="QR code to join this room">
+      <svg viewBox="0 0 29 29" style="width: 112px; height: 112px">
+        <path class="q" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM22 0h7v7h-7zM23 1v5h5V1zM24 2h3v3h-3zM0 22h7v7H0zM1 23v5h5v-5zM2 24h3v3H2z" style="fill-rule: evenodd"></path>
+        <path class="q" d="M9 0h2v2H9zM12 1h3v1h-3zM16 0h1v3h-1zM18 2h2v2h-2zM9 4h1v3H9zM11 3h2v2h-2zM14 4h3v1h-3zM19 5h1v2h-1zM12 6h1v2h-1zM15 7h3v1h-3zM0 9h2v1H0zM3 8h3v2H3zM8 9h2v2H8zM11 9h1v3h-1zM13 10h3v1h-3zM17 9h2v2h-2zM21 8h2v1h-2zM24 9h3v2h-3zM28 8h1v3h-1zM1 12h2v2H1zM5 11h2v2H5zM9 13h2v1H9zM14 12h2v3h-2zM18 12h3v1h-3zM22 11h1v3h-1zM25 13h2v1h-2zM0 15h1v3H0zM3 15h3v1H3zM7 16h2v2H7zM11 15h2v2h-2zM16 16h1v3h-1zM19 15h2v2h-2zM23 16h3v1h-3zM27 15h2v2h-2zM2 18h2v2H2zM5 19h1v2H5zM9 19h3v1H9zM13 18h2v2h-2zM18 19h3v1h-3zM22 19h1v3h-1zM25 18h2v2h-2zM9 22h1v3H9zM11 23h3v1h-3zM15 22h2v2h-2zM19 22h2v1h-2zM24 22h1v2h-1zM27 21h2v3h-2zM10 26h2v2h-2zM13 26h1v3h-1zM16 25h3v1h-3zM20 26h2v3h-2zM23 25h3v1h-3zM25 27h4v2h-4z"></path>
+      </svg>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; min-width: 0">
+      <p class="s">Scan to join Wi-Fi and room</p>
+      <p style="font-weight: 900; font-size: 26px; letter-spacing: .08em; color: #F1F5F4">4821</p>
+      <p class="s"><b style="color: #F1F5F4">Timur's iPhone</b><br>Wi-Fi password in the QR</p>
+    </div>
+  </div>
+
+  <section style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px">
+    <div style="display: flex; justify-content: space-between"><p class="cap">Players · 8 / 15</p><p class="s" style="color: #7BE0A2">All connected</p></div>
+    <div class="card" style="padding: 14px 8px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px 0; justify-items: center">
+      <sc-for list="{{players}}" as="p" hint-placeholder-count="8">
+        <div class="pl">
+          <div style="position: relative">
+            <div class="pa" style="background: {{p.tint}}; box-shadow: 0 0 0 3px {{p.ring}}"><img src="{{p.img}}" alt=""></div>
+          </div>
+          <span style="font-weight: 800; font-size: 12px; color: #F1F5F4">{{p.name}}</span>
+        </div>
+      </sc-for>
+      <div class="pl"><div class="pa" style="border: 2px dashed #3A4C54; color: #5E6E74"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M12 5v14M5 12h14"></path></svg></div><span class="s" style="font-size: 12px">waiting</span></div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px">
+    <p class="cap">Game</p>
+    <div style="display: flex; gap: 8px">
+      <button class="gt on" aria-pressed="true"><span class="gi" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M3 9c0-2 2-4 9-4s9 2 9 4c0 3-2 6-5 6-2 0-2.5-2-4-2s-2 2-4 2c-3 0-5-3-5-6z"></path></svg></span>Imposter</button>
+      <button class="gt" aria-pressed="false"><span class="gi" style="background: #D93636"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M3 12h18v2H3zM7 12l1.5-7h7L17 12z"></path></svg></span>Mafia</button>
+      <button class="gt" aria-pressed="false"><span class="gi" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M12 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM4 21c.6-4.4 3.8-6.5 8-6.5s7.4 2.1 8 6.5z"></path></svg></span>Who am I</button>
+      <button class="gt" aria-pressed="false"><span class="gi" style="background: #FF9F1C; color: #3A2200"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M7 4L3 8l4 4M3 8h12M17 12l4 4-4 4M21 16H9"></path></svg></span>Rather</button>
+    </div>
+    <div class="card" style="padding: 2px 14px">
+      <div class="opt"><div><p class="h3" style="font-size: 15px">Word pack</p><p class="s">Places in Uzbekistan · 240 words</p></div><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #9AA8AD"><path class="st" d="M9 6l6 6-6 6"></path></svg></div>
+      <div class="opt"><p class="h3" style="font-size: 15px">Imposters</p><div class="stp"><button class="sb" aria-label="Fewer"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12h14" style="stroke-width: 3"></path></svg></button><span style="font-weight: 900; font-size: 20px; color: #F1F5F4; width: 20px; text-align: center">1</span><button class="sb" aria-label="More"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M12 5v14M5 12h14" style="stroke-width: 3"></path></svg></button></div></div>
+      <div class="opt"><p class="h3" style="font-size: 15px">Discussion timer</p><p class="h3" style="font-size: 15px">3 min</p></div>
+      <div class="opt" style="border-bottom: 0"><div><p class="h3" style="font-size: 15px">Imposter sees the category</p><p class="s">Makes bluffing easier</p></div><span class="tg" role="switch" aria-checked="true"></span></div>
+    </div>
+  </section>
+
+  <div style="flex-grow: 1"></div>
+  <div style="padding: 0 16px; display: flex; flex-direction: column; gap: 8px">
+    <a class="btn bo" href="ImpReveal.dc.html"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M7 4l13 8-13 8z"></path></svg>Start Imposter</a>
+    <p class="s" style="text-align: center">You play too — your word stays hidden on this phone.</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1240}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = {
+      fox: ['/_blob/d1b0d6198561f208461b0f6704094021', '#FFE9D9'], ibex: ['/_blob/dba7b9623f9af9c690bf93a6ddc5f60b', '#DDF5F3'],
+      bear: ['/_blob/ffe227711df8d0445b9dfe0a9534a6f4', '#E3ECFB'], marmot: ['/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5', '#F7EADB'],
+      eagle: ['/_blob/55d73e65f5c5f754c2cbb05b4ea4a0ce', '#ECE8FF'], panda: ['/_blob/44b792e405b2dce67f0743e4be0fc2e1', '#E4F5E7']
+    };
+    const list = [['Timur', 'fox', true], ['Dilnoza', 'ibex'], ['Aziz', 'bear'], ['Laylo', 'marmot'], ['Kamila', 'fox'], ['Bekzod', 'eagle'], ['Otabek', 'panda'], ['Madina', 'marmot']];
+    return { players: list.map(([name, a, host]) => ({ name: host ? name + ' ★' : name, img: P[a][0], tint: P[a][1], ring: host ? '#FF9F1C' : '#2B3B42' })) };
+  }
+}
+</script>
+</body>
+</html>

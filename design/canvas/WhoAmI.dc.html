@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Who am I?</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#9AA8AD}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9AA8AD}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:18px;border-style:solid;border-width:2px 2px 4px}
+.pa{width:42px;height:42px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;flex:none}
+.pa img{width:46px;height:46px;margin-top:8px}
+.ch{flex:none;min-width:120px;max-width:150px;padding:8px 10px;border-radius:12px;background:#1CB0A8;color:#06302D;font-weight:900;font-size:15px;line-height:1.2;text-align:center;box-shadow:0 3px 0 #0E8A83}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1040px; position: relative; overflow: hidden; background: #131D22; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; display: flex; flex-direction: column; gap: 14px; padding: 16px 16px 26px">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <span style="width: 40px; height: 40px; border-radius: 12px; background: #1CB0A8; display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM4 21c.6-4.4 3.8-6.5 8-6.5s7.4 2.1 8 6.5z"></path></svg></span>
+      <div><p style="font-weight: 900; font-size: 18px; color: #F1F5F4">Who am I?</p><p class="s">Pack: Famous in Central Asia · 6 players</p></div>
+    </div>
+  </div>
+
+  <div style="border-radius: 24px; background: #0F3E3B; border: 3px dashed #1CB0A8; padding: 16px; display: flex; align-items: center; gap: 14px">
+    <div style="position: relative; width: 72px; height: 72px; flex: none">
+      <div style="width: 72px; height: 72px; border-radius: 50%; background: #DDF5F3; overflow: hidden; display: flex; align-items: center; justify-content: center"><img src="/_blob/dba7b9623f9af9c690bf93a6ddc5f60b" alt="" style="width: 80px; height: 80px; margin-top: 14px"></div>
+      <span style="position: absolute; right: -6px; top: -6px; width: 34px; height: 34px; border-radius: 50%; background: #FF9F1C; color: #3A2200; font-weight: 900; font-size: 22px; display: flex; align-items: center; justify-content: center; border: 3px solid #0F3E3B">?</span>
+    </div>
+    <div style="flex-grow: 1">
+      <p style="font-weight: 900; font-size: 13px; letter-spacing: .1em; color: #8FE3DC">YOU · DILNOZA</p>
+      <p style="font-weight: 900; font-size: 22px; line-height: 1.15; color: #FFFFFF">Your character is hidden on your phone</p>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 10px">
+    <div style="flex: 1; padding: 12px; border-radius: 18px; background: #1C2A30; border: 2px solid #2B3B42; display: flex; flex-direction: column; gap: 2px">
+      <p class="s" style="font-size: 12px">What I know</p>
+      <p style="font-weight: 800; font-size: 14px; color: #F1F5F4; line-height: 1.35">Real person · historic · not a ruler</p>
+    </div>
+    <div style="width: 96px; padding: 12px; border-radius: 18px; background: #1C2A30; border: 2px solid #2B3B42; display: flex; flex-direction: column; align-items: center; justify-content: center">
+      <p style="font-weight: 900; font-size: 26px; color: #F1F5F4">7</p><p class="s" style="font-size: 12px">questions</p>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between"><p class="cap">Everyone else's character</p><p class="s" style="font-size: 12px">Only they can't see it</p></div>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <sc-for list="{{players}}" as="p" hint-placeholder-count="5">
+      <div class="row" style="background: {{p.bg}}; border-color: {{p.bd}}">
+        <span class="pa" style="background: {{p.tint}}"><img src="{{p.img}}" alt=""></span>
+        <div style="flex-grow: 1; min-width: 0">
+          <p style="font-weight: 900; font-size: 15px; color: #F1F5F4">{{p.name}}</p>
+          <p class="s" style="font-size: 12px; color: {{p.noteColor}}">{{p.note}}</p>
+        </div>
+        <span class="ch" style="background: {{p.chBg}}; color: {{p.chFg}}; box-shadow: 0 3px 0 {{p.chSh}}">{{p.who}}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <div style="display: flex; gap: 10px">
+    <button class="btn" style="flex: 1; background: #1C2A30; color: #F1F5F4; border: 2px solid #2B3B42; box-shadow: 0 4px 0 #2B3B42">Pass turn</button>
+    <button class="btn" style="flex: 1.5; background: #1CB0A8; color: #06302D; box-shadow: 0 4px 0 #0E8A83">I know who I am!</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1040}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = {
+      fox: ['/_blob/d1b0d6198561f208461b0f6704094021', '#FFE9D9'], bear: ['/_blob/ffe227711df8d0445b9dfe0a9534a6f4', '#E3ECFB'],
+      marmot: ['/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5', '#F7EADB'], eagle: ['/_blob/55d73e65f5c5f754c2cbb05b4ea4a0ce', '#ECE8FF'],
+      panda: ['/_blob/44b792e405b2dce67f0743e4be0fc2e1', '#E4F5E7']
+    };
+    const list = [
+      ['Aziz', 'bear', 'Amir Temur', 'asking now · 4 questions', 'turn'],
+      ['Laylo', 'marmot', 'Snow leopard', 'guessed in 6 questions', 'done'],
+      ['Timur', 'fox', 'Alisher Navoi', '9 questions'],
+      ['Kamila', 'fox', 'Plov', '3 questions'],
+      ['Bekzod', 'eagle', 'Ulugh Beg', '11 questions']
+    ];
+    return { players: list.map(([name, a, who, note, st]) => ({
+      name, who, note, img: P[a][0], tint: P[a][1],
+      bg: st === 'turn' ? '#3D2A10' : '#1C2A30', bd: st === 'turn' ? '#FF9F1C' : '#2B3B42',
+      noteColor: st === 'done' ? '#7BE0A2' : (st === 'turn' ? '#FFB547' : '#9AA8AD'),
+      chBg: st === 'done' ? '#2E8B57' : '#1CB0A8', chFg: st === 'done' ? '#FFFFFF' : '#06302D', chSh: st === 'done' ? '#1F6233' : '#0E8A83'
+    })) };
+  }
+}
+</script>
+</body>
+</html>

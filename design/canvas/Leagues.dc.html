@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Leagues</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.row{display:flex;align-items:center;gap:12px;padding:8px 16px;height:62px}
+.rk{width:26px;font-weight:900;font-size:17px;text-align:center;flex:none}
+.av{width:44px;height:44px;border-radius:50%;overflow:hidden;flex:none;display:flex;align-items:center;justify-content:center}
+.nm{flex-grow:1;font-weight:800;font-size:16px;color:var(--ink)}
+.el{font-weight:900;font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+.gem{width:40px;height:44px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.zone{display:flex;align-items:center;gap:8px;margin:4px 16px;padding:6px 0;font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.zone::before,.zone::after{content:'';flex:1;height:2px}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 1320px">
+  <div style="padding: 16px 16px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; border-bottom: 2px solid var(--line)">
+    <div style="display: flex; gap: 10px; align-items: flex-end">
+      <div class="gem" style="background: #B0784A; opacity: .9"></div>
+      <div style="filter: drop-shadow(0 4px 0 #4A5A60)"><div class="gem" style="width: 64px; height: 72px; background: #7D8B90; display: flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" style="width: 30px; height: 30px; color: #FFFFFF"><path d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z" style="fill: currentColor"></path></svg></div></div>
+      <div class="gem" style="background: #D6D8D0"></div>
+      <div class="gem" style="background: #D6D8D0"></div>
+      <div class="gem" style="background: #D6D8D0"></div>
+    </div>
+    <h1 style="font-weight: 900; font-size: 26px; color: var(--ink)">Granite League</h1>
+    <p class="s" style="text-align: center">Ranked by elevation gained this week · ends in <b style="color: var(--ink)">2 d 6 h</b></p>
+  </div>
+
+  <div style="padding: 6px 0; display: flex; flex-direction: column">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="15">
+      <sc-if value="{{r.promoAfter}}" hint-placeholder-val="{{ false }}">
+        <div class="zone" style="color: #1B6B3E"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M6 15l6-6 6 6" style="stroke-width: 3"></path></svg>Top 5 move up to Basalt<svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M6 15l6-6 6 6" style="stroke-width: 3"></path></svg></div>
+      </sc-if>
+      <sc-if value="{{r.demoteBefore}}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; align-items: center; gap: 10px; margin: 6px 16px; padding: 8px 12px; border-radius: 16px; background: #EEF0EA">
+          <img src="/_blob/10d7c4a37401f1367f2af21b82f0ae9a" alt="" style="width: 44px; height: 44px">
+          <p class="s" style="color: #56646A"><b style="color: #8F1F1F">Bottom 3 drop to Pebble.</b> One more hike keeps you safe!</p>
+        </div>
+      </sc-if>
+      <div class="row" style="background: {{r.bg}}; border-radius: {{r.rad}}; margin: 0 {{r.mx}}; border: {{r.bd}}">
+        <span class="rk" style="color: {{r.rc}}">{{r.rank}}</span>
+        <div class="av" style="background: {{r.tint}}"><img src="{{r.img}}" alt="" style="width: 50px; height: 50px; margin-top: 10px"></div>
+        <span class="nm">{{r.name}}</span>
+        <span class="el">{{r.elev}}</span>
+      </div>
+    </sc-for>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="profile" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1320}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const C = {
+      panda: ['/_blob/44b792e405b2dce67f0743e4be0fc2e1', '#E4F5E7'],
+      marmot: ['/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5', '#F7EADB'],
+      fox: ['/_blob/d1b0d6198561f208461b0f6704094021', '#FFE9D9'],
+      ibex: ['/_blob/dba7b9623f9af9c690bf93a6ddc5f60b', '#DDF5F3'],
+      bear: ['/_blob/ffe227711df8d0445b9dfe0a9534a6f4', '#E3ECFB'],
+      eagle: ['/_blob/55d73e65f5c5f754c2cbb05b4ea4a0ce', '#ECE8FF']
+    };
+    const data = [
+      ['Dilnoza R.', 'ibex', '4,820 m'], ['Aziz M.', 'bear', '4,310 m'], ['Kamila S.', 'fox', '3,960 m'], ['Bekzod T.', 'eagle', '3,540 m'], ['Nodira A.', 'ibex', '3,105 m'],
+      ['Sherzod U.', 'fox', '2,780 m'], ['You', 'fox', '2,140 m'], ['Laylo K.', 'marmot', '1,920 m'], ['Rustam O.', 'fox', '1,610 m'], ['Madina Y.', 'marmot', '1,240 m'],
+      ['Otabek N.', 'panda', '980 m'], ['Saida B.', 'marmot', '760 m'], ['Jamshid E.', 'panda', '410 m'], ['Zarina H.', 'panda', '220 m'], ['Farrukh D.', 'panda', '0 m']
+    ];
+    const rows = data.map(([name, c, elev], i) => {
+      const rank = i + 1;
+      const me = name === 'You';
+      return {
+        rank, name: me ? 'Timur (you)' : name, elev, img: C[c][0], tint: C[c][1],
+        rc: rank <= 3 ? '#B88600' : (rank <= 5 ? '#1B6B3E' : (rank >= 13 ? '#B32424' : '#5E6E74')),
+        bg: me ? '#E3F7F5' : 'transparent', rad: me ? '16px' : '0', mx: me ? '8px' : '0', bd: me ? '2px solid #1CB0A8' : '0',
+        promoAfter: rank === 6, demoteBefore: rank === 13
+      };
+    });
+    return { rows };
+  }
+}
+</script>
+</body>
+</html>

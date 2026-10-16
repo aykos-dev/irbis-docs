@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mafia — choose roles</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.h3{font-weight:900;font-size:16px;line-height:1.25;color:#F1F5F4}
+.s{font-weight:700;font-size:12px;line-height:1.35;color:#9AA8AD}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9AA8AD}
+.card{background:#1C2A30;border:2px solid #2B3B42;border-bottom-width:4px;border-radius:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.role{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:2px solid #2B3B42}
+.ri{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;flex:none;box-shadow:0 3px 0 rgba(0,0,0,.35)}
+.team{display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:6px;font-weight:900;font-size:10px;letter-spacing:.04em}
+.sb{width:34px;height:34px;border-radius:11px;border:2px solid #2B3B42;border-bottom-width:4px;background:#22323A;color:#F1F5F4;display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+.opt{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:2px solid #2B3B42}
+.seg{display:flex;padding:3px;border-radius:12px;background:#22323A;gap:3px}
+.seg span{padding:6px 10px;border-radius:9px;font-weight:800;font-size:12px;color:#9AA8AD}
+.seg .on{background:#D93636;color:#FFFFFF}
+.tg{width:52px;height:32px;border-radius:99px;background:#D93636;position:relative;flex:none}
+.tg::after{content:'';position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1380px; position: relative; overflow: hidden; background: #131D22; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; display: flex; flex-direction: column; gap: 16px; padding: 14px 16px 26px">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="CampLobby.dc.html" aria-label="Back to lobby" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #9AA8AD"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <div style="flex-grow: 1"><p class="cap" style="color: #FF8A8A">Mafia · host setup</p><h1 style="font-weight: 900; font-size: 24px; color: #F1F5F4">Choose roles</h1></div>
+    <span style="height: 32px; padding: 0 12px; border-radius: 99px; background: #22323A; color: #F1F5F4; font-weight: 900; font-size: 13px; display: flex; align-items: center">10 players</span>
+  </div>
+
+  <div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 10px; border-color: #2E8B57">
+    <div style="display: flex; justify-content: space-between; align-items: center"><p class="h3" style="font-size: 15px">10 / 10 roles · balanced</p><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #7BE0A2"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3"></path></svg></div>
+    <div style="display: flex; height: 16px; border-radius: 99px; overflow: hidden; gap: 2px" aria-label="Town 6, Mafia 3, Solo 1">
+      <span style="flex: 6; background: #1F74C7"></span><span style="flex: 3; background: #D93636"></span><span style="flex: 1; background: #6A4FE8"></span>
+    </div>
+    <div style="display: flex; gap: 14px"><span class="s" style="color: #8CC8FF">● Town 6</span><span class="s" style="color: #FF9A9A">● Mafia 3</span><span class="s" style="color: #B8A8FF">● Solo 1</span></div>
+  </div>
+
+  <div class="card" style="padding: 2px 14px">
+    <sc-for list="{{roles}}" as="r" hint-placeholder-count="8">
+      <div class="role" style="opacity: {{r.op}}">
+        <span class="ri" style="background: {{r.color}}"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path d="{{r.icon}}" style="fill: currentColor; fill-rule: evenodd"></path></svg></span>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0">
+          <div style="display: flex; align-items: center; gap: 6px"><span class="h3" style="font-size: 15px">{{r.name}}</span><span class="team" style="background: {{r.tbg}}; color: {{r.tfg}}">{{r.team}}</span></div>
+          <span class="s">{{r.desc}}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px; flex: none">
+          <button class="sb" aria-label="Fewer {{r.name}}"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M5 12h14" style="stroke-width: 3"></path></svg></button>
+          <span style="width: 20px; text-align: center; font-weight: 900; font-size: 18px; color: #F1F5F4">{{r.n}}</span>
+          <button class="sb" aria-label="More {{r.name}}"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M12 5v14M5 12h14" style="stroke-width: 3"></path></svg></button>
+        </div>
+      </div>
+    </sc-for>
+    <button style="display: flex; align-items: center; gap: 8px; padding: 12px 0; border: 0; background: transparent; color: #FF8A8A; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 14px; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M12 5v14M5 12h14"></path></svg>More roles: Sniper, Journalist, Immortal…</button>
+  </div>
+
+  <div class="card" style="padding: 2px 14px">
+    <div class="opt"><p class="h3" style="font-size: 15px">Narrator</p><div class="seg"><span class="on">App voice</span><span>Host reads</span></div></div>
+    <div class="opt"><p class="h3" style="font-size: 15px">Day discussion</p><p class="h3" style="font-size: 15px">3 min</p></div>
+    <div class="opt" style="border-bottom: 0"><div><p class="h3" style="font-size: 15px">Reveal role when out</p><p class="s">Off makes the game harder</p></div><span class="tg" role="switch" aria-checked="true"></span></div>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <a class="btn" href="MafRole.dc.html" style="background: #D93636; color: #FFFFFF; box-shadow: 0 4px 0 #8F1F1F">Deal roles</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1380}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = { mafia: ['MAFIA', '#4A1C1F', '#FF9A9A'], town: ['TOWN', '#173452', '#8CC8FF'], solo: ['SOLO', '#2A2550', '#B8A8FF'] };
+    const I = {
+      crown: 'M3 18h18l-1.5-10-4.5 4-3-6-3 6-4.5-4zM3 20h18v2H3z',
+      hat: 'M7 4h10v9H7zM2 13h20v3H2z',
+      glass: 'M10 3a7 7 0 1 1 0 14 7 7 0 0 1 0-14zm0 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM15 15l2-2 5 5-2 2z',
+      cross: 'M9 3h6v6h6v6h-6v6H9v-6H3V9h6z',
+      moon: 'M14 3a9 9 0 1 0 7 13A7 7 0 0 1 14 3z',
+      heart: 'M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z',
+      shield: 'M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z',
+      person: 'M12 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zM4 21c.6-4.4 3.8-6.5 8-6.5s7.4 2.1 8 6.5z'
+    };
+    const r = (name, team, color, icon, n, desc) => ({ name, team: T[team][0], tbg: T[team][1], tfg: T[team][2], color, icon: I[icon], n, desc, op: n > 0 ? 1 : 0.55 });
+    const roles = [
+      r('Mafia Boss', 'mafia', '#8F1F1F', 'crown', 1, 'Leads the mafia vote. Checks if a player is the Detective.'),
+      r('Mafia', 'mafia', '#D93636', 'hat', 2, 'Wakes with the boss and chooses a victim.'),
+      r('Detective', 'town', '#1F74C7', 'glass', 1, 'Checks one player each night: mafia or not.'),
+      r('Doctor', 'town', '#2E8B57', 'cross', 1, 'Saves one player each night. Self once.'),
+      r('Maniac', 'solo', '#6A4FE8', 'moon', 1, 'Plays alone. Wins if last one standing.'),
+      r('Lover', 'town', '#C93A6B', 'heart', 0, 'Blocks one player’s night action.'),
+      r('Bodyguard', 'town', '#0C807A', 'shield', 0, 'Protects one player; dies in their place.'),
+      r('Civilian', 'town', '#5E6E74', 'person', 4, 'No night action. Finds the mafia by talking.')
+    ];
+    return { roles };
+  }
+}
+</script>
+</body>
+</html>

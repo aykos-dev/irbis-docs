@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Badges</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:12px;line-height:1.3;color:var(--muted);text-align:center}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tab{display:inline-flex;align-items:center;height:38px;padding:0 14px;border-radius:12px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--body);white-space:nowrap;flex:none;cursor:pointer}
+.tab.on{background:var(--tint);border-color:#1CB0A8;color:#0C807A}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 8px;padding:0 16px}
+.b{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative}
+.hex{width:84px;height:94px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;align-items:center;justify-content:center}
+.hexin{width:70px;height:78px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;align-items:center;justify-content:center;color:#FFFFFF}
+.n{font-weight:800;font-size:13px;line-height:1.2;color:var(--ink);text-align:center}
+.lt{position:absolute;top:-8px;z-index:1;padding:2px 8px;border-radius:8px;background:#FF9F1C;color:#3A2200;font-weight:900;font-size:10px;letter-spacing:.04em;white-space:nowrap}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 1400px; gap: 16px">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 16px 0">
+    <a href="Profile.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--muted)"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <div style="flex-grow: 1"><h1 style="font-weight: 900; font-size: 26px; color: var(--ink)">Badges</h1><p class="cap" style="font-size: 11px">23 of 64 collected</p></div>
+  </div>
+  <div style="display: flex; gap: 8px; padding: 0 16px; overflow: hidden">
+    <button class="tab on">All</button><button class="tab">Places</button><button class="tab">Regions</button><button class="tab">Seasons</button><button class="tab">Social</button>
+  </div>
+
+  <sc-for list="{{groups}}" as="g" hint-placeholder-count="5">
+    <section style="display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; justify-content: space-between; padding: 0 16px"><p class="cap">{{g.title}}</p><p class="cap" style="color: var(--ink)">{{g.count}}</p></div>
+      <div class="grid">
+        <sc-for list="{{g.items}}" as="b" hint-placeholder-count="3">
+          <div class="b">
+            <sc-if value="{{b.limited}}" hint-placeholder-val="{{ false }}"><span class="lt">LIMITED · 26 DAYS</span></sc-if>
+            <div style="filter: drop-shadow(0 4px 0 {{b.shadow}})">
+              <div class="hex" style="background: {{b.rim}}">
+                <div class="hexin" style="background: {{b.fill}}; color: {{b.ic}}">
+                  <svg viewBox="0 0 24 24" style="width: 34px; height: 34px"><path d="{{b.path}}" style="fill: currentColor"></path></svg>
+                </div>
+              </div>
+            </div>
+            <span class="n" style="opacity: {{b.op}}">{{b.name}}</span>
+            <span class="s">{{b.sub}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </sc-for>
+  <div style="flex-grow: 1"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = {
+      peak: 'M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z',
+      lake: 'M12 2.5c3.2 4.2 6.5 7.8 6.5 11.5a6.5 6.5 0 0 1-13 0c0-3.7 3.3-7.3 6.5-11.5z',
+      cave: 'M1.5 21c0-9 4.7-15 10.5-15s10.5 6 10.5 15h-6c0-4.3-2-7.5-4.5-7.5S7.5 16.7 7.5 21z',
+      camp: 'M12 3L1.5 21h21z',
+      trail: 'M8 10a3 4.5 0 1 0 .01 0zM16 2.5a3 4.5 0 1 0 .01 0z',
+      pin: 'M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z',
+      leaf: 'M12 2c1.5 2.5 1.8 4 1.5 5.5 1.6-1 3.4-1.2 5-.8-.5 1.8-1.6 3.1-3.2 3.8 1.8.4 3.2 1.6 3.9 3.3-1.9.6-3.6.3-5-.6.4 1.8-.1 3.6-1.2 5V22h-2v-3.8c-1.1-1.4-1.6-3.2-1.2-5-1.4.9-3.1 1.2-5 .6.7-1.7 2.1-2.9 3.9-3.3C6.1 9.8 5 8.5 4.5 6.7c1.6-.4 3.4-.2 5 .8C9.2 6 9.5 4.5 12 2z',
+      snow: 'M11 2h2v7.3l6.3-3.6 1 1.7L14 11l6.3 3.6-1 1.7L13 12.7V22h-2v-9.3l-6.3 3.6-1-1.7L10 11 3.7 7.4l1-1.7L11 9.3z',
+      users: 'M9 4.4a3.6 3.6 0 1 1 0 7.2 3.6 3.6 0 0 1 0-7.2zM2 20.5c.4-4.4 3.2-6.6 7-6.6s6.6 2.2 7 6.6zM17.5 6.3a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4zM17 13.6c2.9 0 4.6 2 5 5.4h-4.2z',
+      flag: 'M5 21V3h2v1h12l-3 5 3 5H7v7z',
+      shield: 'M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z',
+      lock: 'M7 10V8a5 5 0 0 1 10 0v2h1.5v12h-13V10zm2.5 0h5V8a2.5 2.5 0 0 0-5 0z'
+    };
+    const on = (name, sub, path, rim, fill, shadow, extra) => Object.assign({ name, sub, path, rim, fill, shadow, ic: '#FFFFFF', op: 1, limited: false }, extra || {});
+    const off = (name, sub) => ({ name, sub, path: P.lock, rim: '#D6D8D0', fill: '#E7E8E2', shadow: '#BFC2B8', ic: '#9AA3A6', op: 0.6, limited: false });
+    const groups = [
+      { title: 'Place types', count: '5 / 15', items: [
+        on('Peak Bagger II', '6 peaks', P.peak, '#0E8A83', '#1CB0A8', '#08635E'),
+        on('Lake Hopper', '3 lakes', P.lake, '#2F86D6', '#4CA9FF', '#1F5FA8'),
+        on('Cave Crawler', '1 cave', P.cave, '#5B42DB', '#7B61FF', '#4330B0'),
+        on('Camp Master', '4 nights', P.camp, '#2B8545', '#3DAA5C', '#1F6233'),
+        on('Trail Runner', '50 km', P.trail, '#CC7A00', '#FF9F1C', '#9A5B00'),
+        off('Peak Bagger III', '15 peaks')
+      ]},
+      { title: 'Regions', count: '3 / 12', items: [
+        on('Tashkent Region', '10 places', P.pin, '#0E8A83', '#1CB0A8', '#08635E'),
+        on('Ugam-Chatkal', 'Park explorer', P.pin, '#2B8545', '#3DAA5C', '#1F6233'),
+        on('Zaamin', 'Juniper forests', P.pin, '#8C5A33', '#B0784A', '#6B4426'),
+        off('Surkhandarya', 'South caves'),
+        off('Almaty Region', 'Kazakhstan'),
+        off('Issyk-Kul', 'Kyrgyzstan')
+      ]},
+      { title: 'Seasons', count: '2 / 8', items: [
+        on('Autumn Colors', '2 / 5 places', P.leaf, '#CC7A00', '#FF9F1C', '#9A5B00', { limited: true }),
+        on('Spring Tulips', 'April 2026', P.leaf, '#C93A6B', '#F06292', '#9A2A50'),
+        off('Winter Light', 'Opens Dec')
+      ]},
+      { title: 'Social & discoverer', count: '4 / 10', items: [
+        on('Trail Buddy', '5 group trips', P.users, '#5B42DB', '#7B61FF', '#4330B0'),
+        on('First Discoverer', '1 verified spot', P.flag, '#B88600', '#FFC800', '#8A6500', { ic: '#5C4000' }),
+        on('Safety Star', 'All check-outs on time', P.shield, '#B32424', '#FF4B4B', '#8F1F1F'),
+        off('Group Leader', 'Level 5'),
+        off('Verified Scout', 'Level 6'),
+        off('Legend Path', 'Level 7')
+      ]}
+    ];
+    return { groups };
+  }
+}
+</script>
+</body>
+</html>

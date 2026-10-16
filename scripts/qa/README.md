@@ -67,15 +67,15 @@ Retests: **Fixed** (expected holds and the bug's code path was exercised) · **N
 ```bash
 PY=~/.claude/venvs/qa/bin/python
 python3 scripts/qa/rec/session.py up --mock            # before the first recording
-$PY scripts/qa/case/runcase.py new spot-checkin --build "release apk, irbis-app a1b2c3d" --backend dev
-python3 scripts/qa/case/gencase.py check qa/spot-checkin/cases/Test_spot-checkin.md
-python3 scripts/qa/case/gencase.py new   qa/spot-checkin/cases/Test_spot-checkin.md TC-001
-$PY scripts/qa/case/runcase.py run    qa/spot-checkin/runs/2026-10-20_1400 TC-001
-$PY scripts/qa/case/runcase.py finish qa/spot-checkin/runs/2026-10-20_1400 qa/spot-checkin/runs/2026-10-20_1400/proof/_run/verdicts.json
-python3 scripts/qa/case/bugs.py next spot-checkin      # → D4
-$PY qa/spot-checkin/bugs/D4_…/others/repro.py
-python3 scripts/qa/rec/rec.py render qa/spot-checkin/bugs/D4_… --verdict fail --expected "…" --actual "…"
-python3 scripts/qa/rec/rec.py check  qa/spot-checkin/bugs/D4_…
+$PY scripts/qa/case/runcase.py new check-in --build "release apk, irbis-app a1b2c3d" --backend dev
+python3 scripts/qa/case/gencase.py check qa/check-in/cases/Test_check-in.md
+python3 scripts/qa/case/gencase.py new   qa/check-in/cases/Test_check-in.md TC-001
+$PY scripts/qa/case/runcase.py run    qa/check-in/runs/2026-10-20_1400 TC-001
+$PY scripts/qa/case/runcase.py finish qa/check-in/runs/2026-10-20_1400 qa/check-in/runs/2026-10-20_1400/proof/_run/verdicts.json
+python3 scripts/qa/case/bugs.py next check-in      # → D4
+$PY qa/check-in/bugs/D4_…/others/repro.py
+python3 scripts/qa/rec/rec.py render qa/check-in/bugs/D4_… --verdict fail --expected "…" --actual "…"
+python3 scripts/qa/rec/rec.py check  qa/check-in/bugs/D4_…
 python3 scripts/qa/case/bugs.py index
 python3 scripts/qa/rec/session.py down                 # restores the phone; prints the cleanup table
 ```

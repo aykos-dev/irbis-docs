@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Safety center</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--soft:#EEF0E8;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.h1{font-weight:900;font-size:28px;line-height:1.15;color:var(--ink)}
+.h3{font-weight:800;font-size:16px;line-height:1.25;color:var(--ink)}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--card);border:2px solid var(--line);border-bottom-width:4px;border-radius:20px}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.sec{padding:0 16px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:2px solid var(--line)}
+.ic{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.tg{width:52px;height:32px;border-radius:99px;position:relative;flex:none}
+.tg.on{background:#1CB0A8}.tg.off{background:#D6D8D0}
+.tg.on::after{content:'';position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF}
+.tg.off::after{content:'';position:absolute;left:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF}
+.bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:6px 16px;border:0;border-radius:14px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.bd{background:#D93636;color:#FFFFFF;box-shadow:0 4px 0 #A12121}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 1180px; gap: 20px">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 16px 16px 0">
+    <span class="ic" style="width: 52px; height: 52px; background: #D93636; color: #FFFFFF; border-radius: 16px; box-shadow: 0 4px 0 #A12121"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path><path d="M12 8v6M9 11h6" style="stroke: #FFFFFF; stroke-width: 2.6; stroke-linecap: round"></path></svg></span>
+    <div><h1 class="h1">Safety center</h1><p class="s">Everything that brings you home</p></div>
+  </div>
+
+  <section class="sec">
+    <p class="cap">Active trip plan</p>
+    <a class="card" href="ActiveTrip.dc.html" style="padding: 14px; display: flex; flex-direction: column; gap: 10px; border-color: #1CB0A8; text-decoration: none">
+      <div style="display: flex; align-items: center; justify-content: space-between">
+        <span style="display: inline-flex; align-items: center; gap: 6px; font-weight: 900; font-size: 13px; color: #1B6B3E"><span style="width: 10px; height: 10px; border-radius: 50%; background: #2E8B57"></span>LIVE · Shared with Malika</span>
+        <span class="s">Back by 17:30</span>
+      </div>
+      <p class="h3">Upper Lake ascent · Urungach Lakes</p>
+      <div class="bar"><div style="width: 52%; height: 100%; border-radius: 99px; background: #1CB0A8"></div></div>
+      <p class="s">4.6 of 9.1 km · auto-alert at 18:30 if not checked out</p>
+    </a>
+  </section>
+
+  <section class="sec">
+    <p class="cap">Emergency contacts</p>
+    <div class="card" style="padding: 0 14px">
+      <div class="row"><span class="ic" style="background: #FFE9D9; color: #9A4510; border-radius: 50%; font-weight: 900; font-size: 17px">M</span><div style="flex-grow: 1"><p class="h3">Malika · sister</p><p class="s">+998 •• ••• •• 41 · Primary</p></div><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: var(--muted)"><path class="st" d="M9 6l6 6-6 6"></path></svg></div>
+      <div class="row"><span class="ic" style="background: #E3ECFB; color: #2A4F9A; border-radius: 50%; font-weight: 900; font-size: 17px">J</span><div style="flex-grow: 1"><p class="h3">Jasur · friend</p><p class="s">+998 •• ••• •• 07</p></div><svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: var(--muted)"><path class="st" d="M9 6l6 6-6 6"></path></svg></div>
+      <button class="row" style="border: 0; background: transparent; width: 100%; cursor: pointer; font-family: 'Nunito', sans-serif"><span class="ic" style="border: 2px dashed var(--line); color: #0C807A; border-radius: 50%"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M12 5v14M5 12h14"></path></svg></span><span class="h3" style="color: #0C807A">Add contact</span></button>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="cap">SOS settings</p>
+    <div class="card" style="padding: 0 14px">
+      <div class="row"><span class="ic" style="background: #FFE1E1; color: #B32424"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M12 7v5l3 2"></path></svg></span><div style="flex-grow: 1"><p class="h3">Hold to trigger</p><p class="s">3 seconds, prevents pocket alerts</p></div><span class="tg on" role="switch" aria-checked="true"></span></div>
+      <div class="row"><span class="ic" style="background: #FFE1E1; color: #B32424"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"></path></svg></span><div style="flex-grow: 1"><p class="h3">Send location by SMS</p><p class="s">Works without mobile data</p></div><span class="tg on" role="switch" aria-checked="true"></span></div>
+      <div class="row" style="border-bottom: 0"><span class="ic" style="background: #FFE1E1; color: #B32424"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><div style="flex-grow: 1"><p class="h3">Also call emergency services</p><p class="s">Dials 112 after alerting contacts</p></div><span class="tg off" role="switch" aria-checked="false"></span></div>
+    </div>
+    <button class="btn bd" style="width: 100%">Test SOS (no alert sent)</button>
+  </section>
+
+  <section class="sec">
+    <div style="display: flex; justify-content: space-between; align-items: baseline"><p class="cap">Offline maps</p><p class="s">540 MB of 2 GB</p></div>
+    <div class="card" style="padding: 0 14px">
+      <div class="row"><span class="ic" style="background: #E3F7F5; color: #0C807A"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M3 6.5l6-3 6 3 6-3V18l-6 3-6-3-6 3zM9 3.5V18M15 6.5V21"></path></svg></span><div style="flex-grow: 1"><p class="h3">Ugam-Chatkal</p><p class="s">312 MB · updated 2 days ago</p></div><svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #2E8B57"><circle class="fl" cx="12" cy="12" r="10"></circle><path d="M7.5 12.5l3 3 6-6.5" style="fill: none; stroke: #FFFFFF; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round"></path></svg></div>
+      <div class="row"><span class="ic" style="background: #E3F7F5; color: #0C807A"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M3 6.5l6-3 6 3 6-3V18l-6 3-6-3-6 3zM9 3.5V18M15 6.5V21"></path></svg></span><div style="flex-grow: 1"><p class="h3">Chimgan &amp; Beldersay</p><p class="s">180 MB · update available</p></div><span style="display: inline-flex; align-items: center; height: 30px; padding: 0 10px; border-radius: 99px; background: #FFF1BF; color: #6E4E00; font-weight: 800; font-size: 12px">Update</span></div>
+      <div class="row" style="border-bottom: 0"><span class="ic" style="background: var(--soft); color: var(--muted)"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M12 3v12M7 10l5 5 5-5M4 20h16"></path></svg></span><div style="flex-grow: 1"><p class="h3">Zaamin National Park</p><p class="s">148 MB</p></div><span style="font-weight: 900; font-size: 13px; color: #0C807A">Download</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <a class="card" href="LessonsHub.dc.html" style="padding: 14px; display: flex; gap: 12px; align-items: center; text-decoration: none; background: #FFF1DA; border-color: #FFD39A">
+      <img src="/_blob/9ebec15f083abbb36876b1b8a577ea1b" alt="" style="width: 64px; height: 64px">
+      <div style="flex-grow: 1"><p class="h3">Safety lessons</p><p class="s" style="color: #5C3500">First aid tier · 4 of 6 done. Two more unlock Ridge Walker.</p></div>
+      <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #8A4B00"><path class="st" d="M9 6l6 6-6 6"></path></svg>
+    </a>
+  </section>
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="profile" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

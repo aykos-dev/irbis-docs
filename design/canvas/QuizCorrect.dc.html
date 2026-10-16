@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Micro-lesson — correct</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:8px 20px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;line-height:1.15;letter-spacing:.05em;text-transform:uppercase;text-align:center;cursor:pointer;width:100%}
+.opt{display:flex;align-items:center;gap:12px;width:100%;padding:14px;border-radius:18px;border-style:solid;border-width:2px 2px 4px;font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;line-height:1.3;text-align:left;cursor:pointer}
+.key{width:30px;height:30px;border-radius:9px;border:2px solid;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;flex:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column">
+  <div style="display: flex; align-items: center; gap: 12px; padding: 16px 16px 0">
+    <a href="LessonsHub.dc.html" aria-label="Close lesson" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M6 6l12 12M18 6L6 18" style="stroke-width: 3"></path></svg></a>
+    <div role="progressbar" aria-valuenow="6" aria-valuemax="10" aria-label="Question 6 of 10" style="flex-grow: 1; height: 16px; border-radius: 99px; background: #E5E5DC; overflow: hidden"><div style="width: 60%; height: 100%; border-radius: 99px; background: #1CB0A8; box-shadow: inset 0 -4px 0 rgba(0,0,0,.12)"></div></div>
+    <span aria-label="{{hearts}} hearts left" style="display: flex; align-items: center; gap: 4px; font-weight: 900; font-size: 17px; color: #1F2A2E">
+      <span style="position: relative; width: 26px; height: 26px; display: block">
+        <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; color: #FF4B4B"><path class="fl" d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"></path></svg>
+        <sc-if value="{{broken}}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" style="position: absolute; inset: 0; width: 26px; height: 26px"><path d="M12 7.5l-1.5 4 3 2-1.5 4" style="fill: none; stroke: #FFFFFF; stroke-width: 2; stroke-linejoin: round"></path></svg></sc-if>
+      </span>{{hearts}}
+    </span>
+  </div>
+
+  <div style="padding: 22px 20px 0; display: flex; flex-direction: column; gap: 14px">
+    <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; border-radius: 99px; background: #FFE1E1; color: #B32424; font-weight: 900; font-size: 13px">
+      <svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="fl" d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"></path></svg>First aid · Altitude
+    </span>
+    <h1 style="font-weight: 900; font-size: 24px; line-height: 1.25; color: #1F2A2E">What should you do if you notice signs of altitude sickness?</h1>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <img src="{{companion}}" alt="Your fox companion" style="width: 72px; height: 72px; flex: none">
+      <div style="padding: 10px 14px; border-radius: 16px; border: 2px solid #E5E5DC; background: #FFFFFF; font-weight: 800; font-size: 15px; color: #1F2A2E">Headache, nausea, dizziness… think safety first!</div>
+    </div>
+  </div>
+
+  <div role="radiogroup" aria-label="Answers" style="padding: 18px 20px 0; display: flex; flex-direction: column; gap: 10px">
+    <sc-for list="{{options}}" as="o" hint-placeholder-count="4">
+      <button class="opt" role="radio" aria-checked="{{o.sel}}" onClick="{{o.pick}}" style="background: {{o.bg}}; border-color: {{o.bd}}; color: {{o.fg}}">
+        <span class="key" style="border-color: {{o.bd}}">{{o.key}}</span><span>{{o.text}}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+
+  <sc-if value="{{showCheck}}" hint-placeholder-val="{{ true }}">
+    <div style="padding: 16px 20px 28px; border-top: 2px solid #E5E5DC">
+      <button class="btn" onClick="{{check}}" style="background: {{checkBg}}; color: {{checkFg}}; box-shadow: 0 4px 0 {{checkSh}}">Check</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{showRight}}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 18px 20px 28px; background: #DFF6E7; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 44px; height: 44px; border-radius: 50%; background: #237A4A; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex: none"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.4"></path></svg></span>
+        <p style="font-weight: 900; font-size: 22px; color: #154F2E">Nicely done! +10 XP</p>
+      </div>
+      <p style="font-weight: 700; font-size: 15px; line-height: 1.45; color: #154F2E">Stop climbing and rest. If symptoms don't improve within a few hours — or get worse — descend at least 300–500 m. Never go higher with symptoms.</p>
+      <button class="btn" onClick="{{reset}}" style="background: #237A4A; color: #FFFFFF; box-shadow: 0 4px 0 #165434">Continue</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{showWrong}}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 18px 20px 28px; background: #FFE1E1; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <span style="width: 44px; height: 44px; border-radius: 50%; background: #D93636; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex: none"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M7 7l10 10M17 7L7 17" style="stroke-width: 3.4"></path></svg></span>
+        <p style="font-weight: 900; font-size: 22px; color: #8F1F1F">Not quite — you lost a heart</p>
+      </div>
+      <p style="font-weight: 800; font-size: 15px; color: #8F1F1F">Correct answer:</p>
+      <p style="font-weight: 700; font-size: 15px; line-height: 1.45; color: #6B1717; margin-top: -8px">Stop ascending and rest; descend if symptoms persist. Rushing higher makes altitude sickness worse.</p>
+      <button class="btn" onClick="{{reset}}" style="background: #D93636; color: #FFFFFF; box-shadow: 0 4px 0 #A12121">Got it</button>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"mode":{"editor":"enum","options":["select","correct","wrong"],"default":"correct"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const st = this.state || {};
+    const m = this.props.mode ?? 'correct';
+    const picked = st.picked !== undefined ? st.picked : (m === 'wrong' ? 0 : 1);
+    const checked = st.checked !== undefined ? st.checked : m !== 'select';
+    const answers = [
+      'Push on to the summit quickly before it gets worse',
+      'Stop ascending, rest, and descend if symptoms persist',
+      'Drink strong coffee to stay alert',
+      'Take a nap, then continue climbing at night'
+    ];
+    const correct = 1;
+    const options = answers.map((text, i) => {
+      let bg = '#FFFFFF', bd = '#E5E5DC', fg = '#1F2A2E';
+      if (!checked && picked === i) { bg = '#E3F7F5'; bd = '#1CB0A8'; fg = '#0B5B57'; }
+      if (checked && i === correct) { bg = '#DFF6E7'; bd = '#2E8B57'; fg = '#154F2E'; }
+      if (checked && picked === i && i !== correct) { bg = '#FFE1E1'; bd = '#D93636'; fg = '#8F1F1F'; }
+      return { text, key: String.fromCharCode(65 + i), bg, bd, fg, sel: picked === i ? 'true' : 'false', pick: () => { if (!checked) this.setState({ picked: i, checked: false }); } };
+    });
+    const right = checked && picked === correct;
+    const wrong = checked && picked !== correct;
+    const hasPick = picked !== null && picked !== undefined;
+    return {
+      options,
+      hearts: wrong ? 4 : 5,
+      broken: wrong,
+      companion: wrong ? '/_blob/d1b0d6198561f208461b0f6704094021' : (right ? '/_blob/462ee3b41d848c53095996e3c6c9cd45' : '/_blob/d1b0d6198561f208461b0f6704094021'),
+      showCheck: !checked,
+      showRight: right,
+      showWrong: wrong,
+      checkBg: hasPick ? '#0C807A' : '#E5E5DC',
+      checkFg: hasPick ? '#FFFFFF' : '#6B787D',
+      checkSh: hasPick ? '#075B56' : '#E5E5DC',
+      check: () => { if (hasPick) this.setState({ picked, checked: true }); },
+      reset: () => this.setState({ picked: null, checked: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>This Week's Path</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--soft:#EEF0E8;--tint:#E3F7F5;--gold:#FFF6D6;--goldt:#7A5800;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.dark{--bg:#131D22;--card:#1C2A30;--line:#2B3B42;--ink:#F1F5F4;--body:#D5DEDD;--muted:#9AA8AD;--soft:#22323A;--tint:#123B3A;--gold:#3D3310;--goldt:#FFD95A}
+p,h1,h2,h3{margin:0}
+.h2{font-weight:900;font-size:22px;line-height:1.2;color:var(--ink)}
+.h3{font-weight:800;font-size:16px;line-height:1.25;color:var(--ink)}
+.t{font-weight:700;font-size:15px;line-height:1.45}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--card);border:2px solid var(--line);border-bottom-width:4px;border-radius:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:6px 18px;border:0;border-radius:14px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;line-height:1.15;letter-spacing:.05em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.bw{background:var(--card);color:#0C807A;border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.dark .bw{color:#5FD6CE}
+.chip{display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 9px;border-radius:999px;font-weight:800;font-size:12px;white-space:nowrap}
+.go{background:#DFF6E7;color:#1B6B3E}.ca{background:#FFF1BF;color:#6E4E00}.no{background:#FFE1E1;color:#B32424}.lk{background:#ECEEEF;color:#56646A}.gd{background:var(--gold);color:var(--goldt)}
+.dark .go{background:#173F2A;color:#7BE0A2}.dark .ca{background:#463A10;color:#FFD95A}.dark .no{background:#4A1C1F;color:#FF9A9A}.dark .lk{background:#2B3940;color:#B8C4C8}
+.st{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.stat{display:flex;align-items:center;gap:4px;font-weight:900;font-size:16px;color:var(--ink);position:relative}
+.bar{height:12px;border-radius:99px;background:var(--line);overflow:hidden}
+.fill{height:100%;border-radius:99px}
+.ring{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+.core{border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FFFFFF;box-shadow:0 6px 0 rgba(0,0,0,.2)}
+.badge{position:absolute;right:-2px;bottom:-2px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:3px solid var(--bg)}
+.lab{position:absolute;display:flex;flex-direction:column;gap:5px;width:150px}
+.day{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 4px;border-radius:14px;background:var(--soft)}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 1640px">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; background: var(--bg); border-bottom: 2px solid var(--line)">
+    <a href="Level.dc.html" aria-label="Level 3 Pathfinder — view progress" style="width: 44px; height: 44px; border-radius: 50%; background: #FFE9D9; border: 3px solid #F2802E; display: flex; align-items: center; justify-content: center; overflow: hidden"><img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="" style="width: 44px; height: 44px; margin-top: 6px"></a>
+    <div class="stat" aria-label="12-day lesson streak, protected by weather shield">
+      <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; color: #FF9F1C"><path class="fl" d="M12 1.8c1.4 3.6 6 6 6 11.7A6 6 0 0 1 6 13.5c0-2.8 1.6-4.6 2.8-5.6.2 1.8 1 2.9 2.2 3.2C11.7 8.4 10.8 5 12 1.8z"></path></svg>12
+      <span style="position: absolute; left: 14px; top: -6px; width: 18px; height: 18px; border-radius: 50%; background: #1F74C7; border: 2px solid var(--bg); display: flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" style="width: 11px; height: 11px; color: #FFFFFF"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg></span>
+    </div>
+    <div class="stat" aria-label="4-week explorer streak">
+      <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #8C5A33"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path><rect class="fl" x="4" y="19.2" width="16.5" height="2.6" rx="1.3"></rect></svg>4
+    </div>
+    <div class="stat" aria-label="1,240 XP">
+      <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #FFC800"><path class="fl" d="M13.5 1.5L4 14h7l-1.5 8.5L20 9.5h-7z"></path></svg>1,240
+    </div>
+    <div class="stat" aria-label="380 gems">
+      <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #4CA9FF"><path class="fl" d="M6.5 3h11l4 6-10 12.5L1.5 9z"></path><path d="M6.5 3L9 9l3 12.5L15 9l2.5-6" style="fill: none; stroke: #FFFFFF; stroke-width: 1.3; opacity: .6"></path></svg>380
+    </div>
+  </header>
+
+  <section style="padding: 16px 16px 0">
+    <div class="card" style="padding: 16px; display: flex; flex-direction: column; gap: 14px">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 3px">
+          <h1 class="h2">This Week's Path</h1>
+          <p class="s">Oct 5–11 · built for Pathfinder, autumn &amp; this forecast</p>
+        </div>
+        <button aria-label="How the path is built" style="width: 40px; height: 40px; border-radius: 12px; border: 2px solid var(--line); background: var(--card); color: var(--muted); display: flex; align-items: center; justify-content: center; flex: none; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M12 11v6M12 7.5v.3"></path></svg></button>
+      </div>
+      <div style="display: flex; gap: 8px" aria-label="Weekend forecast">
+        <div class="day"><span class="cap" style="font-size: 11px">Fri</span><svg viewBox="0 0 24 24" style="width: 30px; height: 30px; color: #FFB800"><circle class="fl" cx="12" cy="12" r="4.5"></circle><path class="st" d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" style="stroke-width: 2"></path></svg><span class="h3">22°</span><span class="s" style="font-size: 12px">Sunny</span></div>
+        <div class="day" style="background: #FFE1E1"><span class="cap" style="font-size: 11px; color: #B32424">Sat</span><svg viewBox="0 0 24 24" style="width: 30px; height: 30px"><path d="M7 16h10a4 4 0 0 0 .5-8 5.5 5.5 0 0 0-10.6 1.5A3.3 3.3 0 0 0 7 16z" style="fill: #7D8B90"></path><path d="M12.5 13.5l-2.2 4.2h2.4l-1 4.3 4-5.6h-2.4l1.1-2.9z" style="fill: #FFB800"></path></svg><span class="h3" style="color: #1F2A2E">14°</span><span class="s" style="font-size: 12px; color: #B32424">Storm</span></div>
+        <div class="day"><span class="cap" style="font-size: 11px">Sun</span><svg viewBox="0 0 24 24" style="width: 30px; height: 30px"><circle cx="9" cy="9" r="4" style="fill: #FFB800"></circle><path d="M8 19h9a3.5 3.5 0 0 0 .4-7 4.8 4.8 0 0 0-9.2 1.3A2.9 2.9 0 0 0 8 19z" style="fill: #B9C3CC"></path></svg><span class="h3">19°</span><span class="s" style="font-size: 12px">Wind 35</span></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 16px; background: var(--gold)">
+        <div style="width: 44px; height: 44px; border-radius: 14px; background: #FF9F1C; box-shadow: 0 3px 0 #CC7A00; display: flex; align-items: center; justify-content: center; flex: none"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px; color: #FFFFFF"><path class="fl" d="M12 2c1.5 2.5 1.8 4 1.5 5.5 1.6-1 3.4-1.2 5-.8-.5 1.8-1.6 3.1-3.2 3.8 1.8.4 3.2 1.6 3.9 3.3-1.9.6-3.6.3-5-.6.4 1.8-.1 3.6-1.2 5V22h-2v-3.8c-1.1-1.4-1.6-3.2-1.2-5-1.4.9-3.1 1.2-5 .6.7-1.7 2.1-2.9 3.9-3.3C6.1 9.8 5 8.5 4.5 6.7c1.6-.4 3.4-.2 5 .8C9.2 6 9.5 4.5 12 2z"></path></svg></div>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline"><span class="h3" style="color: var(--goldt)">Autumn Colors</span><span class="s" style="color: var(--goldt)">2 / 5 places</span></div>
+          <div class="bar" style="background: rgba(204,122,0,.18)"><div class="fill" style="width: 40%; background: #FF9F1C"></div></div>
+        </div>
+        <span class="chip" style="background: #FF9F1C; color: #3A2200">26 days</span>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Path" style="position: relative; height: 1140px; margin-top: 8px">
+    <svg viewBox="0 0 390 1140" style="position: absolute; inset: 0; width: 390px; height: 1140px"><path d="M150 50 C150 110 230 100 230 160 C230 220 270 230 270 290 C270 360 190 350 190 420 C190 480 110 470 110 540 C110 640 200 760 200 840 C200 900 280 900 280 960 C280 1020 190 1020 190 1080" style="fill: none; stroke: var(--line); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 2 18"></path></svg>
+
+    <div class="ring" style="left: 112px; top: 12px; width: 76px; height: 76px">
+      <div class="core" style="width: 70px; height: 70px; background: #FFC800; color: #7A5800; box-shadow: 0 6px 0 #D9A500"><svg viewBox="0 0 24 24" style="width: 34px; height: 34px"><path class="fl" d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z"></path></svg></div>
+    </div>
+    <div class="lab" style="left: 200px; top: 26px"><span class="h3">Gulkam Canyon</span><span class="chip gd" style="align-self: flex-start">Done · +40 XP</span></div>
+
+    <div class="ring" style="left: 192px; top: 122px; width: 76px; height: 76px">
+      <div class="core" style="width: 70px; height: 70px; background: #FFC800; color: #7A5800; box-shadow: 0 6px 0 #D9A500"><svg viewBox="0 0 24 24" style="width: 34px; height: 34px"><path class="fl" d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z"></path></svg></div>
+    </div>
+    <div class="lab" style="left: 30px; top: 136px; align-items: flex-end; text-align: right"><span class="h3">Kumbel Peak</span><span class="chip gd">Done · +60 XP</span></div>
+
+    <div style="position: absolute; left: 218px; top: 200px; display: flex; flex-direction: column; align-items: center">
+      <span style="padding: 8px 14px; border-radius: 12px; background: var(--card); border: 2px solid var(--line); font-weight: 900; font-size: 15px; letter-spacing: .06em; color: #0C807A">START</span>
+      <svg viewBox="0 0 20 10" style="width: 20px; height: 10px; margin-top: -2px"><path d="M0 0 L10 10 L20 0" style="fill: var(--card); stroke: var(--line); stroke-width: 2"></path></svg>
+    </div>
+    <a href="Place.dc.html" aria-label="Urungach Lakes — Go" class="ring" style="left: 218px; top: 246px; width: 104px; height: 104px; border: 7px solid #3DAA5C">
+      <div class="core" style="width: 78px; height: 78px; background: #4CA9FF; box-shadow: 0 6px 0 #2F86D6"><svg viewBox="0 0 24 24" style="width: 38px; height: 38px"><path class="fl" d="M12 2.5c3.2 4.2 6.5 7.8 6.5 11.5a6.5 6.5 0 0 1-13 0c0-3.7 3.3-7.3 6.5-11.5z"></path></svg></div>
+      <span class="badge" style="background: #3DAA5C; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.4"></path></svg></span>
+    </a>
+    <div class="lab" style="left: 52px; top: 270px; align-items: flex-end; text-align: right"><span class="h3">Urungach Lakes</span><span class="chip go"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Go · Sat</span></div>
+
+    <div class="ring" style="left: 142px; top: 372px; width: 96px; height: 96px; border: 7px solid #FFC800">
+      <div class="core" style="width: 72px; height: 72px; background: #FF9F1C; box-shadow: 0 6px 0 #CC7A00"><svg viewBox="0 0 24 24" style="width: 34px; height: 34px"><ellipse class="fl" cx="8" cy="14.5" rx="3" ry="4.5"></ellipse><ellipse class="fl" cx="16" cy="7" rx="3" ry="4.5"></ellipse><circle class="fl" cx="8" cy="21" r="1.6"></circle><circle class="fl" cx="16" cy="13.5" r="1.6"></circle></svg></div>
+      <span class="badge" style="background: #FFC800; color: #5C4000"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M12 6v7M12 17.5v.3" style="stroke-width: 3.4"></path></svg></span>
+    </div>
+    <div class="lab" style="left: 250px; top: 384px; width: 132px"><span class="h3">Paltau Waterfall</span><span class="chip ca" style="align-self: flex-start"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M3 9h11a3 3 0 1 0-3-3M3 14h15a3 3 0 1 1-3 3"></path></svg>Caution · wind</span></div>
+
+    <div class="ring" style="left: 62px; top: 492px; width: 96px; height: 96px; border: 7px solid #FF4B4B">
+      <div class="core" style="width: 72px; height: 72px; background: #1CB0A8; box-shadow: 0 6px 0 #0E8A83; opacity: .55"><svg viewBox="0 0 24 24" style="width: 34px; height: 34px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></div>
+      <span class="badge" style="background: #D93636; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M7 7l10 10M17 7L7 17" style="stroke-width: 3.4"></path></svg></span>
+    </div>
+    <div class="lab" style="left: 168px; top: 470px; width: 120px"><span class="h3">Big Chimgan</span><span class="chip no" style="align-self: flex-start"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M8.5 8.5l7 7M15.5 8.5l-7 7"></path></svg>Not now</span><span class="s">Storm Saturday</span></div>
+    <img src="/_blob/9dde5ea7213eff4c8d7f94a43a97ef98" alt="Worried Irbis under an umbrella" style="position: absolute; left: 282px; top: 462px; width: 100px; height: 100px">
+
+    <div class="card" style="position: absolute; left: 16px; right: 16px; top: 622px; padding: 14px; display: flex; flex-direction: column; gap: 12px; border-color: #4CA9FF">
+      <div style="display: flex; align-items: center; gap: 8px">
+        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #1F74C7"><path class="st" d="M4 8h13l-3-3M20 16H7l3 3"></path></svg>
+        <span class="cap" style="color: #1F74C7">Smart swap</span>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center">
+        <img src="/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57" alt="" style="width: 72px; height: 72px; border-radius: 16px; object-fit: cover; flex: none">
+        <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+          <p class="h3">Try Beldersay Ridge instead</p>
+          <p class="s">Similar climb (+1,100 m), 40 km closer, clear skies on Saturday.</p>
+          <span class="chip go" style="align-self: flex-start"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Go</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px">
+        <button class="btn bw" style="flex: 1">Keep plan</button>
+        <button class="btn bp" style="flex: 1.4">Swap place</button>
+      </div>
+    </div>
+
+    <div class="ring" style="left: 152px; top: 792px; width: 96px; height: 96px; border: 7px solid #3DAA5C">
+      <div class="core" style="width: 72px; height: 72px; background: #3DAA5C; box-shadow: 0 6px 0 #2B8545"><svg viewBox="0 0 24 24" style="width: 34px; height: 34px"><path class="fl" d="M12 3L1.5 21h21z"></path><path d="M12 12l3.6 9H8.4z" style="fill: rgba(0,0,0,.3)"></path></svg></div>
+      <span class="badge" style="background: #3DAA5C; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.4"></path></svg></span>
+    </div>
+    <div class="lab" style="left: 10px; top: 812px; width: 132px; align-items: flex-end; text-align: right"><span class="h3">Charvak Shore Camp</span><span class="chip go"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Go · Sun</span></div>
+
+    <div class="ring" style="left: 232px; top: 912px; width: 96px; height: 96px; border: 6px dashed #AEB8BC">
+      <div class="core" style="width: 72px; height: 72px; background: #C9D1D4; color: #56646A; box-shadow: 0 6px 0 #AEB8BC"><svg viewBox="0 0 24 24" style="width: 32px; height: 32px"><rect class="st" x="5" y="11" width="14" height="10" rx="2.5"></rect><path class="st" d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"></path></svg></div>
+    </div>
+    <div class="lab" style="left: 70px; top: 930px; width: 152px; align-items: flex-end; text-align: right"><span class="h3">Pulatkhan Plateau</span><span class="chip lk"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><rect class="st" x="5" y="11" width="14" height="10" rx="2.5"></rect><path class="st" d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"></path></svg>Opens in May</span></div>
+
+    <div style="position: absolute; left: 146px; top: 1040px; width: 88px; height: 76px; border-radius: 20px; background: #FF9F1C; box-shadow: 0 6px 0 #CC7A00; display: flex; align-items: center; justify-content: center">
+      <svg viewBox="0 0 48 40" style="width: 54px; height: 46px"><rect x="4" y="14" width="40" height="24" rx="5" style="fill: #8C5A33"></rect><path d="M4 18 Q4 4 24 4 Q44 4 44 18Z" style="fill: #A86B3C"></path><rect x="4" y="16" width="40" height="5" style="fill: #FFC800"></rect><rect x="20" y="14" width="8" height="12" rx="2" style="fill: #FFC800"></rect></svg>
+    </div>
+    <div class="lab" style="left: 246px; top: 1052px; width: 136px"><span class="h3">Weekly chest</span><span class="s">Check in at 3 places</span></div>
+  </section>
+
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="path" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1640}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

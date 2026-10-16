@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Find buddies</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px}
+.f{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:12px;border:2px solid #E5E5DC;border-bottom-width:4px;background:#FFFFFF;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:#3C4A4F;white-space:nowrap;cursor:pointer}
+.f.on{border-color:#1CB0A8;background:#E3F7F5;color:#0B5B57}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:8px;background:#F2F3EE;font-weight:800;font-size:12px;color:#3C4A4F}
+.inv{min-height:42px;padding:0 16px;border-radius:12px;border:0;background:#0C807A;color:#FFFFFF;box-shadow:0 3px 0 #075B56;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;flex:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1200px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 16px">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 16px 0">
+    <a href="Groups.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <h1 style="font-weight: 900; font-size: 26px; color: #1F2A2E">Find buddies</h1>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px">
+    <p class="cap">Level</p>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap">
+      <button class="f">Any</button>
+      <button class="f on" aria-pressed="true"><img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="" style="width: 24px; height: 24px">L3–L5</button>
+      <button class="f">Mentors (L5+)</button>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+      <button class="f on" style="justify-content: space-between"><span style="display: flex; align-items: center; gap: 6px"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><rect class="st" x="3" y="5" width="18" height="16" rx="3"></rect><path class="st" d="M3 10h18M8 3v4M16 3v4"></path></svg>This weekend</span><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M6 9l6 6 6-6"></path></svg></button>
+      <button class="f" style="justify-content: space-between"><span style="display: flex; align-items: center; gap: 6px"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="fl" d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"></path></svg>Tashkent region</span><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M6 9l6 6 6-6"></path></svg></button>
+    </div>
+    <div style="display: flex; gap: 8px">
+      <button class="f on" aria-label="Peaks" style="padding: 0 10px"><span style="width: 22px; height: 22px; border-radius: 50%; background: #1CB0A8; display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 13px; height: 13px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></span>Peaks</button>
+      <button class="f" aria-label="Lakes" style="padding: 0 10px"><span style="width: 22px; height: 22px; border-radius: 50%; background: #4CA9FF; display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 13px; height: 13px"><path class="fl" d="M12 2.5c3.2 4.2 6.5 7.8 6.5 11.5a6.5 6.5 0 0 1-13 0c0-3.7 3.3-7.3 6.5-11.5z"></path></svg></span>Lakes</button>
+      <button class="f" aria-label="Caves" style="padding: 0 10px"><span style="width: 22px; height: 22px; border-radius: 50%; background: #7B61FF; display: flex; align-items: center; justify-content: center; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 13px; height: 13px"><path class="fl" d="M1.5 21c0-9 4.7-15 10.5-15s10.5 6 10.5 15h-6c0-4.3-2-7.5-4.5-7.5S7.5 16.7 7.5 21z"></path></svg></span>Caves</button>
+    </div>
+  </div>
+
+  <p class="cap" style="padding: 0 16px">18 explorers match</p>
+  <div style="display: flex; flex-direction: column; gap: 12px; padding: 0 16px">
+    <sc-for list="{{people}}" as="p" hint-placeholder-count="4">
+      <div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <div style="position: relative; width: 60px; height: 60px; flex: none">
+            <div style="width: 60px; height: 60px; border-radius: 50%; background: {{p.tint}}; border: 3px solid {{p.color}}; overflow: hidden; display: flex; align-items: center; justify-content: center"><img src="{{p.img}}" alt="{{p.animal}}" style="width: 64px; height: 64px; margin-top: 12px"></div>
+            <span style="position: absolute; right: -4px; bottom: -4px; width: 24px; height: 24px; border-radius: 8px; background: {{p.color}}; color: #FFFFFF; font-weight: 900; font-size: 12px; display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF">{{p.lvl}}</span>
+          </div>
+          <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+            <p style="font-weight: 900; font-size: 17px; color: #1F2A2E">{{p.name}}</p>
+            <p class="s">{{p.levelName}} · {{p.where}}</p>
+            <p class="s" style="color: #1F2A2E">★ {{p.rating}} <span style="color: #5E6E74">· {{p.trips}} trips together</span></p>
+          </div>
+          <button class="inv">Invite</button>
+        </div>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap">
+          <sc-if value="{{p.leader}}" hint-placeholder-val="{{ false }}"><span class="tag" style="background: #0C807A; color: #FFFFFF; gap: 4px"><svg viewBox="0 0 24 24" style="width: 13px; height: 13px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg>Verified leader</span></sc-if>
+          <sc-for list="{{p.tags}}" as="t" hint-placeholder-count="2"><span class="tag">{{t}}</span></sc-for>
+          <span class="tag" style="background: #DFF6E7; color: #1B6B3E">{{p.free}}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="groups" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const people = [
+      { name: 'Aziz M.', lvl: 5, levelName: 'Mountain Guardian', animal: 'Brown bear', img: '/_blob/ffe227711df8d0445b9dfe0a9534a6f4', color: '#4C7BD9', tint: '#E3ECFB', where: 'Yunusobod', rating: '4.9', trips: 41, leader: true, tags: ['Peaks', 'Ridges'], free: 'Free Sat' },
+      { name: 'Dilnoza R.', lvl: 4, levelName: 'Ridge Walker', animal: 'Ibex', img: '/_blob/dba7b9623f9af9c690bf93a6ddc5f60b', color: '#1CB0A8', tint: '#DDF5F3', where: 'Chilonzor', rating: '4.8', trips: 23, leader: false, tags: ['Lakes', 'Photography'], free: 'Free Sat–Sun' },
+      { name: 'Kamila S.', lvl: 3, levelName: 'Pathfinder', animal: 'Fox', img: '/_blob/d1b0d6198561f208461b0f6704094021', color: '#F2802E', tint: '#FFE9D9', where: 'Mirzo Ulugbek', rating: '4.9', trips: 12, leader: false, tags: ['Peaks', 'Camping'], free: 'Free Sun' },
+      { name: 'Bekzod T.', lvl: 5, levelName: 'Mountain Guardian', animal: 'Brown bear', img: '/_blob/ffe227711df8d0445b9dfe0a9534a6f4', color: '#4C7BD9', tint: '#E3ECFB', where: 'Chirchiq', rating: '5.0', trips: 58, leader: true, tags: ['Caves', 'First aid'], free: 'Free Sat' }
+    ];
+    return { people };
+  }
+}
+</script>
+</body>
+</html>

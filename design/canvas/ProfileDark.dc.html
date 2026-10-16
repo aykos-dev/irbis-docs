@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Profile — dark</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--soft:#EEF0E8;--tint:#E3F7F5;--teal:#0C807A;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.dark{--bg:#131D22;--card:#1C2A30;--line:#2B3B42;--ink:#F1F5F4;--body:#D5DEDD;--muted:#9AA8AD;--soft:#22323A;--tint:#123B3A;--teal:#5FD6CE}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--card);border:2px solid var(--line);border-bottom-width:4px;border-radius:20px}
+.sb{display:flex;align-items:center;gap:10px;padding:12px;border-radius:18px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card)}
+.sn{font-weight:900;font-size:22px;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums}
+.si{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;flex:none}
+.hexw{filter:drop-shadow(0 4px 0 rgba(0,0,0,.22))}
+.hex{width:66px;height:74px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;align-items:center;justify-content:center;color:#FFFFFF}
+.rb{height:10px;border-radius:99px;background:var(--line);overflow:hidden;flex-grow:1}
+.row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:2px solid var(--line);text-decoration:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div class="app dark" style="width: 390px; height: 1360px; gap: 18px">
+  <div style="display: flex; justify-content: flex-end; gap: 10px; padding: 14px 16px 0">
+    <button aria-label="Share profile" style="width: 44px; height: 44px; border-radius: 14px; border: 2px solid var(--line); background: var(--card); color: var(--muted); display: flex; align-items: center; justify-content: center; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"></path></svg></button>
+    <button aria-label="Settings" style="width: 44px; height: 44px; border-radius: 14px; border: 2px solid var(--line); background: var(--card); color: var(--muted); display: flex; align-items: center; justify-content: center; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><circle class="st" cx="12" cy="12" r="3"></circle><path class="st" d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path></svg></button>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 16px; padding: 0 16px; margin-top: -24px">
+    <div style="position: relative; width: 112px; height: 112px; flex: none">
+      <div style="width: 96px; height: 96px; border-radius: 50%; background: #4C7BD9; color: #FFFFFF; font-weight: 900; font-size: 40px; display: flex; align-items: center; justify-content: center; border: 4px solid var(--card)">TK</div>
+      <div style="position: absolute; right: -6px; bottom: -4px; width: 66px; height: 66px; border-radius: 50%; background: #FFE9D9; border: 4px solid var(--bg); overflow: hidden; display: flex; align-items: center; justify-content: center"><img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="Fox companion" style="width: 70px; height: 70px; margin-top: 12px"></div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0">
+      <h1 style="font-weight: 900; font-size: 26px; color: var(--ink)">Timur K.</h1>
+      <p class="s">@timur.k · Tashkent · since Aug 2026</p>
+      <a href="Level.dc.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px 0 4px; border-radius: 99px; background: #4A2A12; color: #FFC79E; font-weight: 900; font-size: 13px; text-decoration: none"><span style="width: 22px; height: 22px; border-radius: 50%; background: #F2802E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 12px">3</span>Pathfinder</a>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 8px; padding: 0 16px">
+    <span style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 10px; border: 2px dashed var(--line); color: var(--muted); font-weight: 800; font-size: 13px"><svg viewBox="0 0 24 24" style="width: 15px; height: 15px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg>Verified leader · at Level 5</span>
+    <a href="Leagues.dc.html" style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 10px; background: var(--soft); color: var(--ink); font-weight: 800; font-size: 13px; text-decoration: none"><span style="width: 14px; height: 16px; clip-path: polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%); background: #7D8B90"></span>Granite · #7</a>
+  </div>
+
+  <section style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px">
+    <p class="cap">Stats</p>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+      <div class="sb"><span class="si" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></span><div><p class="sn">6</p><p class="s">Peaks</p></div></div>
+      <div class="sb"><span class="si" style="background: #4CA9FF"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M12 2.5c3.2 4.2 6.5 7.8 6.5 11.5a6.5 6.5 0 0 1-13 0c0-3.7 3.3-7.3 6.5-11.5z"></path></svg></span><div><p class="sn">3</p><p class="s">Lakes</p></div></div>
+      <div class="sb"><span class="si" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M1.5 21c0-9 4.7-15 10.5-15s10.5 6 10.5 15h-6c0-4.3-2-7.5-4.5-7.5S7.5 16.7 7.5 21z"></path></svg></span><div><p class="sn">1</p><p class="s">Caves</p></div></div>
+      <div class="sb"><span class="si" style="background: #FF9F1C"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><ellipse class="fl" cx="8" cy="14.5" rx="3" ry="4.5"></ellipse><ellipse class="fl" cx="16" cy="7" rx="3" ry="4.5"></ellipse></svg></span><div><p class="sn">184 km</p><p class="s">Walked</p></div></div>
+      <div class="sb"><span class="si" style="background: #5E6E74"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M4 18l5-6 4 3 7-9M15 6h5v5"></path></svg></span><div><p class="sn">12,480 m</p><p class="s">Climbed</p></div></div>
+      <a href="MySpots.dc.html" class="sb" style="text-decoration: none"><span class="si" style="background: #B88600"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M5 21V3h2v1h12l-3 5 3 5H7v7z"></path></svg></span><div><p class="sn">3</p><p class="s">Spots discovered</p></div></a>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px">
+    <div style="display: flex; justify-content: space-between"><p class="cap">Badge showcase</p><a href="Badges.dc.html" class="cap" style="color: var(--teal); text-decoration: none">All 23</a></div>
+    <div class="card" style="padding: 14px 10px; display: flex; justify-content: space-around">
+      <div class="hexw"><div class="hex" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 30px; height: 30px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></div></div>
+      <div class="hexw"><div class="hex" style="background: #4CA9FF"><svg viewBox="0 0 24 24" style="width: 30px; height: 30px"><path class="fl" d="M12 2.5c3.2 4.2 6.5 7.8 6.5 11.5a6.5 6.5 0 0 1-13 0c0-3.7 3.3-7.3 6.5-11.5z"></path></svg></div></div>
+      <div class="hexw"><div class="hex" style="background: #FFC800; color: #5C4000"><svg viewBox="0 0 24 24" style="width: 30px; height: 30px"><path class="fl" d="M5 21V3h2v1h12l-3 5 3 5H7v7z"></path></svg></div></div>
+      <div class="hexw"><div class="hex" style="background: #FF4B4B"><svg viewBox="0 0 24 24" style="width: 30px; height: 30px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg></div></div>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 10px; padding: 0 16px">
+    <div style="display: flex; justify-content: space-between"><p class="cap">Rated by trip buddies</p><p class="s">12 trips</p></div>
+    <div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; gap: 10px"><span style="width: 92px; font-weight: 800; font-size: 14px; color: var(--ink)">Reliable</span><div class="rb"><div style="width: 98%; height: 100%; border-radius: 99px; background: #1CB0A8"></div></div><span style="width: 28px; text-align: right; font-weight: 900; color: var(--ink)">4.9</span></div>
+      <div style="display: flex; align-items: center; gap: 10px"><span style="width: 92px; font-weight: 800; font-size: 14px; color: var(--ink)">Safety-first</span><div class="rb"><div style="width: 100%; height: 100%; border-radius: 99px; background: #1CB0A8"></div></div><span style="width: 28px; text-align: right; font-weight: 900; color: var(--ink)">5.0</span></div>
+      <div style="display: flex; align-items: center; gap: 10px"><span style="width: 92px; font-weight: 800; font-size: 14px; color: var(--ink)">Good company</span><div class="rb"><div style="width: 96%; height: 100%; border-radius: 99px; background: #1CB0A8"></div></div><span style="width: 28px; text-align: right; font-weight: 900; color: var(--ink)">4.8</span></div>
+    </div>
+  </section>
+
+  <section style="padding: 0 16px">
+    <div class="card" style="padding: 0 14px">
+      <a href="Safety.dc.html" class="row"><span class="si" style="background: #D93636"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg></span><span style="flex-grow: 1; font-weight: 800; font-size: 15px; color: var(--ink)">Safety center</span><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: var(--muted)"><path class="st" d="M9 6l6 6-6 6"></path></svg></a>
+      <a href="Tours.dc.html" class="row" style="border-bottom: 0"><span class="si" style="background: #FF9F1C; color: #3A2200"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M4 8h16l-1.5 12h-13zM9 8V6a3 3 0 0 1 6 0v2"></path></svg></span><span style="flex-grow: 1; font-weight: 800; font-size: 15px; color: var(--ink)">Marketplace</span><span style="height: 24px; padding: 0 8px; border-radius: 8px; background: #ECE8FF; color: #4B33C4; font-weight: 900; font-size: 11px; display: flex; align-items: center">PREVIEW</span><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: var(--muted)"><path class="st" d="M9 6l6 6-6 6"></path></svg></a>
+    </div>
+  </section>
+
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="profile" dark="{{ true }}" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1360}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Irbis Plus</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#9AA8AD}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#9AA8AD;padding:8px 6px;text-align:center}
+.tbl th:first-child{text-align:left}
+.tbl td{padding:10px 6px;border-top:2px solid #2B3B42;font-weight:800;font-size:14px;color:#F1F5F4;text-align:center}
+.tbl td:first-child{text-align:left}
+.plan{flex:1;display:flex;flex-direction:column;gap:2px;padding:14px;border-radius:18px;border:2px solid #2B3B42;border-bottom-width:4px;background:#1C2A30;font-family:'Nunito',sans-serif;text-align:left;cursor:pointer;position:relative}
+.plan.on{border-color:#FFC800;background:#3D3310}
+.btn{display:flex;align-items:center;justify-content:center;min-height:56px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.y{color:#FFC800}.n{color:#5E6E74}
+.st{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 390px; height: 1100px; position: relative; overflow: hidden; background: #131D22; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; display: flex; flex-direction: column; gap: 16px; padding: 14px 16px 26px">
+  <a href="Settings.dc.html" aria-label="Close" style="align-self: flex-end; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #9AA8AD"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M6 6l12 12M18 6L6 18" style="stroke-width: 3"></path></svg></a>
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; margin-top: -24px">
+    <img src="/_blob/09bfc86cfae87bf488a193ee4dab56d8" alt="" style="width: 130px; height: 130px">
+    <p style="font-weight: 900; font-size: 13px; letter-spacing: .14em; color: #FFC800">IRBIS PLUS</p>
+    <h1 style="font-weight: 900; font-size: 28px; line-height: 1.15; color: #F1F5F4">Go further, plan smarter</h1>
+  </div>
+
+  <table class="tbl">
+    <tr><th>Feature</th><th>Free</th><th style="color: #FFC800">Plus</th></tr>
+    <tr><td>Offline map regions</td><td class="n">2</td><td class="y">Unlimited</td></tr>
+    <tr><td>Forecast on place pages</td><td class="n">Weekend</td><td class="y">7-day hourly</td></tr>
+    <tr><td>Streak freezes</td><td class="n">Gems</td><td class="y">2 / month</td></tr>
+    <tr><td>Bu qayer? packs &amp; duels</td><td class="n">Daily + 3 duels</td><td class="y">All, unlimited</td></tr>
+    <tr><td>Companion styles</td><td class="n">—</td><td class="y">Backpacks, frames</td></tr>
+    <tr><td>Partner tours</td><td class="n">Badge discounts</td><td class="y">+5% &amp; early access</td></tr>
+  </table>
+
+  <div style="display: flex; gap: 10px">
+    <button class="plan on" aria-pressed="true"><span style="position: absolute; right: 10px; top: -12px; height: 24px; padding: 0 8px; border-radius: 8px; background: #FFC800; color: #3A2A00; font-weight: 900; font-size: 11px; display: flex; align-items: center">SAVE 28%</span><span style="font-weight: 900; font-size: 15px; color: #F1F5F4">Yearly</span><span style="font-weight: 900; font-size: 20px; color: #FFFFFF">249,000 so'm</span><span class="s">20,750 so'm / month</span></button>
+    <button class="plan" aria-pressed="false"><span style="font-weight: 900; font-size: 15px; color: #F1F5F4">Monthly</span><span style="font-weight: 900; font-size: 20px; color: #FFFFFF">29,000 so'm</span><span class="s">cancel anytime</span></button>
+  </div>
+
+  <div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #173F2A">
+    <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #7BE0A2; flex: none"><path d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z" style="fill: currentColor"></path></svg>
+    <p class="s" style="color: #DFF6E7">Safety stays free for everyone: conditions, trip plans, auto-alerts, SOS, lessons and levels.</p>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <button class="btn" style="background: #FFC800; color: #3A2A00; box-shadow: 0 4px 0 #B88600">Start 7-day free trial</button>
+  <p class="s" style="text-align: center">Then 249,000 so'm a year. Cancel in your store settings. Starting price — to be tested.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1100}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

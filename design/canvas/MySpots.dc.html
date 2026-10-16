@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My submitted spots</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.h3{font-weight:900;font-size:17px;color:#1F2A2E}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px}
+.chip{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 10px;border-radius:999px;font-weight:800;font-size:12px;white-space:nowrap}
+.k{flex:1;display:flex;flex-direction:column;align-items:center}
+.kn{font-weight:900;font-size:24px;color:#1F2A2E;font-variant-numeric:tabular-nums}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.pd{width:12px;height:12px;border-radius:50%}
+</style>
+</helmet>
+<div style="width: 390px; height: 1080px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 16px">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 16px 0">
+    <a href="Profile.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <h1 style="flex-grow: 1; font-weight: 900; font-size: 24px; color: #1F2A2E">My spots</h1>
+    <a href="Spot1Gps.dc.html" aria-label="Add a spot" style="width: 46px; height: 46px; border-radius: 14px; background: #0C807A; color: #FFFFFF; box-shadow: 0 4px 0 #075B56; display: flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M12 5v14M5 12h14" style="stroke-width: 3"></path></svg></a>
+  </div>
+
+  <div class="card" style="margin: 0 16px; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #FFF6D6; border-color: #F2D77A">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; color: #B88600"><path class="fl" d="M5 21V3h2v1h12l-3 5 3 5H7v7z"></path></svg>
+      <p style="font-weight: 900; font-size: 17px; color: #5C4000">Discoverer</p>
+    </div>
+    <div style="display: flex">
+      <div class="k"><span class="kn">3</span><span class="s" style="color: #6E4E00">Spots</span></div>
+      <div class="k"><span class="kn">214</span><span class="s" style="color: #6E4E00">Visits by others</span></div>
+      <div class="k"><span class="kn">1,220</span><span class="s" style="color: #6E4E00">Discoverer XP</span></div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px; padding: 0 16px">
+    <div class="card" style="padding: 12px; display: flex; gap: 12px">
+      <img src="/_blob/7000c508ed65b0395bc9ba13d1d81dcd" alt="" style="width: 84px; height: 84px; border-radius: 16px; object-fit: cover; flex: none">
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+        <p class="h3">Kyzylsay Grotto</p>
+        <p class="s">Cave · submitted today · fragile</p>
+        <span class="chip" style="align-self: flex-start; background: #FFF1BF; color: #6E4E00"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M12 7v5l3 2"></path></svg>Pending</span>
+      </div>
+    </div>
+    <div class="card" style="padding: 12px; display: flex; gap: 12px">
+      <img src="/_blob/2ea0b851b548b4dce9228408142b7d82" alt="" style="width: 84px; height: 84px; border-radius: 16px; object-fit: cover; flex: none">
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+        <p class="h3">Ak-Tash Spring Viewpoint</p>
+        <p class="s">Lake · Sep 2026 · 9 visits · +45 XP</p>
+        <span class="chip" style="align-self: flex-start; background: #E2F0FF; color: #1F5FA8"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M9 4.4a3.6 3.6 0 1 1 0 7.2 3.6 3.6 0 0 1 0-7.2zM2 20.5c.4-4.4 3.2-6.6 7-6.6s6.6 2.2 7 6.6"></path></svg>Community verified 2/3</span>
+        <div style="display: flex; gap: 4px" aria-hidden="true"><span class="pd" style="background: #4CA9FF"></span><span class="pd" style="background: #4CA9FF"></span><span class="pd" style="background: #E5E5DC"></span></div>
+      </div>
+    </div>
+    <div class="card" style="padding: 12px; display: flex; gap: 12px; border-color: #A8E3DF">
+      <img src="/_blob/bb7e61cdec3acfef22cb18e86375ffbb" alt="" style="width: 84px; height: 84px; border-radius: 16px; object-fit: cover; flex: none">
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+        <p class="h3">Chatkal Juniper Camp</p>
+        <p class="s">Camping · Aug 2026 · 205 visits · +1,025 XP</p>
+        <span class="chip" style="align-self: flex-start; background: #0C807A; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg>Officially verified</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin: 0 16px; padding: 14px; border-radius: 18px; background: #E3F7F5; display: flex; gap: 12px; align-items: center">
+    <img src="/_blob/9ebec15f083abbb36876b1b8a577ea1b" alt="" style="width: 56px; height: 56px; flex: none">
+    <p class="s" style="color: #0B5B57">Verification: 3 community check-ins, then an official review. Fragile spots stay visible only to your groups.</p>
+  </div>
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="profile" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1080}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

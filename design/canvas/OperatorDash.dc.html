@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Irbis for Operators — dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#5E6E74}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px}
+.nav a,.nav span{display:flex;align-items:center;gap:10px;min-height:44px;padding:0 12px;border-radius:12px;font-weight:800;font-size:15px;color:#3C4A4F;text-decoration:none}
+.nav .on{background:#E3F7F5;color:#0C807A;border:2px solid #1CB0A8}
+.kpi{padding:18px;display:flex;flex-direction:column;gap:4px}
+.kn{font-weight:900;font-size:30px;line-height:1.1;color:#1F2A2E;font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto}
+.tr{display:grid;gap:12px;align-items:center;padding:12px;border-bottom:2px solid #F0F0EA;font-weight:700;font-size:14px;color:#1F2A2E}
+.tr.th{font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5E6E74;border-bottom-color:#E5E5DC;padding-top:6px;padding-bottom:10px}
+.chip{display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 10px;border-radius:99px;font-weight:800;font-size:12px;white-space:nowrap}
+.bar{height:10px;border-radius:99px;background:#E5E5DC;overflow:hidden;width:120px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border:0;border-radius:14px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 1040px; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-wrap: wrap; gap: 24px; padding: 24px">
+  <aside style="flex: 1 1 220px; max-width: 260px; display: flex; flex-direction: column; gap: 18px">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <img src="/_blob/68fc129c9d7433afd4cf66f5c7574e03" alt="" style="width: 44px; height: 44px; border-radius: 12px">
+      <div><p style="font-weight: 900; font-size: 18px; color: #1F2A2E">Irbis</p><p class="s" style="font-size: 12px">for Operators</p></div>
+    </div>
+    <nav class="nav" aria-label="Operator menu" style="display: flex; flex-direction: column; gap: 4px">
+      <span class="on">Overview</span>
+      <a href="#">Tours</a>
+      <a href="#">Bookings</a>
+      <a href="#">Gear rentals</a>
+      <a href="#">Reviews</a>
+      <a href="#">Payouts</a>
+      <a href="#">Company profile</a>
+    </nav>
+    <div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 8px">
+      <p class="cap">Commission</p>
+      <p style="font-weight: 900; font-size: 20px; color: #1F2A2E">[RATE]% per booking</p>
+      <p class="s">Set by the Irbis team in the admin panel. Badge discounts are paid by Irbis, not by you.</p>
+    </div>
+  </aside>
+
+  <main style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px; justify-content: space-between">
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <h1 style="font-weight: 900; font-size: 30px; color: #1F2A2E; display: flex; align-items: center; gap: 10px">Chimgan Trails Co.<span class="chip" style="background: #0C807A; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg>Verified operator</span></h1>
+        <p class="s" style="font-size: 15px">October 2026 · 6 active tours · 3 rental items</p>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap">
+        <button class="btn" style="background: #FFFFFF; color: #0C807A; border: 2px solid #E5E5DC; box-shadow: 0 4px 0 #E5E5DC">Add rental item</button>
+        <button class="btn" style="background: #0C807A; color: #FFFFFF; box-shadow: 0 4px 0 #075B56"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M12 5v14M5 12h14" style="stroke-width: 3"></path></svg>Create tour</button>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px">
+      <div class="card kpi"><p class="cap">Bookings this month</p><p class="kn">64</p><p class="s" style="color: #1B6B3E">+18 vs September</p></div>
+      <div class="card kpi"><p class="cap">Seats filled</p><p class="kn">78%</p><p class="s">Next 4 weeks</p></div>
+      <div class="card kpi"><p class="cap">Payout due</p><p class="kn">[AMOUNT] so'm</p><p class="s">Next payout Nov 1</p></div>
+      <div class="card kpi"><p class="cap">Rating</p><p class="kn">4.8 ★</p><p class="s">212 reviews</p></div>
+    </div>
+
+    <div class="card" style="padding: 18px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px"><p style="font-weight: 900; font-size: 18px; color: #1F2A2E">Upcoming departures</p><p class="s">Conditions update from Irbis forecasts</p></div>
+      <div class="tw">
+        <div role="table" aria-label="Upcoming departures" style="min-width: 640px">
+          <div role="row" class="tr th" style="grid-template-columns: 2fr 1fr 1.6fr 1fr 1fr"><span role="columnheader">Tour</span><span role="columnheader">Date</span><span role="columnheader">Seats</span><span role="columnheader">Guide</span><span role="columnheader">Condition</span></div>
+          <sc-for list="{{deps}}" as="d" hint-placeholder-count="4">
+            <div role="row" class="tr" style="grid-template-columns: 2fr 1fr 1.6fr 1fr 1fr"><span role="cell">{{d.tour}}</span><span role="cell">{{d.date}}</span><span role="cell" style="display: flex; align-items: center; gap: 10px"><span class="bar"><span style="display: block; height: 100%; border-radius: 99px; background: #1CB0A8; width: {{d.pct}}"></span></span>{{d.seats}}</span><span role="cell">{{d.guide}}</span><span role="cell"><span class="chip" style="background: {{d.cbg}}; color: {{d.cfg}}">{{d.cond}}</span></span></div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center; padding: 12px 14px; border-radius: 14px; background: #FFE1E1">
+        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; color: #B32424; flex: none"><path class="st" d="M12 3.5L2.5 20h19zM12 10v4.5M12 17.2v.3"></path></svg>
+        <p class="s" style="color: #8F1F1F; flex-grow: 1"><b>Big Chimgan, Sat 17 Oct</b> is "Not now" (storm). Offer guests a reschedule or a swap — Irbis notifies them for you.</p>
+        <button class="btn" style="min-height: 40px; background: #D93636; color: #FFFFFF; box-shadow: 0 3px 0 #A12121; font-size: 13px">Reschedule</button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px">
+      <div class="card" style="flex: 2 1 420px; min-width: 0; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+        <p style="font-weight: 900; font-size: 18px; color: #1F2A2E">Recent bookings</p>
+        <div class="tw">
+          <div role="table" aria-label="Recent bookings" style="min-width: 600px">
+            <div role="row" class="tr th" style="grid-template-columns: 1fr 1.8fr .6fr 1.4fr 1.2fr"><span role="columnheader">Guest</span><span role="columnheader">Tour</span><span role="columnheader">Seats</span><span role="columnheader">Discount</span><span role="columnheader">Status</span></div>
+            <sc-for list="{{books}}" as="b" hint-placeholder-count="4">
+              <div role="row" class="tr" style="grid-template-columns: 1fr 1.8fr .6fr 1.4fr 1.2fr"><span role="cell">{{b.guest}}</span><span role="cell">{{b.tour}}</span><span role="cell">{{b.seats}}</span><span role="cell">{{b.disc}}</span><span role="cell"><span class="chip" style="background: {{b.sbg}}; color: {{b.sfg}}">{{b.status}}</span></span></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="flex: 1 1 260px; padding: 18px; display: flex; flex-direction: column; gap: 12px">
+        <p style="font-weight: 900; font-size: 18px; color: #1F2A2E">Latest review</p>
+        <p style="font-weight: 900; font-size: 20px; color: #E5A800">★★★★★</p>
+        <p style="font-weight: 700; font-size: 15px; line-height: 1.5; color: #3C4A4F">"Slow pace, nobody left behind, great safety briefing at the start."</p>
+        <p class="s">Aziz M. · Mountain Guardian · Big Chimgan summit day</p>
+        <button class="btn" style="background: #FFFFFF; color: #0C807A; border: 2px solid #E5E5DC; box-shadow: 0 4px 0 #E5E5DC; align-self: flex-start">Reply</button>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const C = { go: ['Go', '#DFF6E7', '#1B6B3E'], ca: ['Caution', '#FFF1BF', '#6E4E00'], no: ['Not now', '#FFE1E1', '#B32424'] };
+    const dep = (tour, date, booked, cap, guide, c) => ({ tour, date, seats: `${booked} / ${cap}`, pct: `${Math.round(booked / cap * 100)}%`, guide, cond: C[c][0], cbg: C[c][1], cfg: C[c][2] });
+    const deps = [
+      dep('Beldersay Ridge sunrise', 'Sat 10 Oct', 9, 10, 'Bekzod T.', 'go'),
+      dep('Urungach Lakes day trip', 'Sun 11 Oct', 12, 16, 'Dilnoza R.', 'go'),
+      dep('Big Chimgan summit day', 'Sat 17 Oct', 8, 12, 'Bekzod T.', 'no'),
+      dep('Paltau Waterfall walk', 'Sun 18 Oct', 5, 14, 'Kamola S.', 'ca')
+    ];
+    const S = { paid: ['Paid', '#DFF6E7', '#1B6B3E'], pend: ['Pending', '#FFF1BF', '#6E4E00'], ref: ['Refund requested', '#FFE1E1', '#B32424'] };
+    const bk = (guest, tour, seats, disc, s) => ({ guest, tour, seats, disc, status: S[s][0], sbg: S[s][1], sfg: S[s][2] });
+    const books = [
+      bk('Timur K.', 'Big Chimgan summit day', 1, 'Peak Bagger II −10%', 'paid'),
+      bk('Laylo K.', 'Urungach Lakes day trip', 2, '—', 'paid'),
+      bk('Nodira A.', 'Paltau Waterfall walk', 3, 'Irbis Plus −5%', 'pend'),
+      bk('Rustam O.', 'Big Chimgan summit day', 1, '—', 'ref')
+    ];
+    return { deps, books };
+  }
+}
+</script>
+</body>
+</html>

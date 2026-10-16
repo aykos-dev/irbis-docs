@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Plan trip and safety check-in</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--soft:#EEF0E8;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.h1{font-weight:900;font-size:26px;line-height:1.15;color:var(--ink)}
+.h3{font-weight:800;font-size:16px;line-height:1.25;color:var(--ink)}
+.t{font-weight:700;font-size:15px;line-height:1.45}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--card);border:2px solid var(--line);border-bottom-width:4px;border-radius:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:8px 20px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;line-height:1.15;letter-spacing:.05em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.sec{padding:0 16px;display:flex;flex-direction:column;gap:10px}
+.seg{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60px;border-radius:16px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);font-family:'Nunito',sans-serif;cursor:pointer;gap:0}
+.seg.on{border-color:#1CB0A8;background:var(--tint)}
+.field{flex:1;display:flex;flex-direction:column;gap:6px}
+.in{display:flex;align-items:center;gap:8px;height:52px;padding:0 14px;border-radius:14px;border:2px solid var(--line);background:var(--card);font-weight:800;font-size:17px;color:var(--ink)}
+.ck{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:2px solid var(--line)}
+.box{width:28px;height:28px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center}
+.on-b{background:#1CB0A8;color:#FFFFFF}
+.off-b{border:3px solid var(--line)}
+.tg{width:52px;height:32px;border-radius:99px;background:#1CB0A8;position:relative;flex:none}
+.tg::after{content:'';position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF}
+.shr{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;height:46px;border-radius:14px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--ink);cursor:pointer}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 1200px; gap: 20px">
+  <div style="display: flex; align-items: center; gap: 10px; padding: 14px 16px 0">
+    <a href="Place.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--muted)"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <div style="flex-grow: 1"><p class="cap">Safety check-in</p><h1 class="h1">Plan your trip</h1></div>
+    <img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="" style="width: 60px; height: 60px">
+  </div>
+
+  <section class="sec">
+    <p class="cap">Trail</p>
+    <div class="card" style="padding: 12px; display: flex; gap: 12px; align-items: center">
+      <img src="/_blob/2ea0b851b548b4dce9228408142b7d82" alt="" style="width: 64px; height: 64px; border-radius: 14px; object-fit: cover">
+      <div style="flex-grow: 1"><p class="h3">Upper Lake ascent</p><p class="s">Urungach Lakes · 9.1 km · ~5 h · +620 m</p></div>
+      <a href="TrailMap.dc.html" class="s" style="color: #0C807A; font-weight: 900; text-decoration: none; padding: 10px 4px">Change</a>
+    </div>
+  </section>
+
+  <section class="sec">
+    <p class="cap">When</p>
+    <div style="display: flex; gap: 8px">
+      <button class="seg on"><span class="h3">Sat</span><span class="s">10 Oct</span></button>
+      <button class="seg"><span class="h3">Sun</span><span class="s">11 Oct</span></button>
+      <button class="seg"><span class="h3">Other</span><span class="s">Pick date</span></button>
+    </div>
+    <div style="display: flex; gap: 10px">
+      <label class="field"><span class="s" style="color: var(--ink)">Start</span><span class="in"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: var(--muted)"><circle class="st" cx="12" cy="12" r="9"></circle><path class="st" d="M12 7v5l3 2"></path></svg>07:00</span></label>
+      <label class="field"><span class="s" style="color: var(--ink)">Back by</span><span class="in" style="border-color: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #0C807A"><path class="st" d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"></path></svg>17:30</span></label>
+    </div>
+    <p class="s">Sunset 18:21 · that leaves 50 min of daylight buffer.</p>
+  </section>
+
+  <section class="sec">
+    <p class="cap">Emergency contact</p>
+    <div class="card" style="padding: 12px 14px; display: flex; gap: 12px; align-items: center; border-color: #1CB0A8">
+      <span style="width: 44px; height: 44px; border-radius: 50%; background: #FFE9D9; color: #9A4510; font-weight: 900; font-size: 18px; display: flex; align-items: center; justify-content: center; flex: none">M</span>
+      <div style="flex-grow: 1"><p class="h3">Malika · sister</p><p class="s">+998 •• ••• •• 41 · gets SMS + live link</p></div>
+      <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; flex: none"><circle cx="12" cy="12" r="11" style="fill: #1CB0A8"></circle><path d="M7 12.5l3.2 3.2L17 9" style="fill: none; stroke: #FFFFFF; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+    </div>
+    <div class="card" style="padding: 12px 14px; display: flex; gap: 12px; align-items: center">
+      <div style="flex-grow: 1"><p class="h3" style="font-size: 15px">Auto-alert if I don't check out</p><p class="s">Malika is alerted at 18:30 (1 h after return time)</p></div>
+      <span class="tg" role="switch" aria-checked="true" aria-label="Auto-alert"></span>
+    </div>
+    <div style="display: flex; gap: 8px">
+      <button class="shr"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M3 11l18-8-8 18-2-8z"></path></svg>Telegram</button>
+      <button class="shr"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M4 5h16v11H9l-5 4z"></path></svg>SMS</button>
+      <button class="shr"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg>Link</button>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div style="display: flex; justify-content: space-between; align-items: baseline"><p class="cap">Recommended gear</p><p class="s">5 / 7 packed</p></div>
+    <div class="card" style="padding: 0 14px">
+      <div class="ck"><span class="box on-b"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.2"></path></svg></span><span class="h3" style="flex-grow: 1; font-size: 15px">Water, 2 litres</span></div>
+      <div class="ck"><span class="box on-b"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.2"></path></svg></span><span class="h3" style="flex-grow: 1; font-size: 15px">Warm layer</span><span class="s">Night frost</span></div>
+      <div class="ck"><span class="box on-b"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.2"></path></svg></span><span class="h3" style="flex-grow: 1; font-size: 15px">First-aid kit</span></div>
+      <div class="ck"><span class="box on-b"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.2"></path></svg></span><span class="h3" style="flex-grow: 1; font-size: 15px">Offline map</span><span class="s" style="color: #1B6B3E">Downloaded</span></div>
+      <div class="ck"><span class="box on-b"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.2"></path></svg></span><span class="h3" style="flex-grow: 1; font-size: 15px">Sun hat &amp; sunscreen</span></div>
+      <div class="ck"><span class="box off-b"></span><span class="h3" style="flex-grow: 1; font-size: 15px">Headlamp</span><span class="s">Sunset 18:21</span></div>
+      <div class="ck" style="border-bottom: 0"><span class="box off-b"></span><span class="h3" style="flex-grow: 1; font-size: 15px">Water filter</span><span class="s">Streams only</span></div>
+    </div>
+  </section>
+
+  <div style="flex-grow: 1"></div>
+  <div style="padding: 14px 16px 24px; background: var(--card); border-top: 2px solid var(--line); display: flex; flex-direction: column; gap: 10px">
+    <p class="s" style="text-align: center">Your plan is shared when you tap Start.</p>
+    <a class="btn bp" href="ActiveTrip.dc.html">Start adventure</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1200}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

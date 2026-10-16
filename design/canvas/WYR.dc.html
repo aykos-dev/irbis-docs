@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Would you rather</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#9AA8AD}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.opt{position:relative;border-radius:24px;padding:18px;display:flex;flex-direction:column;gap:12px;overflow:hidden;text-align:left;border:0;font-family:'Nunito',sans-serif;cursor:pointer;width:100%}
+.av{width:30px;height:30px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;border:2px solid #FFFFFF;margin-left:-8px}
+.av img{width:34px;height:34px;margin-top:6px}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #131D22; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; display: flex; flex-direction: column; gap: 14px; padding: 16px 16px 26px">
+  <div style="display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <span style="width: 40px; height: 40px; border-radius: 12px; background: #FF9F1C; display: flex; align-items: center; justify-content: center; color: #3A2200"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M7 4L3 8l4 4M3 8h12M17 12l4 4-4 4M21 16H9" style="stroke-width: 2.8"></path></svg></span>
+      <div><p style="font-weight: 900; font-size: 18px; color: #F1F5F4">Would you rather</p><p class="s">Camping pack · question 4 of 20</p></div>
+    </div>
+    <span style="height: 30px; padding: 0 10px; border-radius: 99px; background: #173F2A; color: #7BE0A2; font-weight: 800; font-size: 12px; display: flex; align-items: center">8 / 8 voted</span>
+  </div>
+
+  <p style="font-weight: 900; font-size: 26px; line-height: 1.2; color: #F1F5F4; text-align: center; margin-top: 4px">Would you rather…</p>
+
+  <button class="opt" style="background: #3D2A10; box-shadow: inset 0 0 0 3px #FF9F1C, 0 5px 0 #B86E00" aria-pressed="true">
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 63%; background: #FF9F1C; opacity: .28"></div>
+    <div style="position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px">
+      <p style="font-weight: 900; font-size: 20px; line-height: 1.25; color: #FFFFFF">Sleep in a tent at 3,000 m without a pillow</p>
+      <span style="font-weight: 900; font-size: 30px; color: #FFB547">63%</span>
+    </div>
+    <div style="position: relative; display: flex; align-items: center; justify-content: space-between">
+      <div style="display: flex; padding-left: 8px">
+        <span class="av" style="background: #DDF5F3"><img src="/_blob/dba7b9623f9af9c690bf93a6ddc5f60b" alt="Dilnoza"></span><span class="av" style="background: #E3ECFB"><img src="/_blob/ffe227711df8d0445b9dfe0a9534a6f4" alt="Aziz"></span><span class="av" style="background: #F7EADB"><img src="/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5" alt="Laylo"></span><span class="av" style="background: #FFE9D9"><img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="Timur"></span><span class="av" style="background: #E4F5E7"><img src="/_blob/44b792e405b2dce67f0743e4be0fc2e1" alt="Otabek"></span>
+      </div>
+      <span style="display: inline-flex; align-items: center; gap: 4px; height: 26px; padding: 0 9px; border-radius: 8px; background: #FF9F1C; color: #3A2200; font-weight: 900; font-size: 12px"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.2"></path></svg>Your pick</span>
+    </div>
+  </button>
+
+  <div style="display: flex; align-items: center; gap: 12px"><span style="flex: 1; height: 2px; background: #2B3B42"></span><span style="width: 44px; height: 44px; border-radius: 50%; background: #1C2A30; border: 2px solid #2B3B42; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; color: #F1F5F4">OR</span><span style="flex: 1; height: 2px; background: #2B3B42"></span></div>
+
+  <button class="opt" style="background: #142C45; box-shadow: inset 0 0 0 2px #2F5F8F, 0 5px 0 #0E2236" aria-pressed="false">
+    <div style="position: absolute; left: 0; top: 0; bottom: 0; width: 37%; background: #4CA9FF; opacity: .22"></div>
+    <div style="position: relative; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px">
+      <p style="font-weight: 900; font-size: 20px; line-height: 1.25; color: #FFFFFF">Hike 25 km in the rain with wet socks</p>
+      <span style="font-weight: 900; font-size: 30px; color: #8CC8FF">37%</span>
+    </div>
+    <div style="position: relative; display: flex; padding-left: 8px">
+      <span class="av" style="background: #FFE9D9"><img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="Kamila"></span><span class="av" style="background: #ECE8FF"><img src="/_blob/55d73e65f5c5f754c2cbb05b4ea4a0ce" alt="Bekzod"></span><span class="av" style="background: #F7EADB"><img src="/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5" alt="Madina"></span>
+    </div>
+  </button>
+
+  <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 18px; background: #1C2A30; border: 2px solid #2B3B42">
+    <img src="/_blob/9ebec15f083abbb36876b1b8a577ea1b" alt="" style="width: 48px; height: 48px; flex: none">
+    <p class="s" style="color: #D5DEDD">Kamila, Bekzod, Madina — defend your choice!</p>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <button class="btn" style="background: #FF9F1C; color: #3A2200; box-shadow: 0 4px 0 #B86E00">Next question</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

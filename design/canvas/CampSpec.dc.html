@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Campfire games — how it works</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9AA8AD}
+.h3{font-weight:900;font-size:18px;line-height:1.25;color:#F1F5F4}
+.t{font-weight:700;font-size:15px;line-height:1.45;color:#D5DEDD}
+.s{font-weight:700;font-size:13px;line-height:1.45;color:#9AA8AD}
+.s b{color:#F1F5F4}
+.card{background:#1C2A30;border:2px solid #2B3B42;border-bottom-width:4px;border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.ph{width:92px;height:150px;border-radius:20px;background:#22323A;border:3px solid #3A4C54;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;flex:none}
+.li{display:flex;gap:10px;align-items:flex-start}
+.n{width:24px;height:24px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;margin-top:1px}
+.gi{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;flex:none;box-shadow:0 4px 0 rgba(0,0,0,.3)}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 1240px; height: 1500px; background: #131D22; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; padding: 48px 56px; display: flex; flex-direction: column; gap: 26px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 22px">
+    <img src="/_blob/bb7e61cdec3acfef22cb18e86375ffbb" alt="" style="width: 150px; height: 104px; border-radius: 22px; object-fit: cover">
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+      <p class="cap" style="color: #FFB547">Offline multiplayer · new section</p>
+      <h1 style="font-weight: 900; font-size: 46px; line-height: 1; color: #F1F5F4">Campfire games</h1>
+      <p class="t" style="font-size: 17px; max-width: 860px">For travel, road trips and campfires. No internet, no problem: one phone shares a hotspot, everyone joins it, and the host's phone runs the game for the whole group.</p>
+    </div>
+  </div>
+
+  <div class="card" style="padding: 24px">
+    <p class="cap">How the offline connection works</p>
+    <div style="display: flex; align-items: center; gap: 18px">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+        <div class="ph" style="border-color: #FF9F1C; width: 110px; height: 170px"><svg viewBox="0 0 24 24" style="width: 34px; height: 34px; color: #FF9F1C"><path class="st" d="M5 12.5a10 10 0 0 1 14 0M8 15.5a6 6 0 0 1 8 0M12 19h.01" style="stroke-width: 3"></path></svg><span style="font-weight: 900; font-size: 13px; color: #FFB547">HOST</span><span class="s" style="font-size: 11px; text-align: center">hotspot +<br>game server</span></div>
+      </div>
+      <svg viewBox="0 0 120 24" style="width: 120px; height: 24px; flex: none"><path d="M2 12h112M104 4l10 8-10 8" style="fill: none; stroke: #5E6E74; stroke-width: 3; stroke-dasharray: 2 8; stroke-linecap: round"></path></svg>
+      <div style="display: flex; gap: 12px">
+        <div class="ph"><img src="/_blob/dba7b9623f9af9c690bf93a6ddc5f60b" alt="" style="width: 52px; height: 52px"><span class="s" style="font-size: 11px">Dilnoza</span></div>
+        <div class="ph"><img src="/_blob/ffe227711df8d0445b9dfe0a9534a6f4" alt="" style="width: 52px; height: 52px"><span class="s" style="font-size: 11px">Aziz</span></div>
+        <div class="ph"><img src="/_blob/44b792e405b2dce67f0743e4be0fc2e1" alt="" style="width: 52px; height: 52px"><span class="s" style="font-size: 11px">Laylo</span></div>
+        <div class="ph"><img src="/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5" alt="" style="width: 52px; height: 52px"><span class="s" style="font-size: 11px">+ up to 15</span></div>
+      </div>
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 10px; margin-left: 12px">
+        <div class="li"><span class="n" style="background: #FF9F1C; color: #3A2200">1</span><p class="s"><b>Host turns on a hotspot</b> and taps "Host game". On Android the app can create a local-only hotspot itself; on iPhone the host switches on Personal Hotspot in Settings (the app shows how).</p></div>
+        <div class="li"><span class="n" style="background: #FF9F1C; color: #3A2200">2</span><p class="s"><b>Players scan the QR code.</b> It holds the Wi-Fi name, password and room code, so one scan joins the network and the room. Manual code entry is the fallback.</p></div>
+        <div class="li"><span class="n" style="background: #FF9F1C; color: #3A2200">3</span><p class="s"><b>The host phone runs a small local server</b> (WebSocket over the hotspot). It deals roles and words, runs timers, counts votes. No data leaves the group.</p></div>
+        <div class="li"><span class="n" style="background: #FF9F1C; color: #3A2200">4</span><p class="s"><b>Any shared Wi-Fi also works</b> — a car's Wi-Fi, a guesthouse router. iOS asks once for "Local Network" permission.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px">
+    <div class="card">
+      <span class="gi" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M3 9c0-2 2-4 9-4s9 2 9 4c0 3-2 6-5 6-2 0-2.5-2-4-2s-2 2-4 2c-3 0-5-3-5-6z"></path></svg></span>
+      <p class="h3">Imposter</p>
+      <p class="s">Everyone gets the same secret word except the imposter, who only sees the category. Take turns saying one clue, then vote.</p>
+      <p class="s"><b>3–15 players</b> · 5–10 min · word packs in UZ / RU / EN</p>
+    </div>
+    <div class="card">
+      <span class="gi" style="background: #D93636"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M4 11h16v2H4zM7 11l1.5-6h7L17 11z"></path><path class="st" d="M8 17a2 2 0 1 0 0 .01M16 17a2 2 0 1 0 0 .01M10 17h4"></path></svg></span>
+      <p class="h3">Mafia</p>
+      <p class="s">Host picks roles, each phone gets one secret role. The app narrates nights and days, wakes roles and counts votes.</p>
+      <p class="s"><b>6–15 players</b> · 20–40 min · no narrator needed</p>
+    </div>
+    <div class="card">
+      <span class="gi" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M12 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zM4 21c.6-4.4 3.8-6.5 8-6.5s7.4 2.1 8 6.5z"></path></svg></span>
+      <p class="h3">Who am I?</p>
+      <p class="s">Every player gets a secret character. Your phone shows everyone's character except yours. Ask yes/no questions to guess it.</p>
+      <p class="s"><b>3–12 players</b> · 10–20 min</p>
+    </div>
+    <div class="card">
+      <span class="gi" style="background: #FF9F1C; color: #3A2200"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="st" d="M7 4L3 8l4 4M3 8h12M17 12l4 4-4 4M21 16H9" style="stroke-width: 2.8"></path></svg></span>
+      <p class="h3">Would you rather</p>
+      <p class="s">Two options, everyone votes on their own phone at once, then the split and who picked what is revealed. Great for icebreakers.</p>
+      <p class="s"><b>2–15 players</b> · endless · spicy pack off by default</p>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; flex-grow: 1">
+    <div class="card">
+      <p class="cap">Secrets stay secret</p>
+      <div class="li"><span class="n" style="background: #2B3B42; color: #F1F5F4">1</span><p class="s">The host sends each secret only to that player's phone — never broadcast to the room.</p></div>
+      <div class="li"><span class="n" style="background: #2B3B42; color: #F1F5F4">2</span><p class="s"><b>Hold to reveal:</b> secrets show only while a thumb is on the card, then hide again.</p></div>
+      <div class="li"><span class="n" style="background: #2B3B42; color: #F1F5F4">3</span><p class="s"><b>Mafia nights:</b> every phone gets a task at the same time, so nobody can tell roles from who is tapping.</p></div>
+      <div class="li"><span class="n" style="background: #2B3B42; color: #F1F5F4">4</span><p class="s">The host plays too: the host phone keeps the host's own secret hidden like everyone else's.</p></div>
+    </div>
+    <div class="card">
+      <p class="cap">Resilience</p>
+      <div class="li"><span class="n" style="background: #2B3B42; color: #F1F5F4">1</span><p class="s"><b>Reconnect:</b> a player who drops off rejoins with the same seat and secret.</p></div>
+      <div class="li"><span class="n" style="background: #2B3B42; color: #F1F5F4">2</span><p class="s"><b>Host battery low:</b> warn at 20%. The game state is saved on the host, so a restart resumes.</p></div>
+      <div class="li"><span class="n" style="background: #2B3B42; color: #F1F5F4">3</span><p class="s"><b>One phone only?</b> Pass-and-play mode for Imposter, Who am I and Would you rather.</p></div>
+      <div class="li"><span class="n" style="background: #2B3B42; color: #F1F5F4">4</span><p class="s"><b>Night-friendly:</b> dark UI, dim brightness, big text you can read by firelight.</p></div>
+    </div>
+    <div class="card">
+      <p class="cap">Fits the Irbis loop</p>
+      <div class="li"><span class="n" style="background: #FFC800; color: #3A2A00">★</span><p class="s"><b>Small XP</b> (5–15 per game, 30/day cap), saved on the phone and synced next time it's online.</p></div>
+      <div class="li"><span class="n" style="background: #FFC800; color: #3A2A00">★</span><p class="s"><b>Campfire badges:</b> Poker Face, Sharp Detective, Life Saver, Mind Reader, Campfire Host.</p></div>
+      <div class="li"><span class="n" style="background: #FFC800; color: #3A2A00">★</span><p class="s"><b>Group trips:</b> "Play with your trip group" pre-fills players from the trip; the trip card suggests games at camp.</p></div>
+      <div class="li"><span class="n" style="background: #FFC800; color: #3A2A00">★</span><p class="s"><b>Content packs</b> are bundled in the app: Uzbekistan places, food, animals, famous people, camping.</p></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

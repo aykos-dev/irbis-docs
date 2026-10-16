@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bu qayer? — friend duel</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px}
+.pl{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.pa{width:84px;height:84px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pa img{width:92px;height:92px;margin-top:16px}
+.r{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;padding:10px 0;border-bottom:2px solid #F0F0EA}
+.v{font-weight:900;font-size:16px;color:#1F2A2E;font-variant-numeric:tabular-nums}
+.w{color:#1B6B3E}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; padding: 14px 16px 26px; gap: 16px">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="GameHub.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <h1 style="font-weight: 900; font-size: 22px; color: #1F2A2E; flex-grow: 1">Duel results</h1>
+    <span class="s">5 rounds · 60 s</span>
+  </div>
+
+  <div class="card" style="padding: 16px 10px; display: flex; align-items: center; background: #ECE8FF; border-color: #C9BEFF">
+    <div class="pl">
+      <div style="position: relative">
+        <div class="pa" style="background: #FFE9D9; border: 4px solid #2E8B57"><img src="/_blob/462ee3b41d848c53095996e3c6c9cd45" alt="Your fox, cheering"></div>
+        <span style="position: absolute; left: 50%; top: -14px; transform: translateX(-50%); height: 24px; padding: 0 8px; border-radius: 8px; background: #2E8B57; color: #FFFFFF; font-weight: 900; font-size: 11px; display: flex; align-items: center; white-space: nowrap">WINNER</span>
+      </div>
+      <p style="font-weight: 900; font-size: 16px; color: #1F2A2E">You</p>
+      <p style="font-weight: 900; font-size: 24px; color: #1B6B3E">16,181</p>
+    </div>
+    <span style="font-weight: 900; font-size: 22px; color: #4B33C4">VS</span>
+    <div class="pl">
+      <div class="pa" style="background: #DDF5F3; border: 4px solid #C9BEFF"><img src="/_blob/dba7b9623f9af9c690bf93a6ddc5f60b" alt="Dilnoza's ibex"></div>
+      <p style="font-weight: 900; font-size: 16px; color: #1F2A2E">Dilnoza R.</p>
+      <p style="font-weight: 900; font-size: 24px; color: #1F2A2E">14,920</p>
+    </div>
+  </div>
+
+  <div class="card" style="padding: 2px 14px">
+    <div class="r"><span class="v w" style="text-align: left">4,901</span><span class="s" style="text-align: center">Round 1</span><span class="v" style="text-align: right">4,210</span></div>
+    <div class="r"><span class="v" style="text-align: left">4,494</span><span class="s" style="text-align: center">Round 2</span><span class="v w" style="text-align: right">4,866</span></div>
+    <div class="r"><span class="v" style="text-align: left">2,116</span><span class="s" style="text-align: center">Round 3</span><span class="v w" style="text-align: right">3,280</span></div>
+    <div class="r"><span class="v w" style="text-align: left">3,667</span><span class="s" style="text-align: center">Round 4</span><span class="v" style="text-align: right">1,972</span></div>
+    <div class="r" style="border-bottom: 0"><span class="v w" style="text-align: left">1,003</span><span class="s" style="text-align: center">Round 5</span><span class="v" style="text-align: right">592</span></div>
+  </div>
+  <p class="s" style="text-align: center; margin-top: -6px">Higher score in each round shown in green</p>
+
+  <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 18px; background: #FFF6D6">
+    <svg viewBox="0 0 24 24" style="width: 26px; height: 26px; color: #E5A800; flex: none"><path class="fl" d="M13.5 1.5L4 14h7l-1.5 8.5L20 9.5h-7z"></path></svg>
+    <p class="s" style="color: #5C4000; flex-grow: 1"><b>+3 XP</b> duel win · Duelist badge 5 / 10</p>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <div style="display: flex; gap: 12px">
+    <a class="btn" href="GameHub.dc.html" style="flex: 1; background: #FFFFFF; color: #0C807A; border: 2px solid #E5E5DC; box-shadow: 0 4px 0 #E5E5DC">Done</a>
+    <a class="btn" href="GameRound.dc.html" style="flex: 1.4; background: #6A4FE8; color: #FFFFFF; box-shadow: 0 4px 0 #4B33C4">Rematch</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

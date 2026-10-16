@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Join a game</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.h3{font-weight:900;font-size:16px;line-height:1.25;color:#F1F5F4}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#9AA8AD}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9AA8AD}
+.card{background:#1C2A30;border:2px solid #2B3B42;border-bottom-width:4px;border-radius:20px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.bo{background:#FF9F1C;color:#3A2200;box-shadow:0 4px 0 #B86E00}
+.digit{flex:1;height:60px;border-radius:14px;border:2px solid #2B3B42;border-bottom-width:4px;background:#1C2A30;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:28px;color:#F1F5F4}
+.corner{position:absolute;width:44px;height:44px;border-color:#FF9F1C;border-style:solid}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #131D22; font-family: 'Nunito', system-ui, sans-serif; color: #D5DEDD; display: flex; flex-direction: column; gap: 16px; padding: 14px 16px 26px">
+  <div style="display: flex; align-items: center; gap: 10px">
+    <a href="CampHub.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #9AA8AD"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <h1 style="font-weight: 900; font-size: 24px; color: #F1F5F4">Join a game</h1>
+  </div>
+
+  <div style="position: relative; height: 290px; border-radius: 24px; overflow: hidden; background: #0B1114">
+    <img src="/_blob/bb7e61cdec3acfef22cb18e86375ffbb" alt="" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(.35) blur(2px)">
+    <div style="position: absolute; left: 95px; top: 45px; width: 168px; height: 168px">
+      <span class="corner" style="left: 0; top: 0; border-width: 5px 0 0 5px; border-radius: 14px 0 0 0"></span>
+      <span class="corner" style="right: 0; top: 0; border-width: 5px 5px 0 0; border-radius: 0 14px 0 0"></span>
+      <span class="corner" style="left: 0; bottom: 0; border-width: 0 0 5px 5px; border-radius: 0 0 0 14px"></span>
+      <span class="corner" style="right: 0; bottom: 0; border-width: 0 5px 5px 0; border-radius: 0 0 14px 0"></span>
+    </div>
+    <p style="position: absolute; left: 0; right: 0; bottom: 18px; text-align: center; font-weight: 800; font-size: 14px; color: #F1F5F4">Point at the QR code on the host's phone</p>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 12px"><span style="flex: 1; height: 2px; background: #2B3B42"></span><span class="cap">or enter the room code</span><span style="flex: 1; height: 2px; background: #2B3B42"></span></div>
+  <div style="display: flex; gap: 10px"><span class="digit">4</span><span class="digit">8</span><span class="digit">2</span><span class="digit" style="border-color: #FF9F1C">1</span></div>
+
+  <div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <span style="width: 40px; height: 40px; border-radius: 12px; background: #173F2A; color: #7BE0A2; display: flex; align-items: center; justify-content: center; flex: none"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M5 12.5a10 10 0 0 1 14 0M8 15.5a6 6 0 0 1 8 0M12 19h.01" style="stroke-width: 3"></path></svg></span>
+      <div style="flex-grow: 1"><p class="h3" style="font-size: 15px">Connected to "Timur's iPhone"</p><p class="s">Room found · 7 players waiting</p></div>
+      <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #7BE0A2"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3"></path></svg>
+    </div>
+    <p class="s">Not seeing it? Open Wi-Fi settings and join the host's hotspot first.</p>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <a class="btn bo" href="ImpReveal.dc.html">Join as Dilnoza</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

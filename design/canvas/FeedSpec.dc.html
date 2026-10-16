@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Feed and Top Shots — rules</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.h3{font-weight:900;font-size:18px;line-height:1.25;color:#1F2A2E}
+.t{font-weight:700;font-size:15px;line-height:1.45;color:#3C4A4F}
+.s{font-weight:700;font-size:13px;line-height:1.45;color:#5E6E74}
+.s b{color:#1F2A2E}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:22px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.li{display:flex;gap:10px;align-items:flex-start}
+.n{width:24px;height:24px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;margin-top:1px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5E6E74;padding:6px 8px;border-bottom:2px solid #E5E5DC}
+.tbl td{padding:8px;border-bottom:2px solid #F0F0EA;font-weight:700;color:#1F2A2E}
+.step{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:16px 10px;border-radius:20px;background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px}
+.si{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#FFFFFF}
+.hex{width:58px;height:64px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:flex;align-items:center;justify-content:center;flex:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 1240px; height: 1380px; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; padding: 48px 56px; display: flex; flex-direction: column; gap: 26px; overflow: hidden">
+  <div style="display: flex; align-items: center; gap: 22px">
+    <div style="display: grid; grid-template-columns: repeat(2, 52px); gap: 6px; flex: none">
+      <img src="/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57" alt="" style="width: 52px; height: 52px; border-radius: 12px; object-fit: cover">
+      <img src="/_blob/2ea0b851b548b4dce9228408142b7d82" alt="" style="width: 52px; height: 52px; border-radius: 12px; object-fit: cover">
+      <img src="/_blob/bb7e61cdec3acfef22cb18e86375ffbb" alt="" style="width: 52px; height: 52px; border-radius: 12px; object-fit: cover">
+      <img src="/_blob/7000c508ed65b0395bc9ba13d1d81dcd" alt="" style="width: 52px; height: 52px; border-radius: 12px; object-fit: cover">
+    </div>
+    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+      <p class="cap">Community · new section</p>
+      <h1 style="font-weight: 900; font-size: 46px; line-height: 1; color: #1F2A2E">Feed &amp; Top Shots</h1>
+      <p class="t" style="font-size: 17px; max-width: 860px">Explorers post photos from their trips — solo, with a group or on a tour — up to 10 per post. Every two weeks the 10 most-liked posts become <b>Top Shots</b>: their authors get XP, a badge and a spot on the winners' wall.</p>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 10px">
+    <div class="step"><span class="si" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="st" d="M3 8h4l2-3h6l2 3h4v11H3z"></path><circle class="st" cx="12" cy="13" r="3.5"></circle></svg></span><p class="h3" style="font-size: 16px">Post a trip</p><p class="s">1–10 photos, caption, place tag; solo, group or tour.</p></div>
+    <div class="step"><span class="si" style="background: #FF4B4B"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"></path></svg></span><p class="h3" style="font-size: 16px">Collect likes</p><p class="s">Likes from real accounts count during the 2-week round.</p></div>
+    <div class="step"><span class="si" style="background: #FFC800; color: #5C4000"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M6 3h12v3a6 6 0 0 1-12 0zM4 4h2v3H4a2 2 0 0 1 0-3zm14 0h2a2 2 0 0 1 0 3h-2zM10 13h4v4h3v3H7v-3h3z"></path></svg></span><p class="h3" style="font-size: 16px">Top 10 crowned</p><p class="s">Every second Sunday, 23:59 Tashkent.</p></div>
+    <div class="step"><span class="si" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M13.5 1.5L4 14h7l-1.5 8.5L20 9.5h-7z"></path></svg></span><p class="h3" style="font-size: 16px">Rewards</p><p class="s">XP, Top Shot badge, winners' wall, profile frame.</p></div>
+    <div class="step" style="border-color: #3DAA5C"><span class="si" style="background: #3DAA5C"><svg viewBox="0 0 24 24" style="width: 28px; height: 28px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></span><p class="h3" style="font-size: 16px">Inspire a trip</p><p class="s">Every post links to its place — "Start adventure here".</p></div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+    <div class="card">
+      <p class="cap">Top Shots rewards (every 2 weeks)</p>
+      <table class="tbl">
+        <tr><th>Place</th><th>XP</th><th>Extra</th></tr>
+        <tr><td>#1</td><td>150</td><td>Gold frame on profile for 2 weeks</td></tr>
+        <tr><td>#2 – #3</td><td>100</td><td>Podium on the winners' wall</td></tr>
+        <tr><td>#4 – #10</td><td>50</td><td>Top Shot badge progress</td></tr>
+      </table>
+      <p class="s">Posting gives <b>+5 XP</b> once a day. Likes themselves give no XP, so there's nothing to farm.</p>
+    </div>
+    <div class="card">
+      <p class="cap">Top Shot badge tiers</p>
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <div class="li" style="align-items: center"><div style="filter: drop-shadow(0 3px 0 #7A4E2D)"><span class="hex" style="background: #C98B4E; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M3 8h4l2-3h6l2 3h4v11H3z"></path><circle class="st" cx="12" cy="13" r="3.5"></circle></svg></span></div><div><p class="h3" style="font-size: 15px">Top Shot · Bronze</p><p class="s">First Top 10 finish</p></div></div>
+        <div class="li" style="align-items: center"><div style="filter: drop-shadow(0 3px 0 #6B787D)"><span class="hex" style="background: #AEB8BC; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M3 8h4l2-3h6l2 3h4v11H3z"></path><circle class="st" cx="12" cy="13" r="3.5"></circle></svg></span></div><div><p class="h3" style="font-size: 15px">Top Shot · Silver</p><p class="s">5 Top 10 finishes</p></div></div>
+        <div class="li" style="align-items: center"><div style="filter: drop-shadow(0 3px 0 #B88600)"><span class="hex" style="background: #FFC800; color: #5C4000"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M3 8h4l2-3h6l2 3h4v11H3z"></path><circle class="st" cx="12" cy="13" r="3.5"></circle></svg></span></div><div><p class="h3" style="font-size: 15px">Top Shot · Gold</p><p class="s">10 Top 10 finishes</p></div></div>
+        <div class="li" style="align-items: center"><div style="filter: drop-shadow(0 3px 0 #4330B0)"><span class="hex" style="background: #7B61FF; color: #FFFFFF"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="fl" d="M6 3h12v3a6 6 0 0 1-12 0zM10 13h4v4h3v3H7v-3h3z"></path></svg></span></div><div><p class="h3" style="font-size: 15px">Shot of the Fortnight</p><p class="s">Win #1 — counted, e.g. ×3</p></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <p class="cap">Who can win</p>
+      <div class="li"><span class="n" style="background: #1CB0A8; color: #FFFFFF">1</span><p class="s"><b>Posted during the round</b> (Mon 00:00 to Sunday-after-next 23:59, Tashkent time).</p></div>
+      <div class="li"><span class="n" style="background: #1CB0A8; color: #FFFFFF">2</span><p class="s"><b>Tagged with a place</b>, and the author has a verified check-in there — so winning photos are from real trips.</p></div>
+      <div class="li"><span class="n" style="background: #1CB0A8; color: #FFFFFF">3</span><p class="s"><b>Own photos only.</b> Reposts and tour operators' marketing posts are excluded (operators get their own "Tour stories" tab).</p></div>
+      <div class="li"><span class="n" style="background: #1CB0A8; color: #FFFFFF">4</span><p class="s"><b>Ties:</b> the post that reached the count first wins.</p></div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; flex-grow: 1">
+    <div class="card">
+      <p class="cap">Fair likes</p>
+      <div class="li"><span class="n" style="background: #FFE1E1; color: #B32424">!</span><p class="s">Only likes from accounts older than 7 days with a verified phone count toward Top Shots.</p></div>
+      <div class="li"><span class="n" style="background: #FFE1E1; color: #B32424">!</span><p class="s">No self-likes. Like rings and sudden spikes from new accounts are flagged and reviewed before winners are announced.</p></div>
+      <div class="li"><span class="n" style="background: #FFE1E1; color: #B32424">!</span><p class="s">The leaderboard shows rank, not exact counts, in the last 24 hours to cool down last-minute campaigns.</p></div>
+    </div>
+    <div class="card">
+      <p class="cap">Safety &amp; places</p>
+      <div class="li"><span class="n" style="background: #ECE8FF; color: #4B33C4">✓</span><p class="s">Photo GPS data is stripped. <b>Fragile</b> spots show only the region name, never a pin.</p></div>
+      <div class="li"><span class="n" style="background: #ECE8FF; color: #4B33C4">✓</span><p class="s">Posts showing risky behaviour (no helmet on scrambles, swimming in "Not now" conditions) can be reported and are hidden from Top Shots.</p></div>
+      <div class="li"><span class="n" style="background: #ECE8FF; color: #4B33C4">✓</span><p class="s">Tagged people must approve before their name appears.</p></div>
+    </div>
+    <div class="card">
+      <p class="cap">Retention hooks</p>
+      <div class="li"><span class="n" style="background: #FF9F1C; color: #3A2200">1</span><p class="s">"Your post is #12 — 40 likes to Top 10, 3 days left" (max one push per round).</p></div>
+      <div class="li"><span class="n" style="background: #FF9F1C; color: #3A2200">2</span><p class="s">Winners announced Monday morning with a celebration screen and a share card.</p></div>
+      <div class="li"><span class="n" style="background: #FF9F1C; color: #3A2200">3</span><p class="s">"Post your trip" prompt right after a summit or checkout — the best moment to share.</p></div>
+      <div class="li"><span class="n" style="background: #FF9F1C; color: #3A2200">4</span><p class="s">Feed lives in the Groups tab, renamed <b>Community</b>: Feed · Groups · Campfire games.</p></div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":1380}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

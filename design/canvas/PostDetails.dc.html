@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>New post — details</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#5E6E74}
+.lbl{font-weight:900;font-size:15px;color:#1F2A2E;display:block}
+.f{display:flex;flex-direction:column;gap:8px}
+.in{width:100%;border-radius:14px;border:2px solid #E5E5DC;background:#FFFFFF;padding:12px 14px;font:700 15px 'Nunito',sans-serif;color:#1F2A2E;resize:none}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:20px}
+.opt{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:64px;padding:8px 4px;border-radius:14px;border:2px solid #E5E5DC;border-bottom-width:4px;background:#FFFFFF;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:#3C4A4F;cursor:pointer}
+.opt.on{border-color:#1CB0A8;background:#E3F7F5;color:#0B5B57}
+.tg{width:52px;height:32px;border-radius:99px;background:#1CB0A8;position:relative;flex:none}
+.tg::after{content:'';position:absolute;right:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#FFFFFF}
+.pa{width:34px;height:34px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;flex:none}
+.pa img{width:38px;height:38px;margin-top:8px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1180px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 18px; padding: 14px 16px 24px">
+  <div style="display: flex; align-items: center; gap: 8px">
+    <a href="PostPhotos.dc.html" aria-label="Back" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+    <p style="flex-grow: 1; font-weight: 900; font-size: 20px; color: #1F2A2E">New post</p>
+  </div>
+
+  <div style="display: flex; gap: 12px">
+    <div style="position: relative; width: 96px; height: 96px; flex: none">
+      <img src="/_blob/2ea0b851b548b4dce9228408142b7d82" alt="Cover photo" style="width: 96px; height: 96px; border-radius: 16px; object-fit: cover; object-position: 20% 50%">
+      <span style="position: absolute; right: 6px; bottom: 6px; height: 22px; padding: 0 7px; border-radius: 7px; background: rgba(31,42,46,.8); color: #FFFFFF; font-weight: 900; font-size: 11px; display: flex; align-items: center">+6</span>
+    </div>
+    <textarea class="in" rows="4" aria-label="Caption" style="flex-grow: 1">Upper lake at 7 am — not a single soul. Worth the 5 am start.</textarea>
+  </div>
+
+  <div class="f">
+    <span class="lbl">Place</span>
+    <div class="card" style="padding: 10px 12px; display: flex; align-items: center; gap: 12px; border-color: #1CB0A8">
+      <span style="width: 42px; height: 42px; border-radius: 12px; background: #4CA9FF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex: none"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 2.5c3.2 4.2 6.5 7.8 6.5 11.5a6.5 6.5 0 0 1-13 0c0-3.7 3.3-7.3 6.5-11.5z"></path></svg></span>
+      <div style="flex-grow: 1"><p style="font-weight: 900; font-size: 15px; color: #1F2A2E">Urungach Lakes</p><p class="s" style="color: #1B6B3E">✓ From your check-in on Oct 15</p></div>
+      <span class="s" style="color: #0C807A; font-weight: 900">Change</span>
+    </div>
+  </div>
+
+  <div class="f" role="radiogroup" aria-label="Trip type">
+    <span class="lbl">How did you go?</span>
+    <div style="display: flex; gap: 8px">
+      <button class="opt on" role="radio" aria-checked="true"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 3a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zM4 21c.6-4.4 3.8-6.5 8-6.5s7.4 2.1 8 6.5z"></path></svg>Solo</button>
+      <button class="opt" role="radio" aria-checked="false"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M9 4.4a3.6 3.6 0 1 1 0 7.2 3.6 3.6 0 0 1 0-7.2zM2 20.5c.4-4.4 3.2-6.6 7-6.6s6.6 2.2 7 6.6zM17.5 6.3a2.7 2.7 0 1 1 0 5.4 2.7 2.7 0 0 1 0-5.4zM17 13.6c2.9 0 4.6 2 5 5.4h-4.2z"></path></svg>Friends / group</button>
+      <button class="opt" role="radio" aria-checked="false"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M4 8h16l-1.5 12h-13zM9 8V6a3 3 0 0 1 6 0v2"></path></svg>Tour</button>
+    </div>
+    <p class="s">With a tour, pick the operator — the post links to their tour page.</p>
+  </div>
+
+  <div class="f">
+    <span class="lbl">Tag people</span>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap">
+      <span style="display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px 0 4px; border-radius: 99px; background: #FFFFFF; border: 2px solid #E5E5DC"><span class="pa" style="background: #F7EADB; width: 30px; height: 30px"><img src="/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5" alt="" style="width: 34px; height: 34px"></span><span style="font-weight: 800; font-size: 13px; color: #1F2A2E">Laylo · pending</span></span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px; border-radius: 99px; border: 2px dashed #C9CDC2; color: #0C807A; font-weight: 900; font-size: 13px"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M12 5v14M5 12h14"></path></svg>Add</span>
+    </div>
+  </div>
+
+  <div class="card" style="padding: 14px; display: flex; align-items: center; gap: 12px; background: #FFF6D6; border-color: #F2D77A">
+    <span style="width: 42px; height: 42px; border-radius: 12px; background: #FFC800; color: #5C4000; display: flex; align-items: center; justify-content: center; flex: none"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M6 3h12v3a6 6 0 0 1-12 0zM10 13h4v4h3v3H7v-3h3z"></path></svg></span>
+    <div style="flex-grow: 1"><p style="font-weight: 900; font-size: 15px; color: #5C4000">Enter Top Shots</p><p class="s" style="color: #6E4E00">Eligible: verified visit · round ends Oct 25</p></div>
+    <span class="tg" role="switch" aria-checked="true" aria-label="Enter Top Shots"></span>
+  </div>
+
+  <div style="display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 16px; background: #ECE8FF">
+    <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #4B33C4; flex: none"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg>
+    <p class="s" style="color: #3A2A8A">Photo location data is removed. Fragile places show only the region.</p>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <a class="btn" href="Feed.dc.html" style="background: #0C807A; color: #FFFFFF; box-shadow: 0 4px 0 #075B56">Post · +5 XP</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

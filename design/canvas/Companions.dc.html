@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Companion evolution line</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{font-family:'Nunito',system-ui,sans-serif;color:#3C4A4F;background:#F7F7F2;position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.h3{font-weight:900;font-size:20px;line-height:1.2;color:#1F2A2E}
+.t{font-weight:700;font-size:15px;line-height:1.45}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5E6E74}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:24px}
+</style>
+</helmet>
+<div class="app" style="width: 1720px; height: 820px; padding: 44px 56px; gap: 30px">
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <p class="cap">Companion system · user levels</p>
+      <h2 style="font-weight: 900; font-size: 40px; line-height: 1; color: #1F2A2E; margin: 0">Seven companions, one backpack</h2>
+      <p class="t" style="max-width: 760px">Every explorer gets a companion that evolves as they learn and climb. Same chibi, rounded, flat-vector style as Irbis; the tiny orange backpack is handed on at every level-up.</p>
+    </div>
+    <div class="card" style="padding: 14px 18px; display: flex; gap: 14px; align-items: center; max-width: 470px">
+      <svg viewBox="0 0 24 24" style="width: 28px; height: 28px; flex: none; color: #0C807A"><path d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z" style="fill: currentColor"></path><path d="M8 12l3 3 5-6" style="fill: none; stroke: #FFFFFF; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round"></path></svg>
+      <p class="s" style="color: #3C4A4F">Levels need XP <b>and</b> safety lessons <b>and</b> verified check-ins at the right difficulty — you can't grind your way onto a harder mountain.</p>
+    </div>
+  </div>
+
+  <div style="position: relative; flex-grow: 1">
+    <div style="position: absolute; left: 90px; right: 90px; top: 92px; height: 8px; border-radius: 99px; background: repeating-linear-gradient(90deg, #E5E5DC 0 18px, transparent 18px 30px)"></div>
+    <div style="position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 22px; height: 100%">
+      <sc-for list="{{levels}}" as="it" hint-placeholder-count="7">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 14px">
+          <div style="filter: drop-shadow(0 6px 0 {{it.dark}}); width: 184px; height: 184px">
+            <div style="width: 184px; height: 184px; background: {{it.color}}; clip-path: {{it.clip}}; border-radius: {{it.rad}}; display: flex; align-items: center; justify-content: center">
+              <div style="width: 160px; height: 160px; background: {{it.tint}}; clip-path: {{it.clip}}; border-radius: {{it.rad}}; display: flex; align-items: center; justify-content: center">
+                <img src="{{it.img}}" alt="{{it.animal}}" style="width: 142px; height: 142px">
+              </div>
+            </div>
+          </div>
+          <div class="card" style="width: 100%; padding: 14px; display: flex; flex-direction: column; gap: 8px; flex-grow: 1; border-color: {{it.color}}">
+            <div style="display: flex; align-items: center; justify-content: space-between">
+              <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 99px; background: {{it.tint}}; color: {{it.text}}; font-weight: 900; font-size: 12px; letter-spacing: .06em">LEVEL {{it.n}}</span>
+              <div style="display: flex; gap: 1px">
+                <sc-for list="{{it.boots}}" as="b" hint-placeholder-count="5">
+                  <svg viewBox="0 0 24 24" style="width: 15px; height: 15px; color: #7A4E2D; opacity: {{b.o}}"><path d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z" style="fill: currentColor"></path><rect x="4" y="19.2" width="16.5" height="2.6" rx="1.3" style="fill: currentColor"></rect></svg>
+                </sc-for>
+              </div>
+            </div>
+            <p class="h3">{{it.name}}</p>
+            <p class="s" style="color: #3C4A4F">{{it.animal}} · {{it.trait}}</p>
+            <div style="height: 2px; background: #EEF0E8"></div>
+            <p class="s">{{it.req}}</p>
+            <p class="s" style="color: {{it.text}}; margin-top: auto">Unlocks: {{it.unlock}}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1720,"height":820}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const boots = (n) => [1, 2, 3, 4, 5].map((i) => ({ o: i <= n ? 1 : 0.18 }));
+    const star = 'polygon(50% 0%,61.1% 8.5%,75% 6.7%,80.4% 19.6%,93.3% 25%,91.5% 38.9%,100% 50%,91.5% 61.1%,93.3% 75%,80.4% 80.4%,75% 93.3%,61.1% 91.5%,50% 100%,38.9% 91.5%,25% 93.3%,19.6% 80.4%,6.7% 75%,8.5% 61.1%,0% 50%,8.5% 38.9%,6.7% 25%,19.6% 19.6%,25% 6.7%,38.9% 8.5%)';
+    const levels = [
+      { n: 1, name: 'Wanderer', animal: 'Panda cub', trait: 'clumsy, cozy', img: '/_blob/44b792e405b2dce67f0743e4be0fc2e1', color: '#58B368', dark: '#3E8E4D', tint: '#E4F5E7', text: '#2D6E3A', clip: 'none', rad: '50%', req: 'Where every explorer starts.', unlock: 'difficulty 1 places', boots: boots(1) },
+      { n: 2, name: 'Burrower', animal: 'Marmot', trait: 'curious', img: '/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5', color: '#C98B4E', dark: '#A06A33', tint: '#F7EADB', text: '#7A4E1F', clip: 'none', rad: '44px', req: '300 XP · 2 safety lessons · 2 verified check-ins', unlock: 'difficulty 2', boots: boots(2) },
+      { n: 3, name: 'Pathfinder', animal: 'Fox', trait: 'clever', img: '/_blob/d1b0d6198561f208461b0f6704094021', color: '#F2802E', dark: '#C9601A', tint: '#FFE9D9', text: '#9A4510', clip: 'polygon(50% 0, 100% 12%, 100% 58%, 50% 100%, 0 58%, 0 12%)', rad: '0', req: '1,000 XP · Tier 2 lessons · 5 check-ins at difficulty 2+', unlock: 'difficulty 3, overnight trips', boots: boots(3) },
+      { n: 4, name: 'Ridge Walker', animal: 'Ibex', trait: 'sure-footed', img: '/_blob/dba7b9623f9af9c690bf93a6ddc5f60b', color: '#1CB0A8', dark: '#0E8A83', tint: '#DDF5F3', text: '#0C6E69', clip: 'polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0 50%)', rad: '0', req: '2,500 XP · Tier 3 lessons · 8 check-ins at difficulty 3+', unlock: 'scrambles, high passes', boots: boots(3) },
+      { n: 5, name: 'Mountain Guardian', animal: 'Brown bear', trait: 'strong, protective', img: '/_blob/ffe227711df8d0445b9dfe0a9534a6f4', color: '#4C7BD9', dark: '#335FB8', tint: '#E3ECFB', text: '#2A4F9A', clip: 'polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%)', rad: '0', req: '5,000 XP · First-aid tier · 12 check-ins at difficulty 3+', unlock: 'difficulty 4, lead group trips', boots: boots(4) },
+      { n: 6, name: 'Sky Watcher', animal: 'Golden eagle', trait: 'sharp-eyed', img: '/_blob/55d73e65f5c5f754c2cbb05b4ea4a0ce', color: '#7B61FF', dark: '#5B42DB', tint: '#ECE8FF', text: '#4B33C4', clip: 'polygon(50% 0, 94% 20%, 100% 62%, 50% 100%, 0 62%, 6% 20%)', rad: '0', req: '9,000 XP · Tier 5 lessons · 15 check-ins at difficulty 4+', unlock: 'verify other explorers’ spots', boots: boots(4) },
+      { n: 7, name: 'Snow Legend', animal: 'Snow leopard', trait: 'rare, respected', img: '/_blob/09bfc86cfae87bf488a193ee4dab56d8', color: '#E5A800', dark: '#B88600', tint: '#FFF6D6', text: '#7A5800', clip: star, rad: '0', req: '15,000 XP · all tiers · 25 check-ins at difficulty 5 · 3 verified spots', unlock: 'difficulty 5, Legend frame', boots: boots(5) }
+    ];
+    return { levels };
+  }
+}
+</script>
+</body>
+</html>

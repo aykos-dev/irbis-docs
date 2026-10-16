@@ -4,7 +4,7 @@ usage:
   bugs.py next  <slug>        the next defect number for a feature (D1, D2 … continue across runs, never reused)
   bugs.py index               rebuild qa/BUGS.md (every defect of every feature) and qa/<slug>/bugs/README.md
   bugs.py open                list the open defects (Open / Not fixed) as `<slug>/D{n}` — the input /qa-retest takes
-  bugs.py find  <ref>         path of a defect folder from `spot-checkin/D3`, `D3` (if unique) or a path
+  bugs.py find  <ref>         path of a defect folder from `check-in/D3`, `D3` (if unique) or a path
 
 A defect file is qa/<slug>/bugs/D{n}_{name}/D{n}_{name}.md; its header table carries `| Status | … |` and
 `| Severity | … |`, the first heading is `# D{n} · {one line}`.

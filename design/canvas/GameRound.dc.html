@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bu qayer? — 360 view</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.pill{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:14px;background:rgba(255,255,255,.94);font-weight:900;font-size:15px;color:#1F2A2E;box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.ib{width:48px;height:48px;border-radius:16px;border:0;background:rgba(255,255,255,.94);color:#1F2A2E;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 0 rgba(0,0,0,.15);cursor:pointer;padding:0}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.rd{width:10px;height:10px;border-radius:50%}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #A9D8EE; font-family: 'Nunito', system-ui, sans-serif">
+  <img src="/_blob/adc9df09c7edf6477c00ce2f292fe37a" alt="360 degree view of a mountain valley with a river, poplar trees, a dirt road, a blank blue road sign and a raised wooden platform with red cushions" style="position: absolute; left: -620px; top: 0; width: 2412px; height: 844px; object-fit: cover">
+
+  <div style="position: absolute; left: 16px; right: 16px; top: 16px; display: flex; align-items: center; gap: 10px">
+    <a class="ib" href="GameHub.dc.html" aria-label="Quit"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M6 6l12 12M18 6L6 18" style="stroke-width: 3"></path></svg></a>
+    <span class="pill">Round 2 / 5</span>
+    <span class="pill" style="margin-left: auto"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; color: #FFC800"><path class="fl" d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z"></path></svg>4,901</span>
+  </div>
+  <div style="position: absolute; left: 50%; top: 72px; transform: translateX(-50%); display: flex; gap: 6px" aria-label="Round progress">
+    <span class="rd" style="background: #2E8B57"></span><span class="rd" style="background: #FFFFFF; box-shadow: 0 0 0 3px #1CB0A8"></span><span class="rd" style="background: rgba(255,255,255,.6)"></span><span class="rd" style="background: rgba(255,255,255,.6)"></span><span class="rd" style="background: rgba(255,255,255,.6)"></span>
+  </div>
+
+  <div style="position: absolute; right: 16px; top: 108px; display: flex; flex-direction: column; gap: 10px">
+    <div class="ib" style="flex-direction: column; gap: 0; width: 56px; height: 56px; border-radius: 50%" aria-label="Facing south-west, 220 degrees"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px; transform: rotate(-140deg)"><path d="M12 3l3.5 9h-7z" style="fill: #D93636"></path><path d="M12 21l-3.5-9h7z" style="fill: #AEB8BC"></path></svg></div>
+    <button class="ib" aria-label="Zoom in"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M12 5v14M5 12h14" style="stroke-width: 3"></path></svg></button>
+    <button class="ib" aria-label="Zoom out"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M5 12h14" style="stroke-width: 3"></path></svg></button>
+    <button class="ib" aria-label="Back to start view"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M4 12a8 8 0 1 0 2.3-5.7M4 4v4h4"></path></svg></button>
+  </div>
+
+  <div style="position: absolute; left: 50%; top: 520px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 99px; background: rgba(31,42,46,.78); color: #FFFFFF; font-weight: 800; font-size: 14px; white-space: nowrap">
+    <svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M4 12h16M4 12l3-3M4 12l3 3M20 12l-3-3M20 12l-3 3"></path></svg>Drag to look around
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 16px 26px; display: flex; flex-direction: column; gap: 10px; background: linear-gradient(transparent, rgba(31,42,46,.45) 40%)">
+    <div style="display: flex; align-items: flex-end; gap: 10px">
+      <button style="display: flex; align-items: center; gap: 8px; height: 46px; padding: 0 14px; border-radius: 14px; border: 0; background: rgba(255,255,255,.94); font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 14px; color: #1F2A2E; box-shadow: 0 3px 0 rgba(0,0,0,.15); cursor: pointer">
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: #CC7A00"><path class="st" d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"></path></svg>Hint · region
+        <span style="display: flex; align-items: center; gap: 2px; color: #1F5FA8"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px; color: #4CA9FF"><path class="fl" d="M6.5 3h11l4 6-10 12.5L1.5 9z"></path></svg>20</span>
+      </button>
+      <a href="GameGuess.dc.html" aria-label="Open the map" style="margin-left: auto; width: 116px; height: 86px; border-radius: 16px; overflow: hidden; border: 3px solid #FFFFFF; box-shadow: 0 4px 0 rgba(0,0,0,.2); position: relative; display: block">
+        <img src="/_blob/3c359f247bc28d3c219d502ed9bcf7f1" alt="" style="width: 116px; height: 250px; object-fit: cover; margin-top: -40px">
+        <span style="position: absolute; right: 6px; bottom: 6px; width: 26px; height: 26px; border-radius: 8px; background: #FFFFFF; color: #1F2A2E; display: flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M4 14v6h6M20 10V4h-6M4 20l7-7M20 4l-7 7"></path></svg></span>
+      </a>
+    </div>
+    <a class="btn" href="GameGuess.dc.html" style="background: #0C807A; color: #FFFFFF; box-shadow: 0 4px 0 #075B56"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"></path></svg>Make a guess</a>
+    <p style="font-weight: 700; font-size: 11px; color: #FFFFFF; text-align: center; opacity: .9">Imagery: [CONTRIBUTOR] via Mapillary · CC BY-SA</p>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

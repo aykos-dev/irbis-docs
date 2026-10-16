@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>New post — pick photos</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#5E6E74}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.g{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:6px}
+.g img{width:100%;height:100%;object-fit:cover}
+.num{position:absolute;right:6px;top:6px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column">
+  <div style="display: flex; align-items: center; gap: 8px; padding: 14px 16px 10px">
+    <a href="Feed.dc.html" aria-label="Cancel" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="st" d="M6 6l12 12M18 6L6 18" style="stroke-width: 3"></path></svg></a>
+    <div style="flex-grow: 1"><p style="font-weight: 900; font-size: 20px; color: #1F2A2E">New post</p><p class="s">Pick up to 10 photos</p></div>
+    <span style="height: 34px; padding: 0 12px; border-radius: 99px; background: #E3F7F5; color: #0C6E69; font-weight: 900; font-size: 14px; display: flex; align-items: center">7 / 10</span>
+  </div>
+
+  <div style="display: flex; gap: 8px; padding: 0 16px 12px; overflow: hidden" aria-label="Selected photos in order — drag to reorder">
+    <sc-for list="{{sel}}" as="p" hint-placeholder-count="7">
+      <div style="position: relative; width: 60px; height: 60px; flex: none">
+        <img src="{{p.img}}" alt="" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; object-position: {{p.pos}}; border: {{p.border}}">
+        <span style="position: absolute; left: 4px; bottom: 4px; min-width: 18px; height: 18px; border-radius: 6px; background: rgba(31,42,46,.8); color: #FFFFFF; font-weight: 900; font-size: 11px; display: flex; align-items: center; justify-content: center">{{p.n}}</span>
+      </div>
+    </sc-for>
+  </div>
+  <p class="s" style="padding: 0 16px 10px">First photo is the cover · drag to reorder</p>
+
+  <div style="display: flex; gap: 8px; padding: 0 16px 10px">
+    <span style="height: 34px; padding: 0 12px; border-radius: 12px; background: #1F2A2E; color: #FFFFFF; font-weight: 800; font-size: 13px; display: flex; align-items: center; gap: 6px"><svg viewBox="0 0 24 24" style="width: 15px; height: 15px"><path class="st" d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"></path></svg>From this trip · Oct 15</span>
+    <span style="height: 34px; padding: 0 12px; border-radius: 12px; background: #FFFFFF; border: 2px solid #E5E5DC; color: #3C4A4F; font-weight: 800; font-size: 13px; display: flex; align-items: center">All photos</span>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; padding: 0 3px">
+    <sc-for list="{{grid}}" as="g" hint-placeholder-count="12">
+      <div class="g">
+        <img src="{{g.img}}" alt="" style="object-position: {{g.pos}}; opacity: {{g.op}}">
+        <span class="num" style="background: {{g.bg}}; color: {{g.fg}}; border: {{g.bd}}">{{g.n}}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <div style="padding: 12px 16px 24px; background: #FFFFFF; border-top: 2px solid #E5E5DC">
+    <a class="btn" href="PostDetails.dc.html" style="background: #0C807A; color: #FFFFFF; box-shadow: 0 4px 0 #075B56">Next · 7 photos</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const I = {
+      lake: '/_blob/2ea0b851b548b4dce9228408142b7d82', pano: '/_blob/adc9df09c7edf6477c00ce2f292fe37a', trail: '/_blob/6bbbc6ee6ced1a3bc81f1d2ce372f0fe',
+      peak: '/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57', camp: '/_blob/bb7e61cdec3acfef22cb18e86375ffbb', cave: '/_blob/7000c508ed65b0395bc9ba13d1d81dcd'
+    };
+    const cells = [
+      ['lake', '20% 50%', 1], ['pano', '70% 60%', 2], ['lake', '60% 50%', 3], ['trail', '50% 50%', 4], ['peak', '40% 50%', 0], ['camp', '50% 50%', 5],
+      ['pano', '20% 60%', 0], ['lake', '90% 70%', 6], ['peak', '80% 40%', 7], ['trail', '10% 70%', 0], ['cave', '50% 50%', 0], ['pano', '45% 60%', 0]
+    ];
+    const grid = cells.map(([k, pos, n]) => ({ img: I[k], pos, n: n || '', op: n ? 1 : 0.92, bg: n ? '#1CB0A8' : 'rgba(255,255,255,.35)', fg: '#FFFFFF', bd: n ? '2px solid #FFFFFF' : '2px solid #FFFFFF' }));
+    const sel = cells.filter((c) => c[2]).sort((a, b) => a[2] - b[2]).map(([k, pos, n]) => ({ img: I[k], pos, n, border: n === 1 ? '3px solid #FF9F1C' : '2px solid #FFFFFF' }));
+    return { grid, sel };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Add a Spot — Details</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:#5E6E74}
+.lbl{font-weight:900;font-size:15px;color:#1F2A2E;display:block}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:6px 16px;border:0;border-radius:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;letter-spacing:.05em;text-transform:uppercase;text-align:center;cursor:pointer;text-decoration:none}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.segb{flex:1;height:10px;border-radius:99px;background:#E5E5DC}
+.in{width:100%;min-height:52px;border-radius:14px;border:2px solid #E5E5DC;background:#FFFFFF;padding:12px 14px;font:700 15px 'Nunito',sans-serif;color:#1F2A2E;resize:none}
+.f{display:flex;flex-direction:column;gap:8px}
+.opt{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:52px;padding:8px 4px;border-radius:14px;border:2px solid #E5E5DC;border-bottom-width:4px;background:#FFFFFF;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:#3C4A4F;cursor:pointer;text-align:center}
+.opt.on{border-color:#1CB0A8;background:#E3F7F5;color:#0B5B57}
+.mo{height:44px;border-radius:12px;border:2px solid #E5E5DC;background:#FFFFFF;font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;color:#3C4A4F;cursor:pointer}
+.mo.on{background:#1CB0A8;border-color:#1CB0A8;color:#FFFFFF}
+.chip{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:12px;border:2px solid #E5E5DC;border-bottom-width:4px;background:#FFFFFF;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:#3C4A4F;cursor:pointer}
+.chip.on{border-color:#D93636;background:#FFE1E1;color:#8F1F1F}
+.dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FFFFFF}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 1560px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; padding: 14px 16px 26px; gap: 20px">
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; align-items: center; gap: 8px">
+      <a href="Spot2Photos.dc.html" aria-label="Back" style="width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: #8A979C"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M15 5l-7 7 7 7" style="stroke-width: 3"></path></svg></a>
+      <p style="flex-grow: 1; font-weight: 900; font-size: 18px; color: #1F2A2E">Add a Spot</p>
+      <span class="s">Step 3 of 4</span>
+    </div>
+    <div style="display: flex; gap: 6px" aria-hidden="true"><span class="segb" style="background: #1CB0A8"></span><span class="segb" style="background: #1CB0A8"></span><span class="segb" style="background: #1CB0A8"></span><span class="segb"></span></div>
+  </div>
+  <h1 style="font-weight: 900; font-size: 26px; color: #1F2A2E">Tell explorers about it</h1>
+
+  <label class="f"><span class="lbl">Name</span><input class="in" value="Kyzylsay Grotto"></label>
+
+  <div class="f" role="radiogroup" aria-label="Place type">
+    <span class="lbl">Place type</span>
+    <div style="display: flex; gap: 6px">
+      <button class="opt" role="radio" aria-checked="false"><span class="dot" style="background: #1CB0A8"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></span>Peak</button>
+      <button class="opt" role="radio" aria-checked="false"><span class="dot" style="background: #4CA9FF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="fl" d="M12 2.5c3.2 4.2 6.5 7.8 6.5 11.5a6.5 6.5 0 0 1-13 0c0-3.7 3.3-7.3 6.5-11.5z"></path></svg></span>Lake</button>
+      <button class="opt on" role="radio" aria-checked="true"><span class="dot" style="background: #7B61FF"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="fl" d="M1.5 21c0-9 4.7-15 10.5-15s10.5 6 10.5 15h-6c0-4.3-2-7.5-4.5-7.5S7.5 16.7 7.5 21z"></path></svg></span>Cave</button>
+      <button class="opt" role="radio" aria-checked="false"><span class="dot" style="background: #3DAA5C"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="fl" d="M12 3L1.5 21h21z"></path></svg></span>Camp</button>
+      <button class="opt" role="radio" aria-checked="false"><span class="dot" style="background: #FF9F1C"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><ellipse class="fl" cx="8" cy="14.5" rx="3" ry="4.5"></ellipse><ellipse class="fl" cx="16" cy="7" rx="3" ry="4.5"></ellipse></svg></span>Trail</button>
+    </div>
+  </div>
+
+  <label class="f"><span class="lbl">How to get there</span><textarea class="in" rows="3">From the Beldersay lift station take the left gully path ~40 min; the entrance is behind the large red boulder.</textarea></label>
+
+  <div class="f" role="radiogroup" aria-label="Road type">
+    <span class="lbl">Road to the trailhead</span>
+    <div style="display: flex; gap: 6px">
+      <button class="opt" role="radio" aria-checked="false">Paved</button>
+      <button class="opt" role="radio" aria-checked="false">Gravel</button>
+      <button class="opt on" role="radio" aria-checked="true"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M3 15V11l2-5h14l2 5v4zM3 15h18M7 18.5a1.5 1.5 0 1 0 0-.1M17 18.5a1.5 1.5 0 1 0 0-.1"></path></svg>4×4 needed</button>
+    </div>
+  </div>
+
+  <div class="f" role="radiogroup" aria-label="Estimated difficulty">
+    <div style="display: flex; justify-content: space-between"><span class="lbl">Estimated difficulty</span><span class="s" style="color: #1F2A2E">3 · Moderate</span></div>
+    <div style="display: flex; gap: 6px">
+      <button class="opt on" role="radio" aria-checked="false" style="color: #7A4E2D"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path><rect class="fl" x="4" y="19.2" width="16.5" height="2.6" rx="1.3"></rect></svg></button>
+      <button class="opt on" role="radio" aria-checked="false" style="color: #7A4E2D"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path><rect class="fl" x="4" y="19.2" width="16.5" height="2.6" rx="1.3"></rect></svg></button>
+      <button class="opt on" role="radio" aria-checked="true" style="color: #7A4E2D"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path><rect class="fl" x="4" y="19.2" width="16.5" height="2.6" rx="1.3"></rect></svg></button>
+      <button class="opt" role="radio" aria-checked="false" style="color: #C9CDC2"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path><rect class="fl" x="4" y="19.2" width="16.5" height="2.6" rx="1.3"></rect></svg></button>
+      <button class="opt" role="radio" aria-checked="false" style="color: #C9CDC2"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path><rect class="fl" x="4" y="19.2" width="16.5" height="2.6" rx="1.3"></rect></svg></button>
+    </div>
+  </div>
+
+  <div class="f">
+    <div style="display: flex; justify-content: space-between"><span class="lbl">Best months</span><span class="s">Tap to toggle</span></div>
+    <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px">
+      <button class="mo" aria-pressed="false">Jan</button><button class="mo" aria-pressed="false">Feb</button><button class="mo" aria-pressed="false">Mar</button><button class="mo" aria-pressed="false">Apr</button><button class="mo on" aria-pressed="true">May</button><button class="mo on" aria-pressed="true">Jun</button>
+      <button class="mo on" aria-pressed="true">Jul</button><button class="mo on" aria-pressed="true">Aug</button><button class="mo on" aria-pressed="true">Sep</button><button class="mo on" aria-pressed="true">Oct</button><button class="mo" aria-pressed="false">Nov</button><button class="mo" aria-pressed="false">Dec</button>
+    </div>
+  </div>
+
+  <div class="f">
+    <span class="lbl">Hazards</span>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <button class="chip on" aria-pressed="true"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Rockfall</button>
+      <button class="chip on" aria-pressed="true"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Mudslide</button>
+      <button class="chip" aria-pressed="false">Flood</button>
+      <button class="chip" aria-pressed="false">Avalanche</button>
+      <button class="chip" aria-pressed="false">Heat</button>
+      <button class="chip" aria-pressed="false">Road closure</button>
+      <button class="chip" aria-pressed="false">Low oxygen</button>
+    </div>
+  </div>
+
+  <div class="f" role="radiogroup" aria-label="Water sources">
+    <span class="lbl">Water sources</span>
+    <div style="display: flex; gap: 6px">
+      <button class="opt" role="radio" aria-checked="false">None</button>
+      <button class="opt on" role="radio" aria-checked="true"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px"><path class="st" d="M12 3c3 4 5.5 7 5.5 10a5.5 5.5 0 0 1-11 0c0-3 2.5-6 5.5-10z"></path></svg>Seasonal spring</button>
+      <button class="opt" role="radio" aria-checked="false">Year-round</button>
+    </div>
+  </div>
+
+  <div class="f" role="radiogroup" aria-label="Phone signal">
+    <span class="lbl">Phone signal</span>
+    <div style="display: flex; gap: 6px">
+      <button class="opt" role="radio" aria-checked="false"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M4 20h1M9 20h1M14 20h1M19 20h1M3 3l18 18"></path></svg>None</button>
+      <button class="opt on" role="radio" aria-checked="true"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M4 20v-2M9 20v-5M14 20v-1M19 20v-1"></path></svg>Weak</button>
+      <button class="opt" role="radio" aria-checked="false"><svg viewBox="0 0 24 24" style="width: 20px; height: 20px"><path class="st" d="M4 20v-3M9 20v-7M14 20v-11M19 20V5"></path></svg>Good</button>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <a class="btn bp" href="Spot4Duplicate.dc.html">Continue</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lessons hub</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--soft:#EEF0E8;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.h1{font-weight:900;font-size:28px;line-height:1.15;color:var(--ink)}
+.h2{font-weight:900;font-size:19px;line-height:1.2}
+.h3{font-weight:800;font-size:14px;line-height:1.25;color:var(--ink);text-align:center}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.card{background:var(--card);border:2px solid var(--line);border-bottom-width:4px;border-radius:20px}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.tier{margin:0 16px;border-radius:22px;overflow:hidden;border:2px solid var(--line);border-bottom-width:4px;background:var(--card)}
+.th{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.units{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:14px 10px 16px}
+.u{display:flex;flex-direction:column;align-items:center;gap:6px}
+.uw{position:relative;width:84px;height:84px}
+.uw svg.ring{position:absolute;inset:0;width:84px;height:84px}
+.uc{position:absolute;left:12px;top:12px;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#FFFFFF;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.uc svg{width:30px;height:30px}
+.lvl{width:40px;height:40px;border-radius:12px;flex:none;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.stat{display:flex;align-items:center;gap:4px;font-weight:900;font-size:16px;color:var(--ink)}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 1240px; gap: 16px">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 16px 16px 0">
+    <h1 class="h1">Lessons</h1>
+    <div style="display: flex; gap: 16px">
+      <span class="stat"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #FF9F1C"><path class="fl" d="M12 1.8c1.4 3.6 6 6 6 11.7A6 6 0 0 1 6 13.5c0-2.8 1.6-4.6 2.8-5.6.2 1.8 1 2.9 2.2 3.2C11.7 8.4 10.8 5 12 1.8z"></path></svg>12</span>
+      <span class="stat"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: #FF4B4B"><path class="fl" d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z"></path></svg>5</span>
+    </div>
+  </header>
+
+  <div class="card" style="margin: 0 16px; padding: 14px; display: flex; align-items: center; gap: 14px">
+    <div style="position: relative; width: 72px; height: 72px; flex: none">
+      <svg viewBox="0 0 80 80" style="width: 72px; height: 72px"><circle cx="40" cy="40" r="32" style="fill: none; stroke: #FFE6C2; stroke-width: 9"></circle><circle cx="40" cy="40" r="32" style="fill: none; stroke: #FF9F1C; stroke-width: 9; stroke-linecap: round; stroke-dasharray: 134 201; transform: rotate(-90deg); transform-origin: 40px 40px"></circle></svg>
+      <span style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 19px; color: var(--ink)">2/3</span>
+    </div>
+    <div style="flex-grow: 1"><p style="font-weight: 900; font-size: 17px; color: var(--ink)">Daily goal</p><p class="s">One more 3-minute lesson keeps your 12-day streak.</p></div>
+    <img src="/_blob/9ebec15f083abbb36876b1b8a577ea1b" alt="" style="width: 60px; height: 60px; flex: none">
+  </div>
+
+  <section class="tier">
+    <div class="th" style="background: #E4F5E7">
+      <div class="lvl" style="background: #58B368"><img src="/_blob/44b792e405b2dce67f0743e4be0fc2e1" alt="" style="width: 44px; height: 44px; margin-top: 8px"></div>
+      <div style="flex-grow: 1"><p class="cap" style="color: #2D6E3A">Tier 1 · Wanderer</p><p class="h2" style="color: #1F4A27">Trail Basics</p></div>
+      <span style="display: inline-flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 99px; background: #FFFFFF; color: #2D6E3A; font-weight: 900; font-size: 12px"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.2"></path></svg>Done</span>
+    </div>
+    <div class="units">
+      <div class="u"><div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: #FFC800; stroke-width: 6"></circle></svg><div class="uc" style="background: #1CB0A8"><svg viewBox="0 0 24 24"><circle class="st" cx="12" cy="12" r="9"></circle><path class="fl" d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></div></div><span class="h3">Navigation basics</span></div>
+      <div class="u"><div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: #FFC800; stroke-width: 6"></circle></svg><div class="uc" style="background: #3DAA5C"><svg viewBox="0 0 24 24"><path class="fl" d="M5 21c0-9 5-15 15-17-1 9-6 15-15 17z"></path><path d="M5 21L14 11" style="stroke: #2B8545; stroke-width: 2; stroke-linecap: round"></path></svg></div></div><span class="h3">Leave no trace</span></div>
+      <div class="u"><div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: #FFC800; stroke-width: 6"></circle></svg><div class="uc" style="background: #FF9F1C"><svg viewBox="0 0 24 24"><rect class="fl" x="5" y="7" width="14" height="14" rx="4"></rect><path class="st" d="M9 7V5a3 3 0 0 1 6 0v2"></path><rect x="8.5" y="13" width="7" height="4" rx="1.5" style="fill: #CC7A00"></rect></svg></div></div><span class="h3">Gear essentials</span></div>
+    </div>
+  </section>
+
+  <section class="tier">
+    <div class="th" style="background: #F7EADB">
+      <div class="lvl" style="background: #C98B4E"><img src="/_blob/d4c16d0e9ea4296c5638d9b3cf6bfee5" alt="" style="width: 44px; height: 44px; margin-top: 8px"></div>
+      <div style="flex-grow: 1"><p class="cap" style="color: #7A4E1F">Tier 2 · Burrower</p><p class="h2" style="color: #4F3112">Mountain Ready</p></div>
+      <span style="display: inline-flex; align-items: center; gap: 4px; height: 28px; padding: 0 10px; border-radius: 99px; background: #FFFFFF; color: #7A4E1F; font-weight: 900; font-size: 12px"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 3.2"></path></svg>Done</span>
+    </div>
+    <div class="units">
+      <div class="u"><div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: #FFC800; stroke-width: 6"></circle></svg><div class="uc" style="background: #4CA9FF"><svg viewBox="0 0 24 24"><path class="fl" d="M7 18h10a4 4 0 0 0 .5-8 5.5 5.5 0 0 0-10.6 1.5A3.3 3.3 0 0 0 7 18z"></path></svg></div></div><span class="h3">Weather signs</span></div>
+      <div class="u"><div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: #FFC800; stroke-width: 6"></circle></svg><div class="uc" style="background: #8C5A33"><svg viewBox="0 0 24 24"><ellipse class="fl" cx="12" cy="16" rx="5" ry="4"></ellipse><circle class="fl" cx="6" cy="10" r="2.2"></circle><circle class="fl" cx="10" cy="6.5" r="2.2"></circle><circle class="fl" cx="14" cy="6.5" r="2.2"></circle><circle class="fl" cx="18" cy="10" r="2.2"></circle></svg></div></div><span class="h3">Wildlife &amp; plants</span></div>
+      <div class="u"><div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: #FFC800; stroke-width: 6"></circle></svg><div class="uc" style="background: #D93636"><svg viewBox="0 0 24 24"><path class="fl" d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"></path></svg></div></div><span class="h3">First aid I</span></div>
+    </div>
+  </section>
+
+  <section class="tier" style="border-color: #F2802E">
+    <div class="th" style="background: #FFE9D9">
+      <div class="lvl" style="background: #F2802E"><img src="/_blob/d1b0d6198561f208461b0f6704094021" alt="" style="width: 44px; height: 44px; margin-top: 8px"></div>
+      <div style="flex-grow: 1"><p class="cap" style="color: #9A4510">Tier 3 · Pathfinder · you</p><p class="h2" style="color: #5C2A08">Ridge Skills</p></div>
+      <span style="display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 99px; background: #FFFFFF; color: #9A4510; font-weight: 900; font-size: 12px">4 / 6</span>
+    </div>
+    <div class="units">
+      <a class="u" href="Quiz.dc.html" style="text-decoration: none; position: relative">
+        <span style="position: absolute; top: -10px; z-index: 1; padding: 3px 10px; border-radius: 10px; background: #0C807A; color: #FFFFFF; font-weight: 900; font-size: 11px; letter-spacing: .06em">START</span>
+        <div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: var(--line); stroke-width: 6"></circle><circle cx="42" cy="42" r="38" style="fill: none; stroke: #1CB0A8; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 143 239; transform: rotate(-90deg); transform-origin: 42px 42px"></circle></svg><div class="uc" style="background: #D93636"><svg viewBox="0 0 24 24"><path class="fl" d="M2 20L9 8l3.5 5L15 10l7 10z"></path><path d="M14 4h5M16.5 1.5v5" style="stroke: #FFFFFF; stroke-width: 2; stroke-linecap: round"></path></svg></div></div><span class="h3">Altitude &amp; health</span></a>
+      <div class="u"><div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: var(--line); stroke-width: 6"></circle><circle cx="42" cy="42" r="38" style="fill: none; stroke: #1CB0A8; stroke-width: 6; stroke-linecap: round; stroke-dasharray: 72 239; transform: rotate(-90deg); transform-origin: 42px 42px"></circle></svg><div class="uc" style="background: #1CB0A8"><svg viewBox="0 0 24 24"><circle class="st" cx="12" cy="12" r="9"></circle><path class="fl" d="M15.5 8.5l-2 5-5 2 2-5z"></path></svg></div></div><span class="h3">Route finding</span></div>
+      <div class="u"><div class="uw"><svg class="ring" viewBox="0 0 84 84"><circle cx="42" cy="42" r="38" style="fill: none; stroke: var(--line); stroke-width: 6"></circle></svg><div class="uc" style="background: #4CA9FF"><svg viewBox="0 0 24 24"><path class="st" d="M2 10c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2M2 16c2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2 2.5 2 5 2"></path></svg></div></div><span class="h3">River crossing</span></div>
+    </div>
+  </section>
+
+  <section class="tier" style="background: var(--soft)">
+    <div class="th">
+      <div class="lvl" style="background: #D6D8D0"><img src="/_blob/dba7b9623f9af9c690bf93a6ddc5f60b" alt="" style="width: 44px; height: 44px; margin-top: 8px; filter: brightness(0); opacity: .25"></div>
+      <div style="flex-grow: 1"><p class="cap" style="color: var(--muted)">Tier 4 · Ridge Walker</p><p class="h2" style="color: var(--ink)">Snow &amp; Scrambles</p></div>
+      <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--muted)"><rect class="st" x="5" y="11" width="14" height="10" rx="2.5"></rect><path class="st" d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"></path></svg>
+    </div>
+    <div class="units" style="padding-top: 6px">
+      <div class="u" style="opacity: .55"><div class="uw"><div class="uc" style="background: #AEB8BC; box-shadow: 0 4px 0 #8A979C"><svg viewBox="0 0 24 24"><path class="st" d="M2 20L10 7l4 6 2-3 6 10z"></path></svg></div></div><span class="h3">Avalanche awareness</span></div>
+      <div class="u" style="opacity: .55"><div class="uw"><div class="uc" style="background: #AEB8BC; box-shadow: 0 4px 0 #8A979C"><svg viewBox="0 0 24 24"><path class="st" d="M4 20l4-8 4 3 4-9 4 14z"></path></svg></div></div><span class="h3">Scrambling</span></div>
+      <div class="u" style="opacity: .55"><div class="uw"><div class="uc" style="background: #AEB8BC; box-shadow: 0 4px 0 #8A979C"><svg viewBox="0 0 24 24"><path class="fl" d="M13 2L5 13h6l-1 9 8-11h-6z"></path></svg></div></div><span class="h3">Storms on ridges</span></div>
+    </div>
+    <p class="s" style="text-align: center; padding: 0 16px 14px">Unlocks when you reach Level 4</p>
+  </section>
+
+  <div style="flex-grow: 1"></div>
+  <dc-import name="Nav" active="lessons" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1240}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

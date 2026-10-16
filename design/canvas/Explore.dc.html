@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Explore map</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.app{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--soft:#EEF0E8;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column}
+p,h1,h2,h3{margin:0}
+.h2{font-weight:900;font-size:20px;line-height:1.2;color:var(--ink)}
+.h3{font-weight:800;font-size:16px;line-height:1.25;color:var(--ink)}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:4px;height:26px;padding:0 9px;border-radius:999px;font-weight:800;font-size:12px;white-space:nowrap}
+.go{background:#DFF6E7;color:#1B6B3E}.ca{background:#FFF1BF;color:#6E4E00}.no{background:#FFE1E1;color:#B32424}.lk{background:#ECEEEF;color:#56646A}
+.st{fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+.pin{position:absolute;width:44px;height:44px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:-2px 4px 0 rgba(0,0,0,.18)}
+.pin svg{transform:rotate(45deg);width:22px;height:22px;color:#FFFFFF}
+.sb{position:absolute;width:20px;height:20px;border-radius:50%;border:2px solid #FFFFFF;display:flex;align-items:center;justify-content:center;color:#FFFFFF}
+.sb svg{width:11px;height:11px}
+.fchip{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 12px;border-radius:12px;background:#FFFFFF;border:2px solid var(--line);border-bottom-width:4px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--ink);white-space:nowrap;cursor:pointer;flex:none}
+.fchip.on{background:var(--tint);border-color:#1CB0A8;color:#0C807A}
+.pc{width:250px;flex:none;background:#FFFFFF;border:2px solid var(--line);border-bottom-width:4px;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.boot{width:14px;height:14px;color:#7A4E2D}
+</style>
+</helmet>
+<div class="app" style="width: 390px; height: 844px">
+  <img src="/_blob/3c359f247bc28d3c219d502ed9bcf7f1" alt="" style="position: absolute; inset: 0; width: 390px; height: 844px; object-fit: cover">
+
+  <div style="position: relative; padding: 14px 16px 0; display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; gap: 10px">
+      <label style="flex-grow: 1; display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 14px; border-radius: 16px; background: #FFFFFF; border: 2px solid var(--line); border-bottom-width: 4px">
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; color: var(--muted); flex: none"><circle class="st" cx="11" cy="11" r="7"></circle><path class="st" d="M20 20l-4-4"></path></svg>
+        <input aria-label="Search places" placeholder="Search peaks, lakes, caves…" style="border: 0; outline: 0; background: transparent; font: 700 15px 'Nunito', sans-serif; color: var(--ink); width: 100%">
+      </label>
+      <button aria-label="All filters" style="width: 48px; height: 48px; border-radius: 16px; background: #0C807A; color: #FFFFFF; border: 0; box-shadow: 0 4px 0 #075B56; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; flex: none">
+        <svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"></path><circle class="st" cx="15" cy="6" r="2"></circle><circle class="st" cx="9" cy="12" r="2"></circle><circle class="st" cx="17" cy="18" r="2"></circle></svg>
+        <span style="position: absolute; top: -6px; right: -6px; min-width: 22px; height: 22px; border-radius: 11px; background: #FF9F1C; color: #3A2200; font-weight: 900; font-size: 12px; display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF">3</span>
+      </button>
+    </div>
+    <div style="display: flex; gap: 8px; overflow: hidden; margin-right: -16px">
+      <button class="fchip on">Peaks · Lakes<svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M6 9l6 6 6-6"></path></svg></button>
+      <button class="fchip">Difficulty 1–3<svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="st" d="M6 9l6 6 6-6"></path></svg></button>
+      <button class="fchip on"><svg viewBox="0 0 24 24" style="width: 16px; height: 16px"><path class="fl" d="M12 2l8 3v6.2c0 5-3.4 9-8 10.8-4.6-1.8-8-5.8-8-10.8V5z"></path></svg>Verified</button>
+      <button class="fchip">Autumn</button>
+      <button class="fchip">≤ 150 km</button>
+    </div>
+  </div>
+
+  <div class="pin" style="left: 84px; top: 170px; background: #1CB0A8"><svg viewBox="0 0 24 24"><path class="fl" d="M1.5 20L9 7l3.6 5.6L15.5 9 22.5 20z"></path></svg></div>
+  <span class="sb" style="left: 116px; top: 162px; background: #D93636" aria-label="Not now"><svg viewBox="0 0 24 24"><path class="st" d="M7 7l10 10M17 7L7 17" style="stroke-width: 4"></path></svg></span>
+
+  <div class="pin" style="left: 178px; top: 236px; background: #4CA9FF; width: 54px; height: 54px; border-width: 4px; box-shadow: -2px 5px 0 rgba(0,0,0,.2), 0 0 0 6px rgba(28,176,168,.35)"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="fl" d="M12 2.5c3.2 4.2 6.5 7.8 6.5 11.5a6.5 6.5 0 0 1-13 0c0-3.7 3.3-7.3 6.5-11.5z"></path></svg></div>
+  <span class="sb" style="left: 222px; top: 228px; background: #2E8B57" aria-label="Go"><svg viewBox="0 0 24 24"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 4"></path></svg></span>
+
+  <div class="pin" style="left: 290px; top: 300px; background: #7B61FF"><svg viewBox="0 0 24 24"><path class="fl" d="M1.5 21c0-9 4.7-15 10.5-15s10.5 6 10.5 15h-6c0-4.3-2-7.5-4.5-7.5S7.5 16.7 7.5 21z"></path></svg></div>
+  <span class="sb" style="left: 322px; top: 292px; background: #FFC800; color: #5C4000" aria-label="Caution"><svg viewBox="0 0 24 24"><path class="st" d="M12 6v7M12 17.5v.3" style="stroke-width: 4"></path></svg></span>
+
+  <div class="pin" style="left: 40px; top: 360px; background: #3DAA5C"><svg viewBox="0 0 24 24"><path class="fl" d="M12 3L1.5 21h21z"></path></svg></div>
+  <span class="sb" style="left: 72px; top: 352px; background: #2E8B57" aria-label="Go"><svg viewBox="0 0 24 24"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 4"></path></svg></span>
+
+  <div class="pin" style="left: 250px; top: 140px; background: #AEB8BC"><svg viewBox="0 0 24 24"><rect class="st" x="5" y="11" width="14" height="10" rx="2.5"></rect><path class="st" d="M8.5 11V8a3.5 3.5 0 0 1 7 0v3"></path></svg></div>
+
+  <div class="pin" style="left: 150px; top: 400px; background: #FF9F1C"><svg viewBox="0 0 24 24"><ellipse class="fl" cx="8" cy="14.5" rx="3" ry="4.5"></ellipse><ellipse class="fl" cx="16" cy="7" rx="3" ry="4.5"></ellipse></svg></div>
+  <span class="sb" style="left: 182px; top: 392px; background: #2E8B57" aria-label="Go"><svg viewBox="0 0 24 24"><path class="st" d="M5 12.5l4.5 4.5L19 7.5" style="stroke-width: 4"></path></svg></span>
+
+  <div style="position: absolute; left: 320px; top: 410px; width: 48px; height: 48px; border-radius: 50%; background: #1F2A2E; color: #FFFFFF; border: 3px solid #FFFFFF; font-weight: 900; font-size: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 0 rgba(0,0,0,.18)">12</div>
+
+  <div style="position: absolute; left: 120px; top: 300px; width: 44px; height: 44px; border-radius: 50%; background: rgba(76,169,255,.22); display: flex; align-items: center; justify-content: center"><span style="width: 18px; height: 18px; border-radius: 50%; background: #1F74C7; border: 3px solid #FFFFFF"></span></div>
+
+  <button aria-label="Center on my location" style="position: absolute; right: 16px; top: 470px; width: 48px; height: 48px; border-radius: 16px; background: #FFFFFF; border: 2px solid var(--line); border-bottom-width: 4px; color: #1F74C7; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="fl" d="M21 3L3 10.5l7.5 3 3 7.5z"></path></svg></button>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 84px; background: #FFFFFF; border-radius: 26px 26px 0 0; border-top: 2px solid var(--line); padding: 10px 0 16px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 -6px 20px rgba(31,42,46,.08)">
+    <span style="align-self: center; width: 44px; height: 5px; border-radius: 3px; background: #D6D8D0"></span>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0 16px">
+      <h2 class="h2">42 places near you</h2>
+      <span class="s">Sorted by fit</span>
+    </div>
+    <div style="display: flex; gap: 12px; padding: 0 16px; overflow: hidden">
+      <a class="pc" href="Place.dc.html" style="text-decoration: none; border-color: #1CB0A8">
+        <img src="/_blob/2ea0b851b548b4dce9228408142b7d82" alt="" style="width: 100%; height: 92px; object-fit: cover">
+        <div style="padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px">
+          <p class="h3">Urungach Lakes</p>
+          <div style="display: flex; gap: 6px; align-items: center"><span class="chip go"><svg viewBox="0 0 24 24" style="width: 13px; height: 13px"><path class="st" d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Go</span><span class="s">Lake · 112 km</span></div>
+          <div style="display: flex; align-items: center; gap: 1px"><svg class="boot" viewBox="0 0 24 24"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path></svg><svg class="boot" viewBox="0 0 24 24"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path></svg><span class="s" style="margin-left: 6px">★ 4.8 · Verified</span></div>
+        </div>
+      </a>
+      <div class="pc">
+        <img src="/_blob/7000c508ed65b0395bc9ba13d1d81dcd" alt="" style="width: 100%; height: 92px; object-fit: cover">
+        <div style="padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px">
+          <p class="h3">Kyzylsay Grotto</p>
+          <div style="display: flex; gap: 6px; align-items: center"><span class="chip ca"><svg viewBox="0 0 24 24" style="width: 13px; height: 13px"><path class="st" d="M12 6v7M12 17.5v.3"></path></svg>Caution</span><span class="s">Cave · 86 km</span></div>
+          <div style="display: flex; align-items: center; gap: 1px"><svg class="boot" viewBox="0 0 24 24"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path></svg><svg class="boot" viewBox="0 0 24 24"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path></svg><svg class="boot" viewBox="0 0 24 24"><path class="fl" d="M5 2.5h7.5v7.2l5.7 2.6A3.2 3.2 0 0 1 20 15.2V18H5z"></path></svg><span class="s" style="margin-left: 6px">★ 4.5</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0">
+    <dc-import name="Nav" active="explore" hint-size="390px,84px"></dc-import>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

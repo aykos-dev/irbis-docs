@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Community feed</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+p,h1,h2,h3{margin:0}
+.s{font-weight:700;font-size:13px;line-height:1.4;color:#5E6E74}
+.card{background:#FFFFFF;border:2px solid #E5E5DC;border-bottom-width:4px;border-radius:22px}
+.seg{display:flex;padding:4px;border-radius:16px;background:#EEF0E8;gap:4px}
+.seg a,.seg span{flex:1;min-height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#5E6E74;text-decoration:none}
+.seg .on{background:#FFFFFF;color:#0C807A;box-shadow:0 2px 0 #E5E5DC}
+.f{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:12px;border:2px solid #E5E5DC;border-bottom-width:4px;background:#FFFFFF;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:#3C4A4F;flex:none;cursor:pointer}
+.f.on{border-color:#1CB0A8;background:#E3F7F5;color:#0B5B57}
+.pa{width:42px;height:42px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;flex:none}
+.pa img{width:46px;height:46px;margin-top:8px}
+.tag{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 9px;border-radius:99px;font-weight:800;font-size:12px;white-space:nowrap}
+.act{display:flex;align-items:center;gap:6px;font-weight:900;font-size:14px;color:#1F2A2E;background:transparent;border:0;padding:0;font-family:'Nunito',sans-serif;cursor:pointer;min-height:44px}
+.dot{width:7px;height:7px;border-radius:50%;background:#D6D8D0}
+.st{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:currentColor}
+</style>
+</helmet>
+<div style="width: 390px; height: 2100px; position: relative; overflow: hidden; background: #F7F7F2; font-family: 'Nunito', system-ui, sans-serif; color: #3C4A4F; display: flex; flex-direction: column; gap: 14px">
+  <header style="display: flex; flex-direction: column; gap: 12px; padding: 16px 16px 0">
+    <h1 style="font-weight: 900; font-size: 28px; color: #1F2A2E">Community</h1>
+    <div class="seg" role="tablist"><span class="on" role="tab" aria-selected="true">Feed</span><a role="tab" aria-selected="false" href="Groups.dc.html">Groups</a><a role="tab" aria-selected="false" href="CampHub.dc.html">Games</a></div>
+  </header>
+
+  <a href="TopShots.dc.html" class="card" style="margin: 0 16px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; text-decoration: none; background: #FFF6D6; border-color: #F2D77A">
+    <span style="width: 46px; height: 46px; border-radius: 14px; background: #FFC800; color: #5C4000; display: flex; align-items: center; justify-content: center; flex: none; box-shadow: 0 3px 0 #D9A500"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px"><path class="fl" d="M6 3h12v3a6 6 0 0 1-12 0zM4 4h2v3H4a2 2 0 0 1 0-3zm14 0h2a2 2 0 0 1 0 3h-2zM10 13h4v4h3v3H7v-3h3z"></path></svg></span>
+    <div style="flex-grow: 1; min-width: 0"><p style="font-weight: 900; font-size: 16px; color: #5C4000">Top Shots · Oct 12–25</p><p class="s" style="color: #6E4E00">Ends in 9 d 6 h · your best post is #14</p></div>
+    <div style="display: flex">
+      <img src="/_blob/2ea0b851b548b4dce9228408142b7d82" alt="" style="width: 34px; height: 34px; border-radius: 10px; object-fit: cover; border: 2px solid #FFFFFF">
+      <img src="/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57" alt="" style="width: 34px; height: 34px; border-radius: 10px; object-fit: cover; border: 2px solid #FFFFFF; margin-left: -10px">
+      <img src="/_blob/bb7e61cdec3acfef22cb18e86375ffbb" alt="" style="width: 34px; height: 34px; border-radius: 10px; object-fit: cover; border: 2px solid #FFFFFF; margin-left: -10px">
+    </div>
+  </a>
+
+  <div style="display: flex; gap: 8px; padding: 0 16px; overflow: hidden">
+    <button class="f on">For you</button><button class="f">Following</button><button class="f">Nearby</button><button class="f">Tours</button>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px; padding: 0 16px">
+    <sc-for list="{{posts}}" as="p" hint-placeholder-count="3">
+      <article class="card" style="overflow: hidden">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 12px 12px 8px">
+          <span class="pa" style="background: {{p.tint}}"><img src="{{p.avatar}}" alt=""></span>
+          <div style="flex-grow: 1; min-width: 0">
+            <p style="font-weight: 900; font-size: 15px; color: #1F2A2E">{{p.name}} <span style="font-weight: 800; font-size: 12px; color: {{p.lvlColor}}">· {{p.level}}</span></p>
+            <p class="s" style="font-size: 12px">{{p.time}}</p>
+          </div>
+          <button aria-label="More options" style="width: 40px; height: 40px; border: 0; background: transparent; color: #8A979C; cursor: pointer"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><circle class="fl" cx="5" cy="12" r="2"></circle><circle class="fl" cx="12" cy="12" r="2"></circle><circle class="fl" cx="19" cy="12" r="2"></circle></svg></button>
+        </div>
+        <div style="display: flex; gap: 6px; padding: 0 12px 10px; flex-wrap: wrap">
+          <a href="Place.dc.html" class="tag" style="background: {{p.placeBg}}; color: {{p.placeFg}}; text-decoration: none"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{p.placeDot}}"></span>{{p.place}}</a>
+          <span class="tag" style="background: {{p.kindBg}}; color: {{p.kindFg}}">{{p.kind}}</span>
+        </div>
+        <a href="PostDetail.dc.html" style="position: relative; display: block">
+          <img src="{{p.img}}" alt="{{p.alt}}" style="width: 354px; height: 330px; object-fit: cover; display: block">
+          <span style="position: absolute; right: 10px; top: 10px; height: 26px; padding: 0 9px; border-radius: 99px; background: rgba(31,42,46,.78); color: #FFFFFF; font-weight: 900; font-size: 12px; display: flex; align-items: center">1 / {{p.count}}</span>
+          <sc-if value="{{p.ranked}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; top: 10px; height: 28px; padding: 0 10px; border-radius: 99px; background: #FFC800; color: #5C4000; font-weight: 900; font-size: 12px; display: flex; align-items: center; gap: 4px"><svg viewBox="0 0 24 24" style="width: 14px; height: 14px"><path class="fl" d="M6 3h12v3a6 6 0 0 1-12 0zM10 13h4v4h3v3H7v-3h3z"></path></svg>{{p.rank}}</span></sc-if>
+        </a>
+        <div style="display: flex; justify-content: center; gap: 5px; padding-top: 8px" aria-hidden="true">
+          <span class="dot" style="background: #1CB0A8"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot" style="width: 5px; height: 5px"></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 18px; padding: 0 12px">
+          <button class="act" aria-label="Like"><svg viewBox="0 0 24 24" style="width: 26px; height: 26px; color: {{p.heart}}"><path d="M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z" style="fill: {{p.heartFill}}; stroke: currentColor; stroke-width: 2.2; stroke-linejoin: round"></path></svg>{{p.likes}}</button>
+          <button class="act" aria-label="Comments"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M4 5h16v11H9l-5 4z"></path></svg>{{p.comments}}</button>
+          <button class="act" aria-label="Share"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M3 11l18-8-8 18-2-8z"></path></svg></button>
+          <button class="act" aria-label="Save" style="margin-left: auto"><svg viewBox="0 0 24 24" style="width: 24px; height: 24px"><path class="st" d="M6 3h12v18l-6-4-6 4z"></path></svg></button>
+        </div>
+        <p style="padding: 0 14px 14px; font-weight: 700; font-size: 14px; line-height: 1.45; color: #3C4A4F"><b style="color: #1F2A2E">{{p.name}}</b> {{p.caption}}</p>
+      </article>
+    </sc-for>
+  </div>
+
+  <div style="flex-grow: 1"></div>
+  <a href="PostPhotos.dc.html" aria-label="New post" style="position: absolute; right: 16px; bottom: 104px; width: 62px; height: 62px; border-radius: 50%; background: #FF9F1C; color: #3A2200; box-shadow: 0 5px 0 #CC7A00; display: flex; align-items: center; justify-content: center"><svg viewBox="0 0 24 24" style="width: 30px; height: 30px"><path class="st" d="M12 5v14M5 12h14" style="stroke-width: 3.2"></path></svg></a>
+  <dc-import name="Nav" active="groups" hint-size="390px,84px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2100}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const T = { lake: ['#E2F0FF', '#1F5FA8', '#4CA9FF'], peak: ['#DDF5F3', '#0C6E69', '#1CB0A8'], camp: ['#E4F5E7', '#1B6B3E', '#3DAA5C'] };
+    const post = (o) => Object.assign({ placeBg: T[o.t][0], placeFg: T[o.t][1], placeDot: T[o.t][2], heart: o.liked ? '#FF4B4B' : '#1F2A2E', heartFill: o.liked ? '#FF4B4B' : 'none' }, o);
+    const posts = [
+      post({ name: 'Dilnoza R.', level: 'Ridge Walker', lvlColor: '#0C6E69', avatar: '/_blob/dba7b9623f9af9c690bf93a6ddc5f60b', tint: '#DDF5F3', time: '2 h ago', t: 'lake', place: 'Urungach Lakes', kind: '✓ Verified visit · solo', kindBg: '#DFF6E7', kindFg: '#1B6B3E', img: '/_blob/2ea0b851b548b4dce9228408142b7d82', alt: 'Upper Urungach lake at sunrise', count: 7, likes: '1,248', comments: 86, liked: true, ranked: true, rank: '#2 this round', caption: 'Upper lake at 7 am — not a single soul. Worth the 5 am start.' }),
+      post({ name: 'Aziz M.', level: 'Mountain Guardian', lvlColor: '#2A4F9A', avatar: '/_blob/ffe227711df8d0445b9dfe0a9534a6f4', tint: '#E3ECFB', time: 'Yesterday', t: 'peak', place: 'Big Chimgan', kind: 'Tour · Chimgan Trails Co.', kindBg: '#FFF1DA', kindFg: '#8A4B00', img: '/_blob/3bcf1e0665966f4e7c7c5bda82dd8d57', alt: 'Big Chimgan summit with a flag', count: 10, likes: '312', comments: 24, liked: false, ranked: false, rank: '', caption: 'Summit #12 this year. Great guides, slow pace, nobody left behind.' }),
+      post({ name: 'Kamila S.', level: 'Pathfinder', lvlColor: '#9A4510', avatar: '/_blob/d1b0d6198561f208461b0f6704094021', tint: '#FFE9D9', time: '2 days ago', t: 'camp', place: 'Charvak Shore Camp', kind: 'Group · Weekend Hikers', kindBg: '#ECE8FF', kindFg: '#4B33C4', img: '/_blob/bb7e61cdec3acfef22cb18e86375ffbb', alt: 'Tent and campfire by the shore at dusk', count: 3, likes: '540', comments: 41, liked: true, ranked: true, rank: '#9 this round', caption: 'Mafia by the fire until 2 am. Doctor saved me twice.' })
+    ];
+    return { posts };
+  }
+}
+</script>
+</body>
+</html>
