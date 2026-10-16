@@ -4,12 +4,14 @@ argument-hint: <slug> — <behaviour, constraints, out of scope>
 ---
 Build feature: $ARGUMENTS
 
-Read STATUS.md, PROJECT.md, and only the relevant files in decisions/ first.
+Read STATUS.md, PROJECT.md, and only the relevant files in decisions/ first. For each surface the
+feature touches, skim that repo's docs/architecture.md so the spec fits the existing structure.
 
 PHASE 1 — SPEC (then STOP)
 Write features/<slug>.md from features/_TEMPLATE.md: goal, surfaces touched (api/web/app),
 endpoints, data model changes, acceptance criteria (incl. loading/empty/error/offline),
-out of scope. List your assumptions and open questions.
+out of scope. List your assumptions and open questions. Note any engineering-standards item you
+propose to waive, with the reason.
 STOP and wait for my approval. Do not write code. Do not start phase 2 until I reply "approved".
 
 PHASE 2 — API (subagent: api-dev) — skip if api not touched

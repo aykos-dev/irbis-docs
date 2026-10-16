@@ -13,13 +13,16 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 | `irbis-docs` | specs, ADRs, status, Claude config | main session |
 | `irbis-api` | NestJS + Postgres + Prisma, exports `openapi.json` | `api-dev` |
 | `irbis-web` | Next.js admin | `web-dev` |
-| `irbis-app` | Expo / React Native | `app-dev` |
+| `irbis-app` | bare React Native (no Expo) | `app-dev` |
 
 - Not a monorepo. Never copy code or types between repos.
 - `irbis-api/openapi.json` is the single source of truth for the contract.
   Web and app get types/hooks only via `npm run gen:api` (orval). Never hand-write API types.
 - Same feature slug and folder in every repo: `src/features/<slug>/`.
 - Delegate repo work to that repo's subagent; keep the main session small.
+- Each code repo has `docs/architecture.md` + `docs/engineering-standards.md`. They are binding:
+  every change follows the architecture, and the standards' Quick gate is the definition of done.
+- Design tokens: `design/design.md` is the source of truth for web and app.
 
 ## Commands
 - `/feature <slug> — <behaviour>`: spec → approval gate → api → clients → review → wrap up.
@@ -33,6 +36,7 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 - No `any`, `@ts-ignore`, `eslint-disable`, `TODO`/`FIXME`/mock data in `src/` (tests excepted).
 - Secrets only from env vars. Never read `.env*`. Never ask for or print a secret value; use placeholders.
 - No guest/employee personal data in fixtures, seeds, logs or docs — synthetic data only (`guest_1`, `+998XXXXXXXXX`).
+- irbis-app is bare React Native: no Expo packages, Expo Router, EAS or prebuild.
 - Surgical changes only: nothing outside the spec's scope, no drive-by refactors.
 - Before creating a helper/component, check the repo's shared modules listed in its CLAUDE.md.
 - Uncertain about a framework API? Use Context7 docs for the version pinned in `PROJECT.md`.
@@ -45,10 +49,11 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 3. Verified: check output present and green in every touched repo.
 4. Duplicates: new util/component that already exists in `src/lib` or `src/components/ui`?
 5. Scope: anything beyond the spec, or drive-by refactors?
-6. Versions: outdated Next/Expo Router/Nest patterns?
+6. Versions: outdated Next.js / React Native / React Navigation / Nest / Prisma patterns? Any Expo in irbis-app?
 7. Dependencies: new packages without approval?
 8. Errors: swallowed errors, `catch { return null }`, `console.log` as handling?
 9. Placeholders: TODO, mock data, hardcoded IDs/URLs?
 10. Security: endpoint without guard (not explicitly `@Public()`), missing DTO validation, CORS `*`, secrets in code, PII in logs.
 11. Migrations: old migration edited? destructive change without a plan?
 12. UI states: loading / empty / error / offline, keyboard + safe areas (app), design tokens used.
+13. Standards: each touched repo's `docs/engineering-standards.md` Quick gate passes or has a written waiver.

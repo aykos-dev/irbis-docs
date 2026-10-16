@@ -6,6 +6,7 @@ Ordered. Each line becomes one `/feature` run (one session each). Edit freely.
 - [ ] Scaffold irbis-api, irbis-web, irbis-app with generators (see `SETUP.md`)
 - [ ] `npm run check` quiet in all three; `gen:api` in web/app
 - [ ] ADRs 001–003 accepted
+- [ ] Design tokens in `design/design.md`, mirrored in web + app
 - [ ] Reference feature built end to end by hand: `health` → app/web show API status
 
 ## M1 — Accounts
