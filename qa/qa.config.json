@@ -1,5 +1,5 @@
 {
-  "package": "com.irbis",
+  "package": "uz.irbis.app.dev",
   "activity": ".MainActivity",
   "event_tag": "IRBIS_QA",
   "location_event": "location_received"

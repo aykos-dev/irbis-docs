@@ -8,10 +8,9 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - Android QA loop: /qa-plan, /qa-run, /qa-retest + scripts/qa toolkit (2026-10-16)
 
 ## In progress
-- M0 — scaffold repos (see SETUP.md)
+- M0 — scaffold api / web / app + reference feature `health` (started 2026-10-17; app id uz.irbis.app; Postgres 17 in Docker; verified on Galaxy S25 Ultra)
 
 ## Next
-- ADRs 001–003 review → accept
 - Reference feature `health`
 
 ## Known issues

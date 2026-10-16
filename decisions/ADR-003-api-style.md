@@ -1,6 +1,6 @@
 # ADR-003: API style and contract
 
-- Status: Proposed
+- Status: Accepted (owner, 2026-10-17)
 - Date: 2026-10-16
 
 ## Decision
