@@ -1,5 +1,5 @@
 # Run 2026-10-17_2045 — onboarding
-**Status:** in progress
+**Status:** closed
 **Build:** uz.irbis.app.dev 1.0-dev (1) — irbis-app feat/onboarding 5299146
 **Backend:** irbis-api feat/onboarding
 **Device:** sdk_gphone64_arm64 (Android 15), emulating the phone (density 450, font 1.15)
@@ -10,6 +10,7 @@
 **Plan:** ../../cases/Test_onboarding.md
 
 ## Results
+2 Pass (TC-003, TC-005), 2 Fail (TC-010, TC-011), 0 blocked, 0 not run.
 
 ## Defects
 - onboarding/D1 · Medium · merge skipped, no guest_merge_result (TC-010, TC-011)
