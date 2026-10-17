@@ -1,6 +1,6 @@
 # onboarding
 
-- Status: Approved (owner, 2026-10-17)
+- Status: Done (2026-10-17)
 - Surfaces: app | api (no web)
 - Related ADRs: ADR-001 (guest-first, guest merge)
 - Requirements: Product Overview § How the app works / First run, § Accounts · Screens: `design/canvas/Splash`,

@@ -166,15 +166,7 @@ def open_step(step):
     """Standards-suite opener: first run at `step`, keeping the app language the suite set."""
     if step == "welcome":
         return start_onboarding(lang=None)
-    big = float(sh("settings", "get", "system", "font_scale").strip() or 1) > 1.5
-    if big:
-        # Meet Irbis' buttons are off-screen at 2.0 (D2): leave it at 1.15, tap Get started, then restore the scale
-        font_scale(1.15)
-        time.sleep(1)
     ok = start_onboarding(lang=None) and to_language()
-    if big:
-        font_scale(2.0)
-        time.sleep(1.5)
     if not ok or step == "language":
         return ok
     steps = [("experience", to_experience), ("interests", lambda: to_interests("weekend")),

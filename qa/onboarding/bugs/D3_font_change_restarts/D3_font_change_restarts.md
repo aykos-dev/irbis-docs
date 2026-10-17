@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Open · found 2026-10-17 |
+| Status | Fixed · not retested (owner dropped font-scale QA, 2026-10-17) |
 | Severity | 4 - Low |
 | Cases | STD-TEXT@language — the retest re-runs it (and the other STD-TEXT@ screens once D2 is fixed) |
 | Found | run [2026-10-17_2052](../../runs/2026-10-17_2052/run.md) · build irbis-app 421295e · emulator (Android 15) |
@@ -20,3 +20,4 @@
 **Cause in code:** not located (root/onboarding navigator state is rebuilt on recreate; `OnboardingNavigator.tsx` always starts at `Splash`)
 
 ## Retests
+- 2026-10-17 · no retest: owner removed font-scale checks from QA. Fix committed: fontScale|density added to MainActivity configChanges (app 96e76eb).

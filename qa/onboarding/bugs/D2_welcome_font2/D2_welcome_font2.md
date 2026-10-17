@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Open · found 2026-10-17 |
+| Status | Closed · not retested (owner dropped font-scale QA, 2026-10-17) |
 | Severity | 2 - High |
 | Cases | STD-TEXT@welcome (also unblocks STD-TEXT@language/experience/interests/companion en@2.0) — the retest re-runs exactly these |
 | Found | run [2026-10-17_2052](../../runs/2026-10-17_2052/run.md) · build irbis-app 421295e · emulator (Android 15) |
@@ -23,3 +23,4 @@
 **Cause in code:** not located (Welcome screen layout under `irbis-app/src/features/onboarding/`: fixed non-scrolling column)
 
 ## Retests
+- 2026-10-17 · no retest: owner removed font-scale and scroll checks from QA. Dev could not reproduce (Welcome is in a scroll view; one swipe from mid-screen reaches both CTAs — QA swipe likely hit the gesture bar).
