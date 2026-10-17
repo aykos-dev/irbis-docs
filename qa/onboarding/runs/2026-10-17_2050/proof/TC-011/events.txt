@@ -1,0 +1,16 @@
+20:51:23.083 tab_opened {"tab": "path"}
+20:51:24.005 tab_opened {"tab": "profile"}
+20:51:24.891 signed_out {}
+20:51:26.579 onboarding_step {"step": "splash"}
+20:51:28.102 onboarding_step {"step": "welcome"}
+20:51:28.734 onboarding_step {"step": "language"}
+20:51:29.396 onboarding_step {"step": "experience"}
+20:51:30.679 onboarding_step {"step": "interests"}
+20:51:32.153 onboarding_step {"step": "companion"}
+20:51:33.007 onboarding_end {"via": "finish", "interestsCount": 3, "experience": "experienced"}
+20:51:33.033 tab_opened {"tab": "path"}
+20:51:33.713 tab_opened {"tab": "profile"}
+20:51:38.268 logged_in {}
+20:51:38.324 guest_merged {"items": 1}
+20:51:38.324 guest_merge_result {"merged": "onboarding", "skipped": "locale"}
+20:51:38.324 locale_applied {"locale": "ru"}

@@ -1,0 +1,71 @@
+{
+ "meta": {
+  "title": "Sign-up after onboarding: the choices land on the new account",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 — choices stored on the phone, merged on sign-up",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → complete onboarding with Weekend hiker + Peaks, Lakes → tabs",
+   "Profile → Sign up as a new QA user (terms accepted) → check: signed-in Profile",
+   "Read the user's row in the LOCAL dev DB"
+  ],
+  "expected": [
+   "Event guest_merge_result after sign-up whose merged includes onboarding — QA events",
+   "DB: users.experience = weekend and interests = {peaks,lakes} for the new user — SQL on the LOCAL dev DB"
+  ],
+  "focus": "profile.account",
+  "caption": {
+   "expected": "signed-in Profile"
+  },
+  "tc": "TC-010",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-010--p0--sign-up-after-onboarding-the-choices-land-on-the-new-account"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 22.9,
+ "events": 15,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "3. Sign up"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event {'merged': 'onboarding', 'skipped': 'locale'}",
+   "proof": [
+    "1_account.png"
+   ],
+   "t": 22.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "db experience=weekend, interests={peaks,lakes}",
+   "proof": [],
+   "t": 22.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "onboarding completed",
+   "ok": true,
+   "seen": "no tabs",
+   "t": 14.0
+  },
+  {
+   "name": "sign-up form open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 15.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_account.png"
+ ]
+}

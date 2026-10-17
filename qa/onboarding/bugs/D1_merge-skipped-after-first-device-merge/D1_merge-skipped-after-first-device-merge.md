@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Open · found 2026-10-17 |
+| Status | Closed · not an app defect · retest 2026-10-17 |
 | Severity | 3 - Medium |
 | Cases | TC-010, TC-011 — the retest re-runs exactly these |
 | Found | run [2026-10-17_2045](../../runs/2026-10-17_2045/run.md) · build irbis-app 5299146 · emulator (Android 15) |
@@ -23,3 +23,4 @@
 **Cause in code:** `irbis-app/src/shared/contexts/auth.tsx:119` — `mergeGuestData` returns early when `guestMergeDone()` (`guest.merged`, `src/shared/guest/guestStore.ts:28`) is set; it is never cleared on sign-out or onboarding reset (likely cause; the alternative, a swallowed merge error at auth.tsx:129, also logs nothing — not distinguished on device).
 
 ## Retests
+- 2026-10-17 · run [2026-10-17_2050](../../runs/2026-10-17_2050/run.md) · app 421295e · TC-010, TC-011 Pass. Resolution: not an app defect — QA reset didn't clear guest.merged; fixed in the debug reset link (app 421295e).
