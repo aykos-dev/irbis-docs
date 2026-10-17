@@ -1,0 +1,5 @@
+0.05	1: Font scale 1.15 (Samsung default)
+1.67	2: Set the app language to Russian and cold start
+6.08	Expected: Every text on the Status screen is Russian, matching `src/shared/i18n/ru`
+6.08	Result: PASS
+6.08	END

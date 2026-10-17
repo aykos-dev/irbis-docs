@@ -129,7 +129,7 @@ AC5 and AC6 are verified in irbis-web's tests and in review, not on the device �
 
 **Expected result** (within 5 s after step 1):
 - A new `health_checked` { status: "ok" } event after the swipe — event log
-- The refresh indicator appears and then hides — screenrecord+frames
+- The refresh indicator is visible right after the swipe is released (≤ 0.5 s) — screenshot
 
 ## 6. Group 2 — Supplementary
 
@@ -144,7 +144,8 @@ AC5 and AC6 are verified in irbis-web's tests and in review, not on the device �
 - API-UP
 
 **Steps:**
-1. `adb shell cmd locale set-app-locales uz.irbis.app.dev --locales ru`, cold start → check: app relaunched
+1. Font scale 1.15 (Samsung's default; emulators default to 1.0) → check: `settings get system font_scale` = 1.15
+2. `adb shell cmd locale set-app-locales uz.irbis.app.dev --locales ru`, cold start → check: app relaunched
 
 **Expected result** (within 10 s after launch):
 - Every text on the Status screen is Russian, matching `src/shared/i18n/ru` — no English left — screenshot
@@ -161,7 +162,8 @@ AC5 and AC6 are verified in irbis-web's tests and in review, not on the device �
 - API-UP
 
 **Steps:**
-1. `cmd locale set-app-locales uz.irbis.app.dev --locales uz`, cold start → check: app relaunched
+1. Font scale 1.15 (Samsung's default; emulators default to 1.0) → check: `settings get system font_scale` = 1.15
+2. `cmd locale set-app-locales uz.irbis.app.dev --locales uz`, cold start → check: app relaunched
 
 **Expected result** (within 10 s after launch):
 - Every text on the Status screen is Uzbek (Latin), matching `src/shared/i18n/uz` — screenshot

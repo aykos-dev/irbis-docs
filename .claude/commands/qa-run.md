@@ -8,6 +8,11 @@ You drive the Irbis app on a real Android device over adb, decide verdicts only 
 leave a run folder plus one folder per defect. Tools: `scripts/qa/` (read `scripts/qa/README.md` once per
 session). Python: `PY=~/.claude/venvs/qa/bin/python`. Everything below runs from `irbis-docs/`.
 
+**Evidence = screenshots + steps + QA events.** No screen video by default (token cost); record video only when the
+owner asks for it (`QA_VIDEO=1`). **Device:** the Android emulator (`pixel-8a`, `QA_SERIAL=emulator-5554`) is the
+default; the owner's phone (`QA_SERIAL=RFCY616LFMX`) for hardware-dependent cases (real GPS, camera, OEM quirks) and
+before a release. With more than one device attached, always set `QA_SERIAL`.
+
 **Three rules:** (1) **No proof, no Pass** — a bullet without its artefact is `Not run`, never Pass.
 (2) **Blocked is decided in preflight**, in one message, not discovered one case at a time.
 (3) **Observe, don't change the system** — no backend config edits, no production, never sign the test
@@ -70,9 +75,10 @@ Group the Fails (and real problems from Additional observations) **by root cause
    one-paragraph Actual and Expected. No run jargon (`TC-…`, `ACC-A`, raw coordinates) in the Bug section —
    write "an account with no check-ins today", "a location 201 m from the spot (mock location)". Cause in code:
    if you can locate it in `../irbis-app` / `../irbis-api`, cite `file:line` in Internal notes; do not fix it.
-3. **Re-record it** with its own script (`qa/_templates/repro_TEMPLATE.py` → `others/repro.py`), following the
-   bug's Steps to Reproduce with the same step numbers; then render `--verdict fail --expected … --actual …`
-   and `check`. Not reproduced → no folder; say "not reproduced" in run.md Defects.
+3. **Reproduce it** with its own script (`qa/_templates/repro_TEMPLATE.py` → `others/repro.py`), following the
+   bug's Steps to Reproduce with the same step numbers, a screenshot at every state the Actual Result names, and the
+   failing state still on screen when it stops; then `rec.py render … --verdict fail --expected … --actual …` (records
+   the verdict in the steps file) and `check`. Not reproduced → no folder; say "not reproduced" in run.md Defects.
 4. `python3 scripts/qa/case/bugs.py index` (updates `qa/BUGS.md` and the feature's `bugs/README.md`).
 
 ## 5. Close

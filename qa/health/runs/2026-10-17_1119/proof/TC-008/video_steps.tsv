@@ -1,0 +1,4 @@
+0.02	1: Dark mode on, cold start
+4.61	Expected: Background is the Night token (#131D22) and cards #1C2A30; text readable; chips 
+4.61	Result: PASS
+4.61	END

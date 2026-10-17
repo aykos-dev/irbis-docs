@@ -1,0 +1,11 @@
+{
+ "TC-001": {"verdict": "Pass", "line": "both chips green, v0.0.1, event ok/up", "conclusion": "AC1, AC7 hold on the emulator."},
+ "TC-002": {"verdict": "Pass", "line": "API chip green 'API is up', DB chip red 'Database is down', no error/Retry", "conclusion": "AC2 + AC3 (Q4) hold — health/D1 fixed."},
+ "TC-003": {"verdict": "Pass", "line": "plain error + RETRY, recovers", "conclusion": "Error state and Retry work."},
+ "TC-004": {"verdict": "Pass", "line": "offline banner at 5 s and 15 s, last result kept + 'Not updated' note", "conclusion": "Offline handling matches AC3."},
+ "TC-005": {"verdict": "Pass", "line": "spinner visible right after the swipe; new health_checked", "conclusion": "Pull to refresh refetches.", "ok": {"2": true}, "actual": {"2": "refresh spinner visible in 1_spinner.png taken right after the swipe"}},
+ "TC-006": {"verdict": "Pass", "line": "Russian copy; wrapped DB chip inside the card at density 450 + font 1.15", "conclusion": "AC4 holds; layout matches the phone.", "ok": {"2": true}, "actual": {"2": "'База данных работает' wraps to 2 lines and the chip ends inside the card"}},
+ "TC-007": {"verdict": "Pass", "line": "Uzbek copy; wrapped chip inside the card", "conclusion": "AC4 holds."},
+ "TC-008": {"verdict": "Pass", "line": "night background, chips keep colour + icon + label", "conclusion": "Dark mode uses the night tokens."},
+ "TC-009": {"verdict": "Pass", "line": "font 2.0: texts wrap, chip inside the card", "conclusion": "Largest font does not clip.", "ok": {"1": true}, "actual": {"1": "all card texts readable and wrapped; health.db-chip inside the card"}}
+}

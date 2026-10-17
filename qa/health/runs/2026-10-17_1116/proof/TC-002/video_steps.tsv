@@ -1,0 +1,5 @@
+4.49	1: Stop the database container
+5.63	2: Pull to refresh
+6.83	Observed: db chip down: True
+7.09	Setup: Restore: start the database container
+8.04	END

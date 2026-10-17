@@ -1,0 +1,72 @@
+{
+ "meta": {
+  "title": "Status screen shows API and database up",
+  "group": "Core",
+  "priority": "P0",
+  "env": "Android · auto (adb) · resources: API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-001--p0--status-screen-shows-api-and-database-up",
+  "source": "AC1",
+  "expected": [
+   "Card `health.status-card` shows `health.api-chip` and `health.db-chip` in the Go style, text \"API is up\" and \"Database is up\" — screenshot",
+   "`health.version` shows \"v0.0.1\" (the API's package version) — screenshot",
+   "Event `health_checked` { status: \"ok\", db: \"up\" } — event log"
+  ],
+  "caption": {
+   "expected": "Card `health.status-card` shows `health.api-chip` and `health.db-chip` in the Go"
+  },
+  "plan_hash": "baeb375a24",
+  "tc": "TC-001"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 2.5,
+ "events": 1,
+ "done": [
+  "API-UP; `adb reverse tcp:3000 tcp:3000` active; phone online",
+  "1. Cold start the app"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "texts: ['IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1', 'Checked at 11:19\\u202fAM', 'Environment: dev', '11:19']",
+   "proof": [
+    "1_status.png"
+   ],
+   "t": 2.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "version v0.0.1 shown",
+   "proof": [
+    "1_status.png"
+   ],
+   "t": 2.2
+  },
+  "3": {
+   "ok": true,
+   "observed": "event: {'status': 'ok', 'db': 'up'}",
+   "proof": [],
+   "t": 2.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "API up from the Mac",
+   "ok": true,
+   "seen": "(200, {'status': 'ok', 'db': 'up', 'version': '0.0.1', 'time': '2026-10-17T06:19:38.623Z'})",
+   "t": 0.1
+  },
+  {
+   "name": "status card shown",
+   "ok": true,
+   "seen": "no health.status-card in 10 s",
+   "t": 1.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_status.png"
+ ]
+}

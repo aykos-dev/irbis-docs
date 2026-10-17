@@ -1,0 +1,69 @@
+{
+ "meta": {
+  "title": "API unreachable shows an error with Retry, and Retry recovers",
+  "group": "Core",
+  "priority": "P1",
+  "env": "Android · auto (adb) · resources: API-GONE, API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-003--p1--api-unreachable-shows-an-error-with-retry-and-retry-recovers",
+  "source": "AC3",
+  "expected": [
+   "After step 2: plain-language error message and `health.retry` visible; no raw status code or stack — screenshot",
+   "After step 3: the card shows \"API is up\" again — screenshot",
+   "Event `health_checked` { status: \"ok\" } after the Retry tap — event log"
+  ],
+  "caption": {
+   "expected": "After step 2: plain-language error message and `health.retry` visible; no raw st"
+  },
+  "plan_hash": "6e3bd62452",
+  "tc": "TC-003"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 17.8,
+ "events": 1,
+ "done": [
+  "API-UP; app open on the Status screen",
+  "1. Remove the port forward and cold start",
+  "2. Wait for the error state",
+  "3. Restore the forward and tap Retry"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "retry shown: True; texts: ['IRBIS', 'Status', \"Can't check the status\", \"Can't reach Irbis. Check your connection and try again.\", 'RETRY', 'Environment: dev', '11:16']",
+   "proof": [
+    "2_error.png"
+   ],
+   "t": 16.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "API is up after Retry",
+   "proof": [
+    "3_recovered.png"
+   ],
+   "t": 17.5
+  },
+  "3": {
+   "ok": true,
+   "observed": "event: {'status': 'ok', 'db': 'up'}",
+   "proof": [],
+   "t": 17.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "API unreachable from the phone",
+   "ok": true,
+   "seen": "health_checked arrived",
+   "t": 15.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_error.png",
+  "3_recovered.png"
+ ]
+}

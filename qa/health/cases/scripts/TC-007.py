@@ -21,14 +21,18 @@ META = {
  "caption": {
   "expected": "Every text on the Status screen is Uzbek (Latin), matching `src/shared/i18n/uz`"
  },
- "plan_hash": "7ed22be193"
+ "plan_hash": "7b3353a3d4"
 }
 
 
 def run(c):
+    prev_font = sh("settings", "get", "system", "font_scale").strip() or "1.0"
     c.pre('API-UP')
     reverse(True)
-    c.step(1, "Set the app language to Uzbek and cold start")
+    c.step(1, "Font scale 1.15 (Samsung default)")
+    font_scale(1.15)
+    c.checkpoint("font scale 1.15", sh("settings", "get", "system", "font_scale").strip() == "1.15", sh("settings", "get", "system", "font_scale"))
+    c.step(2, "Set the app language to Uzbek and cold start")
     app_locale("uz")
     try:
         relaunch()
@@ -41,3 +45,4 @@ def run(c):
         c.result(1, not english, f"English texts left: {english}; all: {texts[:10]}", [shot])
     finally:
         app_locale("en")
+        font_scale(prev_font)

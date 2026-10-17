@@ -1,0 +1,4 @@
+5.1	1: Pull to refresh
+6.24	Expected: A new `health_checked` { status: "ok" } event after the swipe
+6.24	Result: PASS
+6.24	END

@@ -7,6 +7,8 @@ usage: session.py up [--mock] [--no-dnd]   record the current values, then: Show
                                            mode and rotation that cases changed), stop mockloop, print the cleanup
                                            table (Markdown) for the run's / bugs' session notes
        session.py status
+On an emulator, `up` also applies qa.config.json "emulate_phone" (screen density + font scale of the owner's phone) so
+layouts wrap exactly as on the phone; `down` resets the density.
 State: ~/.cache/irbis-qa/session.json.
 """
 import json
@@ -16,7 +18,7 @@ import sys
 import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from config import CACHE  # noqa: E402
+from config import CACHE, CFG  # noqa: E402
 from drv import device_ready, has, nodes, sh, tap  # noqa: E402
 
 STATE = f"{CACHE}/session.json"
@@ -64,6 +66,11 @@ def up(mock, dnd):
           "settings": {f"{ns}/{k}": get(ns, k) for ns, k in SETTINGS},
           "night": sh("cmd", "uimode", "night").strip()}
     sh("settings", "put", "system", "show_touches", "1")
+    like = CFG.get("emulate_phone") or {}
+    if like and sh("getprop", "ro.kernel.qemu").strip() == "1":
+        sh("wm", "density", str(like["density"]))
+        sh("settings", "put", "system", "font_scale", str(like["font_scale"]))
+        st["emulated_phone"] = like
     if dnd:
         sh("cmd", "notification", "set_dnd", "none")
     if mock:
@@ -120,6 +127,9 @@ def down():
     if st.get("night"):
         mode = "yes" if "yes" in st["night"] else "auto" if "auto" in st["night"] else "no"
         sh("cmd", "uimode", "night", mode)
+    if st.get("emulated_phone"):
+        sh("wm", "density", "reset")
+        rows.append(("Screen density (emulating the phone)", "Reset to the emulator's own"))
     rows.append(("Network, font scale, rotation, show taps, dark mode", "Restored to the values before the session"))
     if st.get("dnd"):
         zen = before.get("global/zen_mode", "0")

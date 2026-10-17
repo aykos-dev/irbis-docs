@@ -4,6 +4,9 @@
   activity     launch activity, relative to the package                 (QA_ACTIVITY)
   event_tag    prefix of the app's dev/staging QA event log lines       (QA_EVENT_TAG)
   location_event  event the app emits when it reads a location fix      (QA_LOCATION_EVENT)
+  video        record screen video (scrcpy) — off by default; evidence is screenshots + steps   (QA_VIDEO=1)
+  serial       which device to drive when several are attached, e.g. "emulator-5554"      (QA_SERIAL)
+               — exported as ANDROID_SERIAL, which adb and scrcpy both honour
 """
 import json
 import os
@@ -16,7 +19,7 @@ VENV_PY = os.path.expanduser("~/.claude/venvs/qa/bin/python")
 os.makedirs(CACHE, exist_ok=True)
 
 _DEFAULTS = {"package": "com.irbis", "activity": ".MainActivity", "event_tag": "IRBIS_QA",
-             "location_event": "location_received"}
+             "location_event": "location_received", "video": False, "serial": ""}
 
 
 def load():
@@ -28,6 +31,12 @@ def load():
                      ("location_event", "QA_LOCATION_EVENT")):
         if os.environ.get(env):
             cfg[key] = os.environ[env]
+    if os.environ.get("QA_VIDEO") is not None:
+        cfg["video"] = os.environ["QA_VIDEO"] not in ("", "0", "false", "no")
+    if os.environ.get("QA_SERIAL"):
+        cfg["serial"] = os.environ["QA_SERIAL"]
+    if cfg["serial"] and not os.environ.get("ANDROID_SERIAL"):
+        os.environ["ANDROID_SERIAL"] = cfg["serial"]
     return cfg
 
 

@@ -1,0 +1,73 @@
+{
+ "meta": {
+  "title": "Database down shows degraded, not an error",
+  "group": "Core",
+  "priority": "P1",
+  "env": "Android · auto (adb + docker) · resources: DB-DOWN",
+  "plan": "Test_health.md",
+  "anchor": "tc-002--p1--database-down-shows-degraded-not-an-error",
+  "source": "AC2",
+  "expected": [
+   "`health.db-chip` shows the Not-now style (red, × icon, label \"Database is down\" or its equivalent) while `health.api-chip` stays Go — screenshot",
+   "No error state and no `health.retry` button (degraded is data, not an error) — screenshot",
+   "Event `health_checked` { status: \"degraded\", db: \"down\" } — event log"
+  ],
+  "caption": {
+   "expected": "`health.db-chip` shows the Not-now style (red, × icon, label \"Database is down\" "
+  },
+  "plan_hash": "0f9bcf5469",
+  "tc": "TC-002"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.1,
+ "events": 2,
+ "done": [
+  "App open on the Status screen showing ok (TC-001's postcondition)",
+  "1. Stop the database container",
+  "2. Pull to refresh"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "db down shown: True; texts: ['IRBIS', 'Status', 'API is up', 'Database is down', 'v0.0.1', 'Checked at 11:16\\u202fAM', 'Environment: dev', '11:16']",
+   "proof": [
+    "2_degraded.png"
+   ],
+   "t": 7.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "no error state / Retry",
+   "proof": [
+    "2_degraded.png"
+   ],
+   "t": 7.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "event: {'status': 'degraded', 'db': 'down'}",
+   "proof": [],
+   "t": 7.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "status ok first",
+   "ok": true,
+   "seen": "['IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1', 'Checked at 11:16\\u202fAM']",
+   "t": 4.5
+  },
+  {
+   "name": "API reports db down",
+   "ok": true,
+   "seen": "{'status': 'degraded', 'db': 'down', 'version': '0.0.1', 'time': '2026-10-17T06:16:32.783Z'}",
+   "t": 5.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_degraded.png"
+ ]
+}

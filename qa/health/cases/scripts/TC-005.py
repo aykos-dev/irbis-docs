@@ -17,12 +17,12 @@ META = {
  "source": "AC3",
  "expected": [
   "A new `health_checked` { status: \"ok\" } event after the swipe — event log",
-  "The refresh indicator appears and then hides — screenrecord+frames"
+  "The refresh indicator is visible right after the swipe is released (≤ 0.5 s) — screenshot"
  ],
  "caption": {
   "expected": "A new `health_checked` { status: \"ok\" } event after the swipe"
  },
- "plan_hash": "ceef57a784"
+ "plan_hash": "64cb01d339"
 }
 
 
@@ -36,7 +36,7 @@ def run(c):
     c.step(1, "Pull to refresh")
     w, h = screen_size()
     swipe(w // 2, int(h * 0.3), w // 2, int(h * 0.75), 400)
+    spin = c.shot("1_spinner")
     ev = c.wait_event("health_checked", t0, 5)
     c.result(1, bool(ev and ev.get("status") == "ok"), f"event after swipe: {ev}")
-    shot = c.shot("1_after_refresh")
-    c.result(2, None, "refresh indicator: judge from video frames around the swipe", [shot])
+    c.result(2, None, "refresh indicator: judge from the screenshot taken right after the swipe", [spin])

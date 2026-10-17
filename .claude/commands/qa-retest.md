@@ -4,7 +4,9 @@ argument-hint: <slug>/D{n} [<slug>/D{n} …] | open | <slug> [build: apk path | 
 ---
 Retest: $ARGUMENTS
 
-Re-check defects that `/qa-run` logged in `qa/<slug>/bugs/`. Tools: `scripts/qa/` (see `scripts/qa/README.md`).
+Re-check defects that `/qa-run` logged in `qa/<slug>/bugs/`. Evidence = screenshots + steps (no video unless the
+owner asks, `QA_VIDEO=1`); device = emulator by default (`QA_SERIAL=emulator-5554`), the phone when the bug was
+phone-specific. Tools: `scripts/qa/` (see `scripts/qa/README.md`).
 `PY=~/.claude/venvs/qa/bin/python`. Run from `irbis-docs/`.
 
 ## 1. Scope

@@ -2,5 +2,12 @@
   "package": "uz.irbis.app.dev",
   "activity": "uz.irbis.app.MainActivity",
   "event_tag": "IRBIS_QA",
-  "location_event": "location_received"
+  "location_event": "location_received",
+  "video": false,
+  "serial": "",
+  "emulate_phone": {
+    "density": 450,
+    "font_scale": 1.15,
+    "note": "Galaxy S25 Ultra at default display + font size (384 dp wide)"
+  }
 }

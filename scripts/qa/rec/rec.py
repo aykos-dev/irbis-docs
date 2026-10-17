@@ -21,6 +21,8 @@ CLI:   rec.py start <folder> [--layout bug|case] [--variant V] [--title "..."]
                      [--expected "..."] [--actual "..."]
        rec.py check <folder> [--variant V]
        rec.py prune <folder> [--variant V]
+Video is OFF by default (qa.config.json "video": false; QA_VIDEO=1 turns it on): without video, start/stop only keep
+step times, QA events and screenshots, and render/check/prune write the verdict captions into the steps file.
 Python: from rec import Rec;  r = Rec(folder, variant, layout="bug"); r.start(); r.step(...); r.stop(title)
 """
 import argparse
@@ -34,7 +36,7 @@ import time
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE)
-from config import VENV_PY as PY_PIL  # noqa: E402
+from config import CFG, VENV_PY as PY_PIL  # noqa: E402
 EVENTS = os.environ.get("REC_EVENTS")            # regex over "time name {props}" lines; unset = every event
 START_TIMEOUT_S = 15
 HOLD_S = {"expected": 5.0, "result": 6.0}
@@ -77,12 +79,13 @@ class Rec:
             self.check_frame = f"{f}/.check{sfx}.png"
             self.sheet = f"{f}/video_sheet{sfx}.png"
         self.t0, self.pid, self.steps, self.status, self.end, self._proc = None, None, [], "new", None, None
+        self.video_on = bool(CFG.get("video"))
 
     # ---------- state (lets every CLI call pick up where the last one stopped) ----------
     def save(self):
         os.makedirs(os.path.dirname(self.state_path), exist_ok=True)
         keep = {k: getattr(self, k) for k in ("layout", "lang", "title", "t0", "pid", "steps", "status", "end",
-                                               "variant")}
+                                               "variant", "video_on")}
         with open(self.state_path, "w", encoding="utf-8") as fh:
             json.dump(keep, fh, ensure_ascii=False, indent=1)
 
@@ -95,6 +98,7 @@ class Rec:
                 r = cls(folder, variant, st["layout"], st["lang"], st["title"])
                 for k in ("t0", "pid", "steps", "status", "end"):
                     setattr(r, k, st[k])
+                r.video_on = st.get("video_on", True)
                 return r
         sys.exit(f"no recording state in {folder} (variant {variant!r})")
 
@@ -105,8 +109,13 @@ class Rec:
         if "isKeyguardShowing=true" in subprocess.run(["adb", "shell", "dumpsys", "window"], capture_output=True,
                                                            text=True).stdout:
             sys.exit("the phone is locked — unlock it (PIN) and retry")
-        for d in (self.video_dir, self.image_dir, self.others_dir):
+        for d in {self.image_dir, self.others_dir} | ({self.video_dir} if self.video_on else set()):
             os.makedirs(d, exist_ok=True)
+        if not self.video_on:  # screenshots + steps only
+            subprocess.run(["adb", "logcat", "-c"])
+            self.pid, self.t0, self.steps, self.status = None, time.time(), [], "recording"
+            self.save()
+            return
         if os.path.exists(self.raw):
             os.remove(self.raw)
         subprocess.run(["adb", "logcat", "-c"])
@@ -139,9 +148,11 @@ class Rec:
         return path
 
     def stop(self, title=None):
-        time.sleep(1.5)
+        time.sleep(1.5 if self.video_on else 0.2)
         self.end = round(time.time() - self.t0, 2)
         self.title = title or self.title or os.path.basename(self.folder)
+        if not self.video_on:
+            return self._finish_stop()
         try:
             os.killpg(self.pid, signal.SIGINT)
         except ProcessLookupError:
@@ -159,6 +170,9 @@ class Rec:
                     time.sleep(0.2)
                 except ProcessLookupError:
                     break
+        return self._finish_stop()
+
+    def _finish_stop(self):
         log = subprocess.run(["adb", "logcat", "-d", "-v", "time"], capture_output=True, text=True).stdout
         ev = subprocess.run([sys.executable, f"{BASE}/events.py", ""], input=log,
                             capture_output=True, text=True).stdout.splitlines()
@@ -168,7 +182,8 @@ class Rec:
         self.status = "stopped"
         self.save()
         self._write_steps(self.steps, self.end)
-        print(f"stopped: raw kept at {self.raw}. Review the screenshots and {self.events_path}, then: "
+        print(f"stopped: {'raw kept at ' + self.raw if self.video_on else 'no video (screenshots + steps)'}. "
+              f"Review the screenshots and {self.events_path}, then: "
               f"rec.py render {self.folder}{' --variant ' + self.variant if self.variant else ''} --verdict …")
         return keep
 
@@ -180,6 +195,18 @@ class Rec:
             fh.write(f"{end}\tEND\n")
 
     def render(self, verdict=None, expected=None, actual=None):
+        if not self.video_on:  # record the verdict captions in the steps file only
+            w = WORDS[self.lang]
+            steps = [list(s) for s in self.steps]
+            if expected:
+                steps.append([self.end, f"{w['expected']}: {expected}"])
+            if verdict:
+                steps.append([self.end, f"{w['result']}: {w[verdict]}" + (f" — {actual}" if actual else "")])
+            self._write_steps(steps, self.end)
+            self.steps, self.status = steps, "rendered"
+            self.save()
+            print("verdict recorded (no video)", self.steps_path)
+            return
         if not os.path.exists(self.raw):
             sys.exit(f"no raw recording at {self.raw} (already rendered? re-record to change captions)")
         w = WORDS[self.lang]
@@ -206,6 +233,10 @@ class Rec:
 
     def check(self):
         """Validate the finished video; extract the frame of the last caption for a human look."""
+        if not self.video_on:
+            shots = [f for f in os.listdir(self.image_dir) if f.endswith(".png") and not f.startswith(".")]
+            print("check:", "OK (no video;", len(shots), "screenshots)" if shots else "PROBLEMS\n  no screenshots")
+            return bool(shots)
         problems = []
         if not os.path.exists(self.video):
             problems.append(f"missing {self.video}")
@@ -229,6 +260,10 @@ class Rec:
 
     def sheet_only(self):
         """A video that is not kept (P2/P3 Pass): contact sheet straight from the raw file, then drop the raw."""
+        if not self.video_on:
+            self.status = "sheet-only"
+            self.save()
+            return
         if not os.path.exists(self.raw):
             sys.exit(f"no raw recording at {self.raw}")
         if self.sheet:

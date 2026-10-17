@@ -1,0 +1,4 @@
+0.05	1: Font scale 2.0, cold start
+4.62	Expected: All card texts fully visible (wrap or scroll, no clipped words), Retry/refresh s
+4.62	Result: PASS
+4.62	END

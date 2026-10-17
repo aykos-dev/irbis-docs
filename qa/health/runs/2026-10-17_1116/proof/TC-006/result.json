@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Russian copy",
+  "group": "Supplementary",
+  "priority": "P2",
+  "env": "Android · auto (adb) · resources: API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-006--p2--russian-copy",
+  "source": "AC4",
+  "expected": [
+   "Every text on the Status screen is Russian, matching `src/shared/i18n/ru` — no English left — screenshot",
+   "Layout does not clip or truncate any Russian label — screenshot"
+  ],
+  "caption": {
+   "expected": "Every text on the Status screen is Russian, matching `src/shared/i18n/ru`"
+  },
+  "plan_hash": "be6bb67a08",
+  "tc": "TC-006"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Not run",
+ "duration_s": 6.6,
+ "events": 4,
+ "done": [
+  "API-UP",
+  "1. Font scale 1.15 (Samsung default)",
+  "2. Set the app language to Russian and cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "English-looking texts left: []; all: ['IRBIS', 'Статус', 'API работает', 'База данных работает', 'v0.0.1', 'Проверено в 11:18', 'Окружение: dev', '11:19']",
+   "proof": [
+    "1_ru.png"
+   ],
+   "t": 4.7
+  },
+  "2": {
+   "ok": null,
+   "observed": "clipping: judge from the screenshot",
+   "proof": [
+    "1_ru.png"
+   ],
+   "t": 4.7
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "font scale 1.15",
+   "ok": true,
+   "seen": "1.15\n",
+   "t": 1.6
+  },
+  {
+   "name": "app relaunched",
+   "ok": true,
+   "seen": "['IRBIS', 'Статус', 'API работает', 'База данных работает', 'v0.0.1', 'Проверено в 11:18']",
+   "t": 3.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_ru.png"
+ ]
+}

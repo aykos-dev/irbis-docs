@@ -1,0 +1,7 @@
+1.73	1: Stop the database container
+2.82	2: Pull to refresh
+3.89	Observed: db chip down: True
+4.14	Setup: Restore: start the database container
+5.08	Expected: `health.db-chip` shows the Not-now style (red, × icon, label "Database is down" 
+5.08	Result: PASS
+5.08	END

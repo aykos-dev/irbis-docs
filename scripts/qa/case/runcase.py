@@ -146,7 +146,7 @@ def finish(run_dir, verdicts_path):
             continue
         res = runmd.load(case_dir)
         rec = Rec.load(case_dir)
-        keep = res["meta"].get("priority") in ("P0", "P1") or v["verdict"] != "Pass"
+        keep = rec.video_on and (res["meta"].get("priority") in ("P0", "P1") or v["verdict"] != "Pass")
         items.append((res, v, keep))
         jobs.append((rec, keep, v, res))
 
@@ -154,9 +154,9 @@ def finish(run_dir, verdicts_path):
         rec, keep, v, res = job
         if rec.status != "stopped":
             return f"{res['meta']['tc']}: already {rec.status}"
-        if keep:
+        if keep or not rec.video_on:
             rec.render(VERDICT_KEY[v["verdict"]], res["meta"].get("caption", {}).get("expected"), v.get("caption"))
-            return f"{res['meta']['tc']}: rendered, check " + ("OK" if rec.check() else "PROBLEMS")
+            return f"{res['meta']['tc']}: {'rendered' if keep else 'verdict recorded'}, check " + ("OK" if rec.check() else "PROBLEMS")
         rec.sheet_only()
         return f"{res['meta']['tc']}: sheet only"
 

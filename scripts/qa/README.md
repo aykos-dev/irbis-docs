@@ -1,7 +1,7 @@
 # Irbis QA toolkit (Android)
 
-Drives the Irbis app on a real Android phone (or emulator) over adb, records every case with captions,
-and keeps the proof. Used by `/qa-plan`, `/qa-run`, `/qa-retest`. Adapted from the Bellissimo QA `runner`:
+Drives the Irbis app on an Android emulator or phone over adb and keeps the proof: screenshots, step times and QA
+events per case. Screen video is opt-in (`QA_VIDEO=1`) — off by default to keep runs cheap. Used by `/qa-plan`, `/qa-run`, `/qa-retest`. Adapted from the Bellissimo QA `runner`:
 only the generic Android parts were kept; Expo, ADO and Bellissimo-specific helpers were dropped.
 
 ## One-time setup (done on this Mac 2026-10-16)
@@ -53,6 +53,14 @@ Media (`*.mp4`, `*.png`) is git-ignored; Markdown, scripts, step times and event
 - **QA event log** in dev/staging builds: `src/shared/utils/qaLog.ts` logs `IRBIS_QA {"event": "...", ...}`.
   Names and non-personal props only. The app must emit `location_received { is_mocked, accuracy_m }` when it
   reads a fix — mock-location cases wait for it.
+
+## Devices
+| Device | `QA_SERIAL` | Use for |
+|---|---|---|
+| Emulator `pixel-8a` (Android 15, arm64, Google Play image) | `emulator-5554` | default for every run and retest |
+| Owner's Galaxy S25 Ultra (Android 16) | `RFCY616LFMX` | real GPS / camera / hotspot, Samsung font scale & edge UI, before a release |
+Start the emulator: `~/Library/Android/sdk/emulator/emulator -avd pixel-8a -no-boot-anim &`. Install the same APK on
+either (`adb -s <serial> install -r …`); the app reaches the local API through `adb reverse tcp:3000 tcp:3000` on both.
 
 ## Verdicts
 | Verdict | When |

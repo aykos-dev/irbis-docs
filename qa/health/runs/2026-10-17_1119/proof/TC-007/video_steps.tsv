@@ -1,0 +1,5 @@
+0.05	1: Font scale 1.15 (Samsung default)
+1.68	2: Set the app language to Uzbek and cold start
+6.1	Expected: Every text on the Status screen is Uzbek (Latin), matching `src/shared/i18n/uz`
+6.1	Result: PASS
+6.1	END

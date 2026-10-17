@@ -1,0 +1,50 @@
+{
+ "meta": {
+  "title": "Dark mode uses the night tokens",
+  "group": "Supplementary",
+  "priority": "P3",
+  "env": "Android · auto (adb) · resources: API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-008--p3--dark-mode-uses-the-night-tokens",
+  "source": "standards §5/§8",
+  "expected": [
+   "Background is the Night token (#131D22) and cards #1C2A30; text readable; chips keep colour + icon + label — screenshot"
+  ],
+  "caption": {
+   "expected": "Background is the Night token (#131D22) and cards #1C2A30; text readable; chips "
+  },
+  "plan_hash": "c1be9ec784",
+  "tc": "TC-008"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 4.7,
+ "events": 1,
+ "done": [
+  "API-UP",
+  "1. Dark mode on, cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "background pixel (19, 29, 34) vs #131D22",
+   "proof": [
+    "1_dark.png"
+   ],
+   "t": 2.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "status shown",
+   "ok": true,
+   "seen": "['11:20', 'IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1']",
+   "t": 2.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_dark.png"
+ ]
+}

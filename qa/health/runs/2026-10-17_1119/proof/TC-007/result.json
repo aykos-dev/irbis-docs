@@ -1,0 +1,57 @@
+{
+ "meta": {
+  "title": "Uzbek copy",
+  "group": "Supplementary",
+  "priority": "P2",
+  "env": "Android · auto (adb) · resources: API-UP",
+  "plan": "Test_health.md",
+  "anchor": "tc-007--p2--uzbek-copy",
+  "source": "AC4",
+  "expected": [
+   "Every text on the Status screen is Uzbek (Latin), matching `src/shared/i18n/uz` — screenshot"
+  ],
+  "caption": {
+   "expected": "Every text on the Status screen is Uzbek (Latin), matching `src/shared/i18n/uz`"
+  },
+  "plan_hash": "7b3353a3d4",
+  "tc": "TC-007"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 6.2,
+ "events": 2,
+ "done": [
+  "API-UP",
+  "1. Font scale 1.15 (Samsung default)",
+  "2. Set the app language to Uzbek and cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "English texts left: []; all: ['IRBIS', 'Holat', 'API ishlayapti', 'Ma’lumotlar bazasi ishlayapti', 'v0.0.1', '11:20 da tekshirildi', 'Muhit: dev', '11:20']",
+   "proof": [
+    "1_uz.png"
+   ],
+   "t": 4.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "font scale 1.15",
+   "ok": true,
+   "seen": "1.15\n",
+   "t": 1.7
+  },
+  {
+   "name": "app relaunched",
+   "ok": true,
+   "seen": "['IRBIS', 'Holat', 'API ishlayapti', 'Ma’lumotlar bazasi ishlayapti', 'v0.0.1', '11:20 da tekshirildi']",
+   "t": 2.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_uz.png"
+ ]
+}

@@ -1,0 +1,9 @@
+0.46	Setup: API and database running; app language English
+0.46	Step 1: Open the app
+4.06	Step 2: The database stops (API keeps running)
+4.55	Setup: the API now reports status=degraded, db=down
+4.55	Step 3: Pull down to refresh the Status screen
+9.41	Observed: API chip 'API is up', database chip 'Database is down'
+11.61	Expected: API chip stays 'API is up'; only the database chip turns red
+11.61	Result: FIXED — API chip 'API is up', database chip 'Database is down'
+11.61	END

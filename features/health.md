@@ -23,7 +23,8 @@ None (first migration creates nothing feature-specific; Prisma is wired and `SEL
 - **AC1** — `GET /health` returns 200 `{ status: "ok", db: "up", version, time }` when Postgres is reachable.
 - **AC2** — With Postgres stopped, it returns 503 `{ status: "degraded", db: "down", … }` within 3 s (no hang).
 - **AC3** — The app's **Status** screen (initial route in M0) shows: loading skeleton → "API is up · Database is up ·
-  v{version}" with a Go-style chip; on API unreachable an error state with Retry; offline (no network) a persistent
+  v{version}" with a Go-style chip; when only the database is down, the API chip stays "API is up" (Go — the API
+  answered) and only the database chip turns Not-now (Q4); on API unreachable an error state with Retry; offline (no network) a persistent
   offline banner, not a toast. Pull to refresh refetches.
 - **AC4** — Copy is in uz / ru / en via i18n keys (`health.*`); the language follows the device locale in M0.
 - **AC5** — The web admin dashboard (`/`) shows the same status card with loading / error + retry / offline states.
@@ -59,3 +60,4 @@ None (Irbis default SVG from the canvas on the status card — `design/assets.md
 - Q1 (owner, 2026-10-17): app id `uz.irbis.app` (+ `.dev` / `.staging` suffixes).
 - Q2 (owner, 2026-10-17): Postgres 17 in Docker Desktop for dev and e2e (Testcontainers).
 - Q3 (owner, 2026-10-17): M0 verified on the owner's Galaxy S25 Ultra (Android 16) only; iOS project generated, not built.
+- Q4 (owner, 2026-10-17, from health/D1): the API chip reflects whether the API answered; a degraded response keeps it green.

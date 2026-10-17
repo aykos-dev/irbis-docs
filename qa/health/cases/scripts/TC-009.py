@@ -26,6 +26,7 @@ META = {
 
 
 def run(c):
+    prev_font = sh("settings", "get", "system", "font_scale").strip() or "1.0"
     c.pre('API-UP')
     reverse(True)
     c.step(1, "Font scale 2.0, cold start")
@@ -37,4 +38,4 @@ def run(c):
         shot = c.shot("1_font2")
         c.result(1, None, "clipping at 2.0: judge from the screenshot", [shot])
     finally:
-        font_scale(1.0)
+        font_scale(prev_font)

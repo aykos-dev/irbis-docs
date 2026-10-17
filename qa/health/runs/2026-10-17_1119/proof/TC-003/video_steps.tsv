@@ -1,0 +1,6 @@
+0.0	1: Remove the port forward and cold start
+15.57	2: Wait for the error state
+16.78	3: Restore the forward and tap Retry
+17.73	Expected: After step 2: plain-language error message and `health.retry` visible; no raw st
+17.73	Result: PASS
+17.73	END
