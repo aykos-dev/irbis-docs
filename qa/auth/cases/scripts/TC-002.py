@@ -44,6 +44,6 @@ def run(c):
         shots.append(c.shot(f"{i}_{k}", focus="empty.coming-soon"))
         good.append((k, bool(ok)))
         ev = c.wait_event("tab_opened", t0, 5, lambda p, k=k: p.get("tab") == k)
-        evs.append((k, bool(ev)))
+        evs.append((k, ev is not None))
     c.result(1, all(o for _, o in good), f"per tab: {good}", shots)
     c.result(2, all(o for _, o in evs), f"tab_opened per tab: {evs}")

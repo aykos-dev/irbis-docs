@@ -55,4 +55,4 @@ def run(c):
     where = goto_profile()
     c.result(2, where == "profile.guest", f"profile after: {where}", [c.shot("3_profile", focus="profile.guest")])
     ev = c.wait_event("account_blocked_shown", t0, 3)
-    c.result(3, bool(ev), f"event={bool(ev)}")
+    c.result(3, ev is not None, f"event={ev is not None}")

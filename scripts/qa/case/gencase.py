@@ -8,7 +8,8 @@ Generated: qa/<slug>/cases/Test_<slug>.md   (never edit by hand — edit META an
 usage:
   gencase.py new  <slug> TC-NNN "title" [--priority P1] [--ac AC2]   write a skeleton script (META + run stub)
   gencase.py doc  <slug>                                             render Test_<slug>.md from PLAN + every META
-  gencase.py list <slug>                                             one line per case: id · priority · title
+  gencase.py list <slug> [--scope core|full]                         one line per case: id · priority · title
+                                                                     (core = P0 only; full = every case)
 """
 import argparse
 import importlib.util
@@ -135,6 +136,7 @@ def main():
     ap.add_argument("title", nargs="?", default="")
     ap.add_argument("--priority", default="P1")
     ap.add_argument("--ac", default="AC1")
+    ap.add_argument("--scope", choices=["core", "full"], default="full")
     a = ap.parse_args()
     if a.cmd == "new":
         new(a.slug, a.tc, a.title, a.priority, a.ac)
@@ -142,6 +144,8 @@ def main():
         doc(a.slug)
     else:
         for tc, m in cases(a.slug):
+            if a.scope == "core" and m.get("priority") != "P0":
+                continue
             print(f"{tc} · {m.get('priority', '')} · {m.get('group', '')} · {m.get('title', '')}")
 
 

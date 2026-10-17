@@ -42,7 +42,7 @@ def run(c):
     t0 = c.mark()
     ui_signup(name, PW6)
     ev = c.wait_event("signed_up", t0, 15)
-    c.result(1, bool(ev) and ev.get("has_phone") in (False, "false"), f"event: {ev}")
+    c.result(1, ev is not None and ev.get("has_phone") in (False, "false"), f"event: {ev}")
     ok = wait("profile.account", 15, exact=True)
     wait("profile.username", 10, exact=True)
     shot = c.shot("2_profile", focus="profile.account")

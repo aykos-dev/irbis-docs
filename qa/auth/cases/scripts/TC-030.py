@@ -43,7 +43,7 @@ def run(c):
     shot = c.shot("1_guest", focus="profile.guest")
     c.result(1, ok and has("nav.tab-profile", exact=True) and not has("auth.login", exact=True), f"guest profile={ok}", [shot])
     ev = c.wait_event("signed_out", t0, 5)
-    c.result(2, bool(ev), f"signed_out event={bool(ev)}")
+    c.result(2, ev is not None, f"signed_out event={ev is not None}")
     c.step(2, "Restart and open Profile")
     launch_app()
     where = goto_profile()

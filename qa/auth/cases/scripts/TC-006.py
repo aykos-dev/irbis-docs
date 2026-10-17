@@ -46,16 +46,16 @@ def run(c):
         hit = wait_any(keys, wait_s)
         return hit, field_text("auth.username")
 
-        import random
-        c.pre("sign-up screen")
-        c.checkpoint("sign-up screen open", open_signup(), "no auth.signup")
-        dot = "A dot can't be first or last."
-        chars = "Only letters, numbers, dot and underscore."
-        for i, (txt, want) in enumerate([(".abc", dot), ("abc.", dot), ("ab-cd", chars), ("ab cd", chars)], 1):
-            c.step(i, f"Type {txt!r}")
-            h, v = feedback(txt)
-            c.result(i, h == want, f"status={h}, field={v!r}", [c.shot(f"{i}_rule", focus="auth.username")])
-        ok_name = f"q.a_{random.randint(10000, 99999)}"
-        c.step(5, f"Type {ok_name!r}")
-        h, v = feedback(ok_name)
-        c.result(5, h == f"{ok_name} is free", f"status={h}, field={v!r}", [c.shot("5_ok", focus="auth.username")])
+    import random
+    c.pre("sign-up screen")
+    c.checkpoint("sign-up screen open", open_signup(), "no auth.signup")
+    dot = "A dot can't be first or last."
+    chars = "Only letters, numbers, dot and underscore."
+    for i, (txt, want) in enumerate([(".abc", dot), ("abc.", dot), ("ab-cd", chars), ("ab cd", chars)], 1):
+        c.step(i, f"Type {txt!r}")
+        h, v = feedback(txt)
+        c.result(i, h == want, f"status={h}, field={v!r}", [c.shot(f"{i}_rule", focus="auth.username")])
+    ok_name = f"q.a_{random.randint(10000, 99999)}"
+    c.step(5, f"Type {ok_name!r}")
+    h, v = feedback(ok_name)
+    c.result(5, h == f"{ok_name} is free", f"status={h}, field={v!r}", [c.shot("5_ok", focus="auth.username")])

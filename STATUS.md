@@ -9,9 +9,10 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - M0 — api 8fb74fa, web f6c295f, app b0d7e37; `health` QA: phone run 0117 (6/9) → health/D1 + D2 fixed → emulator run 1119 9/9 (2026-10-17)
 
 ## In progress
-- auth — built + reviewed (PASS) on `feat/auth`: api fe8f543, app 1a4978d, web 900fe79 (not merged). Next, in a FRESH session
-  from irbis-docs: `/qa-plan auth` then `/qa-run auth installed` (emulator; app build 4c563f2 installed) → bugfix/retest
-  loop → merge feat/auth → wrap up. First QA attempt stopped at the usage limit (2026-10-17).
+- auth — built + reviewed (PASS) on `feat/auth`: api fe8f543, app 1a4978d, web 900fe79 (not merged). QA plan: 39 cases
+  (19 P0). Next, in a FRESH session: `/qa-run auth installed` (core = P0, app build 4c563f2 installed) → bugfix/retest
+  loop → `/qa-run auth installed full` → merge feat/auth → wrap up. 1st attempt (2026-10-17) stopped after 72 min;
+  unreviewed fails then: TC-003, 035, 037, 040, 041, 042. QA sped up: core/full scope, no timer waits, per-case reset.
   Owner to-dos: create the first admin with `npm run admin:create` (irbis-api) to try the web panel;
   `irbis-web/.env.local`. Real SMS provider: later (staging can't boot until its adapter exists).
 

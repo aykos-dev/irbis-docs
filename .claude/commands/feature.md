@@ -68,10 +68,11 @@ checklist. Blocking fixes go back as a short fix brief to a fresh dev agent (max
 
 ## 6. Test on the Android phone — the QA loop
 1. `/qa-plan <slug>` → case scripts from the AC (the qa-tester subagent; summary only in this conversation).
-2. `/qa-run <slug> build` → feature cases + standards suite on the emulator, defects logged to `qa/<slug>/bugs/`.
+2. `/qa-run <slug> build` → P0 cases (`core`) on the emulator, defects logged to `qa/<slug>/bugs/`.
 3. For each defect: `/bugfix <slug>/D{n}` (failing test first), then rebuild and `/qa-retest <slug>/D{n} …`.
 4. Repeat 3 until `python3 scripts/qa/case/bugs.py open` shows nothing for this feature — or the owner accepts a
    remaining defect (it stays Open in `qa/BUGS.md` and STATUS.md Known issues).
+5. Once before merge: `/qa-run <slug> installed full` (all cases + standards suite); new defects go through 3.
 iOS is checked by hand by the owner; ask them to, and note the result.
 
 ## 7. Wrap up and STOP

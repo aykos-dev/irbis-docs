@@ -8,7 +8,7 @@ except ImportError:
     pass
 
 META = {
- "title": "Sign-up with a recovery phone reports has_phone and stores the phone",
+ "title": "Sign-up with a recovery phone reports has_phone and sends a verification code",
  "priority": "P2",
  "group": "Supplementary",
  "requirement": "AC3 — optional recovery phone accepted at sign-up",
@@ -22,7 +22,7 @@ META = {
  "expected": [
   "Event signed_up {has_phone: true} — event log",
   "Signed in on Profile with the Recovery phone row present (profile.recovery-phone) — UI tree",
-  "DB: the user's recovery_phone column is set (stored, not shown) — DB"
+  "API log: a verification SMS code was sent for the new user and the phone is not verified yet (the API stores the phone when the code is verified) — SMS log + DB"
  ],
  "focus": "profile.account",
  "caption": {
@@ -40,9 +40,11 @@ def run(c):
     t0 = c.mark()
     ui_signup(name, PW, phone_d=phone_digits(12))
     ev = c.wait_event("signed_up", t0, 15)
-    c.result(1, bool(ev) and ev.get("has_phone") in (True, "true"), f"event: {ev}")
+    c.result(1, ev is not None and ev.get("has_phone") in (True, "true"), f"event: {ev}")
     ok = wait("profile.account", 15, exact=True)
     shot = c.shot("2_profile", focus="profile.account")
     c.result(2, ok and has("profile.recovery-phone", exact=True), f"profile.account={ok}", [shot])
-    stored = sql(f"select recovery_phone is not null from users where username='{name}'")
-    c.result(3, stored == "t", f"recovery_phone set: {stored}")
+    uid = user_id(name)
+    sent = len(sms_codes(uid)) if uid else 0
+    ver = sql(f"select recovery_phone_verified_at is not null from users where username='{name}'")
+    c.result(3, sent >= 1 and ver == "f", f"codes sent={sent}, verified={ver}")

@@ -45,7 +45,7 @@ def run(c):
     shot = c.shot("1_blocked", focus="auth.blocked")
     c.result(1, shown and has("Your account is blocked") and has("Reason: Spam or advertising"), f"blocked card={shown}, texts={[t for t in texts() if 'block' in t.lower() or 'Reason' in t]}", [shot])
     ev = c.wait_event("account_blocked_shown", t0, 5)
-    c.result(2, bool(ev), f"event={bool(ev)}")
+    c.result(2, ev is not None, f"event={ev is not None}")
     c.step(2, "Close the log-in screen")
     tap("auth.continue-guest", exact=True)
     c.result(3, wait("profile.guest", 8, exact=True), "guest Profile after closing", [c.shot("2_guest", focus="profile.guest")])

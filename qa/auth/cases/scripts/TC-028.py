@@ -49,7 +49,7 @@ def run(c):
     t0 = c.mark()
     fill("auth.code", code or "000000"); tap_submit()
     ev = c.wait_event("recovery_phone_verified", t0, 10)
-    c.result(2, bool(ev), f"event={bool(ev)}")
+    c.result(2, ev is not None, f"event={ev is not None}")
     wait("profile.account", 10, exact=True)
     shot = c.shot("3_verified", focus="profile.recovery-phone")
     st, d, _ = api("POST", "/v1/auth/log-in", {"username": u["username"], "password": PW})

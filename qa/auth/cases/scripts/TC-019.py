@@ -56,6 +56,6 @@ def run(c):
     d = submit(ver["username"])
     code = wait_new_code(ver["id"], base_ver, 8)
     c.result(1, a[0] and b[0] and d[0] and a[1] == b[1] == d[1], f"on reset: {a[0]},{b[0]},{d[0]}; same texts: {a[1] == b[1] == d[1]}", [a[3], b[3], d[3]])
-    c.result(2, bool(a[2] and b[2] and d[2]), f"events {bool(a[2])},{bool(b[2])},{bool(d[2])}")
+    c.result(2, all(x[2] is not None for x in (a, b, d)), f"events {a[2] is not None},{b[2] is not None},{d[2] is not None}")
     c.result(3, mid_total == base_total and bool(code) and re.fullmatch(r"\d{6}", code) is not None and len(sms_codes(ver["id"])) == base_ver + 1,
              f"codes after unknown+no-phone: {mid_total - base_total}; verified got a 6-digit code: {bool(code)}")

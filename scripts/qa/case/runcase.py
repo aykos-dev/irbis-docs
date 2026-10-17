@@ -124,6 +124,9 @@ def run(run_dir, tcs, force=False):
     c = Ctx(case_dir, run_dir, meta, rec)
     t0, status, reason = time.time(), "done", None
     try:
+        hook = getattr(sys.modules.get("_feature"), "before_case", None)
+        if hook:
+            hook()  # feature-level isolation (e.g. clear throttle/lockout rows on the local dev DB)
         mod.run(c)
     except Blocked as e:
         status, reason = "blocked", str(e)

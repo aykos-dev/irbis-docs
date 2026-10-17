@@ -32,7 +32,7 @@ def _cached(name, make):
 PW = _cached("auth_pw", lambda: "Qa" + secrets.token_hex(5))        # 12 chars, throwaway local password
 PW2 = _cached("auth_pw2", lambda: "Qb" + secrets.token_hex(5))      # second password (reset / change cases)
 PW6 = PW[:6]                                                        # exactly 6 characters
-PHONE_DIGITS = "90000001"                                           # + two case digits → +998 90 000 00 xx
+PHONE_DIGITS = "9000000"                                           # + two case digits → +998 90 000 00 xx
 
 
 def uname(tag):
@@ -65,6 +65,12 @@ def sql(q):
                         'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -At -c "$1"', "_", q],
                        capture_output=True, text=True)
     return r.stdout.strip()
+
+
+def before_case():
+    """Called by runcase.py before every case: clear the log-in failure history on the LOCAL dev DB, so one case's
+    wrong passwords (per-username lockout, per-IP limit — all cases share the emulator's IP) never block the next."""
+    sql("delete from login_attempts")
 
 
 def user_id(username):
@@ -117,6 +123,11 @@ def phone_digits(n=11):
     return f"{PHONE_DIGITS}{n % 100:02d}"
 
 
+def phone(n=11):
+    """Full +998 number for API bodies (the UI field takes phone_digits)."""
+    return "+998" + phone_digits(n)
+
+
 # ---------------- device helpers ----------------
 def hide_kb():
     if keyboard_shown():
@@ -131,6 +142,13 @@ def clear_field(tid):
 
 
 def fill(tid, text, clear=False):
+    if not find(tid, exact=True):
+        hide_kb()
+        for _ in range(3):
+            sh("input", "swipe", "540", "1700", "540", "900", "300")
+            time.sleep(0.6)
+            if find(tid, exact=True):
+                break
     if clear:
         clear_field(tid)
     else:
@@ -151,6 +169,9 @@ def field_text(tid):
 
 def tap_submit():
     hide_kb()
+    if not find("auth.submit", exact=True):
+        sh("input", "swipe", "540", "1700", "540", "900", "300")
+        time.sleep(0.6)
     tap("auth.submit", exact=True)
 
 
@@ -234,7 +255,10 @@ def ui_signup(username, password, phone_d=None, terms=True):
 
 def open_debug():
     launch_app()
-    deep_link("irbis://debug")
+    goto_profile()
+    if not find("profile.debug", exact=True):
+        sh("input", "swipe", "540", "1700", "540", "900", "300")
+    tap("profile.debug", exact=True)
     return wait("debug.screen", 15, exact=True)
 
 
@@ -261,9 +285,12 @@ PLAN = {
     "resources": [("Android", "emulator pixel-8a emulating the S25 Ultra (session.py up); devRelease APK uz.irbis.app.dev"),
                   ("Backend", "irbis-api `npm run start:dev` on :3000, log in a file; Postgres container `irbis-api-db-1`; "
                               "`adb reverse tcp:3000 tcp:3000`; fake SMS sender logs `SMS code for user <id>: <code>`"),
-                  ("Order", "Run the silent-refresh ARM case first, then only API-only cases (env `API (HTTP)`) until its VERIFY case, "
-                            "which needs ≥ 15.5 min since the arm (any other device sign-in replaces the armed account)"),
-                  ("Covered elsewhere", "AC12 – AC16 (web admin, admin API, CLI): irbis-web and irbis-api repo tests — no device cases")],
+                  ("Isolation", "`before_case()` clears `login_attempts` before every case, so lockouts and the per-IP limit "
+                                "never carry over; every case makes its own `qa_<case>_<n>` user"),
+                  ("Covered elsewhere", "AC12 – AC16 (web admin, admin API, CLI): irbis-web and irbis-api repo tests — no device cases"),
+                  ("Timers (not on the device)", "lock expiry after 15 min, per-IP limit, Send again unlock at 60 s, silent refresh "
+                                                 "after the ~15-min access token: irbis-api auth.rules.spec.ts + auth-session.e2e-spec.ts, "
+                                                 "irbis-app reset.test.tsx + session.test.tsx (fake clock)")],
     "test_data": [("QA-USER", "throwaway account `qa_<case>_<n>`, password generated per machine (not committed)",
                    "created through the API (`make_user`) on the LOCAL dev DB only"),
                   ("QA-PHONE", "synthetic recovery phone +998 90 000 00 xx", "sign-up / recovery-phone body"),

@@ -50,7 +50,7 @@ def run(c):
     t0 = c.mark()
     ui_signup(name, PW)
     ev = c.wait_event("guest_merged", t0, 15)
-    c.result(1, bool(ev) and int(ev.get("items", 0)) >= 1, f"event: {ev}")
+    c.result(1, ev is not None and int(ev.get("items", 0)) >= 1, f"event: {ev}")
     st, d, _ = api("POST", "/v1/auth/log-in", {"username": name, "password": PW})
     _, me, _ = api("GET", "/v1/me", token=d.get("accessToken"))
     c.result(2, me.get("locale") == "uz", f"locale={me.get('locale')}")

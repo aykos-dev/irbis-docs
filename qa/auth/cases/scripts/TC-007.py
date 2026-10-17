@@ -45,25 +45,25 @@ def run(c):
         hit = wait_any(keys, wait_s)
         return hit, field_text("auth.username")
 
-        import random
-        u = make_user("tkn")
-        c.pre(f"QA-USER {u['username']} exists")
-        c.checkpoint("sign-up screen open", open_signup(), "no auth.signup")
-        c.step(1, "Read the status line before typing")
-        p = any(t.startswith("3–20 letters") for t in texts()) and not has("Use 3–20 characters.")
-        c.result(1, p, f"pristine hint shown: {p}", [c.shot("1_pristine", focus="auth.username")])
-        name = f"q{random.randint(100000, 999999)}"
-        c.step(2, "Type a free name")
-        tap("auth.username", exact=True); type_text(name)
-        seen = wait("Checking if the name is free", 1.5)
-        done = wait(f"{name} is free", 5)
-        c.result(2, (True if seen and done else (None if done else False)), f"validating seen={seen}, success={done}", [c.shot("2_free", focus="auth.username")])
-        res = []
-        for i, nm in enumerate(["admin", "Irbis", "OFFICIAL"]):
-            h, v = feedback(nm)
-            res.append(h)
-        c.step(3, "Type admin / Irbis / OFFICIAL")
-        c.result(3, all(h == "That name is reserved. Pick another one." for h in res), f"statuses {res}", [c.shot("3_reserved", focus="auth.username")])
-        c.step(4, "Type the existing name in upper case")
-        h, v = feedback(u["username"].upper())
-        c.result(4, h == "That username is taken.", f"status={h}", [c.shot("4_taken", focus="auth.username")])
+    import random
+    u = make_user("tkn")
+    c.pre(f"QA-USER {u['username']} exists")
+    c.checkpoint("sign-up screen open", open_signup(), "no auth.signup")
+    c.step(1, "Read the status line before typing")
+    p = any(t.startswith("3–20 letters") for t in texts()) and not has("Use 3–20 characters.")
+    c.result(1, p, f"pristine hint shown: {p}", [c.shot("1_pristine", focus="auth.username")])
+    name = f"q{random.randint(100000, 999999)}"
+    c.step(2, "Type a free name")
+    tap("auth.username", exact=True); type_text(name)
+    seen = wait("Checking if the name is free", 1.5)
+    done = wait(f"{name} is free", 5)
+    c.result(2, (True if seen and done else (None if done else False)), f"validating seen={seen}, success={done}", [c.shot("2_free", focus="auth.username")])
+    res = []
+    for i, nm in enumerate(["admin", "Irbis", "OFFICIAL"]):
+        h, v = feedback(nm)
+        res.append(h)
+    c.step(3, "Type admin / Irbis / OFFICIAL")
+    c.result(3, all(h == "That name is reserved. Pick another one." for h in res), f"statuses {res}", [c.shot("3_reserved", focus="auth.username")])
+    c.step(4, "Type the existing name in upper case")
+    h, v = feedback(u["username"].upper())
+    c.result(4, h == "That username is taken.", f"status={h}", [c.shot("4_taken", focus="auth.username")])

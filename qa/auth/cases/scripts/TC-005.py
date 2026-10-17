@@ -46,28 +46,28 @@ def run(c):
         hit = wait_any(keys, wait_s)
         return hit, field_text("auth.username")
 
-        import random
-        c.pre("sign-up screen")
-        c.checkpoint("sign-up screen open", open_signup(), "no auth.signup")
-        def free_name(n, prefix="q"):
-            for _ in range(20):
-                s = (prefix + "".join(random.choice("abcdefghijklmnopqrstuvwxyz0123456789") for _ in range(n)))[:n]
-                st, d, _ = api("GET", f"/v1/auth/username-available?u={s}")
-                if st == 200 and d.get("available"):
-                    return s
-            raise RuntimeError("no free name found")
-        c.step(1, "Type 'qa' (2 chars)")
-        h, v = feedback("qa")
-        c.result(1, h == "Use 3–20 characters.", f"status={h}, field={v!r}", [c.shot("1_two", focus="auth.username")])
-        n3 = free_name(3)
-        c.step(2, f"Type a free 3-char name")
-        h, v = feedback(n3)
-        c.result(2, h == f"{n3} is free", f"status={h}, field={v!r}", [c.shot("2_three", focus="auth.username")])
-        n20 = free_name(20)
-        c.step(3, "Type a free 20-char name")
-        h, v = feedback(n20)
-        c.result(3, h == f"{n20} is free", f"status={h}, field={v!r}", [c.shot("3_twenty", focus="auth.username")])
-        c.step(4, "Type the 20-char name plus one more character (21)")
-        h, v = feedback(n20 + "z")
-        capped = v is not None and len(v) == 20
-        c.result(4, h == "Use 3–20 characters." or capped, f"status={h}, field length={len(v) if v else None}", [c.shot("4_twentyone", focus="auth.username")])
+    import random
+    c.pre("sign-up screen")
+    c.checkpoint("sign-up screen open", open_signup(), "no auth.signup")
+    def free_name(n, prefix="q"):
+        for _ in range(20):
+            s = (prefix + "".join(random.choice("abcdefghijklmnopqrstuvwxyz0123456789") for _ in range(n)))[:n]
+            st, d, _ = api("GET", f"/v1/auth/username-available?u={s}")
+            if st == 200 and d.get("available"):
+                return s
+        raise RuntimeError("no free name found")
+    c.step(1, "Type 'qa' (2 chars)")
+    h, v = feedback("qa")
+    c.result(1, h == "Use 3–20 characters.", f"status={h}, field={v!r}", [c.shot("1_two", focus="auth.username")])
+    n3 = free_name(3)
+    c.step(2, f"Type a free 3-char name")
+    h, v = feedback(n3)
+    c.result(2, h == f"{n3} is free", f"status={h}, field={v!r}", [c.shot("2_three", focus="auth.username")])
+    n20 = free_name(20)
+    c.step(3, "Type a free 20-char name")
+    h, v = feedback(n20)
+    c.result(3, h == f"{n20} is free", f"status={h}, field={v!r}", [c.shot("3_twenty", focus="auth.username")])
+    c.step(4, "Type the 20-char name plus one more character (21)")
+    h, v = feedback(n20 + "z")
+    capped = v is not None and len(v) == 20
+    c.result(4, h == "Use 3–20 characters." or capped, f"status={h}, field length={len(v) if v else None}", [c.shot("4_twentyone", focus="auth.username")])

@@ -47,4 +47,4 @@ def run(c):
     t0 = c.mark()
     ok = ui_login(u["username"], PW)
     ev = c.wait_event("logged_in", t0, 10)
-    c.result(2, ok and bool(ev), f"profile.account={ok}, logged_in event={bool(ev)}", [c.shot("2_in", focus="profile.account")])
+    c.result(2, ok and ev is not None, f"profile.account={ok}, logged_in event={ev is not None}", [c.shot("2_in", focus="profile.account")])

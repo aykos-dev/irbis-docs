@@ -52,7 +52,7 @@ def run(c):
     ev = c.wait_event("password_reset_done", t0, 15)
     ok = wait("profile.account", 15, exact=True)
     wait("profile.username", 8, exact=True)
-    c.result(1, bool(ev) and ok and field_text("profile.username") == u["username"], f"event={bool(ev)}, profile.account={ok}", [c.shot("2_done", focus="profile.account")])
+    c.result(1, ev is not None and ok and field_text("profile.username") == u["username"], f"event={ev is not None}, profile.account={ok}", [c.shot("2_done", focus="profile.account")])
     s_old, _, _ = api("POST", "/v1/auth/log-in", {"username": u["username"], "password": PW})
     s_new, _, _ = api("POST", "/v1/auth/log-in", {"username": u["username"], "password": PW2})
     c.result(2, s_old == 401 and s_new == 200, f"old→{s_old}, new→{s_new}")
