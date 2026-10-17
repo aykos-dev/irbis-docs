@@ -1,0 +1,77 @@
+{
+ "meta": {
+  "title": "No match shows the empty state; Reset filters clears everything",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC5 — 'No places match these filters' + Reset filters",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location granted + mock at Tashkent centre",
+   "Explore loaded",
+   "A filter combination that the API says has 0 places (picked at run time)"
+  ],
+  "steps": [
+   "Find a combination: type Cave with difficulty 5 (verify total 0 with the API → check)",
+   "Apply it in the app",
+   "Tap explore.filter.reset"
+  ],
+  "expected": [
+   "explore.empty shows with the text 'No places match these filters' and the 'Reset filters' button; QA event explore_filters_applied count 0 — UI tree + screenshot + QA event",
+   "After Reset: explore.empty is gone, header back to 71, Type / Difficulty / Distance chips show no value (defaults) — UI tree + screenshot"
+  ],
+  "focus": "explore.empty",
+  "caption": {
+   "expected": "explore.empty shows with the text 'No places match these fil"
+  },
+  "tc": "TC-016",
+  "plan": "Test_places.md",
+  "anchor": "tc-016--p0--no-match-shows-the-empty-state-reset-filters-clears-everything"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 28.9,
+ "events": 11,
+ "done": [
+  "Guest, location granted + mock at Tashkent centre · Explore loaded · A filter combination that the API says has 0 places (picked at run time)",
+  "1. apply cave + difficulty 5-5",
+  "2. Reset filters"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "empty shown True, event {'types': 'cave', 'difficultyMin': 5, 'difficultyMax': 5, 'maxKm': None, 'count': 0}",
+   "proof": [
+    "1_empty.png"
+   ],
+   "t": 17.7
+  },
+  "2": {
+   "ok": false,
+   "observed": "header None, chips ['Caves', 'Difficulty 5–5', 'Distance']",
+   "proof": [
+    "2_reset.png"
+   ],
+   "t": 28.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "API says 0 places for cave + difficulty 5",
+   "ok": true,
+   "seen": "0",
+   "t": 3.9
+  },
+  {
+   "name": "Explore loaded",
+   "ok": true,
+   "seen": "no list",
+   "t": 13.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_empty.png",
+  "2_reset.png"
+ ]
+}

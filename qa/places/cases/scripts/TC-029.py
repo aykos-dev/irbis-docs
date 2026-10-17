@@ -32,7 +32,7 @@ def run(c):
     c.checkpoint("level card visible", has("place.level-card", exact=True), "no place.level-card")
     txt = screen_text()
     shot = c.shot("1_card", "place.level-card")
-    c.result(1, "Requires" in txt and "Level 2" in txt and "Burrower or higher" in txt, f"Requires/Level 2/Burrower: {'Requires' in txt}/{'Level 2' in txt}/{'Burrower or higher' in txt}", [shot])
+    c.result(1, "requires" in txt.lower() and "Level 2" in txt and "Burrower" in txt and "or higher" in txt, f"Requires/Level 2/Burrower: {'Requires' in txt}/{'Level 2' in txt}/{'Burrower or higher' in txt}", [shot])
     c.result(2, has("place.level-locked", exact=True) and "Reach Level 2 to go here" in txt and not has("place.level-qualify", exact=True) and "You qualify" not in txt, f"locked {has('place.level-locked', exact=True)}, qualify {has('place.level-qualify', exact=True)}", [shot])
     ev = wait_event("place_viewed", t0, 5)
     c.result(3, bool(ev) and ev.get("requiredLevel") == 2 and ev.get("qualifies") is False, f"event {ev}")

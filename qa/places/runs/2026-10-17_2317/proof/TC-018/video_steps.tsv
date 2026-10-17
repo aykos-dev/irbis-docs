@@ -1,0 +1,6 @@
+4.62	1: open Explore
+11.98	2: tap Allow
+14.18	3: check origin and first card
+14.85	Expected: The OS location prompt appears the first time Explore opens
+14.85	Result: PASS
+14.85	END

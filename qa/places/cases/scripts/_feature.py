@@ -119,9 +119,9 @@ def mock_at(lat, lng):
 
 def open_explore(wait_list=True):
     """Tap the Explore tab; True when the Explore screen (and, by default, the count header) shows."""
-    if not wait("nav.tab-explore", 10, exact=True):
-        deep_link("irbis://debug/onboarding/done")
-        wait("nav.tab-explore", 10, exact=True)
+    if not wait("nav.tab-explore", 5, exact=True):
+        relaunch()  # a permission revoke kills the app: start it again (the debug deep link lands on a screen without tabs)
+        wait("nav.tab-explore", 25, exact=True)
     tap("nav.tab-explore", exact=True)
     return wait("explore.screen", 10, exact=True) and (not wait_list or wait("explore.count", 15, exact=True))
 

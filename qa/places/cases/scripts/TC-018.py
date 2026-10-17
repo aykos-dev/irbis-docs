@@ -30,7 +30,9 @@ def run(c):
     mock_at(*TASHKENT)
     t0 = mark()
     c.step(1, "open Explore")
-    wait("nav.tab-explore", 10, exact=True); tap("nav.tab-explore", exact=True)
+    if not wait("nav.tab-explore", 5, exact=True):
+        relaunch(); wait("nav.tab-explore", 25, exact=True)
+    tap("nav.tab-explore", exact=True)
     c.checkpoint("OS permission dialog shown", wait_any(["While using the app", "Only this time", "Allow"], 12), "no dialog")
     c.result(1, True, "OS location dialog shown on first Explore open", [c.shot("1_prompt", None)])
     c.step(2, "tap Allow")

@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "title": "Explore tab opens for a guest: map, sheet, count header, sorted cards",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC4 — Explore replaces Coming soon; header, 'Sorted by distance', cards",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Location granted, mock device position = Tashkent centre (41.2995, 69.2401)"
+  ],
+  "steps": [
+   "Tap the Explore tab → check: explore.screen within 10 s",
+   "Wait for the list header",
+   "Read the first card and compare with the API order for the same point"
+  ],
+  "expected": [
+   "explore.screen, explore.map and explore.sheet are shown, no 'Coming soon' text — UI tree + screenshot",
+   "Header explore.count reads '71 places near you' and the text 'Sorted by distance' is shown; QA event explore_loaded {count: 71, origin: device} — UI tree + QA event",
+   "The first card is the API's first item (slug) and shows name, '{Type} · {distance}' and difficulty boots — UI tree + screenshot"
+  ],
+  "focus": "explore.sheet",
+  "caption": {
+   "expected": "explore.screen, explore.map and explore.sheet are shown, no "
+  },
+  "tc": "TC-010",
+  "plan": "Test_places.md",
+  "anchor": "tc-010--p0--explore-tab-opens-for-a-guest-map-sheet-count-header-sorted-cards"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.1,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Location granted, mock device position = Tashkent centre (41.2995, 69.2401)",
+  "1. open Explore",
+  "2. read header",
+  "3. first card"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "screen, map, sheet present; no Coming soon",
+   "proof": [
+    "1_explore.png"
+   ],
+   "t": 7.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "header '71 places near you', event {'count': 71, 'origin': 'device'}",
+   "proof": [
+    "1_explore.png"
+   ],
+   "t": 7.2
+  },
+  "3": {
+   "ok": true,
+   "observed": "first API slug ozodbosh-1014; card text 'Ozodbosh, Waterfall · 47 km, Difficulty 1/5 | Bottom Sheet | Bottom Sheet | Places list | Ozodbosh | Waterfall · 47 km'",
+   "proof": [
+    "3_first_card.png"
+   ],
+   "t": 7.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore opened",
+   "ok": true,
+   "seen": "no explore.count",
+   "t": 5.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_explore.png",
+  "3_first_card.png"
+ ]
+}

@@ -31,11 +31,11 @@ def run(c):
     t0 = mark()
     c.step(1, "apply cave + difficulty 5-5")
     apply_filters(types=["cave"], dmin=5, dmax=5)
-    ev = wait_event("explore_filters_applied", t0, 10)
+    ev = wait_event("explore_filters_applied", t0, 10, lambda p: p.get("count") == 0)
     wait("explore.empty", 8, exact=True)
     c.result(1, has("explore.empty", exact=True) and has("No places match these filters") and has("Reset filters") and bool(ev) and ev.get("count") == 0,
              f"empty shown {has('explore.empty', exact=True)}, event {ev}", [c.shot("1_empty")])
-    c.step(2, "Reset filters"); tap("explore.filter.reset", exact=True)
+    c.step(2, "Reset filters"); tap("explore.filter.reset", exact=True) if has("explore.filter.reset", exact=True) else None
     wait("explore.count", 10, exact=True)
     chips = [text_of(f"explore.filter.{k}") or "" for k in ("type", "difficulty", "distance")]
     c.result(2, not has("explore.empty", exact=True) and count_in_header() == 71 and not any(("·" in x or "–" in x or "≤" in x) for x in chips),

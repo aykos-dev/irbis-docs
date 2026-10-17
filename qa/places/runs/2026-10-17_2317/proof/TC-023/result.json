@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "title": "Place screen content (guest, from Tashkent): all fields, nothing extra",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 — hero, type pill, name, elevation, distance + label, difficulty, level card, description, season/hazards empty",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest",
+   "Permission denied (origin Tashkent)",
+   "A peak with description set (set_place) and difficulty 3 chosen by SQL"
+  ],
+  "steps": [
+   "Open the place through its irbis://place/<id> link → check: place.screen",
+   "Read every block top to bottom (scroll once)"
+  ],
+  "expected": [
+   "place.type shows the Peak pill, place.name equals name_uz, place.elevation reads '{n} m' with the DB elevation, place.distance reads the API distance with label 'From Tashkent' — UI tree + screenshot",
+   "place.difficulty reads 'Difficulty 3/5'; place.level-card is present; place.description shows the set text; no region line — UI tree + screenshot",
+   "'Season not set yet' (place.season-empty) and 'Hazards not set yet' (place.hazards-empty) shown; text 'Start adventure', 'Verified', 'Weather', 'Reports', 'Rating' absent — UI tree"
+  ],
+  "focus": "place.screen",
+  "caption": {
+   "expected": "place.type shows the Peak pill, place.name equals name_uz, p"
+  },
+  "tc": "TC-023",
+  "plan": "Test_places.md",
+  "anchor": "tc-023--p0--place-screen-content-guest-from-tashkent-all-fields-nothing-extra"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.6,
+ "events": 3,
+ "done": [
+  "Guest · Permission denied (origin Tashkent) · A peak with description set (set_place) and difficulty 3 chosen by SQL",
+  "1. open the place link",
+  "2. read difficulty, level, description",
+  "3. read season, hazards, absent items"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "type 'Peak', name 'Ispay Sohibjamoli', elevation '', distance '' (api 104374 m)",
+   "proof": [
+    "1_top.png"
+   ],
+   "t": 5.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "difficulty 'Difficulty 3/5'; level card True; description True; region absent",
+   "proof": [
+    "2_mid.png"
+   ],
+   "t": 6.6
+  },
+  "3": {
+   "ok": true,
+   "observed": "season-empty True, hazards-empty True, unexpected text []",
+   "proof": [
+    "3_bottom.png"
+   ],
+   "t": 8.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Place opened",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 4.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_top.png",
+  "2_mid.png",
+  "3_bottom.png"
+ ]
+}

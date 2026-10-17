@@ -1,0 +1,5 @@
+23:26:55.427 tab_opened {"tab": "path"}
+23:26:56.135 tab_opened {"tab": "profile"}
+23:26:58.719 tab_opened {"tab": "explore"}
+23:27:00.086 location_permission {"result": "denied"}
+23:27:00.546 explore_loaded {"count": 71, "origin": "tashkent"}

@@ -1,0 +1,5 @@
+2.95	1: GET /v1/places?limit=200 without a token
+3.07	2: GET with lat/lng
+3.28	Expected: Status 200 without a token; items 71, total 71, nextCursor n
+3.28	Result: PASS
+3.28	END

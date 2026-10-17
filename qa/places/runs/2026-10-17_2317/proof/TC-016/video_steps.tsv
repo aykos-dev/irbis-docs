@@ -1,0 +1,5 @@
+13.62	1: apply cave + difficulty 5-5
+17.71	2: Reset filters
+28.78	Expected: explore.empty shows with the text 'No places match these fil
+28.78	Result: FAIL
+28.78	END

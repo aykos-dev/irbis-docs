@@ -1,0 +1,6 @@
+3.86	1: open the place link
+5.65	2: read difficulty, level, description
+6.62	3: read season, hazards, absent items
+8.48	Expected: place.type shows the Peak pill, place.name equals name_uz, p
+8.48	Result: PASS
+8.48	END

@@ -1,0 +1,5 @@
+5.96	1: tap the first card
+6.93	2: tap Back
+8.45	Expected: place.screen shows with place.name equal to the card's name;
+8.45	Result: PASS
+8.45	END

@@ -1,0 +1,62 @@
+{
+ "TC-001": {
+  "verdict": "Pass",
+  "line": "TC-001 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-004": {
+  "verdict": "Pass",
+  "line": "TC-004 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-008": {
+  "verdict": "Pass",
+  "line": "TC-008 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-010": {
+  "verdict": "Pass",
+  "line": "TC-010 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-011": {
+  "verdict": "Pass",
+  "line": "TC-011 · Pass · ✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-014": {
+  "verdict": "Pass",
+  "line": "TC-014 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-016": {
+  "verdict": "Fail",
+  "line": "TC-016 · Fail · ❌❌",
+  "conclusion": "Empty state: explore.empty is rendered with no children (no title, mascot or Reset filters button); the sheet is blank, so Reset cannot be tapped (header stays at the filtered state)."
+ },
+ "TC-018": {
+  "verdict": "Pass",
+  "line": "TC-018 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-019": {
+  "verdict": "Pass",
+  "line": "TC-019 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-023": {
+  "verdict": "Pass",
+  "line": "TC-023 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-028": {
+  "verdict": "Pass",
+  "line": "TC-028 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-029": {
+  "verdict": "Pass",
+  "line": "TC-029 · Pass · ✅✅✅",
+  "conclusion": "All expected bullets observed with proof."
+ }
+}

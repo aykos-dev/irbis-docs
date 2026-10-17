@@ -1,0 +1,6 @@
+2.83	1: GET detail level-1 place
+2.97	2: GET detail level-3 place
+3.06	3: GET with lat/lng
+3.35	Expected: Level-1 place → 200 with id, slug, name.uz set, name.ru and 
+3.35	Result: PASS
+3.35	END

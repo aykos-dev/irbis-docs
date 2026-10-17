@@ -1,0 +1,78 @@
+{
+ "meta": {
+  "title": "Seed imports 71 places and is idempotent",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC1 — 71 rows, upsert by slug, type counts",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "LOCAL dev DB migrated (places_init)",
+   "API repo on feat/places"
+  ],
+  "steps": [
+   "Run `npm run db:seed` in irbis-api → check: exit code 0",
+   "Count rows in `places`",
+   "Run `npm run db:seed` a second time → check: exit code 0",
+   "Count rows again and count per type"
+  ],
+  "expected": [
+   "After the first run `select count(*) from places` = 71 — SQL",
+   "After the second run the count is still 71 and `count(distinct slug)` = 71 — SQL",
+   "Rows per type: peak 34, waterfall 22, lake 11, cave 2, canyon 2, camping 0, trail 0 — SQL"
+  ],
+  "caption": {
+   "expected": "After the first run `select count(*) from places` = 71"
+  },
+  "tc": "TC-001",
+  "plan": "Test_places.md",
+  "anchor": "tc-001--p0--seed-imports-71-places-and-is-idempotent"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 9.9,
+ "events": 2,
+ "done": [
+  "LOCAL dev DB migrated (places_init) · API repo on feat/places",
+  "1. npm run db:seed (1st)",
+  "2. count rows",
+  "3. npm run db:seed (2nd)",
+  "4. count rows and types"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "count after 1st seed = 71",
+   "proof": [],
+   "t": 6.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "count 71, distinct slugs 71",
+   "proof": [],
+   "t": 9.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "per type {'peak': 34, 'lake': 11, 'cave': 2, 'camping': 0, 'trail': 0, 'waterfall': 22, 'canyon': 2}",
+   "proof": [],
+   "t": 9.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "seed exit 0 (1st)",
+   "ok": true,
+   "seen": "non-zero exit",
+   "t": 6.6
+  },
+  {
+   "name": "seed exit 0 (2nd)",
+   "ok": true,
+   "seen": "non-zero exit",
+   "t": 8.9
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

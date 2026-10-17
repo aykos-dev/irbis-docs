@@ -1,0 +1,6 @@
+23:25:37.761 tab_opened {"tab": "path"}
+23:25:38.472 tab_opened {"tab": "profile"}
+23:25:40.436 tab_opened {"tab": "explore"}
+23:25:40.447 location_permission {"result": "granted"}
+23:25:40.660 explore_loaded {"count": 71, "origin": "device"}
+23:25:42.217 place_viewed {"slug": "ozodbosh-1014", "requiredLevel": 1, "qualifies": true}

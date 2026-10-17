@@ -35,4 +35,4 @@ def run(c):
     st, d = places(limit=200, lat=TASHKENT[0], lng=TASHKENT[1], types=["peak", "lake"])
     first = d["items"][0]["slug"]
     c.result(2, count_in_header() == d["total"] == 45 and has("explore.card." + first, exact=True), f"header {count_in_header()}, api total {d['total']}, first card present {has('explore.card.' + first, exact=True)}", [c.shot("2_list", "explore.sheet")])
-    c.result(3, bool(ev) and sorted(ev.get("types", [])) == ["lake", "peak"] and ev.get("count") == 45, f"event {ev}")
+    c.result(3, bool(ev) and sorted(ev["types"].split(",") if isinstance(ev.get("types"), str) else ev.get("types", [])) == ["lake", "peak"] and ev.get("count") == 45, f"event {ev}")

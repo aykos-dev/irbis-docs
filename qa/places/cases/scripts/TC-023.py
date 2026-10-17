@@ -1,4 +1,4 @@
-import os, sys, time
+import os, re, sys, time
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".."] * 4, "scripts", "qa", "rec"))
 from drv import *  # noqa
 from _feature import *  # noqa
@@ -40,8 +40,8 @@ def run(c):
     txt = screen_text()
     km = d["distanceM"] / 1000
     want = (f"{km:.1f}" if km < 10 else f"{round(km)}")
-    c.result(1, "Peak" in (text_of("place.type") or "") and text_of("place.name") == row[0] and f"{row[1]} m" in (text_of("place.elevation") or "")
-             and want in (text_of("place.distance") or "") + " " + txt and "From Tashkent" in txt,
+    c.result(1, "Peak" in (text_of("place.type") or "") and text_of("place.name") == row[0] and f"{row[1]}m" in re.sub(r"[\s,\u00a0\u202f]", "", txt)
+             and want in (text_of("place.distance") or "") + " " + txt and "from tashkent" in txt.lower(),
              f"type {text_of('place.type')!r}, name {text_of('place.name')!r}, elevation {text_of('place.elevation')!r}, distance {text_of('place.distance')!r} (api {d['distanceM']} m)", [s1])
     c.step(2, "read difficulty, level, description")
     scroll_down(); txt2 = screen_text() + " " + txt

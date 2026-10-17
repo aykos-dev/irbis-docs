@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "title": "Level card: qualifies (required level 1)",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC8 — 'Requires · Level 1 · Wanderer or higher' + green check 'You qualify'",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest (viewer level 1)",
+   "A place with required_level 1 (difficulty 1)"
+  ],
+  "steps": [
+   "Open its Place via the link → check: place.level-card",
+   "Read the card"
+  ],
+  "expected": [
+   "Card text contains 'Requires', 'Level 1' and 'Wanderer or higher' — UI tree + screenshot",
+   "place.level-qualify is shown with 'You qualify'; place.level-locked is absent — UI tree + screenshot",
+   "QA event place_viewed {requiredLevel: 1, qualifies: true} — QA event"
+  ],
+  "focus": "place.level-card",
+  "caption": {
+   "expected": "Card text contains 'Requires', 'Level 1' and 'Wanderer or hi"
+  },
+  "tc": "TC-028",
+  "plan": "Test_places.md",
+  "anchor": "tc-028--p0--level-card-qualifies-required-level-1"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 4.9,
+ "events": 3,
+ "done": [
+  "Guest (viewer level 1) · A place with required_level 1 (difficulty 1)",
+  "1. open the place"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "card text in screen: False/True/False",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 4.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "qualify True, locked False",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 4.7
+  },
+  "3": {
+   "ok": true,
+   "observed": "event {'slug': 'tuzkon-koli-250', 'requiredLevel': 1, 'qualifies': True}",
+   "proof": [],
+   "t": 4.7
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Place opened",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 4.0
+  },
+  {
+   "name": "level card visible",
+   "ok": true,
+   "seen": "no place.level-card",
+   "t": 4.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_card.png"
+ ]
+}

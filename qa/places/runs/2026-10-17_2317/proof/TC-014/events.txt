@@ -1,0 +1,7 @@
+23:28:34.668 tab_opened {"tab": "path"}
+23:28:35.302 tab_opened {"tab": "profile"}
+23:28:37.367 tab_opened {"tab": "explore"}
+23:28:37.377 location_permission {"result": "granted"}
+23:28:37.597 explore_loaded {"count": 71, "origin": "device"}
+23:28:40.531 explore_loaded {"count": 45, "origin": "device"}
+23:28:40.531 explore_filters_applied {"types": "peak,lake", "difficultyMin": null, "difficultyMax": null, "maxKm": null, "count": 45}
