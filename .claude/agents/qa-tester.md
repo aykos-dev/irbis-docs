@@ -29,8 +29,9 @@ dark / locale / font / offline cases — the standards suite (STD-*) covers them
    -PreactNativeArchitectures=arm64-v8a -q` (JAVA_HOME=$(/usr/libexec/java_home -v 17)), record `git rev-parse --short
    HEAD`; install with `adb install -r`. API up (`curl -s localhost:3000/health`; else `cd ../irbis-api && docker compose
    up -d db` + `npm run start:dev` in the background). `adb reverse tcp:3000 tcp:3000`.
-2. `python3 scripts/qa/rec/session.py up [--mock]`; `$PY scripts/qa/case/runcase.py new <slug> --build "…" --backend "…"
-   --scope "…"`.
+2. `$PY scripts/qa/case/runcase.py new <slug> --build "…" --backend "…" --scope "…"` — opens the device session itself
+   (Do Not Disturb; on the emulator also the phone's density + font); `finish` closes it. Mock location: run
+   `python3 scripts/qa/rec/session.py up --mock` BEFORE `new`, and `down` yourself at the end.
 3. Run each TC (`gencase.py list <slug>`), then each `STD-DARK@<screen>`, `STD-OFFLINE@<screen>`, `STD-TEXT@<screen>`
    for every screen in SCREENS: `$PY scripts/qa/case/runcase.py run <run> <id>`.
 4. Review ONLY ids whose line shows ❌ or —: read their crops in `proof/_run/review/<id>/` (STD-TEXT: `_composite.png`
@@ -41,14 +42,14 @@ dark / locale / font / offline cases — the standards suite (STD-*) covers them
 6. Defects (group Fails by root cause): `bugs.py next <slug>` → `qa/<slug>/bugs/D{n}_{name}/D{n}_{name}.md` from
    `qa/_templates/BUG_TEMPLATE.md`, `Cases` = the failing ids, proof = links to their run screenshots (no copies, no
    separate repro script). Locate the cause in code if quick (`file:line`), never fix it. `bugs.py index`.
-7. `session.py down`. Commit irbis-docs (`qa(<slug>): run … — N pass / M fail`). No push.
+7. Commit irbis-docs (`qa(<slug>): run … — N pass / M fail`). No push.
 
 ## retest <refs | open> [build]
 `bugs.py find <ref>` gives the folder and its `Cases`. Build/install as in run (note commits since the found build:
 `git -C ../irbis-app log --oneline <sha>..HEAD`). New run with scope "retest D…", run only those cases (full suite only
 if the task says "full"). Fixed = expected holds AND the steps reached the bug's path; Not reached ≠ Fixed. Add one line
 under the bug's `## Retests`, update its Status (`Fixed · retest <date>` / `Not fixed · retest <date>`), `bugs.py
-index`, session down, commit.
+index`, commit.
 
 ## Return (≤ 12 lines, nothing else)
 Run folder · build sha · device · counts (pass/fail/blocked/not run) · each defect `slug/D{n} · severity · one line`

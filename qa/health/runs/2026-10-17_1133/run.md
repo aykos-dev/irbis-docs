@@ -2,7 +2,7 @@
 **Status:** closed
 **Build:** uz.irbis.app.dev 1.0-dev (1) — installed uz.irbis.app.dev irbis-app main b0d7e37
 **Backend:** local irbis-api localhost:3000
-**Device:** sdk_gphone64_arm64 (Android 15)
+**Device:** sdk_gphone64_arm64 (Android 15) — note: run without the device session (no phone emulation of density; STD-TEXT set font 1.15 itself). Toolkit fixed afterwards so `runcase new` opens the session.
 **Accounts:** see Test data; phone numbers masked
 **Tester:** Claude (auto) + owner (manual)
 **Scope:** all TC + standards on SCREENS

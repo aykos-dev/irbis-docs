@@ -36,6 +36,15 @@ def run(c):
 '''
 
 
+def parse_meta(text):
+    """META is a Python literal (None/True) — or JSON from older skeletons (null/true)."""
+    import ast
+    try:
+        return ast.literal_eval(text)
+    except (ValueError, SyntaxError):
+        return json.loads(text)
+
+
 def lib(slug):
     return os.path.join(QA_ROOT, slug, "cases", "scripts")
 
@@ -57,7 +66,7 @@ def cases(slug):
         if re.fullmatch(r"TC-\d{3}\.py", f):
             src = open(os.path.join(d, f), encoding="utf-8").read()
             m = re.search(r"^META = (\{.*?^\})", src, re.M | re.S)
-            out.append((f[:-3], json.loads(m.group(1)) if m else {"title": "(no META)"}))
+            out.append((f[:-3], parse_meta(m.group(1)) if m else {"title": "(no META)"}))
     return out
 
 

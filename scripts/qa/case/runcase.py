@@ -31,6 +31,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(HERE), "rec"))
 from casekit import Blocked, Ctx  # noqa: E402
 from config import CACHE, QA_ROOT  # noqa: E402
 from rec import Rec  # noqa: E402
+import gencase  # noqa: E402
 import runmd  # noqa: E402
 
 RENDER_WORKERS = 3
@@ -48,6 +49,10 @@ def new(slug, build, backend="—", scope="all cases in the plan"):
         sys.exit(why)
     if not os.path.isdir(os.path.join(QA_ROOT, slug, "cases", "scripts")):
         sys.exit(f"no case library for {slug} — run /qa-plan {slug} first")
+    import session
+    st = json.load(open(os.path.join(CACHE, "session.json"))) if os.path.exists(os.path.join(CACHE, "session.json")) \
+        else session.up(mock=False, dnd=True, quiet=True, opened_by="runcase")
+    like = st.get("emulated_phone")
     run = time.strftime("%Y-%m-%d_%H%M")
     run_dir = os.path.join(QA_ROOT, slug, "runs", run)
     os.makedirs(os.path.join(run_dir, "proof", "_run"), exist_ok=True)
@@ -55,7 +60,7 @@ def new(slug, build, backend="—", scope="all cases in the plan"):
     android = drv.sh("getprop", "ro.build.version.release").strip()
     name, code = drv.app_version()
     text = runmd.RUN_TEMPLATE.format(run=run, slug=slug, build=f"{drv.PKG} {name} ({code}) — {build}",
-                                     backend=backend, device=f"{model} (Android {android})",
+                                     backend=backend, device=f"{model} (Android {android})" + (f", emulating the phone (density {like['density']}, font {like['font_scale']})" if like else ""),
                                      accounts="see Test data; phone numbers masked", tester="owner", scope=scope)
     open(os.path.join(run_dir, "run.md"), "w", encoding="utf-8").write(text)
     print(run_dir)
@@ -108,6 +113,9 @@ def run(run_dir, tcs, force=False):
     case_dir = prepare(run_dir, tc, force)
     mod = load_case(case_dir)
     meta = dict(mod.META, tc=tc)
+    slug = os.path.basename(os.path.dirname(os.path.dirname(os.path.abspath(run_dir))))
+    meta.setdefault("plan", f"Test_{slug}.md")
+    meta.setdefault("anchor", gencase.anchor(tc, meta))
     if "@" in tc:
         meta["screen"] = tc.split("@", 1)[1]
         meta["title"] = f"{meta['title']} — {meta['screen']}"
@@ -163,6 +171,10 @@ def finish(run_dir, verdicts_path):
         for line in pool.map(work, jobs):
             print(line, flush=True)
     runmd.write(os.path.join(run_dir, "run.md"), items)
+    sp = os.path.join(CACHE, "session.json")
+    if os.path.exists(sp) and json.load(open(sp)).get("opened_by") == "runcase":
+        import session
+        session.down()  # prints the cleanup table
     print(f"run.md: {len(items)} rows and sections written", flush=True)
 
 

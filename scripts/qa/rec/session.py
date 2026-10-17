@@ -57,12 +57,12 @@ def get(ns, key):
     return sh("settings", "get", ns, key).strip()
 
 
-def up(mock, dnd):
+def up(mock, dnd, quiet=False, opened_by="manual"):
     if (why := device_ready()):
         sys.exit(why)
     if os.path.exists(STATE):
         sys.exit(f"a session is already open ({STATE}); run `session.py down` first")
-    st = {"mock": mock, "dnd": dnd, "started": time.strftime("%Y-%m-%d %H:%M"),
+    st = {"mock": mock, "dnd": dnd, "started": time.strftime("%Y-%m-%d %H:%M"), "opened_by": opened_by,
           "settings": {f"{ns}/{k}": get(ns, k) for ns, k in SETTINGS},
           "night": sh("cmd", "uimode", "night").strip()}
     sh("settings", "put", "system", "show_touches", "1")
@@ -86,7 +86,9 @@ def up(mock, dnd):
         st["mockloop_pid"] = subprocess.Popen(["bash", MOCKLOOP], stdout=log, stderr=subprocess.STDOUT,
                                               start_new_session=True).pid
     json.dump(st, open(STATE, "w"), indent=1)
-    status()
+    if not quiet:
+        status()
+    return st
 
 
 def down():

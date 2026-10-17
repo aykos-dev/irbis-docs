@@ -35,7 +35,7 @@ def english_strings():
 def untranslated(texts):
     """On-screen texts that are exactly an English catalog string (or contain no letters of the locale)."""
     en = english_strings()
-    return [t for t in texts if t not in ALLOW and any(p.match(t) for p in en)]
+    return [t for t in texts if t not in ALLOW and not re.fullmatch(r"v\d+(\.\d+)*", t) and any(p.match(t) for p in en)]
 
 
 def composite(paths, out, width=360):
