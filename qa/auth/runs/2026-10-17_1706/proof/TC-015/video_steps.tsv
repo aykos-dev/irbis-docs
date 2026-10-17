@@ -1,0 +1,5 @@
+0.24	1: Four wrong passwords via the API
+3.98	2: Log in with the right password
+8.48	Expected: 4 wrong then ok
+8.48	Result: PASS
+8.48	END

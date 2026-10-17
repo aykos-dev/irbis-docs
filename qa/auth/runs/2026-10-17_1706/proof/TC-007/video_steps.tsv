@@ -1,0 +1,7 @@
+4.33	1: Read the status line before typing
+4.81	2: Type a free name
+11.99	3: Type admin / Irbis / OFFICIAL
+12.42	4: Type the existing name in upper case
+14.85	Expected: reserved / taken / live states
+14.85	Result: PASS
+14.85	END

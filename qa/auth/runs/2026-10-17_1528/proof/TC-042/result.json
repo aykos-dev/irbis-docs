@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "title": "A signed-in user who gets blocked is signed out on the next request with the same message",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC11 — blocked while signed in",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER signed in on the device"
+  ],
+  "steps": [
+   "Block the user on the local DB (reason harassment)",
+   "Cold start the app (next request) and wait up to 20 s"
+  ],
+  "expected": [
+   "The blocked message 'Your account is blocked' with 'Reason: Harassment or hate' (auth.blocked) appears — UI tree + screenshot",
+   "The user is signed out: the Profile tab shows the guest Profile — UI tree",
+   "Event account_blocked_shown — event log"
+  ],
+  "focus": "auth.blocked",
+  "caption": {
+   "expected": "blocked while signed in"
+  },
+  "tc": "TC-042",
+  "plan": "Test_auth.md",
+  "anchor": "tc-042--p0--a-signed-in-user-who-gets-blocked-is-signed-out-on-the-next-request-with-the-same-message"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 13.0,
+ "events": 6,
+ "done": [
+  "QA-USER qa_blk2_2235083 signed in",
+  "1. Block the user on the local DB",
+  "2. Cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "blocked card=True, texts=['Your account is blocked', 'Reason: Harassment or hate']",
+   "proof": [
+    "2_blocked.png"
+   ],
+   "t": 11.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "profile after: profile.guest",
+   "proof": [
+    "3_profile.png"
+   ],
+   "t": 12.7
+  },
+  "3": {
+   "ok": true,
+   "observed": "event=True",
+   "proof": [],
+   "t": 12.7
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "profile.account not shown",
+   "t": 8.6
+  },
+  {
+   "name": "blocked on the DB",
+   "ok": true,
+   "seen": "block not set",
+   "t": 8.8
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_blocked.png",
+  "3_profile.png"
+ ]
+}

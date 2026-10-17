@@ -17,6 +17,7 @@ Location: mockloop.sh re-sends the point in POINT_FILE every second; point() cha
 Device conditions (network, font scale, dark mode, rotation) are restored by `session.py down`.
 """
 import atexit
+import html
 import os
 import re
 import subprocess
@@ -82,7 +83,7 @@ def nodes():
     out = []
     for m in re.finditer(r"<node [^>]*>", _xml()):
         n = m.group(0)
-        get = lambda k: (re.search(" " + k + r'="([^"]*)"', n) or [None, ""])[1]  # noqa: E731
+        get = lambda k: html.unescape((re.search(" " + k + r'="([^"]*)"', n) or [None, ""])[1])  # noqa: E731
         b = re.findall(r"\d+", get("bounds"))
         if len(b) != 4:
             continue

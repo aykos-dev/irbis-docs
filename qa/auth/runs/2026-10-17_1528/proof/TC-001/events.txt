@@ -1,0 +1,1 @@
+15:46:22.838 tab_opened {"tab": "path"}

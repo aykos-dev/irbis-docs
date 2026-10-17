@@ -1,0 +1,78 @@
+{
+ "meta": {
+  "title": "An expired code is refused with a clear message",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC5 — code valid 5 minutes",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-VERIFIED user",
+   "Reset code requested"
+  ],
+  "steps": [
+   "Request the code, then age it on the local DB (expires_at one minute in the past)",
+   "Type the right code and a valid new password, submit"
+  ],
+  "expected": [
+   "Message 'The code expired. Send a new one.' — UI tree + screenshot",
+   "No password_reset_done event; still signed out — event log + UI tree"
+  ],
+  "focus": "auth.reset",
+  "caption": {
+   "expected": "expired code"
+  },
+  "tc": "TC-024",
+  "plan": "Test_auth.md",
+  "anchor": "tc-024--p1--an-expired-code-is-refused-with-a-clear-message"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 12.3,
+ "events": 3,
+ "done": [
+  "QA-VERIFIED qa_exp_2239305",
+  "1. Age the code on the local DB",
+  "2. Submit the right code"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "message='The code expired. Send a new one.'",
+   "proof": [
+    "2_expired.png"
+   ],
+   "t": 12.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "no event=True",
+   "proof": [],
+   "t": 12.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "forgot screen open",
+   "ok": true,
+   "seen": "no auth.forgot",
+   "t": 3.8
+  },
+  {
+   "name": "code screen",
+   "ok": true,
+   "seen": "no auth.reset",
+   "t": 6.3
+  },
+  {
+   "name": "code in API log",
+   "ok": true,
+   "seen": "no new SMS line",
+   "t": 6.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_expired.png"
+ ]
+}

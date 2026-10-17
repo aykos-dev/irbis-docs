@@ -1,0 +1,84 @@
+{
+ "meta": {
+  "title": "Create account from the prompt: sign-up returns to where it started and the action runs once",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC7 — prompt → sign-up → action once; AC3 returns to start",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest; Debug screen"
+  ],
+  "steps": [
+   "Debug → Open log-in prompt → Create free account",
+   "Fill a free username, the run password, tick terms, submit"
+  ],
+  "expected": [
+   "Sign-up screen opens from the prompt (auth.signup) — UI tree",
+   "After sign-up the app is back on the Debug screen (debug.screen), not Profile — UI tree + screenshot",
+   "debug.gate-ran shows 1 and stays 1 after 4 s — UI tree"
+  ],
+  "focus": "debug.gate-ran",
+  "caption": {
+   "expected": "back on Debug, ran once"
+  },
+  "tc": "TC-033",
+  "plan": "Test_auth.md",
+  "anchor": "tc-033--p1--create-account-from-the-prompt-sign-up-returns-to-where-it-started-and-the-action-runs-once"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 17.4,
+ "events": 7,
+ "done": [
+  "guest; free username qa_gs_6086",
+  "1. Tap Create free account",
+  "2. Fill and submit"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "sign-up screen from prompt",
+   "proof": [],
+   "t": 7.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "back on Debug=True",
+   "proof": [
+    "2_back.png"
+   ],
+   "t": 13.0
+  },
+  "3": {
+   "ok": true,
+   "observed": "after 4 s: 'The gated action ran 1 time(s).'",
+   "proof": [],
+   "t": 17.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "guest state",
+   "ok": true,
+   "seen": "no guest Profile",
+   "t": 3.0
+  },
+  {
+   "name": "Debug screen open",
+   "ok": true,
+   "seen": "no debug.screen",
+   "t": 5.6
+  },
+  {
+   "name": "gate shown",
+   "ok": true,
+   "seen": "no auth.gate",
+   "t": 6.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_back.png"
+ ]
+}

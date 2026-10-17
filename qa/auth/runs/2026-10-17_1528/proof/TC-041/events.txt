@@ -1,0 +1,4 @@
+16:04:32.391 tab_opened {"tab": "path"}
+16:04:32.949 tab_opened {"tab": "profile"}
+16:04:37.735 log_in_failed {"code": "ACCOUNT_BLOCKED"}
+16:04:37.743 account_blocked_shown {}

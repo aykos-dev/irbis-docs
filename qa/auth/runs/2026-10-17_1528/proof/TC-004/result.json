@@ -1,0 +1,74 @@
+{
+ "meta": {
+  "title": "Safety opens its empty state; Language opens the language sheet",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC2 — Safety empty state, Language row",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest Profile open"
+  ],
+  "steps": [
+   "Tap Safety & SOS → check: empty.safety within 5 s",
+   "Back; tap Language → check: profile.language-sheet"
+  ],
+  "expected": [
+   "empty.safety visible after tapping profile.safety — UI tree + screenshot",
+   "profile.language-sheet lists profile.language-en, profile.language-ru, profile.language-uz — UI tree"
+  ],
+  "focus": "profile.guest",
+  "caption": {
+   "expected": "Safety empty state and language sheet"
+  },
+  "tc": "TC-004",
+  "plan": "Test_auth.md",
+  "anchor": "tc-004--p2--safety-opens-its-empty-state-language-opens-the-language-sheet"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 6.0,
+ "events": 3,
+ "done": [
+  "guest Profile",
+  "1. Tap Safety & SOS",
+  "2. Tap Language"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "empty.safety shown",
+   "proof": [
+    "1_safety.png"
+   ],
+   "t": 3.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "sheet True, options en/ru/uz [True, True, True]",
+   "proof": [
+    "2_language.png"
+   ],
+   "t": 5.7
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "guest Profile shown",
+   "ok": true,
+   "seen": "no profile.guest",
+   "t": 2.1
+  },
+  {
+   "name": "back on guest Profile",
+   "ok": true,
+   "seen": "no profile.guest",
+   "t": 4.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_safety.png",
+  "2_language.png"
+ ]
+}

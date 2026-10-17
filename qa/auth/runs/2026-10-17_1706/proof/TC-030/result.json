@@ -1,0 +1,75 @@
+{
+ "meta": {
+  "title": "Sign out returns to the guest Profile and stays signed out after restart",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC6 — sign out clears the Keychain, back to guest, no wall",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER signed in on the device"
+  ],
+  "steps": [
+   "Tap Sign out → check: profile.guest",
+   "Force-stop and cold start; open Profile"
+  ],
+  "expected": [
+   "Guest Profile (profile.guest) shown, tab bar still present (no wall) — UI tree + screenshot",
+   "Event signed_out — event log",
+   "After restart the Profile is still the guest Profile (no stored session) — UI tree"
+  ],
+  "focus": "profile.guest",
+  "caption": {
+   "expected": "signed out, guest"
+  },
+  "tc": "TC-030",
+  "plan": "Test_auth.md",
+  "anchor": "tc-030--p0--sign-out-returns-to-the-guest-profile-and-stays-signed-out-after-restart"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 10.9,
+ "events": 7,
+ "done": [
+  "QA-USER qa_out_2239379 signed in",
+  "1. Tap Sign out",
+  "2. Restart and open Profile"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "guest profile=True",
+   "proof": [
+    "1_guest.png"
+   ],
+   "t": 8.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "signed_out event=True",
+   "proof": [],
+   "t": 8.7
+  },
+  "3": {
+   "ok": true,
+   "observed": "after restart: profile.guest",
+   "proof": [
+    "2_restart.png"
+   ],
+   "t": 10.7
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "profile.account not shown",
+   "t": 7.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_guest.png",
+  "2_restart.png"
+ ]
+}

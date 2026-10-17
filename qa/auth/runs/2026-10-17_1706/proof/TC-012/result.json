@@ -1,0 +1,72 @@
+{
+ "meta": {
+  "title": "Sign-up with a 6-char password and no phone logs in and returns to Profile",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC3 — success logs in and returns to where it started",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest; sign-up started from the Profile tab"
+  ],
+  "steps": [
+   "Profile → Create free account → check: auth.signup",
+   "Fill a free username, the 6-char password, no phone, tick terms, submit",
+   "Log in again through the API with the same credentials"
+  ],
+  "expected": [
+   "Event signed_up {has_phone: false} — event log",
+   "Back on the Profile tab signed in: profile.account with profile.username = the new username — UI tree + screenshot",
+   "API log-in with the same username in other case and the 6-char password → 200 — API response"
+  ],
+  "focus": "profile.account",
+  "caption": {
+   "expected": "signed in after sign-up"
+  },
+  "tc": "TC-012",
+  "plan": "Test_auth.md",
+  "anchor": "tc-012--p0--sign-up-with-a-6-char-password-and-no-phone-logs-in-and-returns-to-profile"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 9.7,
+ "events": 3,
+ "done": [
+  "free username qa_su6_4010; password = 6-char run password",
+  "1. Fill the form and submit"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event: {'has_phone': False}",
+   "proof": [],
+   "t": 8.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "on profile.account=True, username='qa_su6_4010'",
+   "proof": [
+    "2_profile.png"
+   ],
+   "t": 9.4
+  },
+  "3": {
+   "ok": true,
+   "observed": "API log-in (upper-case name) → 200",
+   "proof": [],
+   "t": 9.4
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "sign-up screen open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 2.5
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_profile.png"
+ ]
+}

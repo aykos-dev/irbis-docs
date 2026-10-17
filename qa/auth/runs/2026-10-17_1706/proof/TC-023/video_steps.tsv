@@ -1,0 +1,4 @@
+8.34	1: Read the resend row
+8.94	Expected: resend lock
+8.94	Result: PASS
+8.94	END

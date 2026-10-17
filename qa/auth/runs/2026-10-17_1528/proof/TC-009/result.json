@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "title": "Password bounds through the API: 6 and 64 accepted, 5 and 65 refused",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC3 — password 6–64 BVA at the contract",
+  "env": "API (HTTP)",
+  "precondition": [
+   "API up"
+  ],
+  "steps": [
+   "POST /v1/auth/sign-up with 6-, 64-, 5-, 65-char passwords",
+   "POST sign-up with password equal to username and with 'password'"
+  ],
+  "expected": [
+   "6 chars → 201 and 64 chars → 201 — API response status",
+   "5 chars and 65 chars → 4xx with code PASSWORD_WEAK or VALIDATION_FAILED — API response",
+   "Password = username and 'password' → 4xx PASSWORD_WEAK — API response"
+  ],
+  "focus": "",
+  "caption": {
+   "expected": ""
+  },
+  "tc": "TC-009",
+  "plan": "Test_auth.md",
+  "anchor": "tc-009--p1--password-bounds-through-the-api-6-and-64-accepted-5-and-65-refused"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 2.4,
+ "events": 0,
+ "done": [
+  "API up",
+  "1. Sign up with 6- and 64-char passwords",
+  "2. Sign up with 5- and 65-char passwords",
+  "3. Sign up with password = username and 'password'"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "6→201, 64→201",
+   "proof": [],
+   "t": 1.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "{5: (400, 'PASSWORD_WEAK'), 65: (400, 'PASSWORD_WEAK')}",
+   "proof": [],
+   "t": 2.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "same-as-username→400 PASSWORD_WEAK, common→400 PASSWORD_WEAK",
+   "proof": [],
+   "t": 2.1
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

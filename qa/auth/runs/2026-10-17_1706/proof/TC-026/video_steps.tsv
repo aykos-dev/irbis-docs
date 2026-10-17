@@ -1,0 +1,4 @@
+6.08	1: Right code, 5-char new password
+10.01	Expected: short new password
+10.01	Result: PASS
+10.01	END

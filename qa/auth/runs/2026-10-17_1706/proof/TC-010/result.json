@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "title": "Recovery phone validation: 8 digits refused, 9 accepted, letters not typable",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC3 — optional recovery phone +998 + 9 digits",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Sign-up screen open"
+  ],
+  "steps": [
+   "Type 8 digits in the phone field → blur",
+   "Replace with 9 digits → blur",
+   "Type '9a0b' into the empty field"
+  ],
+  "expected": [
+   "8 digits: error 'Enter 9 digits after +998.' — UI tree",
+   "9 digits: no phone error — UI tree",
+   "Letters are not accepted: the field keeps digits only — UI tree"
+  ],
+  "focus": "auth.phone",
+  "caption": {
+   "expected": "phone field"
+  },
+  "tc": "TC-010",
+  "plan": "Test_auth.md",
+  "anchor": "tc-010--p1--recovery-phone-validation-8-digits-refused-9-accepted-letters-not-typable"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 10.2,
+ "events": 2,
+ "done": [
+  "sign-up screen",
+  "1. 8 digits",
+  "2. 9 digits",
+  "3. Type letters"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "error shown=True",
+   "proof": [
+    "1_eight.png"
+   ],
+   "t": 5.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "error shown=False",
+   "proof": [
+    "2_nine.png"
+   ],
+   "t": 8.3
+  },
+  "3": {
+   "ok": true,
+   "observed": "field now '90'",
+   "proof": [
+    "3_letters.png"
+   ],
+   "t": 9.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "sign-up screen open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 2.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_eight.png",
+  "2_nine.png",
+  "3_letters.png"
+ ]
+}

@@ -1,0 +1,94 @@
+{
+ "meta": {
+  "title": "Username length boundaries: 2 refused, 3 and 20 accepted, 21 refused",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC3 — username 3–20 BVA",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Sign-up screen open",
+   "Names qa… are free (checked via username-available)"
+  ],
+  "steps": [
+   "Open Create free account → check: auth.signup",
+   "Type a 2-char name, blur → read the field status",
+   "Type a 3-char free name",
+   "Type a 20-char free name",
+   "Type a 21-char name"
+  ],
+  "expected": [
+   "2 chars ('qa'): error 'Use 3–20 characters.' under the field — UI tree + screenshot",
+   "3 chars (free): status '<name> is free', no error — UI tree",
+   "20 chars (free): status '<name> is free', no error — UI tree",
+   "21 chars: error 'Use 3–20 characters.' or the field stops at 20 characters (cannot exceed) — UI tree"
+  ],
+  "focus": "auth.username",
+  "caption": {
+   "expected": "username length statuses"
+  },
+  "tc": "TC-005",
+  "plan": "Test_auth.md",
+  "anchor": "tc-005--p0--username-length-boundaries-2-refused-3-and-20-accepted-21-refused"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 17.7,
+ "events": 2,
+ "done": [
+  "sign-up screen",
+  "1. Type 'qa' (2 chars)",
+  "2. Type a free 3-char name",
+  "3. Type a free 20-char name",
+  "4. Type the 20-char name plus one more character (21)"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "status=Use 3–20 characters., field='qa'",
+   "proof": [
+    "1_two.png"
+   ],
+   "t": 8.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "status=qrl is free, field='qrl'",
+   "proof": [
+    "2_three.png"
+   ],
+   "t": 11.9
+  },
+  "3": {
+   "ok": true,
+   "observed": "status=qanzju7j5klmku4abbb1 is free, field='qanzju7j5klmku4abbb1'",
+   "proof": [
+    "3_twenty.png"
+   ],
+   "t": 14.8
+  },
+  "4": {
+   "ok": true,
+   "observed": "status=Use 3–20 characters., field length=21",
+   "proof": [
+    "4_twentyone.png"
+   ],
+   "t": 17.4
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "sign-up screen open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 2.8
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_two.png",
+  "2_three.png",
+  "3_twenty.png",
+  "4_twentyone.png"
+ ]
+}

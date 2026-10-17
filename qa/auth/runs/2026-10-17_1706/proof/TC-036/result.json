@@ -1,0 +1,77 @@
+{
+ "meta": {
+  "title": "Tokens: ~15-min access, refresh rotates, reuse revokes the family, refresh stored hashed",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC9 — token lifetimes, rotation, reuse, hashing",
+  "env": "API (HTTP)",
+  "precondition": [
+   "API up",
+   "QA-USER"
+  ],
+  "steps": [
+   "Sign up; decode the access token's exp − iat",
+   "Refresh with R1 → R2",
+   "Refresh again with R1 (reuse)",
+   "Refresh with R2",
+   "Query the DB for the raw token"
+  ],
+  "expected": [
+   "Access lifetime 900 s (exp − iat) and expiresIn 900 — API response",
+   "Refresh with R1 returns a new pair with a different refresh token — API response",
+   "Reusing R1 → 401 REFRESH_REUSED, then R2 is refused too (family revoked) — API response",
+   "DB holds no row whose token_hash equals the raw refresh token — DB"
+  ],
+  "focus": "",
+  "caption": {
+   "expected": ""
+  },
+  "tc": "TC-036",
+  "plan": "Test_auth.md",
+  "anchor": "tc-036--p0--tokens-15-min-access-refresh-rotates-reuse-revokes-the-family-refresh-stored-hashed"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 0.6,
+ "events": 0,
+ "done": [
+  "API up"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "exp-iat=900, expiresIn=900",
+   "proof": [],
+   "t": 0.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "refresh→200, rotated=True",
+   "proof": [],
+   "t": 0.2
+  },
+  "3": {
+   "ok": true,
+   "observed": "reuse→401 REFRESH_REUSED, new token after reuse→401 REFRESH_INVALID",
+   "proof": [],
+   "t": 0.2
+  },
+  "4": {
+   "ok": true,
+   "observed": "rows matching the raw token: 0",
+   "proof": [],
+   "t": 0.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "sign-up",
+   "ok": true,
+   "seen": "201",
+   "t": 0.2
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

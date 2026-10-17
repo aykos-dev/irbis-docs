@@ -1,0 +1,6 @@
+16:01:48.065 tab_opened {"tab": "path"}
+16:01:48.997 tab_opened {"tab": "profile"}
+16:01:49.674 tab_opened {"tab": "path"}
+16:01:50.146 tab_opened {"tab": "profile"}
+16:01:51.296 auth_gate_shown {"reason": "progress"}
+16:01:56.206 logged_in {}

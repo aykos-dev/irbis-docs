@@ -1,0 +1,7 @@
+2.82	1: Type 'qa' (2 chars)
+8.04	2: Type a free 3-char name
+11.9	3: Type a free 20-char name
+14.8	4: Type the 20-char name plus one more character (21)
+17.63	Expected: username length statuses
+17.63	Result: PASS
+17.63	END

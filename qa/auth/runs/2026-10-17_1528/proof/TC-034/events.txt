@@ -1,0 +1,6 @@
+16:02:22.042 tab_opened {"tab": "path"}
+16:02:25.022 tab_opened {"tab": "profile"}
+16:02:25.775 signed_out {}
+16:02:30.023 logged_in {}
+16:02:31.338 tab_opened {"tab": "path"}
+16:02:32.001 tab_opened {"tab": "profile"}

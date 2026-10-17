@@ -1,0 +1,5 @@
+15:56:36.151 tab_opened {"tab": "path"}
+15:56:37.293 tab_opened {"tab": "profile"}
+15:56:38.109 signed_out {}
+15:56:42.469 logged_in {}
+15:56:47.452 recovery_phone_verified {}

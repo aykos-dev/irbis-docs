@@ -1,0 +1,79 @@
+{
+ "meta": {
+  "title": "Status is not the first screen; reachable from Debug and by deep link",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC10 — Status behind the Debug screen and irbis://debug/status",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Dev build"
+  ],
+  "steps": [
+   "Cold start → check: tab bar, no health.status-card",
+   "Profile → Debug tools → API status",
+   "Cold start and open irbis://debug/status"
+  ],
+  "expected": [
+   "First screen is the tab bar, health.status-card absent — UI tree",
+   "Profile → Debug tools (profile.debug) → debug.screen → API status (debug.api-status) opens health.status-card — UI tree",
+   "irbis://debug/status opens health.status-card — UI tree + screenshot"
+  ],
+  "focus": "health.status-card",
+  "caption": {
+   "expected": "Status via Debug"
+  },
+  "tc": "TC-040",
+  "plan": "Test_auth.md",
+  "anchor": "tc-040--p1--status-is-not-the-first-screen-reachable-from-debug-and-by-deep-link"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 24.8,
+ "events": 4,
+ "done": [
+  "dev build",
+  "2. Profile → Debug tools → API status",
+  "3. Deep link"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "no status card on start",
+   "proof": [
+    "1_start.png"
+   ],
+   "t": 6.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "debug=True, status=True",
+   "proof": [
+    "2_status.png"
+   ],
+   "t": 7.9
+  },
+  "3": {
+   "ok": false,
+   "observed": "status via deep link=False",
+   "proof": [
+    "3_link.png"
+   ],
+   "t": 24.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "tab bar shown",
+   "ok": true,
+   "seen": "no nav.tab-profile",
+   "t": 2.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_start.png",
+  "2_status.png",
+  "3_link.png"
+ ]
+}

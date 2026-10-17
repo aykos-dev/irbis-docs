@@ -1,0 +1,4 @@
+0.0	1: Sign up with 6- and 64-char passwords
+1.09	2: Sign up with 5- and 65-char passwords
+2.11	3: Sign up with password = username and 'password'
+2.33	END

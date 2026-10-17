@@ -1,0 +1,78 @@
+{
+ "meta": {
+  "title": "Signed-in user: the gated action runs immediately with no prompt",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC7 — signed in runs the action at once",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER signed in on the device"
+  ],
+  "steps": [
+   "Open Debug → Open log-in prompt"
+  ],
+  "expected": [
+   "No auth.gate within 3 s — UI tree",
+   "debug.gate-ran increments to 1 straight away — UI tree",
+   "No auth_gate_shown event — event log"
+  ],
+  "focus": "debug.gate-ran",
+  "caption": {
+   "expected": "ran immediately"
+  },
+  "tc": "TC-034",
+  "plan": "Test_auth.md",
+  "anchor": "tc-034--p1--signed-in-user-the-gated-action-runs-immediately-with-no-prompt"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 12.1,
+ "events": 6,
+ "done": [
+  "QA-USER qa_gi_2239434 signed in",
+  "1. Tap Open log-in prompt"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "no gate sheet",
+   "proof": [
+    "1_ran.png"
+   ],
+   "t": 10.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "gate-ran text='The gated action ran 1 time(s).'",
+   "proof": [
+    "1_ran.png"
+   ],
+   "t": 10.2
+  },
+  "3": {
+   "ok": true,
+   "observed": "no auth_gate_shown",
+   "proof": [],
+   "t": 11.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "profile.account not shown",
+   "t": 6.7
+  },
+  {
+   "name": "Debug screen open",
+   "ok": true,
+   "seen": "no debug.screen",
+   "t": 9.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_ran.png"
+ ]
+}

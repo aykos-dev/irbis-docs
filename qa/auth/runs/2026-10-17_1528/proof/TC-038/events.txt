@@ -1,0 +1,4 @@
+15:28:18.160 tab_opened {"tab": "path"}
+15:28:20.225 tab_opened {"tab": "profile"}
+15:28:27.305 logged_in {}
+15:28:27.483 guest_merged {"items": 1}

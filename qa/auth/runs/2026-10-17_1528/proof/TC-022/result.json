@@ -1,0 +1,87 @@
+{
+ "meta": {
+  "title": "Three wrong codes void the code; the right code is then refused",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC5 — 3 wrong tries void the code",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-VERIFIED user",
+   "Reset code screen open with a code requested"
+  ],
+  "steps": [
+   "Enter a wrong 6-digit code with a valid new password, submit — three times",
+   "Enter the RIGHT code and submit"
+  ],
+  "expected": [
+   "Wrong tries 1 and 2: 'That code isn't right.' — UI tree",
+   "After the third wrong try the message is 'Too many wrong tries. Send a new code.' (on the 3rd or on the next submit) — UI tree + screenshot",
+   "The right code is refused: no password_reset_done event, still on auth.reset — event log + UI tree"
+  ],
+  "focus": "auth.reset",
+  "caption": {
+   "expected": "code voided"
+  },
+  "tc": "TC-022",
+  "plan": "Test_auth.md",
+  "anchor": "tc-022--p0--three-wrong-codes-void-the-code-the-right-code-is-then-refused"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 24.7,
+ "events": 4,
+ "done": [
+  "QA-VERIFIED qa_w3_2234462",
+  "1. Wrong code try 1",
+  "2. Wrong code try 2",
+  "3. Wrong code try 3",
+  "4. Right code"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "messages: [\"That code isn't right.\", \"That code isn't right.\", 'Too many wrong tries. Send a new code.']",
+   "proof": [],
+   "t": 19.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "third: 'Too many wrong tries. Send a new code.'; after right code: 'Too many wrong tries. Send a new code.'",
+   "proof": [
+    "4_void.png"
+   ],
+   "t": 24.4
+  },
+  "3": {
+   "ok": true,
+   "observed": "no reset event=True",
+   "proof": [],
+   "t": 24.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "forgot screen open",
+   "ok": true,
+   "seen": "no auth.forgot",
+   "t": 4.6
+  },
+  {
+   "name": "code screen",
+   "ok": true,
+   "seen": "no auth.reset",
+   "t": 7.1
+  },
+  {
+   "name": "code in API log",
+   "ok": true,
+   "seen": "no new SMS line",
+   "t": 7.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "4_void.png"
+ ]
+}

@@ -1,0 +1,68 @@
+{
+ "meta": {
+  "title": "Per-IP limit stops trying many usernames",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC4 — per-IP limit across usernames",
+  "env": "API (HTTP)",
+  "precondition": [
+   "API up"
+  ],
+  "steps": [
+   "Send 30 log-in attempts for 30 different unknown usernames within a few seconds",
+   "Wait the retryAfterSec the API reports (≤ 15 min IP window) for the window to clear"
+  ],
+  "expected": [
+   "Early attempts return 401 INVALID_CREDENTIALS — API response",
+   "Later attempts are refused with 429 RATE_LIMITED or 423 ACCOUNT_LOCKED before all 30 are tried — API response",
+   "After retryAfterSec an attempt returns 401 again (limit is a window, not permanent) — API response"
+  ],
+  "focus": "",
+  "caption": {
+   "expected": ""
+  },
+  "tc": "TC-017",
+  "plan": "Test_auth.md",
+  "anchor": "tc-017--p2--per-ip-limit-stops-trying-many-usernames"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 65.8,
+ "events": 0,
+ "done": [
+  "API up; QA IP window clean (run this case LAST: it limits this IP for up to 15 min)",
+  "1. 30 attempts, distinct usernames",
+  "2. Wait for the window to clear"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "first: [(401, 'INVALID_CREDENTIALS'), (401, 'INVALID_CREDENTIALS')]",
+   "proof": [],
+   "t": 0.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "11 of 30 refused; first refusal at index 19",
+   "proof": [],
+   "t": 0.4
+  },
+  "3": {
+   "ok": false,
+   "observed": "after 65 s → 429 RATE_LIMITED",
+   "proof": [],
+   "t": 65.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "IP not already limited",
+   "ok": true,
+   "seen": "probe returned 401",
+   "t": 0.1
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

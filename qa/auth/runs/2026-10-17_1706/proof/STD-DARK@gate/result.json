@@ -1,0 +1,57 @@
+{
+ "meta": {
+  "title": "Dark mode uses the night tokens — gate",
+  "priority": "P3",
+  "group": "Standards",
+  "requirement": "engineering-standards §5/§8 — light + dark from tokens",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Dark mode on",
+   "Open the screen"
+  ],
+  "expected": [
+   "Screen background is the night token #131D22 — screenshot (pixel check)"
+  ],
+  "caption": {
+   "expected": "night background"
+  },
+  "tc": "STD-DARK@gate",
+  "plan": "Test_auth.md",
+  "anchor": "std-darkgate--p3--dark-mode-uses-the-night-tokens",
+  "screen": "gate"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 6.6,
+ "events": 3,
+ "done": [
+  "1. Dark mode on",
+  "2. Open the screen"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "background pixel (28, 42, 48) vs #131D22",
+   "proof": [
+    "dark.png"
+   ],
+   "t": 4.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened",
+   "ok": true,
+   "seen": "auth.gate",
+   "t": 4.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "dark.png"
+ ]
+}

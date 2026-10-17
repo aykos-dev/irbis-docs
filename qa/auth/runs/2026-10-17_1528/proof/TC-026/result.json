@@ -1,0 +1,76 @@
+{
+ "meta": {
+  "title": "Reset refuses a 5-char new password and leaves the old one valid",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC5 — new password 6–64 on reset",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-VERIFIED user",
+   "Reset code screen with the right code"
+  ],
+  "steps": [
+   "Type the right code and a 5-char new password, submit"
+  ],
+  "expected": [
+   "Error 'Use 6–64 characters.' on auth.new-password — UI tree + screenshot",
+   "No password_reset_done event and the old password still works through the API (200) — event log + API response"
+  ],
+  "focus": "auth.new-password",
+  "caption": {
+   "expected": "short new password"
+  },
+  "tc": "TC-026",
+  "plan": "Test_auth.md",
+  "anchor": "tc-026--p2--reset-refuses-a-5-char-new-password-and-leaves-the-old-one-valid"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 11.7,
+ "events": 3,
+ "done": [
+  "QA-VERIFIED qa_npw_2234576",
+  "1. Right code, 5-char new password"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "error shown=True",
+   "proof": [
+    "1_short.png"
+   ],
+   "t": 11.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "no event=True, old password → 200",
+   "proof": [],
+   "t": 11.4
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "forgot screen open",
+   "ok": true,
+   "seen": "no auth.forgot",
+   "t": 5.3
+  },
+  {
+   "name": "code screen",
+   "ok": true,
+   "seen": "no auth.reset",
+   "t": 7.7
+  },
+  {
+   "name": "code in API log",
+   "ok": true,
+   "seen": "no new SMS line",
+   "t": 7.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_short.png"
+ ]
+}

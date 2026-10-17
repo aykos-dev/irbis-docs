@@ -1,0 +1,9 @@
+17:13:40.356 tab_opened {"tab": "path"}
+17:13:43.488 tab_opened {"tab": "profile"}
+17:13:47.933 password_reset_requested {}
+17:13:50.726 tab_opened {"tab": "path"}
+17:13:51.161 tab_opened {"tab": "profile"}
+17:13:55.158 password_reset_requested {}
+17:13:57.975 tab_opened {"tab": "path"}
+17:13:58.682 tab_opened {"tab": "profile"}
+17:14:02.549 password_reset_requested {}

@@ -1,0 +1,2 @@
+17:22:05.181 tab_opened {"tab": "path"}
+17:22:08.340 tab_opened {"tab": "profile"}

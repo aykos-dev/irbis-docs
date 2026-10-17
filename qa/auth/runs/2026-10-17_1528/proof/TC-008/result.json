@@ -1,0 +1,94 @@
+{
+ "meta": {
+  "title": "Password rules in the form: 5 chars, 65 chars, equal to username, common password",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC3 — password 6–64, ≠ username, not common (UI)",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Sign-up screen open",
+   "A free username typed"
+  ],
+  "steps": [
+   "Type a free username",
+   "Type a 5-char password → blur",
+   "Type a 65-char password → blur",
+   "Type the username as the password → blur",
+   "Type 'password', tick terms, submit"
+  ],
+  "expected": [
+   "5 chars: error 'Use 6–64 characters.' under the password — UI tree",
+   "65 chars: error 'Use 6–64 characters.' or the field stops at 64 — UI tree",
+   "Password equal to the username: error 'The password can't be your username.' — UI tree",
+   "Common password 'password': 'That password is too easy to guess. Try another one.' after submit, no account created — UI tree + DB row count 0 + no signed_up event"
+  ],
+  "focus": "auth.password",
+  "caption": {
+   "expected": "password errors"
+  },
+  "tc": "TC-008",
+  "plan": "Test_auth.md",
+  "anchor": "tc-008--p1--password-rules-in-the-form-5-chars-65-chars-equal-to-username-common-password"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 25.9,
+ "events": 2,
+ "done": [
+  "free username q385834",
+  "1. 5-char password",
+  "2. 65-char password",
+  "3. Password equals the username",
+  "4. Common password 'password', terms ticked, submit"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "error shown=True",
+   "proof": [
+    "1_five.png"
+   ],
+   "t": 9.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "error=True, field length=65",
+   "proof": [
+    "2_sixtyfive.png"
+   ],
+   "t": 15.9
+  },
+  "3": {
+   "ok": true,
+   "observed": "error shown=True",
+   "proof": [
+    "3_same.png"
+   ],
+   "t": 19.3
+  },
+  "4": {
+   "ok": true,
+   "observed": "weak message=True, no account=True, signed_up event=False",
+   "proof": [
+    "4_weak.png"
+   ],
+   "t": 25.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "sign-up screen open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 2.5
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_five.png",
+  "2_sixtyfive.png",
+  "3_same.png",
+  "4_weak.png"
+ ]
+}

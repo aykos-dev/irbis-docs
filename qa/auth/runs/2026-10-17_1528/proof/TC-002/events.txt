@@ -1,0 +1,5 @@
+15:46:33.367 tab_opened {"tab": "path"}
+15:46:34.578 tab_opened {"tab": "explore"}
+15:46:35.679 tab_opened {"tab": "lessons"}
+15:46:36.559 tab_opened {"tab": "community"}
+15:46:37.755 tab_opened {"tab": "path"}

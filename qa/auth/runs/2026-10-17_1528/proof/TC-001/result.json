@@ -1,0 +1,74 @@
+{
+ "meta": {
+  "title": "Cold start lands on the five-tab bar with no log-in wall",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC1 — cold start → tab bar, no wall",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "API up; any account state"
+  ],
+  "steps": [
+   "Force-stop the app and cold start it → check: nav.tab-profile within 20 s"
+  ],
+  "expected": [
+   "Tabs nav.tab-path, nav.tab-explore, nav.tab-lessons, nav.tab-community, nav.tab-profile exist left to right with labels Path · Explore · Lessons · Community · Profile — UI tree",
+   "No auth.login, auth.signup or auth.gate node on screen 5 s after launch — UI tree",
+   "The first tab (Path) shows empty.coming-soon — UI tree + screenshot"
+  ],
+  "focus": "nav.tab-profile",
+  "caption": {
+   "expected": "five tabs, Path empty state"
+  },
+  "tc": "TC-001",
+  "plan": "Test_auth.md",
+  "anchor": "tc-001--p0--cold-start-lands-on-the-five-tab-bar-with-no-log-in-wall"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 9.1,
+ "events": 1,
+ "done": [
+  "emulator online, API up",
+  "1. Force-stop and cold start the app"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "x order [121, 330, 540, 749, 958], labels ['Path', 'Explore', 'Lessons', 'Community', 'Profile']",
+   "proof": [
+    "1_start.png"
+   ],
+   "t": 8.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "wall nodes: []",
+   "proof": [
+    "1_start.png"
+   ],
+   "t": 8.6
+  },
+  "3": {
+   "ok": true,
+   "observed": "empty state on first tab",
+   "proof": [
+    "1_start.png"
+   ],
+   "t": 8.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "tab bar shown within 20 s",
+   "ok": true,
+   "seen": "no nav.tab-profile",
+   "t": 1.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_start.png"
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "meta": {
+  "title": "At most 5 reset codes per account per day",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC5 — max 5 codes/day, identical response",
+  "env": "API (HTTP)",
+  "precondition": [
+   "QA-VERIFIED user"
+  ],
+  "steps": [
+   "POST /v1/auth/password/forgot six times, aging earlier codes by 2 minutes between calls so the 60 s resend gap is not the limit"
+  ],
+  "expected": [
+   "Every call returns 202 {resendAfterSec: 60} — API response",
+   "Exactly 5 new codes in the SMS log; the 6th call sends none — API log"
+  ],
+  "focus": "",
+  "caption": {
+   "expected": ""
+  },
+  "tc": "TC-025",
+  "plan": "Test_auth.md",
+  "anchor": "tc-025--p2--at-most-5-reset-codes-per-account-per-day"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.5,
+ "events": 0,
+ "done": [
+  "QA-VERIFIED qa_cap_2239317",
+  "1. Six forgot calls"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "[(202, 60), (202, 60), (202, 60), (202, 60), (202, 60), (202, 60)]",
+   "proof": [],
+   "t": 8.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "new codes after 6 requests: 5",
+   "proof": [],
+   "t": 8.2
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

@@ -1,0 +1,7 @@
+6.29	1: 5-char password
+11.06	2: 65-char password
+16.28	3: Password equals the username
+19.55	4: Common password 'password', terms ticked, submit
+26.45	Expected: password errors
+26.45	Result: PASS
+26.45	END

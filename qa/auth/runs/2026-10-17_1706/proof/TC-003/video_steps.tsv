@@ -1,0 +1,4 @@
+0.17	1: Cold start, open the Profile tab
+4.21	Expected: guest Profile
+4.21	Result: PASS
+4.21	END

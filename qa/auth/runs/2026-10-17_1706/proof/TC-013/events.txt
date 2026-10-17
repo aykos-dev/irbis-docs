@@ -1,0 +1,3 @@
+17:12:22.266 tab_opened {"tab": "path"}
+17:12:22.964 tab_opened {"tab": "profile"}
+17:12:32.262 signed_up {"has_phone": true}

@@ -1,0 +1,88 @@
+{
+ "meta": {
+  "title": "Send again is locked for 60 seconds, then sends a new code",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC5 — resend unlocks after 60 s",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-VERIFIED user",
+   "Reset code screen just opened"
+  ],
+  "steps": [
+   "Open the reset code screen → read countdown at 0 s",
+   "At 50 s read again",
+   "At 65 s read and tap Send again"
+  ],
+  "expected": [
+   "At 0 s and 50 s: auth.resend-countdown 'Send again in …' shown, no auth.resend — UI tree",
+   "At 65 s: auth.resend 'Send again' shown, countdown gone — UI tree + screenshot",
+   "Tapping Send again: a new code line in the API log and the note 'A new code is on its way.' — API log + UI tree"
+  ],
+  "focus": "auth.resend-row",
+  "caption": {
+   "expected": "resend lock"
+  },
+  "tc": "TC-023",
+  "plan": "Test_auth.md",
+  "anchor": "tc-023--p1--send-again-is-locked-for-60-seconds-then-sends-a-new-code"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 72.4,
+ "events": 4,
+ "done": [
+  "QA-VERIFIED qa_rsd_2234487",
+  "1. Read the countdown at ~0 s",
+  "2. Read at ~50 s",
+  "3. Wait to 65 s",
+  "4. Tap Send again"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "locked at 0 s: True, at 50 s: True",
+   "proof": [
+    "1_start.png"
+   ],
+   "t": 56.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "unlocked at 65 s: True",
+   "proof": [
+    "3_unlocked.png"
+   ],
+   "t": 71.3
+  },
+  "3": {
+   "ok": true,
+   "observed": "new code logged=True, note shown=True",
+   "proof": [
+    "4_resent.png"
+   ],
+   "t": 72.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "forgot screen open",
+   "ok": true,
+   "seen": "no auth.forgot",
+   "t": 4.1
+  },
+  {
+   "name": "code screen",
+   "ok": true,
+   "seen": "no auth.reset",
+   "t": 6.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_start.png",
+  "3_unlocked.png",
+  "4_resent.png"
+ ]
+}

@@ -1,0 +1,5 @@
+7.05	1: Tap Sign out
+8.68	2: Restart and open Profile
+10.88	Expected: signed out, guest
+10.88	Result: PASS
+10.88	END

@@ -1,0 +1,5 @@
+3.19	1: Log in
+7.59	2: Close the log-in screen
+8.79	Expected: blocked message
+8.79	Result: PASS
+8.79	END

@@ -1,0 +1,104 @@
+{
+ "meta": {
+  "title": "Username characters and dot rules",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC3 — username allowed characters, dot at edges",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Sign-up screen open"
+  ],
+  "steps": [
+   "Type '.abc' → blur",
+   "Type 'abc.' → blur",
+   "Type 'ab-cd' → blur",
+   "Type 'ab cd' → blur",
+   "Type a free name with dot and underscore in the middle → blur"
+  ],
+  "expected": [
+   "'.abc': error 'A dot can't be first or last.' — UI tree",
+   "'abc.': error 'A dot can't be first or last.' — UI tree",
+   "'ab-cd': error 'Only letters, numbers, dot and underscore.' — UI tree",
+   "'ab cd' (space): error 'Only letters, numbers, dot and underscore.' — UI tree",
+   "Free name with an inner dot and underscore: '<name> is free', no error — UI tree"
+  ],
+  "focus": "auth.username",
+  "caption": {
+   "expected": "character rules"
+  },
+  "tc": "TC-006",
+  "plan": "Test_auth.md",
+  "anchor": "tc-006--p1--username-characters-and-dot-rules"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 23.8,
+ "events": 2,
+ "done": [
+  "sign-up screen",
+  "1. Type '.abc'",
+  "2. Type 'abc.'",
+  "3. Type 'ab-cd'",
+  "4. Type 'ab cd'",
+  "5. Type 'q.a_99208'"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "status=A dot can't be first or last., field='.abc'",
+   "proof": [
+    "1_rule.png"
+   ],
+   "t": 9.5
+  },
+  "2": {
+   "ok": true,
+   "observed": "status=A dot can't be first or last., field='abc.'",
+   "proof": [
+    "2_rule.png"
+   ],
+   "t": 16.4
+  },
+  "3": {
+   "ok": true,
+   "observed": "status=Only letters, numbers, dot and underscore., field='ab-cd'",
+   "proof": [
+    "3_rule.png"
+   ],
+   "t": 18.7
+  },
+  "4": {
+   "ok": true,
+   "observed": "status=Only letters, numbers, dot and underscore., field='ab cd'",
+   "proof": [
+    "4_rule.png"
+   ],
+   "t": 20.6
+  },
+  "5": {
+   "ok": true,
+   "observed": "status=q.a_99208 is free, field='q.a_99208'",
+   "proof": [
+    "5_ok.png"
+   ],
+   "t": 23.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "sign-up screen open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 3.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_rule.png",
+  "2_rule.png",
+  "3_rule.png",
+  "4_rule.png",
+  "5_ok.png"
+ ]
+}

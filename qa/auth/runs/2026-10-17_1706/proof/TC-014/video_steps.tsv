@@ -1,0 +1,5 @@
+4.31	1: Wrong password
+7.66	2: Unknown username
+14.03	Expected: generic credential error
+14.03	Result: PASS
+14.03	END

@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "Copy is translated and layout survives long text — login",
+  "priority": "P2",
+  "group": "Standards",
+  "requirement": "engineering-standards §12/§13 — i18n, +40% text, largest font",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Russian, font 1.15 — open the screen",
+   "Uzbek, font 1.15 — open the screen",
+   "English, font 2.0 — open the screen"
+  ],
+  "expected": [
+   "No English catalog string left on screen in Russian or Uzbek — UI tree",
+   "Nothing clipped or overflowing its container in any of the three — one composite crop (human)"
+  ],
+  "caption": {
+   "expected": "translated, nothing overflows"
+  },
+  "tc": "STD-TEXT@login",
+  "plan": "Test_auth.md",
+  "anchor": "std-textlogin--p2--copy-is-translated-and-layout-survives-long-text",
+  "screen": "login"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 23.1,
+ "events": 8,
+ "done": [
+  "1. ru, font 1.15 — open the screen",
+  "2. uz, font 1.15 — open the screen",
+  "3. en, font 2.0 — open the screen"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "untranslated: {'ru': ['Continue as guest', 'Welcome back, explorer!', 'Log in', 'Username', 'Password', 'Forgot password?', 'No account needed to look around — places, conditions and lessons are open to everyone.'], 'uz': ['Continue as guest', 'Welcome back, explorer!', 'Log in', 'Username', 'Password', 'Forgot password?', 'No account needed to look around — places, conditions and lessons are open to everyone.']}",
+   "proof": [],
+   "t": 21.1
+  },
+  "2": {
+   "ok": null,
+   "observed": "judge _composite.png: ru · uz · en@2.0 side by side",
+   "proof": [
+    "ru_font1.15.png",
+    "uz_font1.15.png",
+    "en_font2.0.png"
+   ],
+   "t": 21.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened (ru)",
+   "ok": true,
+   "seen": "auth.login",
+   "t": 6.4
+  },
+  {
+   "name": "screen opened (uz)",
+   "ok": true,
+   "seen": "auth.login",
+   "t": 13.5
+  },
+  {
+   "name": "screen opened (en)",
+   "ok": true,
+   "seen": "auth.login",
+   "t": 19.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "ru_font1.15.png",
+  "uz_font1.15.png",
+  "en_font2.0.png"
+ ]
+}

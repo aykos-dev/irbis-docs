@@ -1,0 +1,87 @@
+{
+ "meta": {
+  "title": "Correct code and a new password log the user in and end the other sessions",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC5 — reset with code logs in, signs out other sessions",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-VERIFIED user with a second (API) session",
+   "Guest, Forgot password open"
+  ],
+  "steps": [
+   "Submit the username → check: auth.reset",
+   "Read the code from the API log, type it, new password, submit",
+   "API: log in with the old, then the new password",
+   "API: refresh with the second session's refresh token"
+  ],
+  "expected": [
+   "Event password_reset_done and the app lands on Profile signed in as the user — event log + UI tree",
+   "Old password → 401, new password → 200 — API response",
+   "The other session's refresh token is refused (401) — API response"
+  ],
+  "focus": "profile.account",
+  "caption": {
+   "expected": "logged in after reset"
+  },
+  "tc": "TC-021",
+  "plan": "Test_auth.md",
+  "anchor": "tc-021--p0--correct-code-and-a-new-password-log-the-user-in-and-end-the-other-sessions"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 13.4,
+ "events": 4,
+ "done": [
+  "QA-VERIFIED qa_rst_2239256, other session open",
+  "1. Submit the username",
+  "2. Type the code and the new password"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event=True, profile.account=True",
+   "proof": [
+    "2_done.png"
+   ],
+   "t": 13.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "old→401, new→200",
+   "proof": [],
+   "t": 13.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "old session refresh → 401 REFRESH_INVALID",
+   "proof": [],
+   "t": 13.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "forgot screen open",
+   "ok": true,
+   "seen": "no auth.forgot",
+   "t": 6.2
+  },
+  {
+   "name": "code screen",
+   "ok": true,
+   "seen": "no auth.reset",
+   "t": 8.7
+  },
+  {
+   "name": "code in API log",
+   "ok": true,
+   "seen": "no new SMS line",
+   "t": 8.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_done.png"
+ ]
+}

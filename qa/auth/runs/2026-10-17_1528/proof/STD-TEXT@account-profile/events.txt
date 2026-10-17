@@ -1,0 +1,15 @@
+16:09:19.515 tab_opened {"tab": "path"}
+16:09:20.493 tab_opened {"tab": "path"}
+16:09:21.379 tab_opened {"tab": "profile"}
+16:09:22.239 signed_out {}
+16:09:26.553 logged_in {}
+16:09:30.630 tab_opened {"tab": "path"}
+16:09:31.472 tab_opened {"tab": "path"}
+16:09:31.980 tab_opened {"tab": "profile"}
+16:09:32.467 signed_out {}
+16:09:36.734 logged_in {}
+16:09:39.075 tab_opened {"tab": "path"}
+16:09:40.625 tab_opened {"tab": "path"}
+16:09:41.109 tab_opened {"tab": "path"}
+16:09:41.615 tab_opened {"tab": "profile"}
+16:10:07.327 tab_opened {"tab": "path"}

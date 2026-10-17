@@ -1,0 +1,299 @@
+{
+ "TC-001": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-002": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-003": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-004": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-005": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-006": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-007": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-008": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-009": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-010": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-011": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-012": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-013": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-014": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-015": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-016": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-018": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-019": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-020": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-021": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-022": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-023": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-024": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-025": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-026": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-027": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-028": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-029": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-030": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-031": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-032": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-033": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-034": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-035": {
+  "verdict": "Blocked",
+  "line": "script bullet 1 red: no guest_merged event",
+  "conclusion": "Precondition not met: the app marks the merge done once per device (guest.merged in app storage) and earlier sign-ups on this emulator already set it; resetting needs clearing app data, which QA must not do. Needs a fresh install (owner/manual) to verify AC8. Events show signed_up with no guest_merged; /v1/me locale=uz and no second merge on re-login are fine."
+ },
+ "TC-036": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-037": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-040": {
+  "verdict": "Fail",
+  "line": "bullet 3 red; crop = Path tab",
+  "conclusion": "irbis://debug/status does not open the Status card. adb reports the intent cannot be resolved: AndroidManifest has no irbis:// intent-filter (only MAIN/LAUNCHER). Same for irbis://profile and irbis://debug.",
+  "ok": {
+   "3": false
+  },
+  "actual": {
+   "3": "deep link not delivered to app; app stays on Path tab (crop)"
+  }
+ },
+ "TC-041": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-042": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-DARK@login": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-OFFLINE@login": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-TEXT@login": {
+  "verdict": "Blocked",
+  "line": "harness check: untranslated under system locale",
+  "conclusion": "STD-TEXT switches the Android per-app locale, but the app takes its language from the in-app setting, so ru/uz never applied (screens stayed English). Translations exist: switching ru/uz in Profile -> Language shows Russian/Uzbek on login. ru/uz layout at 1.15 and en at 2.0 not judged. Standards harness needs an in-app language hook."
+ },
+ "STD-DARK@signup": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-OFFLINE@signup": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-TEXT@signup": {
+  "verdict": "Blocked",
+  "line": "harness check: untranslated under system locale",
+  "conclusion": "STD-TEXT switches the Android per-app locale, but the app takes its language from the in-app setting, so ru/uz never applied (screens stayed English). Translations exist: switching ru/uz in Profile -> Language shows Russian/Uzbek on login. ru/uz layout at 1.15 and en at 2.0 not judged. Standards harness needs an in-app language hook."
+ },
+ "STD-DARK@forgot": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-OFFLINE@forgot": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-TEXT@forgot": {
+  "verdict": "Blocked",
+  "line": "harness check: untranslated under system locale",
+  "conclusion": "STD-TEXT switches the Android per-app locale, but the app takes its language from the in-app setting, so ru/uz never applied (screens stayed English). Translations exist: switching ru/uz in Profile -> Language shows Russian/Uzbek on login. ru/uz layout at 1.15 and en at 2.0 not judged. Standards harness needs an in-app language hook."
+ },
+ "STD-DARK@guest-profile": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-OFFLINE@guest-profile": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-TEXT@guest-profile": {
+  "verdict": "Blocked",
+  "line": "harness check: untranslated under system locale",
+  "conclusion": "STD-TEXT switches the Android per-app locale, but the app takes its language from the in-app setting, so ru/uz never applied (screens stayed English). Translations exist: switching ru/uz in Profile -> Language shows Russian/Uzbek on login. ru/uz layout at 1.15 and en at 2.0 not judged. Standards harness needs an in-app language hook."
+ },
+ "STD-DARK@gate": {
+  "verdict": "Pass",
+  "line": "script bullet red; crop OK",
+  "conclusion": "Crop shows dark mode applied; the gate is a sheet whose surface token (28,42,48) is not the page night background the pixel check expects (harness mismatch, not app).",
+  "ok": {
+   "1": true
+  },
+  "actual": {
+   "1": "dark sheet surface shown (crop)"
+  }
+ },
+ "STD-OFFLINE@gate": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-TEXT@gate": {
+  "verdict": "Blocked",
+  "line": "harness check: untranslated under system locale",
+  "conclusion": "STD-TEXT switches the Android per-app locale, but the app takes its language from the in-app setting, so ru/uz never applied (screens stayed English). Translations exist: switching ru/uz in Profile -> Language shows Russian/Uzbek on login. ru/uz layout at 1.15 and en at 2.0 not judged. Standards harness needs an in-app language hook."
+ },
+ "STD-DARK@account-profile": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-OFFLINE@account-profile": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-TEXT@account-profile": {
+  "verdict": "Blocked",
+  "line": "RuntimeError profile.sign-out not found",
+  "conclusion": "Same harness locale issue; the account Profile did not open under system locale. Not judged."
+ }
+}

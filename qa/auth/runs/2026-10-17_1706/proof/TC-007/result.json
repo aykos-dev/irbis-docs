@@ -1,0 +1,93 @@
+{
+ "meta": {
+  "title": "Reserved and taken usernames refused; live availability moves pristine → validating → success",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC3 — reserved, case-insensitive unique, live availability",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Sign-up screen open",
+   "QA-USER exists (created by API, lowercase name)"
+  ],
+  "steps": [
+   "Before typing, read the status line (pristine)",
+   "Type a free name and read the status immediately and after 3 s",
+   "Type 'admin', then 'Irbis', then 'OFFICIAL'",
+   "Type the QA-USER's name in UPPER CASE"
+  ],
+  "expected": [
+   "Pristine: hint text '3–20 letters, numbers, dot or underscore.' shown, no error — UI tree",
+   "Free name: 'Checking if the name is free' while validating (seen within 1.5 s of typing, else needs eyes) then '<name> is free' — UI tree",
+   "'admin', 'Irbis' and 'OFFICIAL' each: error 'That name is reserved. Pick another one.' — UI tree",
+   "Upper-case copy of an existing name: error 'That username is taken.' (case-insensitive) — UI tree"
+  ],
+  "focus": "auth.username",
+  "caption": {
+   "expected": "reserved / taken / live states"
+  },
+  "tc": "TC-007",
+  "plan": "Test_auth.md",
+  "anchor": "tc-007--p0--reserved-and-taken-usernames-refused-live-availability-moves-pristine--validating--success"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 14.9,
+ "events": 2,
+ "done": [
+  "QA-USER qa_tkn_2238996 exists",
+  "1. Read the status line before typing",
+  "2. Type a free name",
+  "3. Type admin / Irbis / OFFICIAL",
+  "4. Type the existing name in upper case"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "pristine hint shown: True",
+   "proof": [
+    "1_pristine.png"
+   ],
+   "t": 4.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "validating seen=True, success=True",
+   "proof": [
+    "2_free.png"
+   ],
+   "t": 6.6
+  },
+  "3": {
+   "ok": true,
+   "observed": "statuses ['That name is reserved. Pick another one.', 'That name is reserved. Pick another one.', 'That name is reserved. Pick another one.']",
+   "proof": [
+    "3_reserved.png"
+   ],
+   "t": 12.4
+  },
+  "4": {
+   "ok": true,
+   "observed": "status=That username is taken.",
+   "proof": [
+    "4_taken.png"
+   ],
+   "t": 14.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "sign-up screen open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 4.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_pristine.png",
+  "2_free.png",
+  "3_reserved.png",
+  "4_taken.png"
+ ]
+}

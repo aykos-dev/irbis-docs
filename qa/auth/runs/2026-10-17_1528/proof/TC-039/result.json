@@ -1,0 +1,64 @@
+{
+ "meta": {
+  "title": "VERIFY: after the access token expired the app refreshes silently and stays signed in",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC9 — refresh once on 401 and retry",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "ARM case done ≥ 15.5 min ago; the device was not used for other sign-ins"
+  ],
+  "steps": [
+   "Wait until 15.5 min after the arm (script waits ≤ 8 min, else Blocked)",
+   "Cold start the app → open Profile"
+  ],
+  "expected": [
+   "Still signed in as the armed user, no 'session has ended' toast — UI tree + screenshot",
+   "DB: the user's refresh tokens grew past the arm count and one is marked replaced (rotated by the refresh) — DB"
+  ],
+  "focus": "profile.account",
+  "caption": {
+   "expected": "still signed in"
+  },
+  "tc": "TC-039",
+  "plan": "Test_auth.md",
+  "anchor": "tc-039--p0--verify-after-the-access-token-expired-the-app-refreshes-silently-and-stays-signed-in"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 10.5,
+ "events": 2,
+ "done": [
+  "armed user qa_arm_2232900",
+  "1. Cold start, open Profile"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "profile=profile.account, toast seen=False",
+   "proof": [
+    "1_still_in.png"
+   ],
+   "t": 9.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "rows 2 → 3, rotated rows: 1",
+   "proof": [],
+   "t": 10.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "≥ 15.5 min since the arm (else run again later)",
+   "ok": true,
+   "seen": "-128 s still to wait",
+   "t": 0.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_still_in.png"
+ ]
+}

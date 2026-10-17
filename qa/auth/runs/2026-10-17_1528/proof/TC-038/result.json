@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "title": "ARM: sign in on the device and record the time (silent-refresh check)",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC9 — setup for 'refresh once on 401 and retry'",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER; guest"
+  ],
+  "steps": [
+   "Log in with a QA-USER through the app and note the time; leave the app signed in"
+  ],
+  "expected": [
+   "Signed in (profile.account) and the arm time + refresh-token row count saved — UI tree + DB"
+  ],
+  "focus": "profile.account",
+  "caption": {
+   "expected": "armed"
+  },
+  "tc": "TC-038",
+  "plan": "Test_auth.md",
+  "anchor": "tc-038--p2--arm-sign-in-on-the-device-and-record-the-time-silent-refresh-check"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 12.2,
+ "events": 4,
+ "done": [
+  "QA-USER qa_arm_2232900"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "armed; refresh rows at arm: 2",
+   "proof": [
+    "1_armed.png"
+   ],
+   "t": 11.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "profile.account not shown",
+   "t": 10.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_armed.png"
+ ]
+}

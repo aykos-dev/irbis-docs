@@ -1,0 +1,9 @@
+15:52:46.613 tab_opened {"tab": "path"}
+15:52:47.651 tab_opened {"tab": "profile"}
+15:52:48.476 signed_out {}
+15:52:56.433 log_in_failed {"code": "INVALID_CREDENTIALS"}
+15:53:02.036 log_in_failed {"code": "INVALID_CREDENTIALS"}
+15:53:07.865 log_in_failed {"code": "INVALID_CREDENTIALS"}
+15:53:14.815 log_in_failed {"code": "INVALID_CREDENTIALS"}
+15:53:20.398 log_in_failed {"code": "ACCOUNT_LOCKED"}
+15:53:24.709 log_in_failed {"code": "ACCOUNT_LOCKED"}

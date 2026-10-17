@@ -1,0 +1,5 @@
+7.36	1: Block the user on the local DB
+7.76	2: Cold start
+13.17	Expected: blocked while signed in
+13.17	Result: PASS
+13.17	END

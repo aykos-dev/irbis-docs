@@ -1,0 +1,74 @@
+{
+ "meta": {
+  "title": "Refresh failure after a 401 returns the app to guest with a toast",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC9 — 401 → refresh fails → guest + toast",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER signed in on the device"
+  ],
+  "steps": [
+   "Delete the signed-in QA user's tokens and row on the local DB (the access token stays cryptographically valid, the account is gone → 401, refresh refused)",
+   "Cold start the app"
+  ],
+  "expected": [
+   "Toast 'Your session has ended. You're browsing as a guest.' within 15 s of the start — UI tree + screenshot",
+   "The Profile tab shows the guest Profile and no account nodes — UI tree"
+  ],
+  "focus": "profile.guest",
+  "caption": {
+   "expected": "guest after failed refresh"
+  },
+  "tc": "TC-037",
+  "plan": "Test_auth.md",
+  "anchor": "tc-037--p0--refresh-failure-after-a-401-returns-the-app-to-guest-with-a-toast"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 12.9,
+ "events": 5,
+ "done": [
+  "QA-USER qa_rf_2235034 signed in",
+  "1. Remove the account and its tokens on the local DB",
+  "2. Cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "toast seen=True",
+   "proof": [
+    "2_toast.png"
+   ],
+   "t": 11.3
+  },
+  "2": {
+   "ok": true,
+   "observed": "guest Profile",
+   "proof": [
+    "3_guest.png"
+   ],
+   "t": 12.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "profile.account not shown",
+   "t": 9.1
+  },
+  {
+   "name": "user removed",
+   "ok": true,
+   "seen": "row still present",
+   "t": 9.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_toast.png",
+  "3_guest.png"
+ ]
+}

@@ -1,0 +1,6 @@
+3.35	1: Type '.abc'
+6.0	2: Type 'abc.'
+8.18	3: Type 'ab-cd'
+10.64	4: Type 'ab cd'
+13.05	5: Type 'q.a_59721'
+15.48	END

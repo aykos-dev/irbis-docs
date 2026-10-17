@@ -1,0 +1,5 @@
+7.39	1: Open Recovery phone, add the number
+10.78	2: Type the code and verify
+14.55	Expected: phone verified
+14.55	Result: PASS
+14.55	END

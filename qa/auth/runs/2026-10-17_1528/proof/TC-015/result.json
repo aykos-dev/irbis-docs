@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Four wrong passwords do not lock: the fifth attempt with the right password logs in",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC4 — lockout boundary 4 (not yet locked)",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER exists",
+   "Guest, log-in screen open"
+  ],
+  "steps": [
+   "Send 4 wrong passwords for the QA-USER through the API",
+   "Log in through the app with the right password"
+  ],
+  "expected": [
+   "API: four wrong attempts each 401 INVALID_CREDENTIALS — API response",
+   "App log-in with the right password succeeds: event logged_in and profile.account — event log + UI tree"
+  ],
+  "focus": "profile.account",
+  "caption": {
+   "expected": "4 wrong then ok"
+  },
+  "tc": "TC-015",
+  "plan": "Test_auth.md",
+  "anchor": "tc-015--p1--four-wrong-passwords-do-not-lock-the-fifth-attempt-with-the-right-password-logs-in"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 10.4,
+ "events": 4,
+ "done": [
+  "QA-USER qa_l4_2234358",
+  "1. Four wrong passwords via the API",
+  "2. Log in with the right password"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "[(401, 'INVALID_CREDENTIALS'), (401, 'INVALID_CREDENTIALS'), (401, 'INVALID_CREDENTIALS'), (401, 'INVALID_CREDENTIALS')]",
+   "proof": [],
+   "t": 1.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "profile.account=True, logged_in event=True",
+   "proof": [
+    "2_in.png"
+   ],
+   "t": 10.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "log-in screen open",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 5.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_in.png"
+ ]
+}

@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "title": "A blocked user cannot log in and sees the block reason",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC11 — blocked account at log-in",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-BLOCKED user (blocked on the local DB with reason spam)",
+   "Guest, log-in screen open"
+  ],
+  "steps": [
+   "Log in with the blocked QA user's correct credentials"
+  ],
+  "expected": [
+   "auth.blocked shows 'Your account is blocked' and 'Reason: Spam or advertising' — UI tree + screenshot",
+   "Event account_blocked_shown — event log",
+   "No session: after closing the screen the Profile tab is the guest Profile — UI tree"
+  ],
+  "focus": "auth.blocked",
+  "caption": {
+   "expected": "blocked message"
+  },
+  "tc": "TC-041",
+  "plan": "Test_auth.md",
+  "anchor": "tc-041--p0--a-blocked-user-cannot-log-in-and-sees-the-block-reason"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 9.1,
+ "events": 4,
+ "done": [
+  "QA-BLOCKED qa_blk_2235073 (spam)",
+  "1. Log in",
+  "2. Close the log-in screen"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "blocked card=True, texts=['Your account is blocked', 'Reason: Spam or advertising']",
+   "proof": [
+    "1_blocked.png"
+   ],
+   "t": 7.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "event=True",
+   "proof": [],
+   "t": 7.9
+  },
+  "3": {
+   "ok": true,
+   "observed": "guest Profile after closing",
+   "proof": [
+    "2_guest.png"
+   ],
+   "t": 8.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "blocked on the DB",
+   "ok": true,
+   "seen": "block not set",
+   "t": 0.4
+  },
+  {
+   "name": "log-in screen open",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 3.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_blocked.png",
+  "2_guest.png"
+ ]
+}

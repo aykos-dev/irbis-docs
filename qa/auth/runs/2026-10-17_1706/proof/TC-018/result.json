@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Continue as guest closes the log-in screen",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC4 — 'Continue as guest' closes the screen",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest; log-in opened from Profile"
+  ],
+  "steps": [
+   "Profile → Log in → check: auth.login",
+   "Tap Continue as guest"
+  ],
+  "expected": [
+   "auth.login is gone and the guest Profile (profile.guest) is shown — UI tree + screenshot",
+   "Still a guest: no profile.username — UI tree"
+  ],
+  "focus": "profile.guest",
+  "caption": {
+   "expected": "back on guest Profile"
+  },
+  "tc": "TC-018",
+  "plan": "Test_auth.md",
+  "anchor": "tc-018--p2--continue-as-guest-closes-the-log-in-screen"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 4.2,
+ "events": 2,
+ "done": [
+  "guest",
+  "1. Tap Continue as guest"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "login gone=True, guest profile=True",
+   "proof": [
+    "1_closed.png"
+   ],
+   "t": 3.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "no account node",
+   "proof": [
+    "1_closed.png"
+   ],
+   "t": 3.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "log-in screen open",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 2.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_closed.png"
+ ]
+}

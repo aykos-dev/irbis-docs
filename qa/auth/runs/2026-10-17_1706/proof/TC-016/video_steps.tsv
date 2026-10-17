@@ -1,0 +1,5 @@
+4.02	1: Five wrong passwords
+32.76	2: Right password after the lock
+37.38	Expected: lock message with minutes
+37.38	Result: PASS
+37.38	END

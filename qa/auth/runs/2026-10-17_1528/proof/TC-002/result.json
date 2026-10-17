@@ -1,0 +1,72 @@
+{
+ "meta": {
+  "title": "Path, Explore, Lessons, Community show the coming-soon empty state",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC1 — four tabs empty state",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "App on the tab bar"
+  ],
+  "steps": [
+   "Tap each of Explore, Lessons, Community, Path in turn → check: empty.coming-soon within 5 s each"
+  ],
+  "expected": [
+   "Each of the four tabs shows 'Coming with the next update', 'Irbis is still packing for this one.' and the sleepy Irbis ('Irbis, sleepy') — screenshot per tab",
+   "Event tab_opened {tab} with the tapped tab's key for each of the four taps — event log"
+  ],
+  "focus": "empty.coming-soon",
+  "caption": {
+   "expected": "coming soon + sleepy Irbis"
+  },
+  "tc": "TC-002",
+  "plan": "Test_auth.md",
+  "anchor": "tc-002--p1--path-explore-lessons-community-show-the-coming-soon-empty-state"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 7.8,
+ "events": 5,
+ "done": [
+  "app launched",
+  "1. Tap tab explore",
+  "2. Tap tab lessons",
+  "3. Tap tab community",
+  "4. Tap tab path"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "per tab: [('explore', True), ('lessons', True), ('community', True), ('path', True)]",
+   "proof": [
+    "1_explore.png",
+    "2_lessons.png",
+    "3_community.png",
+    "4_path.png"
+   ],
+   "t": 7.5
+  },
+  "2": {
+   "ok": true,
+   "observed": "tab_opened per tab: [('explore', True), ('lessons', True), ('community', True), ('path', True)]",
+   "proof": [],
+   "t": 7.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "tab bar shown",
+   "ok": true,
+   "seen": "no tab bar",
+   "t": 2.8
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_explore.png",
+  "2_lessons.png",
+  "3_community.png",
+  "4_path.png"
+ ]
+}

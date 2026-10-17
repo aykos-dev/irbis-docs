@@ -1,0 +1,63 @@
+{
+ "meta": {
+  "title": "Send again is locked with a countdown when the code screen opens",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC5 — resend locked for 60 s (unlock after 60 s + new code: irbis-app reset.test.tsx, irbis-api auth.rules.spec.ts)",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-VERIFIED user",
+   "Reset code screen just opened"
+  ],
+  "steps": [
+   "Open the reset code screen and read the resend row"
+  ],
+  "expected": [
+   "auth.resend-countdown 'Send again in …' shown, no auth.resend — UI tree + screenshot"
+  ],
+  "focus": "auth.resend-row",
+  "caption": {
+   "expected": "resend lock"
+  },
+  "tc": "TC-023",
+  "plan": "Test_auth.md",
+  "anchor": "tc-023--p1--send-again-is-locked-with-a-countdown-when-the-code-screen-opens"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 9.0,
+ "events": 3,
+ "done": [
+  "QA-VERIFIED qa_rsd_2239296",
+  "1. Read the resend row"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "locked with countdown: True",
+   "proof": [
+    "1_start.png"
+   ],
+   "t": 8.7
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "forgot screen open",
+   "ok": true,
+   "seen": "no auth.forgot",
+   "t": 5.8
+  },
+  {
+   "name": "code screen",
+   "ok": true,
+   "seen": "no auth.reset",
+   "t": 8.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_start.png"
+ ]
+}

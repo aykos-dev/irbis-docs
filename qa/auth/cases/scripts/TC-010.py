@@ -40,6 +40,7 @@ def run(c):
     c.step(1, "8 digits")
     fill("auth.phone", "90000001")
     tap("auth.username", exact=True)
+    hide_kb()
     ok = wait(err, 3)
     c.result(1, ok, f"error shown={ok}", [c.shot("1_eight", focus="auth.phone")])
     c.step(2, "9 digits")

@@ -1,0 +1,5 @@
+6.35	1: Remove the account and its tokens on the local DB
+6.75	2: Cold start
+10.11	Expected: guest after failed refresh
+10.11	Result: PASS
+10.11	END

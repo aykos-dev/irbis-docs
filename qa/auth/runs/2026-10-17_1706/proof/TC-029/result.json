@@ -1,0 +1,75 @@
+{
+ "meta": {
+  "title": "A wrong verification code is refused and the phone stays unverified",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC6 — wrong code does not verify",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER without phone, signed in, code requested for the phone"
+  ],
+  "steps": [
+   "Add the phone, then type a wrong 6-digit code, submit"
+  ],
+  "expected": [
+   "Error 'That code isn't right.' — UI tree + screenshot",
+   "No recovery_phone_verified event; API /v1/me hasRecoveryPhone stays false — event log + API response"
+  ],
+  "focus": "auth.recovery-phone",
+  "caption": {
+   "expected": "wrong verify code"
+  },
+  "tc": "TC-029",
+  "plan": "Test_auth.md",
+  "anchor": "tc-029--p1--a-wrong-verification-code-is-refused-and-the-phone-stays-unverified"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 14.6,
+ "events": 4,
+ "done": [
+  "QA-USER qa_phw_2239360 signed in",
+  "1. Wrong code"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "message=\"That code isn't right.\"",
+   "proof": [
+    "1_wrong.png"
+   ],
+   "t": 14.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "no event=True, hasRecoveryPhone=False",
+   "proof": [],
+   "t": 14.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "profile.account not shown",
+   "t": 7.1
+  },
+  {
+   "name": "phone screen",
+   "ok": true,
+   "seen": "no auth.recovery-phone",
+   "t": 8.1
+  },
+  {
+   "name": "code step",
+   "ok": true,
+   "seen": "no code step",
+   "t": 9.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_wrong.png"
+ ]
+}

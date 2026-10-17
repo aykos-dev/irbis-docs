@@ -1,0 +1,4 @@
+0.24	1: Log in through the app
+8.16	Expected: signed-in Profile
+8.16	Result: PASS
+8.16	END

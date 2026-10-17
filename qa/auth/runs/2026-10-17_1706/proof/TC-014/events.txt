@@ -1,0 +1,5 @@
+17:12:34.807 tab_opened {"tab": "path"}
+17:12:35.847 tab_opened {"tab": "profile"}
+17:12:36.621 signed_out {}
+17:12:41.152 log_in_failed {"code": "INVALID_CREDENTIALS"}
+17:12:45.564 log_in_failed {"code": "INVALID_CREDENTIALS"}

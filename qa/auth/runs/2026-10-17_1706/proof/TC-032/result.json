@@ -1,0 +1,91 @@
+{
+ "meta": {
+  "title": "Log in from the prompt: the gated action continues exactly once",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 — after log-in the gated action continues once",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER; guest; Debug screen"
+  ],
+  "steps": [
+   "Debug → Open log-in prompt → I have an account",
+   "Log in with the QA-USER",
+   "Wait 4 s on the Debug screen"
+  ],
+  "expected": [
+   "Log-in screen opens from the prompt (auth.login) — UI tree",
+   "After log-in the Debug screen shows 'The gated action ran 1 time(s).' — UI tree + screenshot",
+   "Still 1 after 4 s (it did not run twice) — UI tree"
+  ],
+  "focus": "debug.gate-ran",
+  "caption": {
+   "expected": "gated action ran once"
+  },
+  "tc": "TC-032",
+  "plan": "Test_auth.md",
+  "anchor": "tc-032--p0--log-in-from-the-prompt-the-gated-action-continues-exactly-once"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 14.3,
+ "events": 6,
+ "done": [
+  "QA-USER qa_gl_2239402; guest",
+  "1. Tap I have an account",
+  "2. Log in"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "login screen=True",
+   "proof": [
+    "1_login.png"
+   ],
+   "t": 6.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "back on Debug=True, text='The gated action ran 1 time(s).'",
+   "proof": [
+    "2_ran.png"
+   ],
+   "t": 9.6
+  },
+  "3": {
+   "ok": true,
+   "observed": "after 4 s: 'The gated action ran 1 time(s).'",
+   "proof": [
+    "3_still.png"
+   ],
+   "t": 14.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "guest state",
+   "ok": true,
+   "seen": "no guest Profile",
+   "t": 2.0
+  },
+  {
+   "name": "Debug screen open",
+   "ok": true,
+   "seen": "no debug.screen",
+   "t": 4.2
+  },
+  {
+   "name": "gate shown",
+   "ok": true,
+   "seen": "no auth.gate",
+   "t": 4.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_login.png",
+  "2_ran.png",
+  "3_still.png"
+ ]
+}

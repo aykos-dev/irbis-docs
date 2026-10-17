@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "Copy is translated and layout survives long text — gate",
+  "priority": "P2",
+  "group": "Standards",
+  "requirement": "engineering-standards §12/§13 — i18n, +40% text, largest font",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Russian, font 1.15 — open the screen",
+   "Uzbek, font 1.15 — open the screen",
+   "English, font 2.0 — open the screen"
+  ],
+  "expected": [
+   "No English catalog string left on screen in Russian or Uzbek — UI tree",
+   "Nothing clipped or overflowing its container in any of the three — one composite crop (human)"
+  ],
+  "caption": {
+   "expected": "translated, nothing overflows"
+  },
+  "tc": "STD-TEXT@gate",
+  "plan": "Test_auth.md",
+  "anchor": "std-textgate--p2--copy-is-translated-and-layout-survives-long-text",
+  "screen": "gate"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 19.9,
+ "events": 11,
+ "done": [
+  "1. ru, font 1.15 — open the screen",
+  "2. uz, font 1.15 — open the screen",
+  "3. en, font 2.0 — open the screen"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "untranslated: {'ru': ['Keep your progress', \"Make a free account so your XP, lessons and streak don't get lost.\", 'Level up your companion', 'Trip plans that alert your contact', 'Post, join groups, climb leagues', 'Not now', 'Your progress stays on this phone until you sign up.', 'Debug', 'Environment: dev', 'API status', 'Open log-in prompt', 'The gated action ran 0 time(s).'], 'uz': ['Keep your progress', \"Make a free account so your XP, lessons and streak don't get lost.\", 'Level up your companion', 'Trip plans that alert your contact', 'Post, join groups, climb leagues', 'Not now', 'Your progress stays on this phone until you sign up.', 'Debug', 'Environment: dev', 'API status', 'Open log-in prompt', 'The gated action ran 0 time(s).']}",
+   "proof": [],
+   "t": 18.0
+  },
+  "2": {
+   "ok": null,
+   "observed": "judge _composite.png: ru · uz · en@2.0 side by side",
+   "proof": [
+    "ru_font1.15.png",
+    "uz_font1.15.png",
+    "en_font2.0.png"
+   ],
+   "t": 18.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened (ru)",
+   "ok": true,
+   "seen": "auth.gate",
+   "t": 4.5
+  },
+  {
+   "name": "screen opened (uz)",
+   "ok": true,
+   "seen": "auth.gate",
+   "t": 9.8
+  },
+  {
+   "name": "screen opened (en)",
+   "ok": true,
+   "seen": "auth.gate",
+   "t": 16.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "ru_font1.15.png",
+  "uz_font1.15.png",
+  "en_font2.0.png"
+ ]
+}

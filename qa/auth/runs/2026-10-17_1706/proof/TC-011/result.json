@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Terms must be accepted to create an account",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC3 — terms checkbox required",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Sign-up screen open",
+   "Valid free username and password typed"
+  ],
+  "steps": [
+   "Fill username and password, leave terms unticked, submit"
+  ],
+  "expected": [
+   "Error 'Please accept the Terms and Privacy Policy.' — UI tree + screenshot",
+   "No account created: DB count 0 and no signed_up event in 4 s — DB + event log"
+  ],
+  "focus": "auth.terms",
+  "caption": {
+   "expected": "terms error"
+  },
+  "tc": "TC-011",
+  "plan": "Test_auth.md",
+  "anchor": "tc-011--p1--terms-must-be-accepted-to-create-an-account"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 11.5,
+ "events": 2,
+ "done": [
+  "free username q611662",
+  "1. Fill username and password, no terms, submit"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "error shown=True",
+   "proof": [
+    "1_terms.png"
+   ],
+   "t": 8.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "no event=True",
+   "proof": [
+    "1_terms.png"
+   ],
+   "t": 11.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "sign-up screen open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 2.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_terms.png"
+ ]
+}

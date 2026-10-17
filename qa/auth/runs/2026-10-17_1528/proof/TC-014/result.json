@@ -1,0 +1,76 @@
+{
+ "meta": {
+  "title": "Wrong password and unknown username give the same generic message",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC4 — one generic credential error",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER exists",
+   "Guest, log-in screen open"
+  ],
+  "steps": [
+   "Log in with the QA-USER name and a wrong password",
+   "Log in with an unknown username and any password"
+  ],
+  "expected": [
+   "Wrong password: auth.error 'Username or password is wrong' — UI tree + screenshot",
+   "Unknown username: the identical text 'Username or password is wrong' — UI tree",
+   "Event log_in_failed fired for both attempts — event log"
+  ],
+  "focus": "auth.error",
+  "caption": {
+   "expected": "generic credential error"
+  },
+  "tc": "TC-014",
+  "plan": "Test_auth.md",
+  "anchor": "tc-014--p0--wrong-password-and-unknown-username-give-the-same-generic-message"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 15.7,
+ "events": 4,
+ "done": [
+  "QA-USER qa_gen_2234089",
+  "1. Wrong password",
+  "2. Unknown username"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "auth.error='Username or password is wrong'",
+   "proof": [
+    "1_wrongpw.png"
+   ],
+   "t": 9.3
+  },
+  "2": {
+   "ok": true,
+   "observed": "auth.error='Username or password is wrong'",
+   "proof": [
+    "2_unknown.png"
+   ],
+   "t": 15.4
+  },
+  "3": {
+   "ok": true,
+   "observed": "log_in_failed events: 2",
+   "proof": [],
+   "t": 15.4
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "log-in screen open",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 5.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_wrongpw.png",
+  "2_unknown.png"
+ ]
+}

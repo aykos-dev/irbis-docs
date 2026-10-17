@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "title": "Forgot password screen shows the support path for accounts without a phone",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC5 — A4 support path",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, Forgot password open"
+  ],
+  "steps": [
+   "Log in screen → Forgot password? → check: auth.forgot"
+  ],
+  "expected": [
+   "Title 'Forgot your password?' and the card 'No recovery phone on the account?' (auth.support-note) with the support text — UI tree + screenshot"
+  ],
+  "focus": "auth.support-note",
+  "caption": {
+   "expected": "support note"
+  },
+  "tc": "TC-020",
+  "plan": "Test_auth.md",
+  "anchor": "tc-020--p2--forgot-password-screen-shows-the-support-path-for-accounts-without-a-phone"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 7.2,
+ "events": 2,
+ "done": [
+  "guest"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "title/note present: True",
+   "proof": [
+    "1_forgot.png"
+   ],
+   "t": 6.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "forgot screen open",
+   "ok": true,
+   "seen": "no auth.forgot",
+   "t": 6.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_forgot.png"
+ ]
+}

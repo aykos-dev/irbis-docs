@@ -1,0 +1,6 @@
+2.62	1: 8 digits
+4.99	2: 9 digits
+8.28	3: Type letters
+10.15	Expected: phone field
+10.15	Result: PASS
+10.15	END

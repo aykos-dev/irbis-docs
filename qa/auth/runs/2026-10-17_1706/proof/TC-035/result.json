@@ -1,0 +1,96 @@
+{
+ "meta": {
+  "title": "Guest language moves into the account once, after the first sign-up on the device",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC8 — guest-merge sent once after first sign-up/log-in",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest; app language English"
+  ],
+  "steps": [
+   "Profile → Language → Uzbek",
+   "Sign up a free username",
+   "Sign out and log in again with the same account",
+   "Restore English while a guest"
+  ],
+  "expected": [
+   "Event guest_merged {items ≥ 1} after sign-up — event log",
+   "API /v1/me locale is 'uz' for the new account — API response",
+   "No second guest_merged event within 6 s of the next log-in — event log"
+  ],
+  "focus": "profile.account",
+  "caption": {
+   "expected": "merged once"
+  },
+  "tc": "TC-035",
+  "plan": "Test_auth.md",
+  "anchor": "tc-035--p1--guest-language-moves-into-the-account-once-after-the-first-sign-up-on-the-device"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 37.1,
+ "events": 7,
+ "done": [
+  "guest; free username qa_gm_6698",
+  "1. Choose Uzbek",
+  "2. Sign up",
+  "3. Sign out, log in again",
+  "4. Restore English"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "event: None",
+   "proof": [],
+   "t": 27.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "locale=uz",
+   "proof": [],
+   "t": 27.9
+  },
+  "3": {
+   "ok": true,
+   "observed": "no second guest_merged",
+   "proof": [],
+   "t": 35.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "guest state",
+   "ok": true,
+   "seen": "no guest Profile",
+   "t": 3.0
+  },
+  {
+   "name": "language sheet",
+   "ok": true,
+   "seen": "no sheet",
+   "t": 3.5
+  },
+  {
+   "name": "sign-up screen",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 6.1
+  },
+  {
+   "name": "guest again",
+   "ok": true,
+   "seen": "no guest",
+   "t": 28.7
+  },
+  {
+   "name": "login screen",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 29.6
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

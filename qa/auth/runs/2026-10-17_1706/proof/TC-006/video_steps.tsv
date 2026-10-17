@@ -1,0 +1,8 @@
+3.07	1: Type '.abc'
+9.5	2: Type 'abc.'
+16.39	3: Type 'ab-cd'
+18.65	4: Type 'ab cd'
+20.64	5: Type 'q.a_99208'
+23.66	Expected: character rules
+23.66	Result: PASS
+23.66	END

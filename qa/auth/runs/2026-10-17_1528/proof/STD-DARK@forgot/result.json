@@ -1,0 +1,57 @@
+{
+ "meta": {
+  "title": "Dark mode uses the night tokens — forgot",
+  "priority": "P3",
+  "group": "Standards",
+  "requirement": "engineering-standards §5/§8 — light + dark from tokens",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Dark mode on",
+   "Open the screen"
+  ],
+  "expected": [
+   "Screen background is the night token #131D22 — screenshot (pixel check)"
+  ],
+  "caption": {
+   "expected": "night background"
+  },
+  "tc": "STD-DARK@forgot",
+  "plan": "Test_auth.md",
+  "anchor": "std-darkforgot--p3--dark-mode-uses-the-night-tokens",
+  "screen": "forgot"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 6.8,
+ "events": 2,
+ "done": [
+  "1. Dark mode on",
+  "2. Open the screen"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "background pixel (19, 29, 34) vs #131D22",
+   "proof": [
+    "dark.png"
+   ],
+   "t": 5.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened",
+   "ok": true,
+   "seen": "auth.forgot",
+   "t": 4.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "dark.png"
+ ]
+}

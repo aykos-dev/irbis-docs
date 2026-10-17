@@ -1,0 +1,7 @@
+16:02:37.097 tab_opened {"tab": "path"}
+16:02:38.085 tab_opened {"tab": "profile"}
+16:02:38.976 signed_out {}
+16:02:49.491 signed_up {"has_phone": false}
+16:03:04.980 signed_out {}
+16:03:09.222 logged_in {}
+16:03:12.553 signed_out {}
