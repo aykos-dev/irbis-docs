@@ -55,7 +55,7 @@ New migration `onboarding_profile`. Merge rule (Q8): guest-merge never overwrite
 ### QA events (app, dev/staging builds)
 - `onboarding_step { step: splash|welcome|language|experience|interests|companion }`
 - `onboarding_language { locale }` · `onboarding_end { via: finish|close|login, experience?, interestsCount }`
-- existing `guest_merged { keys }` (from auth) proves AC7/AC8 merge.
+- `guest_merge_result { merged, skipped }` (comma-joined key names from the API) proves AC7/AC8 merge; `locale_applied { locale }` proves AC8 (existing `guest_merged { items }` unchanged).
 
 ### testIDs (app)
 `onboarding.splash`, `onboarding.welcome`, `onboarding.get-started`, `onboarding.have-account`,
