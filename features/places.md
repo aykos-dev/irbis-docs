@@ -123,6 +123,8 @@ gallery (no photo storage yet).
 - Q6 (owner, 2026-10-17): show the level gate against Level 1 (API returns `viewer.level` = 1 until `levels`).
 - Q7 (owner, 2026-10-17): names stored as uz + optional ru/en (fallback uz); seed strips "(… m)" from names.
 - Q8 (owner, 2026-10-17): canvas peak/lake/cave SVGs final; waterfall/canyon placeholders; no photos.
+- Q9 (owner, 2026-10-17): the auth shell test drops Explore from its coming-soon loop and from its expected
+  `tab_opened` list (Explore is real now); no other change to that test.
 - Sorting is by distance, not the canvas's "Sorted by fit" (fit belongs to `weekly-path`).
 - Device location comes from MapLibre's location manager; a separate geolocation package needs approval first.
 
