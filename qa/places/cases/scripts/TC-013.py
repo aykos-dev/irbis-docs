@@ -35,7 +35,7 @@ def run(c):
             if has(f"explore.card.{slug}", exact=True): break
             from drv import scroll_down; scroll_down()
         return ok, card_text(slug), c.shot(f"d{m}", f"explore.card.{slug}") if has(f"explore.card.{slug}", exact=True) else None
-    cases = [(8400, r"\\b8\\.4 km"), (112000, r"\\b112 km"), (9900, r"\\b9\\.9 km"), (9960, r"\\b10\\.0 km"), (10100, r"(?<![\\d.])10 km")]
+    cases = [(8400, r"\b8\.4 km"), (112000, r"\b112 km"), (9900, r"\b9\.9 km"), (9960, r"\b10\.0 km"), (10100, r"(?<![\d.])10 km")]
     for i, (m, rx) in enumerate(cases):
         c.step(i + 1, f"mock {m} m from the place")
         ok, t, shot = read(m)

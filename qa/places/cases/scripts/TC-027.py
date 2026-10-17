@@ -14,8 +14,7 @@ META = {'title': 'Deep link irbis://place/<id> opens Place from a cold start; an
            'Tap Back / the on-screen back action'],
  'expected': ['The seeded place opens with place.name equal to its name_uz and QA event place_viewed {slug} — UI '
               'tree + QA event',
-              'The unknown id shows an error / not-found state (place.not-found or place.error), no crash, no '
-              'place.name — UI tree + screenshot (wording is an open question)',
+              "The unknown id shows place.not-found with the text 'This place isn't available' (ru 'Это место недоступно', uz 'Bu joy mavjud emas') and a back button (place.not-found-back); no place.name, no crash — UI tree + screenshot",
               'Back leaves the error state to a tab screen without a crash — UI tree'],
  'focus': 'place.screen',
  'caption': {'expected': 'The seeded place opens with place.name equal to its name_uz '}
