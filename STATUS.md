@@ -17,6 +17,8 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   `irbis-web/.env.local`. Real SMS provider: later (staging can't boot until its adapter exists).
 
 ## Next
+- onboarding — paused before spec; answers Q1–Q4 in `features/onboarding.md`, media list in
+  `design/media/onboarding/MEDIA.md`. Resume with `/feature onboarding` after auth is merged.
 
 ## Known issues
 - none
