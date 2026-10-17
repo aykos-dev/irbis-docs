@@ -17,3 +17,7 @@ placeholders (STATUS known issue); no photo gallery in this feature.
 | `Place.dc.html` inline SVG | Difficulty boots (1–5) | Place, Explore card | inline SVG | exists on canvas · export |
 | real place photos | Per-place gallery ("1 / 48") | Place hero gallery | JPG/WebP | needed · not in this feature (no photo storage yet) |
 | `TrailMap.dc.html` | Trail terrain map + route line | TrailMap | SVG | out of scope (trails later) |
+
+2026-10-18: owner hero images for all 7 types (`design/images/hero/hero-<type>.png`) shipped in irbis-app c062e05 as
+1170 px JPEGs — replace the canvas peak/lake/cave/trail SVGs and the waterfall/canyon/camping placeholders. Type icons +
+colours for waterfall/canyon are still placeholders.

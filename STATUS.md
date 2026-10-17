@@ -27,8 +27,8 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
-- places placeholders: waterfall + canyon hero art, type icons and colours (#2BA3C4, #D9733F, not in design.md); camping
-  reuses the trail illustration — swap when the owner drops files in `design/media/places/`
+- places placeholders: waterfall + canyon type icons and colours (#2BA3C4, #D9733F, not in design.md) — hero art for all
+  7 types is the owner's (app c062e05, 2026-10-18)
 - places: map tiles stay light in dark mode (OpenFreeMap liberty style); place descriptions render Markdown as plain text;
   STD-TEXT flags level names on Place as untranslated (false positive); thin line over the last text row at the bottom of
   Place in uz/ru crops — owner to check by eye
