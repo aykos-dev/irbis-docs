@@ -9,3 +9,4 @@
 | canvas asset `bdd9780b…` | Irbis sleepy | tab empty states | SVG | exists · final |
 | canvas asset `44b792e4…` | Panda cub (L1) | A6 guest profile | SVG | exists · final |
 | `Nav.dc.html` inline SVG | 5 tab icons (Path · Explore · Lessons · Community; Profile uses the companion) | bottom tabs | inline SVG → `Icon` | exists · final |
+| canvas asset `68fc129c…` → `irbis-web/public/irbis-icon.svg` | Irbis app icon | web AdmLogin (52 px), admin sidebar brand row (40 px) | SVG | exists · final |
