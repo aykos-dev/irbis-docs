@@ -64,6 +64,19 @@ Generators refuse non-empty folders, so scaffold into a temp dir and copy over (
 - Phone: USB debugging on, device UI in English, test account signed in. Export `IRBIS_QA_PHONE` /
   `IRBIS_QA_OTP` in your shell profile only if scripts must type them.
 
+## Admin account (before using the admin web, feature `auth`)
+The first admin is created from the API repo; there is no public way to make one.
+1. Start the local database and apply migrations: `cd ../irbis-api && docker compose up -d db && npx prisma migrate deploy`
+   (your `.env` supplies `DATABASE_URL`).
+2. Run `npm run admin:create` **in an interactive terminal**. It asks for the username, then the password twice
+   (typing is hidden). It never takes the password as an argument, environment variable or pipe.
+3. If the username already exists it offers to promote that user to admin (their password stays unchanged).
+   Reserved names such as `admin` are allowed here (the public sign-up refuses them).
+4. Sign in at the admin web with that account. Further admins: promote users from the admin panel (user detail,
+   change role) or run the command again.
+Staging/prod additionally need `APP_ENV=staging|prod` and `PHONE_ENCRYPTION_KEY` (`openssl rand -base64 32`),
+set in the secrets manager — never pasted into chat. The fake SMS sender refuses to start there.
+
 ## Later (not day one)
 - **Graphify**: once a repo is big enough that Claude wanders, build the graph and enable its post-commit hook.
   First build costs tokens; not worth it on a near-empty repo.
