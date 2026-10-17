@@ -1,94 +1,115 @@
 # auth
 
-- Status: Draft — decisions taken 2026-10-17; remaining questions asked at `/feature auth` step 1
-- Surfaces: api | app (web admin log-in reuses the API; its screen is built with the first web feature)
+- Status: Draft — awaiting approval (questions answered 2026-10-17)
+- Surfaces: api | app (web admin log-in is out of scope — first web feature)
 - Related ADRs: ADR-001 (auth), ADR-003 (API style)
 - Requirements: Product Overview § Accounts & sign-in · Screens: `design/canvas/AccLogin`, `AccSignup`, `AccGate`,
-  `AccForgot`, `AccReset`, `AccGuestProfile`, `Onb1Welcome` ("I already have an account")
+  `AccForgot`, `AccReset`, `AccGuestProfile`, `Nav` (bottom tabs)
 
 ## Goal
-Anyone can explore Irbis without an account. When they do something that saves or earns, the app asks them to log in
-or create an account (username + password), keeps what they did as a guest, and lets them reset a forgotten password
-with an SMS code if they added a recovery phone.
+Anyone can use Irbis without an account. A bottom tab bar is the app's home; the Profile tab lets a guest create an
+account or log in (username + password), and a shared log-in prompt is ready for every later feature that saves or
+earns. Forgotten passwords are reset with an SMS code when the account has a recovery phone.
 
 ## API
-| Method | Path | Auth | Request | Response | Errors |
+| Method | Path | Auth | Request | Response | Errors (code) |
 |---|---|---|---|---|---|
-| POST | /v1/auth/sign-up | public | username, password, recoveryPhone?, locale, acceptTerms | tokens + me | USERNAME_TAKEN, USERNAME_INVALID, PASSWORD_WEAK, VALIDATION_FAILED |
-| GET | /v1/auth/username-available?u= | public | — | { available } | RATE_LIMITED |
-| POST | /v1/auth/log-in | public | username, password | tokens + me | INVALID_CREDENTIALS, ACCOUNT_LOCKED, RATE_LIMITED |
-| POST | /v1/auth/refresh | refresh token | — | tokens | REFRESH_REUSED, REFRESH_EXPIRED |
-| POST | /v1/auth/sign-out | user | — | 204 | — |
-| POST | /v1/auth/password/forgot | public | username | 202 (same response whether or not the account/phone exists) | RATE_LIMITED |
+| POST | /v1/auth/sign-up | public | username, password, recoveryPhone?, locale, acceptTerms | tokens + me | USERNAME_TAKEN, USERNAME_INVALID, USERNAME_RESERVED, PASSWORD_WEAK, TERMS_REQUIRED, VALIDATION_FAILED |
+| GET | /v1/auth/username-available?u= | public, rate-limited | — | { available, reason? } | RATE_LIMITED |
+| POST | /v1/auth/log-in | public | username, password | tokens + me | INVALID_CREDENTIALS, ACCOUNT_LOCKED (+ retryAfterSec), RATE_LIMITED |
+| POST | /v1/auth/refresh | public (refresh token in body) | refreshToken | tokens | REFRESH_INVALID, REFRESH_REUSED |
+| POST | /v1/auth/sign-out | user | refreshToken | 204 | — |
+| POST | /v1/auth/password/forgot | public | username | 202 `{ resendAfterSec: 60 }` — identical whether or not the user/phone exists | RATE_LIMITED |
 | POST | /v1/auth/password/reset | public | username, code, newPassword | tokens + me | CODE_INVALID, CODE_EXPIRED, CODE_ATTEMPTS, PASSWORD_WEAK |
-| PUT / POST | /v1/me/recovery-phone · /verify | user | phone · code | me | PHONE_INVALID, CODE_INVALID |
-| POST | /v1/me/guest-merge | user | onboarding choices, lesson attempts, saved places (device ids) | merged summary | VALIDATION_FAILED |
+| PUT | /v1/me/recovery-phone | user | phone | 202 (code sent) | PHONE_INVALID, RATE_LIMITED |
+| POST | /v1/me/recovery-phone/verify | user | code | me | CODE_INVALID, CODE_EXPIRED, CODE_ATTEMPTS |
+| GET | /v1/me | user | — | me { id, username, locale, hasRecoveryPhone, createdAt } | — |
+| POST | /v1/me/guest-merge | user | { locale?, onboarding? } (extensible) | merged summary | VALIDATION_FAILED |
 
 ## Data model changes
-`User` gains `username` (unique, case-insensitive), `passwordHash`, `recoveryPhone?` (encrypted),
-`recoveryPhoneVerifiedAt?`; new `PasswordReset`, `LoginAttempt`; `RefreshToken` (ADR-001). Migration `auth_init`.
+`User` (username unique on `lower(username)`, passwordHash argon2id, recoveryPhone? encrypted at rest +
+recoveryPhoneVerifiedAt?, locale, createdAt), `RefreshToken` (familyId, tokenHash, expiresAt, revokedAt, replacedById),
+`PasswordReset` (userId, codeHash, expiresAt, attempts, usedAt), `LoginAttempt` (username, ip, at, ok),
+`SmsCode` for phone verification (or shared with PasswordReset via a `purpose` column). Migration `auth_init`.
+`SmsSender` interface: `FakeSmsSender` (dev/test only — logs `code for user …: 123456` to the API log; refuses to load
+when `NODE_ENV=production` or `APP_ENV` is staging/prod), real adapter later with owner-provided `.env` keys.
 
 ## Acceptance criteria
-- **AC1** — A new user can complete onboarding and use Path, Explore, Lessons, Community (read) and Profile without an
-  account; no screen blocks on log-in. SOS and Safety center work with no account.
-- **AC2** — Actions that save or earn (check in, start a trip plan, finish a lesson for XP, earn a badge, post, like,
-  comment, join a group, online game) open the log-in prompt sheet (A3) for a guest instead of performing the action.
-  "Not now" closes the sheet and leaves the user on the same screen with nothing lost.
-- **AC3** — After sign-up or log-in from the sheet, the interrupted action resumes once without re-tapping.
-- **AC4** — Sign-up takes username + password (+ optional recovery phone, + terms checkbox) and logs the user in.
-  Username availability shows while typing (pristine → validating → success / error).
-- **AC5** — Guest data (onboarding choices, completed lessons, saved places) is merged into the account on the first
-  sign-up or log-in; XP for merged lessons is awarded under the normal daily caps; merge runs once.
-- **AC6** — Log-in with a wrong username or password shows one generic error ("Username or password is wrong") — never
-  which one; repeated failures are rate-limited / locked per the values in Assumptions.
-- **AC7** — Forgot password: entering a username sends a 6-digit SMS code to the recovery phone if one exists; the
-  screen response is identical either way. A correct code + new password logs the user in and signs out every other
-  session. Codes are single-use, expire, and lock after too many attempts.
-- **AC8** — Accounts without a recovery phone see the support path on A4; Settings nudges them to add a phone.
-- **AC9** — Sign-out clears tokens from the Keychain and returns to the guest state (not to a log-in wall).
-- **AC10** — A Profile tab for a guest shows A6 (Create free account / Log in / Language / Safety & SOS).
-- **AC11** — Tokens: access ~15 min, refresh rotated on every use; reuse of an old refresh token revokes the family.
+- **AC1** — Cold start lands on the bottom tab bar (Path · Explore · Lessons · Community · Profile, per the canvas
+  `Nav`) with no log-in wall. Path, Explore, Lessons and Community show their empty state with sleepy Irbis and
+  "Coming with the next update" until their feature ships.
+- **AC2** — Profile tab, guest: canvas A6 — "You're exploring as a guest", Create free account, Log in, Language,
+  Safety & SOS (Safety opens its empty state until `safety-center`).
+- **AC3** — Sign up (A2): username 3–20 chars `a–z 0–9 . _`, not starting/ending with a dot, case-insensitive unique,
+  reserved names refused (admin, irbis, support, moderator, root, system, official); live availability while typing
+  (pristine → validating → success/error); password 6–64 chars, not equal to the username, not in the common-password
+  list; optional recovery phone (+998, 9 digits); terms checkbox required. Success logs the user in and returns to
+  where sign-up started.
+- **AC4** — Log in (A1) with username + password; wrong username or password shows one generic message ("Username or
+  password is wrong"). After **5** wrong passwords for a username within 15 min, that username is locked for **15 min**
+  and the message says how long; a per-IP limit stops trying many usernames. "Continue as guest" closes the screen.
+- **AC5** — Forgot password (A4 → A5): entering a username shows the same "code sent" screen whether or not the
+  account or phone exists; if a verified recovery phone exists, a 6-digit code is sent. The code is valid **5 min**,
+  "Send again" unlocks after **60 s**, **3** wrong tries void it, max 5 codes per day per account. Correct code + new
+  password (6–64) logs the user in and signs out every other session. A4 shows the support path for accounts without a
+  phone.
+- **AC6** — Signed-in Profile shows the username, a "Recovery phone" row (Add / verified ✓) and Sign out. Adding a
+  phone sends a code; verifying it marks the phone verified. Sign out clears the Keychain and returns to the guest
+  Profile (no wall).
+- **AC7** — `useRequireAccount(reason)` opens the log-in prompt (A3: "Keep your …", Create free account, I have an
+  account, Not now) for a guest; after sign-up/log-in the gated action continues once; "Not now" closes with nothing
+  lost. For a signed-in user it runs the action immediately. A dev-only Debug screen (absent from prod builds) can
+  open the prompt for QA.
+- **AC8** — Guest data (today: app language; onboarding choices once onboarding exists) is stored on the device and
+  sent once to `/v1/me/guest-merge` after the first sign-up or log-in on that device; later features register their
+  own items.
+- **AC9** — Tokens: access JWT ~15 min, opaque refresh token rotated on every refresh and stored hashed; reusing an
+  old refresh token revokes its whole family; the app refreshes once on 401 and retries; on refresh failure it
+  returns to the guest state with a toast.
+- **AC10** — The Status screen (M0) is no longer the first screen; it is reachable in dev/staging builds through the
+  Debug screen and the deep link `irbis://debug/status`.
 
 ### Required UI states (every touched client)
-- [ ] Loading (submit buttons pending, availability check spinner)
-- [ ] Error (field errors under fields; generic credential error; network error with retry)
-- [ ] Offline (sign-up / log-in / reset refused with a clear message; guest browsing of cached data continues)
-- [ ] App: keyboard never covers inputs; `returnKeyType` chain; password show/hide; `textContentType` /
-      `autoComplete` username / password / new-password / one-time-code / tel
-- [ ] Uses design tokens and `src/shared/components` primitives only
+- [ ] Loading: submit buttons pending (no double submit); availability check spinner in the field
+- [ ] Error: field errors under fields (server `fieldErrors` mapped); generic credential error; lock message with time
+- [ ] Offline: sign-up / log-in / reset refused with a clear message; guest browsing continues
+- [ ] Keyboard never covers inputs; `returnKeyType` chain; password show/hide; autofill types
+      (username, password, new-password, one-time-code, tel)
+- [ ] Tokens, Nunito, light/dark, safe areas; `src/shared/components` primitives only
 
 ### QA events (app, dev/staging builds)
-- `auth_gate_shown { reason }` · `auth_gate_dismissed { reason }` · `signed_up { has_phone }` · `logged_in` ·
-  `log_in_failed { code }` · `guest_merged { lessons, places }` · `password_reset_requested` · `password_reset_done` ·
-  `signed_out`
+`auth_gate_shown { reason }` · `auth_gate_dismissed { reason }` · `signed_up { has_phone }` · `logged_in` ·
+`log_in_failed { code }` · `guest_merged { items }` · `password_reset_requested` · `password_reset_done` ·
+`recovery_phone_verified` · `signed_out` · `tab_opened { tab }`
 
 ### testIDs (app)
-`auth.username`, `auth.password`, `auth.password-toggle`, `auth.phone`, `auth.terms`, `auth.submit`,
-`auth.forgot-link`, `auth.code`, `auth.new-password`, `auth.gate`, `auth.gate-signup`, `auth.gate-login`,
-`auth.gate-not-now`, `profile.guest-signup`, `profile.guest-login`
+`nav.tab-path`, `nav.tab-explore`, `nav.tab-lessons`, `nav.tab-community`, `nav.tab-profile`,
+`auth.username`, `auth.username-status`, `auth.password`, `auth.password-toggle`, `auth.phone`, `auth.terms`,
+`auth.submit`, `auth.error`, `auth.forgot-link`, `auth.continue-guest`, `auth.code`, `auth.resend`,
+`auth.new-password`, `auth.gate`, `auth.gate-signup`, `auth.gate-login`, `auth.gate-not-now`,
+`profile.guest`, `profile.guest-signup`, `profile.guest-login`, `profile.username`, `profile.recovery-phone`,
+`profile.sign-out`, `debug.open-gate`, `empty.coming-soon`
 
 ## Media
-Existing canvas SVGs only: Irbis default, excited, proud, worried; panda cub (L1). To confirm at step 1 whether they are
-final. No new art needed.
+`design/media/auth/MEDIA.md` — all from the canvas, owner confirmed final (2026-10-17).
 
 ## Waivers
-- none
+- Bottom tabs for Path / Explore / Lessons / Community show an intentional "coming with the next update" empty state
+  (owner decision Q6) — not a placeholder to be flagged by review; each feature replaces its tab's content.
 
 ## Out of scope
-- Social log-in (Google/Apple), email, two-factor; username change; account deletion (with `profile`);
-  web admin log-in screen (first web feature).
+- Social log-in, email, two-factor, username change, account deletion (with `profile`), web admin log-in screen,
+  real SMS provider adapter (owner adds keys later), onboarding screens.
 
 ## Assumptions
 - Q1 (owner, 2026-10-17): recovery by optional phone + SMS code; no phone = no self-service reset.
-- Q2 (owner, 2026-10-17): log-in is asked for anything that saves or earns; browsing, lessons (without XP) open.
-- Q3 (owner, 2026-10-17): guest onboarding choices, lesson progress and saved places move into the account.
-- Q4 (owner, 2026-10-17): trusted account = older than 7 days (tour groups can't act together on day one).
-
-## Open questions (asked at `/feature auth` step 1)
-- Username rules: canvas draws "3–20 letters, numbers, dot or underscore" — confirm; reserved names; case-insensitive?
-- Password policy: canvas draws "at least 8 characters, not your username" — confirm; max length; breached-password check?
-- Lockout: how many failed log-ins, for how long?
-- Reset code: expiry (e.g. 10 min), resend wait (canvas: 0:45), max attempts.
-- SMS provider for reset codes (Eskiz, Play Mobile, …) — real credentials go in `.env` by the owner.
-- Guest XP on merge: award lesson XP retroactively (current draft) or start XP at sign-up?
-- Does a guest finishing a lesson see the A3 sheet immediately (canvas) or only a banner?
+- Q2 (owner, 2026-10-17): log-in is asked for anything that saves or earns; browsing and lessons (no XP) open.
+- Q3 (owner, 2026-10-17): guest progress moves into the account.
+- Q4 (owner, 2026-10-17): trusted account = older than 7 days.
+- Q5 (owner, 2026-10-17): username 3–20 `a–z 0–9 . _`, case-insensitive, reserved names; password 6–64, not the
+  username, common passwords blocked; 5 wrong tries → 15-min lock; reset code 5 min, resend 60 s, 3 tries.
+- Q6 (owner, 2026-10-17): bottom tabs now with a real Profile tab; other tabs show the coming-soon empty state.
+- Q7 (owner, 2026-10-17): SMS sender pluggable; dev uses a fake that logs the code locally (never staging/prod).
+- Q8 (owner, 2026-10-17): log-in prompt built as a shared hook + sheet, dev Debug trigger for QA.
+- Q9 (owner, 2026-10-17): guest-merge mechanism now (language today); later features add their items and XP rules.
+- Q10 (owner, 2026-10-17): canvas mascot / panda / nav icons are final art.
