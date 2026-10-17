@@ -16,7 +16,7 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - M0 — api 8fb74fa, web f6c295f, app b0d7e37; `health` QA: phone run 0117 (6/9) → health/D1 + D2 fixed → emulator run 1119 9/9 (2026-10-17)
 
 ## In progress
-- (none)
+- places — spec approved, briefs 1 (api) · 2 (app Place) · 3 (app Explore) (2026-10-17)
 
 ## Next
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
