@@ -1,0 +1,5 @@
+3.68	1: Submit the username
+6.48	2: Type the code and the new password
+11.19	Expected: logged in after reset
+11.19	Result: PASS
+11.19	END

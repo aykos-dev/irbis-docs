@@ -1,0 +1,4 @@
+16:51:12.637 tab_opened {"tab": "path"}
+16:51:13.722 tab_opened {"tab": "profile"}
+16:51:14.235 signed_out {}
+16:51:18.341 password_reset_requested {}

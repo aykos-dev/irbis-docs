@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "Add a recovery phone and verify it with the SMS code",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC6 — add phone, code sent, verify marks verified",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER without phone, signed in on the device"
+  ],
+  "steps": [
+   "Tap Recovery phone → check: auth.recovery-phone",
+   "Type 9 digits (90 000 00 19), submit",
+   "Type the code from the API log, submit"
+  ],
+  "expected": [
+   "After submit the code step is shown (auth.code) and a code is in the API log — UI tree + API log",
+   "Event recovery_phone_verified — event log",
+   "Profile row shows 'Verified' with a check; API /v1/me hasRecoveryPhone true — UI tree + API response"
+  ],
+  "focus": "profile.recovery-phone",
+  "caption": {
+   "expected": "phone verified"
+  },
+  "tc": "TC-028",
+  "plan": "Test_auth.md",
+  "anchor": "tc-028--p0--add-a-recovery-phone-and-verify-it-with-the-sms-code"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 14.4,
+ "events": 5,
+ "done": [
+  "QA-USER qa_ph_2237914 signed in",
+  "1. Open Recovery phone, add the number",
+  "2. Type the code and verify"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "code step=True, code logged=True",
+   "proof": [
+    "1_code.png"
+   ],
+   "t": 10.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "event=True",
+   "proof": [],
+   "t": 13.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "row Verified=True, hasRecoveryPhone=True",
+   "proof": [
+    "3_verified.png"
+   ],
+   "t": 14.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "profile.account not shown",
+   "t": 7.8
+  },
+  {
+   "name": "phone screen",
+   "ok": true,
+   "seen": "no auth.recovery-phone",
+   "t": 8.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_code.png",
+  "3_verified.png"
+ ]
+}

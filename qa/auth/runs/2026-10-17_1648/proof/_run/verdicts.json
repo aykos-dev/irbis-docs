@@ -1,0 +1,109 @@
+{
+ "TC-001": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-003": {
+  "verdict": "Pass",
+  "line": "script bullet 3 red; crop OK",
+  "conclusion": "Crop and a UI dump show profile.language, profile.safety and 'Safety & SOS'; script text match was wrong (script defect, not app). Extra dev-only Debug tools row is present.",
+  "ok": {
+   "3": true
+  },
+  "actual": {
+   "3": "Language and Safety rows present (crop + UI tree)"
+  }
+ },
+ "TC-005": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-007": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-012": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-014": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-016": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-019": {
+  "verdict": "Pass",
+  "line": "script 'same texts' red; crops identical",
+  "conclusion": "All three crops show identical Enter the code screens; only the countdown (0:59 vs 0:58) differs, which the case says to ignore. Script comparison did not mask the countdown digits.",
+  "ok": {
+   "1": true
+  },
+  "actual": {
+   "1": "identical texts apart from countdown (crops)"
+  }
+ },
+ "TC-021": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-022": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-027": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-028": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-030": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-031": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-032": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-036": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-037": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-041": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-042": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ }
+}

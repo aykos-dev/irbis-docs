@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "title": "Guest Profile matches the A6 canvas content",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC2 — guest Profile content",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Signed out (guest)"
+  ],
+  "steps": [
+   "Open the Profile tab as a guest → check: profile.guest within 15 s"
+  ],
+  "expected": [
+   "Title 'You're exploring as a guest' and the guest body text — UI tree + screenshot",
+   "Buttons profile.guest-signup 'Create free account' and profile.guest-login 'Log in' — UI tree",
+   "Rows profile.language 'Language' and profile.safety 'Safety & SOS' — UI tree",
+   "No account nodes (profile.username, profile.sign-out) — UI tree"
+  ],
+  "focus": "profile.guest",
+  "caption": {
+   "expected": "guest Profile"
+  },
+  "tc": "TC-003",
+  "plan": "Test_auth.md",
+  "anchor": "tc-003--p0--guest-profile-matches-the-a6-canvas-content"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 5.1,
+ "events": 3,
+ "done": [
+  "guest state (signed out through the app if needed)",
+  "1. Cold start, open the Profile tab"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "texts: ['4:48', \"You're exploring as a guest\", 'Make a free account to keep your XP, level up your panda and plan trips that alert your contact.', 'CREATE FREE ACCOUNT', 'LOG IN', 'Language']",
+   "proof": [
+    "1_guest.png"
+   ],
+   "t": 3.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "signup True, login True",
+   "proof": [
+    "1_guest.png"
+   ],
+   "t": 3.8
+  },
+  "3": {
+   "ok": false,
+   "observed": "Language and Safety rows",
+   "proof": [
+    "1_guest.png"
+   ],
+   "t": 4.1
+  },
+  "4": {
+   "ok": true,
+   "observed": "no account nodes",
+   "proof": [
+    "1_guest.png"
+   ],
+   "t": 4.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "guest Profile shown",
+   "ok": true,
+   "seen": "profile.guest not shown",
+   "t": 3.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_guest.png"
+ ]
+}

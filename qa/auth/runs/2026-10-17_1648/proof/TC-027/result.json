@@ -1,0 +1,74 @@
+{
+ "meta": {
+  "title": "Signed-in Profile shows username, Recovery phone row and Sign out",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC6 — signed-in Profile content",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER without phone, signed in on the device"
+  ],
+  "steps": [
+   "Log in through the app → check: profile.account"
+  ],
+  "expected": [
+   "profile.username shows the username — UI tree + screenshot",
+   "Row profile.recovery-phone 'Recovery phone' with value 'Add' — UI tree",
+   "Button profile.sign-out 'Sign out'; no guest buttons — UI tree"
+  ],
+  "focus": "profile.account",
+  "caption": {
+   "expected": "signed-in Profile"
+  },
+  "tc": "TC-027",
+  "plan": "Test_auth.md",
+  "anchor": "tc-027--p0--signed-in-profile-shows-username-recovery-phone-row-and-sign-out"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.1,
+ "events": 3,
+ "done": [
+  "QA-USER qa_pro_2237903 without phone",
+  "1. Log in through the app"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "username='qa_pro_2237903'",
+   "proof": [
+    "1_account.png"
+   ],
+   "t": 7.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "row present=True",
+   "proof": [
+    "1_account.png"
+   ],
+   "t": 7.3
+  },
+  "3": {
+   "ok": true,
+   "observed": "sign-out present, no guest buttons",
+   "proof": [
+    "1_account.png"
+   ],
+   "t": 7.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "profile.account not shown",
+   "t": 6.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_account.png"
+ ]
+}

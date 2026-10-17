@@ -1,0 +1,5 @@
+3.6	1: Tap Open log-in prompt
+5.76	2: Tap Not now
+9.99	Expected: log-in prompt
+9.99	Result: PASS
+9.99	END

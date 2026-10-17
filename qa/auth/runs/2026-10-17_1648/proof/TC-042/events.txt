@@ -1,0 +1,6 @@
+16:53:21.917 tab_opened {"tab": "path"}
+16:53:22.515 tab_opened {"tab": "profile"}
+16:53:26.958 logged_in {}
+16:53:28.798 tab_opened {"tab": "path"}
+16:53:28.963 account_blocked_shown {}
+16:53:30.825 tab_opened {"tab": "profile"}

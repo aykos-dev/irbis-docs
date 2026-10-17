@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "title": "Log-in prompt for a guest: shown with the reason, Not now closes with nothing lost",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 — gate for a guest; Not now",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest; Debug screen open (irbis://debug)"
+  ],
+  "steps": [
+   "Open the Debug screen → check: debug.screen",
+   "Tap Open log-in prompt → check: auth.gate",
+   "Tap Not now"
+  ],
+  "expected": [
+   "auth.gate sheet shows the title, Create free account (auth.gate-signup), I have an account (auth.gate-login), Not now (auth.gate-not-now) — UI tree + screenshot",
+   "Events auth_gate_shown then auth_gate_dismissed — event log",
+   "After Not now: gate closed, Debug screen still shown and debug.gate-ran count unchanged (0) over 3 s — UI tree"
+  ],
+  "focus": "auth.gate",
+  "caption": {
+   "expected": "log-in prompt"
+  },
+  "tc": "TC-031",
+  "plan": "Test_auth.md",
+  "anchor": "tc-031--p0--log-in-prompt-for-a-guest-shown-with-the-reason-not-now-closes-with-nothing-lost"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 10.1,
+ "events": 6,
+ "done": [
+  "guest",
+  "1. Tap Open log-in prompt",
+  "2. Tap Not now"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "gate shown=True, parts=True",
+   "proof": [
+    "1_gate.png"
+   ],
+   "t": 5.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "shown={'reason': 'progress'}, dismissed={'reason': 'progress'}",
+   "proof": [],
+   "t": 6.5
+  },
+  "3": {
+   "ok": true,
+   "observed": "gate gone=True, ran text before/after: 'The gated action ran 0 time(s).' / 'The gated action ran 0 time(s).'",
+   "proof": [
+    "2_closed.png"
+   ],
+   "t": 9.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "guest state",
+   "ok": true,
+   "seen": "no guest Profile",
+   "t": 2.0
+  },
+  {
+   "name": "Debug screen open",
+   "ok": true,
+   "seen": "no debug.screen",
+   "t": 3.5
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_gate.png",
+  "2_closed.png"
+ ]
+}

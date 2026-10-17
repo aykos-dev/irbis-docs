@@ -1,0 +1,4 @@
+0.97	1: Force-stop and cold start the app
+16.91	Expected: five tabs, Path empty state
+16.91	Result: PASS
+16.91	END

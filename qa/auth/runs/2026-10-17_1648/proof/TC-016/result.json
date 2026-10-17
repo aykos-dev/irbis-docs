@@ -1,0 +1,85 @@
+{
+ "meta": {
+  "title": "Fifth wrong password locks the username for 15 minutes and says how long",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC4 — 5 wrong → 15-min lock with minutes",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA-USER exists",
+   "Guest, log-in screen open"
+  ],
+  "steps": [
+   "Submit the QA-USER with 5 wrong passwords in the app",
+   "Submit again with the RIGHT password",
+   "Call the API log-in with the right password",
+   "Log in as a different QA user through the API"
+  ],
+  "expected": [
+   "Attempts 1–4 show 'Username or password is wrong' — UI tree",
+   "After the 5th wrong password the next attempt (right password) shows 'Too many tries. Try again in 15 minutes.' (14 or 15 minutes) — UI tree + screenshot",
+   "API log-in for the locked name → 423 ACCOUNT_LOCKED with retryAfterSec between 840 and 900 — API response",
+   "A different username is not locked (API 200) — API response"
+  ],
+  "focus": "auth.error",
+  "caption": {
+   "expected": "lock message with minutes"
+  },
+  "tc": "TC-016",
+  "plan": "Test_auth.md",
+  "anchor": "tc-016--p0--fifth-wrong-password-locks-the-username-for-15-minutes-and-says-how-long"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 43.1,
+ "events": 8,
+ "done": [
+  "QA-USER qa_l5_2237786 (+ qa_l5o_2237786)",
+  "1. Five wrong passwords",
+  "2. Right password after the lock"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "first four messages: ['Username or password is wrong', 'Username or password is wrong', 'Username or password is wrong', 'Username or password is wrong']; fifth: 'Too many tries. Try again in 15 minutes.'",
+   "proof": [
+    "1_fifth.png"
+   ],
+   "t": 37.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "message='Too many tries. Try again in 15 minutes.'",
+   "proof": [
+    "2_locked.png"
+   ],
+   "t": 42.7
+  },
+  "3": {
+   "ok": true,
+   "observed": "status=423, code=ACCOUNT_LOCKED, retryAfterSec=893",
+   "proof": [],
+   "t": 42.7
+  },
+  "4": {
+   "ok": true,
+   "observed": "other user → 200",
+   "proof": [],
+   "t": 42.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "log-in screen open",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 4.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_fifth.png",
+  "2_locked.png"
+ ]
+}
