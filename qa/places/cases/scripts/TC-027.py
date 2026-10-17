@@ -35,7 +35,7 @@ def run(c):
     c.step(2, "unknown id")
     deep_link("irbis://place/00000000-0000-4000-8000-000000000000")
     st = wait_any(["place.not-found", "place.error", "place.offline"], 12)
-    c.result(2, (st is not None and not has("place.name", exact=True) and not crashed()) or None, f"state {st!r}; needs a person to judge the wording", [c.shot("2_notfound", "place.screen")])
+    c.result(2, st == "place.not-found" and has("This place isn't available") and has("place.not-found-back", exact=True) and not has("place.name", exact=True) and not crashed(), f"state {st!r}, text {has('This place isn' + chr(39) + 't available')}", [c.shot("2_notfound", "place.screen")])
     c.step(3, "Back")
     tap("place.not-found-back", exact=True) if has("place.not-found-back", exact=True) else tap("place.back", exact=True)
     c.result(3, wait_any(["nav.tab-explore", "nav.tab-profile"], 10) is not None and not crashed(), "tab bar visible, no crash")
