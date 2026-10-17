@@ -1,0 +1,5 @@
+20:54:01.759 onboarding_step {"step": "splash"}
+20:54:03.289 onboarding_step {"step": "welcome"}
+20:54:03.663 onboarding_step {"step": "language"}
+20:54:06.336 onboarding_language {"locale": "ru"}
+20:54:07.584 onboarding_language {"locale": "uz"}

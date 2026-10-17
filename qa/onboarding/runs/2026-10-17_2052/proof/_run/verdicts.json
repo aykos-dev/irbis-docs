@@ -1,0 +1,7 @@
+{"TC-016":{"verdict":"Pass","line":"crop reviewed","conclusion":"Beginner/Weekend/Experienced tiles show art and 1/2/4 of 4 boots."},
+"TC-019":{"verdict":"Not run","title":"Reveal animation and haptic on entering Companion","reason":"Animation progresses t0/0.6/1.2 s (backpack to Bao, confetti, settles) per crops; haptic is manual on the phone, no proof possible on the emulator."},
+"STD-TEXT@welcome":{"verdict":"Fail","line":"en@2.0 fail","conclusion":"ru and uz fit; at font 2.0 Get started and I already have an account are pushed off-screen, not in the UI tree and the screen does not scroll. See D2."},
+"STD-TEXT@language":{"verdict":"Blocked","title":"STD-TEXT@language","reason":"en@2.0 cannot be reached: Meet Irbis buttons are off-screen at 2.0 (D2) and a font change mid-flow restarts onboarding at Meet Irbis (D3). ru/uz crops fit; the only 'untranslated' text is the English endonym."},
+"STD-TEXT@experience":{"verdict":"Blocked","title":"STD-TEXT@experience","reason":"en@2.0 cannot be reached (D2, D3)."},
+"STD-TEXT@interests":{"verdict":"Blocked","title":"STD-TEXT@interests","reason":"en@2.0 cannot be reached (D2, D3)."},
+"STD-TEXT@companion":{"verdict":"Blocked","title":"STD-TEXT@companion","reason":"en@2.0 cannot be reached (D2, D3)."}}

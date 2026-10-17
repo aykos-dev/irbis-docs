@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Offline shows a persistent banner and keeps the screen — interests",
+  "priority": "P2",
+  "group": "Standards",
+  "requirement": "engineering-standards §11 — offline state",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen loaded online"
+  ],
+  "steps": [
+   "Open the screen online",
+   "Wi-Fi and mobile data off"
+  ],
+  "expected": [
+   "`app.offline-banner` visible at 5 s and still at 15 s (not a toast) — screenshot",
+   "The screen's content stays visible (cached, not blanked) — screenshot"
+  ],
+  "caption": {
+   "expected": "offline banner, content kept"
+  },
+  "tc": "STD-OFFLINE@interests",
+  "plan": "Test_onboarding.md",
+  "anchor": "std-offlineinterests--p2--offline-shows-a-persistent-banner-and-keeps-the-screen",
+  "screen": "interests"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 21.4,
+ "events": 5,
+ "done": [
+  "1. Open the screen online",
+  "2. Wi-Fi and mobile data off"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "banner at 5 s: True, at 15 s: True",
+   "proof": [
+    "offline.png"
+   ],
+   "t": 18.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "onboarding.interests visible: True",
+   "proof": [
+    "offline.png"
+   ],
+   "t": 18.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened",
+   "ok": true,
+   "seen": "onboarding.interests",
+   "t": 6.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "offline.png"
+ ]
+}

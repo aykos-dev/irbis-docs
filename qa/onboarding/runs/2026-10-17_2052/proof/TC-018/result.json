@@ -1,0 +1,73 @@
+{
+ "meta": {
+  "title": "Log-in fills only the account's empty fields",
+  "priority": "P1",
+  "group": "Supplementary",
+  "requirement": "AC8 — empty account fields are filled, locale untouched",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "QA user with experience null, interests empty, locale uz (SQL)",
+   "Reset → complete onboarding with Beginner + Trails → tabs → Profile → Log in as the QA user",
+   "Read the user's row"
+  ],
+  "expected": [
+   "Event guest_merge_result whose merged names the onboarding choices — QA events",
+   "DB: experience beginner, interests {trails}, locale still uz — SQL on the LOCAL dev DB",
+   "Event locale_applied {locale: uz} — QA events"
+  ],
+  "focus": "nav.tab-profile",
+  "caption": {
+   "expected": "account filled"
+  },
+  "tc": "TC-018",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-018--p1--log-in-fills-only-the-accounts-empty-fields"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 18.9,
+ "events": 15,
+ "done": [
+  "First run (reset link), app language English, guest"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event {'merged': 'onboarding', 'skipped': 'locale'}",
+   "proof": [],
+   "t": 18.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "db beginner, {trails}, uz",
+   "proof": [],
+   "t": 18.6
+  },
+  "3": {
+   "ok": true,
+   "observed": "locale_applied {'locale': 'uz'}",
+   "proof": [],
+   "t": 18.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "onboarding completed",
+   "ok": true,
+   "seen": "no tabs",
+   "t": 12.9
+  },
+  {
+   "name": "log-in open",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 14.3
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

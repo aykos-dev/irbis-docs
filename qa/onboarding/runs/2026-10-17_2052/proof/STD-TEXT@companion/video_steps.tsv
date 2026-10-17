@@ -1,0 +1,6 @@
+0.07	1: ru, font 1.15 — open the screen
+9.68	2: uz, font 1.15 — open the screen
+19.48	3: en, font 2.0 — open the screen
+41.61	Expected: translated, nothing overflows
+41.61	Result: BLOCKED
+41.61	END

@@ -1,0 +1,2 @@
+21:03:54.138 onboarding_step {"step": "splash"}
+21:03:55.686 onboarding_step {"step": "welcome"}

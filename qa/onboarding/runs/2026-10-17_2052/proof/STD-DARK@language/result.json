@@ -1,0 +1,57 @@
+{
+ "meta": {
+  "title": "Dark mode uses the night tokens — language",
+  "priority": "P3",
+  "group": "Standards",
+  "requirement": "engineering-standards §5/§8 — light + dark from tokens",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Dark mode on",
+   "Open the screen"
+  ],
+  "expected": [
+   "Screen background is the night token #131D22 — screenshot (pixel check)"
+  ],
+  "caption": {
+   "expected": "night background"
+  },
+  "tc": "STD-DARK@language",
+  "plan": "Test_onboarding.md",
+  "anchor": "std-darklanguage--p3--dark-mode-uses-the-night-tokens",
+  "screen": "language"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 7.8,
+ "events": 3,
+ "done": [
+  "1. Dark mode on",
+  "2. Open the screen"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "background pixel (19, 29, 34) vs #131D22",
+   "proof": [
+    "dark.png"
+   ],
+   "t": 5.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened",
+   "ok": true,
+   "seen": "onboarding.language",
+   "t": 5.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "dark.png"
+ ]
+}

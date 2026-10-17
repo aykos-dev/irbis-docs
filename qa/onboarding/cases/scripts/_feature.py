@@ -9,7 +9,7 @@ import importlib.util
 import os
 import time
 
-from drv import PKG, back, deep_link, find, has, mark, nodes, relaunch, sh, tap, wait, wait_any, wait_event, wait_gone  # noqa: F401
+from drv import PKG, back, font_scale, deep_link, find, has, mark, nodes, relaunch, sh, tap, wait, wait_any, wait_event, wait_gone  # noqa: F401
 from config import QA_ROOT  # noqa: E402
 
 _p = os.path.join(QA_ROOT, "auth", "cases", "scripts", "_feature.py")
@@ -27,12 +27,18 @@ STEP_ROOT = {"welcome": "onboarding.welcome", "language": "onboarding.language",
 
 def before_case():
     A.before_case()   # clears login_attempts on the LOCAL dev DB
+    # Device isolation: every case starts as a guest (an earlier case may have left a QA account signed in,
+    # which makes the app treat a later log-in as "already signed in" and skip ending onboarding).
+    deep_link("irbis://debug/onboarding/done")
+    time.sleep(1)
+    ensure_guest()
 
 
 def start_onboarding(lang="en"):
     """Reset to a first run with app language `lang`; returns True when Meet Irbis (Onb1) shows."""
-    deep_link(f"irbis://debug/lang/{lang}")
-    time.sleep(1)
+    if lang:   # lang=None keeps the language the standards suite just set
+        deep_link(f"irbis://debug/lang/{lang}")
+        time.sleep(1)
     deep_link("irbis://debug/onboarding/reset")
     return wait("onboarding.welcome", 10, exact=True)
 
@@ -156,10 +162,35 @@ PLAN = {
                "Final Lottie / confetti look (placeholders until the owner delivers the files)"],
 }
 
+def open_step(step):
+    """Standards-suite opener: first run at `step`, keeping the app language the suite set."""
+    if step == "welcome":
+        return start_onboarding(lang=None)
+    big = float(sh("settings", "get", "system", "font_scale").strip() or 1) > 1.5
+    if big:
+        # Meet Irbis' buttons are off-screen at 2.0 (D2): leave it at 1.15, tap Get started, then restore the scale
+        font_scale(1.15)
+        time.sleep(1)
+    ok = start_onboarding(lang=None) and to_language()
+    if big:
+        font_scale(2.0)
+        time.sleep(1.5)
+    if not ok or step == "language":
+        return ok
+    steps = [("experience", to_experience), ("interests", lambda: to_interests("weekend")),
+             ("companion", lambda: to_companion(("peaks", "lakes")))]
+    for name, fn in steps:
+        if not fn():
+            return False
+        if name == step:
+            return True
+    return False
+
+
 SCREENS = {
-    "welcome": {"open": lambda c=None: first_run_to("welcome"), "root": "onboarding.welcome"},
-    "language": {"open": lambda c=None: first_run_to("language"), "root": "onboarding.language"},
-    "experience": {"open": lambda c=None: first_run_to("experience"), "root": "onboarding.experience"},
-    "interests": {"open": lambda c=None: first_run_to("interests"), "root": "onboarding.interests"},
-    "companion": {"open": lambda c=None: first_run_to("companion"), "root": "onboarding.companion"},
+    "welcome": {"open": lambda c=None: open_step("welcome"), "root": "onboarding.welcome"},
+    "language": {"open": lambda c=None: open_step("language"), "root": "onboarding.language"},
+    "experience": {"open": lambda c=None: open_step("experience"), "root": "onboarding.experience"},
+    "interests": {"open": lambda c=None: open_step("interests"), "root": "onboarding.interests"},
+    "companion": {"open": lambda c=None: open_step("companion"), "root": "onboarding.companion"},
 }

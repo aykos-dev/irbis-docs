@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "title": "Experience tiles show their art and 1 / 2 / 4 boots",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC4 — art and boots per tile",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → … → Experience"
+  ],
+  "expected": [
+   "Beginner (trail art, 1 boot), Weekend hiker (lake art, 2 boots), Experienced (peak art, 4 boots) match the canvas — screenshot (needs eyes)"
+  ],
+  "focus": "onboarding.experience",
+  "caption": {
+   "expected": "tiles with boots"
+  },
+  "tc": "TC-016",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-016--p2--experience-tiles-show-their-art-and-1--2--4-boots"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Not run",
+ "duration_s": 5.3,
+ "events": 4,
+ "done": [
+  "First run (reset link), app language English, guest"
+ ],
+ "results": {
+  "1": {
+   "ok": null,
+   "observed": "judge the crop against design/canvas Onb3Experience",
+   "proof": [
+    "1_tiles.png"
+   ],
+   "t": 5.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Experience shown",
+   "ok": true,
+   "seen": "no onboarding.experience",
+   "t": 4.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_tiles.png"
+ ]
+}

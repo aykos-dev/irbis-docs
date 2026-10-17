@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Reveal animation and haptic on entering Companion",
+  "priority": "P2",
+  "group": "Supplementary",
+  "requirement": "AC6 — reveal animation + success haptic",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → … → Companion; capture screenshots right after entry (0.2 s, 0.6 s, 1.2 s)"
+  ],
+  "expected": [
+   "Backpack pop, panda scale-in and confetti are visible across the three frames and settle by 1.2 s — screenshots (needs eyes)",
+   "Success haptic — manual on the phone (cannot be observed over adb)"
+  ],
+  "focus": "onboarding.companion",
+  "caption": {
+   "expected": "reveal frames"
+  },
+  "tc": "TC-019",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-019--p2--reveal-animation-and-haptic-on-entering-companion"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Not run",
+ "duration_s": 9.2,
+ "events": 6,
+ "done": [
+  "First run (reset link), app language English, guest"
+ ],
+ "results": {
+  "1": {
+   "ok": null,
+   "observed": "compare the three crops: animation progresses, settles",
+   "proof": [
+    "1_t0.png",
+    "2_t06.png",
+    "3_t12.png"
+   ],
+   "t": 8.9
+  },
+  "2": {
+   "ok": null,
+   "observed": "manual: haptic on the phone",
+   "proof": [],
+   "t": 8.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Interests shown",
+   "ok": true,
+   "seen": "no onboarding.interests",
+   "t": 6.2
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_t0.png",
+  "2_t06.png",
+  "3_t12.png"
+ ]
+}

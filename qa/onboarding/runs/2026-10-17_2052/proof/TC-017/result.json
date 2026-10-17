@@ -1,0 +1,68 @@
+{
+ "meta": {
+  "title": "Guest-merge rejects unknown or too many interests with 400",
+  "priority": "P1",
+  "group": "Supplementary",
+  "requirement": "AC7 — unknown values rejected (400)",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Local API up; QA user via API (no device)"
+  ],
+  "steps": [
+   "POST /v1/me/guest-merge with experience \"pro\"",
+   "… with interests [\"peaks\",\"peaks\"]",
+   "… with six interests",
+   "… with five valid interests and experience weekend"
+  ],
+  "expected": [
+   "Status 400 and code VALIDATION_FAILED for the unknown experience — API response",
+   "Status 400 for the duplicate interest — API response",
+   "Status 400 for six interests — API response",
+   "Status 200 and GET /v1/me returns experience weekend and the five interests — API response"
+  ],
+  "focus": null,
+  "caption": {
+   "expected": "API only"
+  },
+  "tc": "TC-017",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-017--p1--guest-merge-rejects-unknown-or-too-many-interests-with-400"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 0.5,
+ "events": 0,
+ "done": [
+  "Local API up; QA user via API (no device)"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "status 400, code VALIDATION_FAILED",
+   "proof": [],
+   "t": 0.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "status 400",
+   "proof": [],
+   "t": 0.2
+  },
+  "3": {
+   "ok": true,
+   "observed": "status 400",
+   "proof": [],
+   "t": 0.2
+  },
+  "4": {
+   "ok": true,
+   "observed": "merge 200, me 200, interests 5",
+   "proof": [],
+   "t": 0.2
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

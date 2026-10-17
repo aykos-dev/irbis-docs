@@ -1,0 +1,74 @@
+{
+ "meta": {
+  "title": "Signed in at launch skips onboarding and sets the flag",
+  "priority": "P1",
+  "group": "Supplementary",
+  "requirement": "AC1 — already signed in at launch",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "QA user signed in; onboarding flag cleared by the reset link"
+  ],
+  "steps": [
+   "QA user signed in on the tabs (onboarding done); open the reset link, then cold start → check: nav.tab-profile",
+   "Sign out through Profile → cold start; watch 5 s"
+  ],
+  "expected": [
+   "Cold start while signed in lands on nav.tab-profile, no onboarding.splash within 5 s — UI tree (polled)",
+   "After signing out (QA user) and a cold start: tabs again with no onboarding — the flag was set at the signed-in launch — UI tree (polled)"
+  ],
+  "focus": "nav.tab-profile",
+  "caption": {
+   "expected": "tabs, no onboarding"
+  },
+  "tc": "TC-012",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-012--p1--signed-in-at-launch-skips-onboarding-and-sets-the-flag"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 30.9,
+ "events": 18,
+ "done": [
+  "QA user signed in; onboarding flag cleared by the reset link",
+  "2. Reset flag, cold start while signed in",
+  "3. Sign out, cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "first nav.tab-profile, onboarding seen=False",
+   "proof": [
+    "1_signed_in.png"
+   ],
+   "t": 22.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "first nav.tab-profile, onboarding seen=False",
+   "proof": [
+    "2_guest.png"
+   ],
+   "t": 30.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "signed in",
+   "ok": true,
+   "seen": "not signed in",
+   "t": 14.4
+  },
+  {
+   "name": "signed out",
+   "ok": true,
+   "seen": "sign-out failed",
+   "t": 24.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_signed_in.png",
+  "2_guest.png"
+ ]
+}

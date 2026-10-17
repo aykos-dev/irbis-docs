@@ -1,0 +1,18 @@
+20:58:53.548 tab_opened {"tab": "path"}
+20:58:54.200 tab_opened {"tab": "profile"}
+20:58:54.984 signed_out {}
+20:58:56.559 onboarding_step {"step": "splash"}
+20:58:58.102 onboarding_step {"step": "welcome"}
+20:58:58.571 onboarding_step {"step": "language"}
+20:58:59.486 onboarding_end {"via": "close", "interestsCount": 0}
+20:58:59.522 tab_opened {"tab": "path"}
+20:59:00.282 tab_opened {"tab": "profile"}
+20:59:05.616 logged_in {}
+20:59:05.675 guest_merged {"items": 0}
+20:59:05.675 guest_merge_result {"merged": "", "skipped": "locale"}
+20:59:06.236 onboarding_step {"step": "splash"}
+20:59:07.766 onboarding_step {"step": "welcome"}
+20:59:08.559 tab_opened {"tab": "path"}
+20:59:14.840 tab_opened {"tab": "profile"}
+20:59:15.533 signed_out {}
+20:59:16.336 tab_opened {"tab": "path"}

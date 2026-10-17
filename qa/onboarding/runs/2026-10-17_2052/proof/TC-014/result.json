@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "title": "Closing Log in returns to Meet Irbis",
+  "priority": "P1",
+  "group": "Supplementary",
+  "requirement": "AC2 — closing Log in returns to Onb1",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → Meet Irbis → I already have an account → check: auth.login",
+   "Close the log-in screen (Continue as guest, else Android back)"
+  ],
+  "expected": [
+   "onboarding.welcome is shown again and auth.login is gone; no onboarding_end event — UI tree + QA events"
+  ],
+  "focus": "onboarding.welcome",
+  "caption": {
+   "expected": "back on Meet Irbis"
+  },
+  "tc": "TC-014",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-014--p1--closing-log-in-returns-to-meet-irbis"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 6.4,
+ "events": 3,
+ "done": [
+  "First run (reset link), app language English, guest"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "welcome=True",
+   "proof": [
+    "1_back.png"
+   ],
+   "t": 6.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Meet Irbis shown",
+   "ok": true,
+   "seen": "no onboarding.welcome",
+   "t": 3.3
+  },
+  {
+   "name": "log-in open",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 4.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_back.png"
+ ]
+}

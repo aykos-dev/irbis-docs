@@ -1,0 +1,6 @@
+0.07	1: ru, font 1.15 — open the screen
+4.97	2: uz, font 1.15 — open the screen
+9.84	3: en, font 2.0 — open the screen
+16.43	Expected: translated, nothing overflows
+16.43	Result: FAIL
+16.43	END

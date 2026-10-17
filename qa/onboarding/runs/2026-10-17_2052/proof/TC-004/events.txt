@@ -1,0 +1,12 @@
+20:58:31.140 tab_opened {"tab": "path"}
+20:58:31.769 tab_opened {"tab": "profile"}
+20:58:32.213 signed_out {}
+20:58:33.830 onboarding_step {"step": "splash"}
+20:58:35.351 onboarding_step {"step": "welcome"}
+20:58:40.197 logged_in {}
+20:58:40.248 guest_merged {"items": 0}
+20:58:40.248 guest_merge_result {"merged": "", "skipped": "locale"}
+20:58:40.261 onboarding_end {"via": "login", "interestsCount": 0}
+20:58:40.261 onboarding_step {"step": "welcome"}
+20:58:40.297 tab_opened {"tab": "path"}
+20:58:41.694 tab_opened {"tab": "path"}

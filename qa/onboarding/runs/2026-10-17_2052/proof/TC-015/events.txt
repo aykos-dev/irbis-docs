@@ -1,0 +1,5 @@
+20:56:10.125 onboarding_step {"step": "splash"}
+20:56:11.648 onboarding_step {"step": "welcome"}
+20:56:12.126 onboarding_step {"step": "language"}
+20:56:13.096 onboarding_step {"step": "experience"}
+20:56:14.321 onboarding_step {"step": "interests"}

@@ -1,0 +1,92 @@
+{
+ "meta": {
+  "title": "Interests: nothing preselected, counter and Continue follow the selection",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC5 — Onb4 toggles, counter, Continue",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → … → Interests (Weekend hiker chosen) → check: onboarding.interests",
+   "Read counter and Continue",
+   "Tap Peaks",
+   "Tap Caves, Lakes",
+   "Tap Peaks again"
+  ],
+  "expected": [
+   "No onboarding.interest-* is selected; Continue disabled — UI tree + screenshot",
+   "After Peaks: counter starts \"1 selected\" and contains \"Your weekly path mixes these with safe options for the season.\"; Continue enabled — UI tree",
+   "After Caves + Lakes: counter starts \"3 selected\" — UI tree",
+   "Peaks tapped again toggles off: peaks unselected, counter \"2 selected\" — UI tree"
+  ],
+  "focus": "onboarding.interests",
+  "caption": {
+   "expected": "interest tiles + counter"
+  },
+  "tc": "TC-008",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-008--p0--interests-nothing-preselected-counter-and-continue-follow-the-selection"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 10.7,
+ "events": 5,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "3. Peaks",
+  "4. Caves, Lakes",
+  "5. Peaks again"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "counter '0 selected · Your weekly path mixes these with safe options for the season.'",
+   "proof": [
+    "1_initial.png"
+   ],
+   "t": 6.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "counter '1 selected · Your weekly path mixes these with safe options for the season.'",
+   "proof": [
+    "2_one.png"
+   ],
+   "t": 8.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "counter '3 selected · Your weekly path mixes these with safe options for the season.'",
+   "proof": [
+    "3_three.png"
+   ],
+   "t": 9.0
+  },
+  "4": {
+   "ok": true,
+   "observed": "counter '2 selected · Your weekly path mixes these with safe options for the season.'",
+   "proof": [
+    "4_two.png"
+   ],
+   "t": 10.4
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Interests shown",
+   "ok": true,
+   "seen": "no onboarding.interests",
+   "t": 5.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_initial.png",
+  "2_one.png",
+  "3_three.png",
+  "4_two.png"
+ ]
+}

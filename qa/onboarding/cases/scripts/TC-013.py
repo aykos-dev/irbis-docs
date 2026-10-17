@@ -38,7 +38,7 @@ def run(c):
     while time.time() < end:
         seen = seen or has("onboarding.splash", exact=True); time.sleep(0.3)
     c.result(2, ok and first == TABS and not seen and bool(tab and "Профиль" in (tab["desc"] + tab["text"])), f"first {first}, tab {tab and (tab['desc'] or tab['text'])!r}", [c.shot("1_cold")])
-    deep_link("irbis://debug/lang/en"); name = uname("onb13")
+    deep_link("irbis://debug/lang/en"); time.sleep(1); relaunch(); wait(TABS, 20, exact=True); name = uname("onb13")
     c.checkpoint("sign-up open", goto_profile() == "profile.guest" and (tap("profile.guest-signup", exact=True) or True) and wait("auth.signup", 10, exact=True), "no auth.signup")
     ui_signup(name, PW); wait("profile.account", 20, exact=True); time.sleep(2)
     exp, ints = db_choices(name)

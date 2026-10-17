@@ -1,0 +1,9 @@
+20:52:31.047 onboarding_step {"step": "splash"}
+20:52:32.565 onboarding_step {"step": "welcome"}
+20:52:33.062 onboarding_step {"step": "language"}
+20:52:34.060 onboarding_step {"step": "experience"}
+20:52:35.534 onboarding_step {"step": "interests"}
+20:52:37.011 onboarding_step {"step": "companion"}
+20:52:38.370 onboarding_end {"via": "finish", "interestsCount": 2, "experience": "weekend"}
+20:52:38.409 tab_opened {"tab": "path"}
+20:52:40.757 tab_opened {"tab": "path"}

@@ -1,0 +1,79 @@
+{
+ "meta": {
+  "title": "Close (✕) on a step ends onboarding on the tabs, keeps the language, saves no choices",
+  "priority": "P1",
+  "group": "Supplementary",
+  "requirement": "AC3 — ✕ ends onboarding",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → Language → pick Русский → Continue → Weekend hiker → Continue → Interests, Peaks → ✕ → check: nav.tab-profile",
+   "Cold start",
+   "Profile → Sign up as a new QA user",
+   "Read the user's row"
+  ],
+  "expected": [
+   "Event onboarding_end {via: close, interestsCount: 0} with no experience prop — QA events",
+   "Tabs are Russian (nav.tab-profile \"Профиль\") and stay Russian after the cold start; no onboarding node in 5 s — UI tree",
+   "DB: experience null and interests empty for the new user — SQL on the LOCAL dev DB (no choices saved by ✕)"
+  ],
+  "focus": "nav.tab-profile",
+  "caption": {
+   "expected": "tabs in Russian"
+  },
+  "tc": "TC-013",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-013--p1--close--on-a-step-ends-onboarding-on-the-tabs-keeps-the-language-saves-no-choices"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 31.0,
+ "events": 17,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "2. Tap ✕"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event {'via': 'close', 'interestsCount': 0}",
+   "proof": [],
+   "t": 11.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "first nav.tab-profile, tab 'Профиль'",
+   "proof": [
+    "1_cold.png"
+   ],
+   "t": 18.6
+  },
+  "3": {
+   "ok": true,
+   "observed": "db experience=null, interests='{}'",
+   "proof": [],
+   "t": 30.7
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Language shown",
+   "ok": true,
+   "seen": "no onboarding.language",
+   "t": 7.4
+  },
+  {
+   "name": "sign-up open",
+   "ok": true,
+   "seen": "no auth.signup",
+   "t": 22.8
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_cold.png"
+ ]
+}

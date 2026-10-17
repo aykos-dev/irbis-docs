@@ -1,0 +1,77 @@
+{
+ "meta": {
+  "title": "Interests BVA: 1 and 5 selected, Continue disabled again at 0",
+  "priority": "P1",
+  "group": "Supplementary",
+  "requirement": "AC5 — boundaries 0 / 1 / 5",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → … → Interests",
+   "Select all five (Peaks, Caves, Lakes, Camping, Trails)",
+   "Deselect all five one by one"
+  ],
+  "expected": [
+   "With five selected the counter starts \"5 selected\" and Continue is enabled — UI tree + screenshot",
+   "After deselecting down to 1 the counter starts \"1 selected\" and Continue is enabled — UI tree",
+   "After the last deselect (0) Continue is disabled — UI tree + screenshot"
+  ],
+  "focus": "onboarding.interests",
+  "caption": {
+   "expected": "5 selected"
+  },
+  "tc": "TC-015",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-015--p1--interests-bva-1-and-5-selected-continue-disabled-again-at-0"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 10.4,
+ "events": 5,
+ "done": [
+  "First run (reset link), app language English, guest"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "counter '5 selected · Your weekly path mixes these with safe options for the season.'",
+   "proof": [
+    "1_five.png"
+   ],
+   "t": 8.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "counter '1 selected · Your weekly path mixes these with safe options for the season.'",
+   "proof": [
+    "2_one.png"
+   ],
+   "t": 9.4
+  },
+  "3": {
+   "ok": true,
+   "observed": "continue enabled=False",
+   "proof": [
+    "3_zero.png"
+   ],
+   "t": 10.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Interests shown",
+   "ok": true,
+   "seen": "no onboarding.interests",
+   "t": 6.2
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_five.png",
+  "2_one.png",
+  "3_zero.png"
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "meta": {
+  "title": "Copy is translated and layout survives long text — companion",
+  "priority": "P2",
+  "group": "Standards",
+  "requirement": "engineering-standards §12/§13 — i18n, +40% text, largest font",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Russian, font 1.15 — open the screen",
+   "Uzbek, font 1.15 — open the screen",
+   "English, font 2.0 — open the screen"
+  ],
+  "expected": [
+   "No English catalog string left on screen in Russian or Uzbek — UI tree",
+   "Nothing clipped or overflowing its container in any of the three — one composite crop (human)"
+  ],
+  "caption": {
+   "expected": "translated, nothing overflows"
+  },
+  "tc": "STD-TEXT@companion",
+  "plan": "Test_onboarding.md",
+  "anchor": "std-textcompanion--p2--copy-is-translated-and-layout-survives-long-text",
+  "screen": "companion"
+ },
+ "status": "error",
+ "reason": "RuntimeError: not found: onboarding.continue @ line 153",
+ "proposed": "Not run",
+ "duration_s": 41.7,
+ "events": 22,
+ "done": [
+  "1. ru, font 1.15 — open the screen",
+  "2. uz, font 1.15 — open the screen",
+  "3. en, font 2.0 — open the screen"
+ ],
+ "results": {},
+ "checkpoints": [
+  {
+   "name": "screen opened (ru)",
+   "ok": true,
+   "seen": "onboarding.companion",
+   "t": 7.9
+  },
+  {
+   "name": "screen opened (uz)",
+   "ok": true,
+   "seen": "onboarding.companion",
+   "t": 17.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "ru_font1.15.png",
+  "uz_font1.15.png"
+ ]
+}

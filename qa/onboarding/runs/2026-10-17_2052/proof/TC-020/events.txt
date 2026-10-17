@@ -1,0 +1,7 @@
+20:56:46.884 onboarding_step {"step": "splash"}
+20:56:48.421 onboarding_step {"step": "welcome"}
+20:56:48.800 onboarding_step {"step": "language"}
+20:56:49.701 onboarding_language {"locale": "uz"}
+20:56:50.318 onboarding_end {"via": "close", "interestsCount": 0}
+20:56:50.353 tab_opened {"tab": "path"}
+20:56:51.957 tab_opened {"tab": "path"}
