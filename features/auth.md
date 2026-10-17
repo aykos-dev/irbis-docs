@@ -97,7 +97,8 @@ when `NODE_ENV=production` or `APP_ENV` is staging/prod), real adapter later wit
 - **AC15** — User detail (W5) shows account facts and actions, each in a confirm dialog with a required reason
   (W6 pattern): **block / unblock** (block signs the user out everywhere), **set password** (permanent, 6–64, signs
   the user out everywhere), **edit recovery phone** (marked verified at once), **change role** (an admin can't change
-  their own role). Each action appends an audit-log entry (admin, action, reason, note, time) shown on the page,
+  their own role, and can't block themselves). Block reasons: Spam or advertising · Harassment or hate · Unsafe
+  behaviour · Fake places or photos · Other (codes `spam`, `harassment`, `unsafe`, `fake_content`, `other`). Each action appends an audit-log entry (admin, action, reason, note, time) shown on the page,
   newest first; passwords and full phone numbers are never logged.
 - **AC16** — The first admin is created with `npm run admin:create` in irbis-api (hidden prompt; documented in
   SETUP.md); no admin can be created through the public API.
