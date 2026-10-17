@@ -1,0 +1,6 @@
+10.65	2: Chip → Русский
+17.65	3: Chip → English
+21.73	4: Get started
+23.72	Expected: chip EN → RU
+23.72	Result: PASS
+23.72	END

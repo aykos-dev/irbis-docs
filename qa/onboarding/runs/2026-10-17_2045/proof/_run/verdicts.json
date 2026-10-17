@@ -1,0 +1,4 @@
+{"TC-003":{"verdict":"Pass","line":"4/4 green","conclusion":"Chip visible text EN/RU/EN and texts switch; onboarding.language + event seen."},
+"TC-005":{"verdict":"Pass","line":"3/3 green","conclusion":"Step 1/2/3 of 4 text, chevron and Android back as expected."},
+"TC-010":{"verdict":"Fail","line":"2 fail","conclusion":"No guest_merge_result after sign-up; DB experience null, interests empty. See D1."},
+"TC-011":{"verdict":"Fail","line":"bullet 1 fail","conclusion":"No guest_merge_result on log-in (locale_applied ru and DB unchanged OK). See D1."}}

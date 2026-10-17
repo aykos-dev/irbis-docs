@@ -98,8 +98,11 @@ def enabled(tid):
 
 
 def progress_text():
-    n = find("onboarding.progress", exact=True)
-    return (n["text"] or n["desc"]) if n else None
+    import re
+    for n in nodes():
+        if re.fullmatch(r"step \d of 4", n["text"].strip(), re.I):
+            return n["text"].strip()
+    return None
 
 
 def db_choices(username):

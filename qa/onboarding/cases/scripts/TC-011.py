@@ -24,6 +24,7 @@ META = {'title': "Log-in: the account's values win, the account language is appl
 
 def run(c):
     c.pre(" · ".join(META["precondition"]))
+    ensure_guest()
     u = make_user("onb11"); set_account(u["username"], "beginner", ["caves"], "ru")
     c.checkpoint("onboarding completed", first_run_to("companion", exp="experienced", interests=("peaks", "lakes", "trails")) and lets_go(), "no tabs")
     c.checkpoint("log-in form open", goto_profile() == "profile.guest" and (tap("profile.guest-login", exact=True) or True) and wait("auth.login", 10, exact=True), "no auth.login")

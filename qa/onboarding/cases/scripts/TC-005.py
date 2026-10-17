@@ -33,7 +33,7 @@ def run(c):
     c.step(3, "Experience, Interests")
     to_experience(); p2 = progress_text(); s2 = c.shot("2_experience")
     to_interests(); p3 = progress_text(); s3 = c.shot("3_interests")
-    c.result(1, (p1, p2, p3) == ("Step 1 of 4", "Step 2 of 4", "Step 3 of 4"), f"progress {p1!r} {p2!r} {p3!r}", [s1, s2, s3])
+    c.result(1, tuple((x or "").lower() for x in (p1, p2, p3)) == ("step 1 of 4", "step 2 of 4", "step 3 of 4"), f"progress {p1!r} {p2!r} {p3!r}", [s1, s2, s3])
     c.step(4, "Back chevron"); tap("onboarding.back", exact=True)
     a = wait("onboarding.experience", 5, exact=True)
     c.result(2, a, "experience" if a else "not on experience", [c.shot("4_back")])

@@ -1,0 +1,13 @@
+20:46:08.968 tab_opened {"tab": "path"}
+20:46:09.715 tab_opened {"tab": "profile"}
+20:46:10.293 signed_out {}
+20:46:11.800 onboarding_step {"step": "splash"}
+20:46:13.336 onboarding_step {"step": "welcome"}
+20:46:13.706 onboarding_step {"step": "language"}
+20:46:14.651 onboarding_step {"step": "experience"}
+20:46:15.830 onboarding_step {"step": "interests"}
+20:46:17.112 onboarding_step {"step": "companion"}
+20:46:17.952 onboarding_end {"via": "finish", "interestsCount": 2, "experience": "weekend"}
+20:46:17.979 tab_opened {"tab": "path"}
+20:46:18.930 tab_opened {"tab": "profile"}
+20:46:25.535 signed_up {"has_phone": false}

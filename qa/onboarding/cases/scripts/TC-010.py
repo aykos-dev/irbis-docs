@@ -22,6 +22,7 @@ META = {'title': 'Sign-up after onboarding: the choices land on the new account'
 
 def run(c):
     c.pre(" · ".join(META["precondition"]))
+    ensure_guest()
     c.checkpoint("onboarding completed", first_run_to("companion") and lets_go(), "no tabs")
     name = uname("onb10")
     c.checkpoint("sign-up form open", goto_profile() == "profile.guest" and (tap("profile.guest-signup", exact=True) or True) and wait("auth.signup", 10, exact=True), "no auth.signup")

@@ -1,0 +1,98 @@
+{
+ "meta": {
+  "title": "Meet Irbis: Get started opens Language; the chip shows EN and switches the language",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC2 — Onb1 buttons and language chip",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → Meet Irbis → check: onboarding.welcome",
+   "Read the chip (onboarding.lang-chip)",
+   "Tap the chip, choose Русский in the sheet",
+   "Tap the chip, choose English",
+   "Tap Get started"
+  ],
+  "expected": [
+   "Chip text is EN; texts \"Get started\" and \"I already have an account\" are on screen — UI tree + screenshot",
+   "After picking Русский the chip text is RU and \"Начать\" shows without reopening the screen (≤ 2 s) — UI tree + screenshot",
+   "After picking English the chip is EN again, \"Get started\" returns — UI tree",
+   "Get started → onboarding.language is shown; event onboarding_step {step: language} — UI tree + QA events"
+  ],
+  "focus": "onboarding.lang-chip",
+  "caption": {
+   "expected": "chip EN → RU"
+  },
+  "tc": "TC-003",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-003--p0--meet-irbis-get-started-opens-language-the-chip-shows-en-and-switches-the-language"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 23.8,
+ "events": 3,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "2. Chip → Русский",
+  "3. Chip → English",
+  "4. Get started"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "chip texts: ['EN']",
+   "proof": [
+    "1_welcome.png"
+   ],
+   "t": 10.6
+  },
+  "2": {
+   "ok": true,
+   "observed": "Начать=True, chip RU=True",
+   "proof": [
+    "2_ru.png"
+   ],
+   "t": 17.7
+  },
+  "3": {
+   "ok": true,
+   "observed": "Get started=True",
+   "proof": [
+    "3_en.png"
+   ],
+   "t": 21.7
+  },
+  "4": {
+   "ok": true,
+   "observed": "language screen=True, event={'step': 'language'}",
+   "proof": [
+    "4_language.png"
+   ],
+   "t": 23.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Meet Irbis shown",
+   "ok": true,
+   "seen": "no onboarding.welcome",
+   "t": 5.8
+  },
+  {
+   "name": "language sheet open",
+   "ok": true,
+   "seen": "no sheet",
+   "t": 13.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_welcome.png",
+  "2_ru.png",
+  "3_en.png",
+  "4_language.png"
+ ]
+}
