@@ -12,7 +12,8 @@ If the argument is a defect ref (`check-in/D3`): resolve it with
 the quoted AC and "Cause in code" are the bug report. Do not edit the bug file; verification happens on the device
 with `/qa-retest <ref>`, which re-runs the defect's `Cases`.
 
-1. Locate: identify the owning repo(s). Delegate to that repo's dev subagent.
+1. Locate: identify the owning repo(s). Delegate to that repo's dev subagent with the bug file (or a ≤20-line fix
+   brief) as its brief — it reads RULES.md, the brief and the files the bug's "Cause in code" names.
 2. Reproduce: branch fix/<short-slug>. Write a failing test that reproduces the bug. Show it failing.
 3. Fix: smallest change that makes it pass. Do not modify other existing tests.
 4. Verify: `npm run check` green. If the fix changes the API contract, run `openapi:export`

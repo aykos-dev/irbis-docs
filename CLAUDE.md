@@ -5,7 +5,10 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 
 ## Start of every session
 1. Read `STATUS.md`. Then `PROJECT.md` and only the `decisions/` ADRs relevant to the task.
-2. Context lives in files and git, never in chat. One feature per session, then `/clear`.
+2. Context lives in files and git, never in chat. One feature per session, then `/clear` — a long session re-sends its
+   whole history on every turn and burns the usage limit. Launch with `./scripts/start.sh` from irbis-docs.
+3. Coding runs are small: one Opus dev agent per brief (`features/briefs/`), reading only the repo's `RULES.md`, the
+   brief and the files it lists. Quiet commands, `| tail -30` for anything long, 1–3 tests per AC.
 
 ## Repos
 | Repo | Role | Agent |

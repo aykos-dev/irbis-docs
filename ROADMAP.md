@@ -3,7 +3,7 @@
 From the Product Overview's proposed order: **prove the safe weekly-trip loop in the Tashkent region first**, then
 community, then engagement games, then revenue, then expansion. No dates are set.
 
-Each line is one feature = one `/feature <slug>` session, delivered app + api + web (as needed) and finished with the
+Each line is one feature = one `/feature <slug>` session (≈8 ACs at most — bigger ones get split), delivered app + api + web (as needed) and finished with the
 Android QA loop. The next feature starts only when the owner says so. The split and order inside a phase are a
 proposal — reorder freely. Screens refer to `design/canvas/`.
 

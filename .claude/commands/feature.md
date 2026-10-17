@@ -8,6 +8,11 @@ The owner names a feature; you deliver every part it needs — **app** (bare RN)
 feature needs admin/back-office). One feature per session. When it is done you **stop**; the next feature starts only
 when the owner says so.
 
+**Token rules for this command.** Start in a fresh session launched from `irbis-docs` (`./scripts/start.sh`), so the
+agents and hooks load and no old history rides along; if this conversation already holds another feature, tell the
+owner to `/clear` (or open a new session) first. Keep this main session light: it asks, writes the spec and the briefs,
+delegates, and relays ≤10-line summaries — it never reads generated code, full test output or screenshots itself.
+
 ## 0. Read (no questions yet)
 - `STATUS.md`, `PROJECT.md`, the feature's row in `ROADMAP.md`, the relevant `decisions/` ADRs.
 - The requirements for this feature in the Product Overview (`PROJECT.md` → Sources of truth; read the doc's
@@ -38,19 +43,28 @@ Then STOP until the owner answers. Record every answer in the spec's Assumptions
 ## 2. Spec (short approval)
 Write `features/<slug>.md` from `features/_TEMPLATE.md`: goal, surfaces, endpoints, data model changes, numbered
 `AC1…` (answers folded in, concrete values), required UI states, QA events, testIDs, media, waivers, out of scope.
-Show the AC list and ask "approved?" — one short gate; on "approved" continue without stopping again unless
-something new and blocking comes up.
+**Size cap: about 8 ACs.** If the feature needs more, propose splitting it into two features (e.g. app vs. admin web)
+before approval. Show the AC list and ask "approved?" — one short gate; on "approved" continue without stopping again
+unless something new and blocking comes up.
 
-## 3. API (subagent: api-dev) — if the feature touches the api
-Spec path + slug. Failing tests from the AC first, implement, `npm run check` green, `npm run openapi:export`, commit.
-Values the doc calls "decided after testing" (XP, thresholds) go in server config, not constants in code.
+## 2b. Briefs — slice the work
+Split each repo's work into slices of 2–5 ACs that each end in a green, committed state (API first, then each client
+slice that uses it). For each slice write `features/briefs/<slug>-<n>-<repo>.md` from `features/_BRIEF_TEMPLATE.md`
+(60–80 lines): the ACs, files to touch and to read for patterns, endpoints + error codes, exact copy in en/ru/uz taken
+from the canvas boards (so the dev agent never opens the canvas HTML), testIDs, QA events, approved packages.
+Commit the briefs. A slice that hits a limit loses only itself.
 
-## 4. Clients (subagents: app-dev, and web-dev if needed — in parallel)
-`npm run gen:api`, implement from the canvas boards (exact copy via i18n keys in uz/ru/en, tokens, light/dark),
-media from `design/media/<slug>/` copied into the app's assets, `npm run check` green, commit.
+## 3. API slices (subagent: api-dev, Opus) — if the feature touches the api
+One fresh agent per brief, in order: "implement features/briefs/<slug>-<n>-irbis-api.md". It reads only RULES.md, the
+brief and the listed files; replies ≤10 lines. Values the doc calls "decided after testing" go in server config.
 
-## 5. Review (subagent: reviewer)
-All diffs against the spec, the slop checklist and each repo's Quick gate. Fix rounds via the dev agents (max 2).
+## 4. Client slices (subagents: app-dev, web-dev — Opus; app and web slices may run in parallel)
+One fresh agent per brief. The brief already contains the copy, testIDs and the generated hooks to use; media is
+copied from `design/media/<slug>/`.
+
+## 5. Review (subagent: reviewer — risky parts only)
+Diff stats + risky files (auth, data access, value/XP, new endpoints, edited tests) against the spec and the slop
+checklist. Blocking fixes go back as a short fix brief to a fresh dev agent (max 2 rounds).
 
 ## 6. Test on the Android phone — the QA loop
 1. `/qa-plan <slug>` → case scripts from the AC (the qa-tester subagent; summary only in this conversation).
@@ -61,6 +75,7 @@ All diffs against the spec, the slop checklist and each repo's Quick gate. Fix r
 iOS is checked by hand by the owner; ask them to, and note the result.
 
 ## 7. Wrap up and STOP
+(Next feature = new session or `/clear` — never carry this feature's history into the next.)
 Spec → Done. STATUS.md: Done line with commits per repo, QA run + retest results, open defects and placeholders.
 Commit irbis-docs. Do not push.
 Reply: what was built per surface, AC → test coverage, QA totals (pass / fail / fixed), anything open or
