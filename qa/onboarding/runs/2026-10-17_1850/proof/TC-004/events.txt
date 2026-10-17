@@ -1,0 +1,7 @@
+18:50:51.862 onboarding_step {"step": "splash"}
+18:50:53.388 onboarding_step {"step": "welcome"}
+18:51:00.274 logged_in {}
+18:51:00.410 onboarding_end {"via": "login", "interestsCount": 0}
+18:51:00.410 onboarding_step {"step": "welcome"}
+18:51:00.516 tab_opened {"tab": "path"}
+18:51:02.225 tab_opened {"tab": "path"}

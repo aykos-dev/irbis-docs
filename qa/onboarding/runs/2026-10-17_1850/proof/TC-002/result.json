@@ -1,0 +1,76 @@
+{
+ "meta": {
+  "title": "Let's go ends onboarding; the next cold start goes straight to the tabs",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC1 — flag saved, later cold start has no in-app splash",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Walk Welcome → Language → Experience (Weekend hiker) → Interests (Peaks, Lakes) → Companion → check: onboarding.companion",
+   "Tap Let's go! → check: nav.tab-profile",
+   "Force-stop and cold start; watch 5 s"
+  ],
+  "expected": [
+   "Event onboarding_end {via: finish, experience: weekend, interestsCount: 2} — QA events",
+   "Tab bar (nav.tab-profile) shown after Let's go! — UI tree + screenshot",
+   "After the cold start nav.tab-profile shows and no onboarding.splash / onboarding.welcome node appears in 5 s — UI tree (polled)"
+  ],
+  "focus": "nav.tab-profile",
+  "caption": {
+   "expected": "tabs, no onboarding"
+  },
+  "tc": "TC-002",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-002--p0--lets-go-ends-onboarding-the-next-cold-start-goes-straight-to-the-tabs"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 18.9,
+ "events": 9,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "2. Tap Let's go!",
+  "3. Cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event {'via': 'finish', 'interestsCount': 2, 'experience': 'weekend'}",
+   "proof": [],
+   "t": 10.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "tabs shown",
+   "proof": [
+    "2_tabs.png"
+   ],
+   "t": 10.8
+  },
+  "3": {
+   "ok": true,
+   "observed": "first node nav.tab-profile, onboarding seen=False",
+   "proof": [
+    "3_cold.png"
+   ],
+   "t": 18.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "reached Companion",
+   "ok": true,
+   "seen": "no onboarding.companion",
+   "t": 8.2
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_tabs.png",
+  "3_cold.png"
+ ]
+}

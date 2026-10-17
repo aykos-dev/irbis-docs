@@ -1,0 +1,63 @@
+{
+ "meta": {
+  "title": "First run: Splash for 1.5 s, then Meet Irbis",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC1 — Splash 1.5 s then Meet Irbis",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Open irbis://debug/onboarding/reset and watch the QA events → check: onboarding.welcome within 10 s"
+  ],
+  "expected": [
+   "Event onboarding_step {step: splash} then {step: welcome}, 1.0–2.5 s apart (1.5 s nominal, adb/log jitter) — QA events (timestamps)",
+   "onboarding.welcome is on screen and onboarding.splash is gone — UI tree + screenshot"
+  ],
+  "focus": "onboarding.welcome",
+  "caption": {
+   "expected": "Meet Irbis after splash"
+  },
+  "tc": "TC-001",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-001--p0--first-run-splash-for-15-s-then-meet-irbis"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 5.5,
+ "events": 2,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "1. Open the reset link"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "splash→welcome 1.65 s; events ['splash', 'welcome']",
+   "proof": [],
+   "t": 4.6
+  },
+  "2": {
+   "ok": true,
+   "observed": "welcome shown, splash gone",
+   "proof": [
+    "1_welcome.png"
+   ],
+   "t": 5.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Meet Irbis shown within 10 s",
+   "ok": true,
+   "seen": "no onboarding.welcome",
+   "t": 4.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_welcome.png"
+ ]
+}

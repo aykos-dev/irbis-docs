@@ -1,0 +1,87 @@
+{
+ "meta": {
+  "title": "Companion: Bao reveal, Let's go goes to the tabs, Android back returns to Interests",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC6 — Onb5",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → … → Companion (Weekend hiker, Peaks + Lakes) → check: onboarding.companion",
+   "Read texts, header",
+   "Press Android back → Interests",
+   "Continue again → Companion → Let's go!"
+  ],
+  "expected": [
+   "\"Meet Bao, your panda cub!\" and \"Wanderer\" with \"clumsy & cozy\" are on screen; no onboarding.back / onboarding.close / onboarding.progress node — UI tree + screenshot",
+   "Event onboarding_step {step: companion} on entry — QA events",
+   "Android back → onboarding.interests with Peaks and Lakes still selected — UI tree",
+   "Let's go! → nav.tab-profile — UI tree"
+  ],
+  "focus": "onboarding.companion",
+  "caption": {
+   "expected": "Bao reveal"
+  },
+  "tc": "TC-009",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-009--p0--companion-bao-reveal-lets-go-goes-to-the-tabs-android-back-returns-to-interests"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 13.6,
+ "events": 10,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "3. Android back",
+  "4. Continue, Let's go!"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "header absent=True",
+   "proof": [
+    "1_companion.png"
+   ],
+   "t": 9.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "event {'step': 'companion'}",
+   "proof": [],
+   "t": 9.8
+  },
+  "3": {
+   "ok": true,
+   "observed": "interests=True",
+   "proof": [
+    "2_back.png"
+   ],
+   "t": 11.0
+  },
+  "4": {
+   "ok": true,
+   "observed": "tabs",
+   "proof": [
+    "3_tabs.png"
+   ],
+   "t": 13.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Companion shown",
+   "ok": true,
+   "seen": "no onboarding.companion",
+   "t": 8.2
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_companion.png",
+  "2_back.png",
+  "3_tabs.png"
+ ]
+}

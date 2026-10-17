@@ -1,0 +1,6 @@
+7.48	3: Peaks
+8.88	4: Caves, Lakes
+9.87	5: Peaks again
+11.0	Expected: interest tiles + counter
+11.0	Result: PASS
+11.0	END

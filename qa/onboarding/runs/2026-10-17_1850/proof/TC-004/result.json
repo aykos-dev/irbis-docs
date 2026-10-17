@@ -1,0 +1,87 @@
+{
+ "meta": {
+  "title": "I already have an account: log-in from Meet Irbis ends onboarding on the tabs",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC2 — Onb1 → Log in → tabs, flag saved",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "QA user created via API",
+   "Reset → Meet Irbis → tap I already have an account → check: auth.login",
+   "Log in as the QA user → check: nav.tab-profile",
+   "Cold start"
+  ],
+  "expected": [
+   "auth.login opens over onboarding — UI tree + screenshot",
+   "Event onboarding_end {via: login} and the tab bar shows — QA events + UI tree",
+   "Cold start goes to the tabs, no onboarding.splash within 5 s — UI tree (polled)"
+  ],
+  "focus": "auth.login",
+  "caption": {
+   "expected": "log-in from Onb1"
+  },
+  "tc": "TC-004",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-004--p0--i-already-have-an-account-log-in-from-meet-irbis-ends-onboarding-on-the-tabs"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 18.6,
+ "events": 7,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "2. I already have an account",
+  "3. Log in",
+  "4. Cold start"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "log-in screen",
+   "proof": [
+    "1_login.png"
+   ],
+   "t": 4.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "tabs=True, event={'via': 'login', 'interestsCount': 0}",
+   "proof": [
+    "2_tabs.png"
+   ],
+   "t": 11.5
+  },
+  "3": {
+   "ok": true,
+   "observed": "first nav.tab-profile, splash seen=False",
+   "proof": [
+    "3_cold.png"
+   ],
+   "t": 18.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Meet Irbis shown",
+   "ok": true,
+   "seen": "no onboarding.welcome",
+   "t": 3.6
+  },
+  {
+   "name": "log-in screen open",
+   "ok": true,
+   "seen": "no auth.login",
+   "t": 4.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_login.png",
+  "2_tabs.png",
+  "3_cold.png"
+ ]
+}

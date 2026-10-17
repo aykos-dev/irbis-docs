@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "title": "Log-in: the account's values win, the account language is applied",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC8 — account wins on log-in",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "QA user with experience beginner, interests {caves}, locale ru (SQL)",
+   "Reset (app English) → complete onboarding with Experienced + Peaks, Lakes, Trails → tabs",
+   "Profile → Log in as the QA user → check: signed-in",
+   "Read the user's row"
+  ],
+  "expected": [
+   "Event guest_merge_result whose skipped names onboarding / locale (nothing overwritten) — QA events",
+   "Event locale_applied {locale: ru} and the tab labels turn Russian (nav.tab-profile content-desc \"Профиль\") — QA events + UI tree",
+   "DB: experience still beginner, interests still {caves}, locale still ru — SQL on the LOCAL dev DB"
+  ],
+  "focus": "nav.tab-profile",
+  "caption": {
+   "expected": "tabs in Russian"
+  },
+  "tc": "TC-011",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-011--p0--log-in-the-accounts-values-win-the-account-language-is-applied"
+ },
+ "status": "blocked",
+ "reason": "checkpoint 'log-in form open' did not hold: no auth.login",
+ "proposed": "Blocked",
+ "duration_s": 9.6,
+ "events": 9,
+ "done": [
+  "First run (reset link), app language English, guest"
+ ],
+ "results": {},
+ "checkpoints": [
+  {
+   "name": "onboarding completed",
+   "ok": true,
+   "seen": "no tabs",
+   "t": 9.1
+  },
+  {
+   "name": "log-in form open",
+   "ok": false,
+   "seen": "no auth.login",
+   "t": 9.3
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

@@ -1,0 +1,89 @@
+{
+ "meta": {
+  "title": "Steps 2–4 header: progress, back chevron, Android back",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC3 — header on steps 2–4",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → Meet Irbis",
+   "Get started → read progress (Language)",
+   "Continue → read progress (Experience); pick Weekend hiker; Continue → read progress (Interests)",
+   "Tap the back chevron → Experience",
+   "Press Android back → Language",
+   "Press Android back → Meet Irbis"
+  ],
+  "expected": [
+   "Progress text is \"Step 1 of 4\" on Language, \"Step 2 of 4\" on Experience, \"Step 3 of 4\" on Interests — UI tree (onboarding.progress)",
+   "Chevron on Interests lands on onboarding.experience — UI tree",
+   "Android back on Experience lands on onboarding.language; on Language lands on onboarding.welcome — UI tree"
+  ],
+  "focus": "onboarding.progress",
+  "caption": {
+   "expected": "Step N of 4"
+  },
+  "tc": "TC-005",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-005--p0--steps-24-header-progress-back-chevron-android-back"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 10.3,
+ "events": 8,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "2. Language",
+  "3. Experience, Interests",
+  "4. Back chevron",
+  "5. Android back",
+  "6. Android back"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "progress '1.0' '2.0' '3.0'",
+   "proof": [
+    "1_language.png",
+    "2_experience.png",
+    "3_interests.png"
+   ],
+   "t": 7.5
+  },
+  "2": {
+   "ok": true,
+   "observed": "experience",
+   "proof": [
+    "4_back.png"
+   ],
+   "t": 8.5
+  },
+  "3": {
+   "ok": true,
+   "observed": "language=True, welcome=True",
+   "proof": [
+    "5_welcome.png"
+   ],
+   "t": 10.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Meet Irbis shown",
+   "ok": true,
+   "seen": "no onboarding.welcome",
+   "t": 3.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_language.png",
+  "2_experience.png",
+  "3_interests.png",
+  "4_back.png",
+  "5_welcome.png"
+ ]
+}

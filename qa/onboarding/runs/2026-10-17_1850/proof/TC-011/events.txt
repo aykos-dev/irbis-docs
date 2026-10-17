@@ -1,0 +1,9 @@
+18:52:19.058 onboarding_step {"step": "splash"}
+18:52:20.586 onboarding_step {"step": "welcome"}
+18:52:20.987 onboarding_step {"step": "language"}
+18:52:21.948 onboarding_step {"step": "experience"}
+18:52:23.312 onboarding_step {"step": "interests"}
+18:52:24.918 onboarding_step {"step": "companion"}
+18:52:25.758 onboarding_end {"via": "finish", "interestsCount": 3, "experience": "experienced"}
+18:52:25.796 tab_opened {"tab": "path"}
+18:52:26.751 tab_opened {"tab": "profile"}

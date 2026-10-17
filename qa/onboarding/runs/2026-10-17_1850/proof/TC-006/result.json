@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "title": "Language step: English preselected, a tap switches the app at once and Continue stays enabled",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC3 — Onb2 language list",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset (app language English) → Language → check: onboarding.language",
+   "Read selected state of the three rows and Continue",
+   "Tap Русский, read the screen and Continue",
+   "Tap O'zbekcha (uz row), read the screen"
+  ],
+  "expected": [
+   "onboarding.lang-en is selected, lang-uz and lang-ru are not; onboarding.continue is enabled — UI tree + screenshot",
+   "After tapping Русский: lang-ru selected, progress \"Шаг 1 из 4\" within 2 s, event onboarding_language {locale: ru}, Continue enabled — UI tree + QA events",
+   "After tapping uz: lang-uz selected, progress \"1-qadam, jami 4\", event onboarding_language {locale: uz} — UI tree + QA events"
+  ],
+  "focus": "onboarding.language",
+  "caption": {
+   "expected": "language list"
+  },
+  "tc": "TC-006",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-006--p0--language-step-english-preselected-a-tap-switches-the-app-at-once-and-continue-stays-enabled"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.5,
+ "events": 5,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "3. Tap Русский",
+  "4. Tap uz"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "en=True ru=False uz=False continue=True",
+   "proof": [
+    "1_initial.png"
+   ],
+   "t": 5.3
+  },
+  "2": {
+   "ok": true,
+   "observed": "progress ru=True, event={'locale': 'ru'}",
+   "proof": [
+    "2_ru.png"
+   ],
+   "t": 7.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "progress uz=True, event={'locale': 'uz'}",
+   "proof": [
+    "3_uz.png"
+   ],
+   "t": 8.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Language shown",
+   "ok": true,
+   "seen": "no onboarding.language",
+   "t": 4.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_initial.png",
+  "2_ru.png",
+  "3_uz.png"
+ ]
+}

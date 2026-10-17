@@ -1,0 +1,77 @@
+{
+ "TC-001": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-002": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-004": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-006": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-007": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-008": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-009": {
+  "verdict": "Pass",
+  "line": "script all green",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-003": {
+  "verdict": "Pass",
+  "line": "script bullets 1-3 red; crops OK",
+  "conclusion": "Crops show chip EN, RU, EN and \u041d\u0430\u0447\u0430\u0442\u044c/Get started switch; script read the chip's accessibility label 'Change language' instead of its text (script defect).",
+  "ok": {
+   "1": true,
+   "2": true,
+   "3": true
+  },
+  "actual": {
+   "1": "chip EN (crop)",
+   "2": "chip RU, \u041d\u0430\u0447\u0430\u0442\u044c shown (crop)",
+   "3": "chip EN, Get started (crop)"
+  }
+ },
+ "TC-005": {
+  "verdict": "Pass",
+  "line": "script bullet 1 red; crops OK",
+  "conclusion": "Crops read STEP 1 OF 4 / 2 OF 4 / 3 OF 4; script read the progressbar value (1.0/2.0/3.0) not the text (script defect).",
+  "ok": {
+   "1": true
+  },
+  "actual": {
+   "1": "Step 1/2/3 of 4 (crops)"
+  }
+ },
+ "TC-010": {
+  "verdict": "Blocked",
+  "title": "Sign-up after onboarding: the choices land on the new account",
+  "reason": "Checkpoint failed: device still signed in as an earlier QA user (left by TC-004), so Profile showed the account, not guest. Script setup gap (no in-app sign-out first); not executed on a guest.",
+  "line": "checkpoint failed",
+  "conclusion": "Checkpoint failed: device still signed in as an earlier QA user (left by TC-004), so Profile showed the account, not guest. Script setup gap (no in-app sign-out first); not executed on a guest."
+ },
+ "TC-011": {
+  "verdict": "Blocked",
+  "title": "Log-in: the account's values win, the account language is applied",
+  "reason": "Checkpoint failed: device still signed in as an earlier QA user (left by TC-004), so Profile showed the account, not guest. Script setup gap (no in-app sign-out first); not executed on a guest.",
+  "line": "checkpoint failed",
+  "conclusion": "Checkpoint failed: device still signed in as an earlier QA user (left by TC-004), so Profile showed the account, not guest. Script setup gap (no in-app sign-out first); not executed on a guest."
+ }
+}

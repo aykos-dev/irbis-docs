@@ -1,0 +1,92 @@
+{
+ "meta": {
+  "title": "Experience: nothing preselected, Continue disabled until a pick, quiz card is static",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC4 — Onb3",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "First run (reset link), app language English, guest"
+  ],
+  "steps": [
+   "Reset → Language → Continue → check: onboarding.experience",
+   "Read tiles and Continue",
+   "Tap the orange quiz card text",
+   "Tap Weekend hiker",
+   "Tap Experienced"
+  ],
+  "expected": [
+   "onboarding.exp-beginner / exp-weekend / exp-experienced all unselected and onboarding.continue disabled — UI tree + screenshot",
+   "Quiz card text \"Everyone starts as a Wanderer.\" is on screen; tapping it changes nothing (still on onboarding.experience, Continue still disabled, no event) — UI tree",
+   "After Weekend hiker: it is selected, the other two are not, Continue enabled — UI tree",
+   "After Experienced: only exp-experienced selected (single choice), Continue enabled — UI tree"
+  ],
+  "focus": "onboarding.experience",
+  "caption": {
+   "expected": "three tiles"
+  },
+  "tc": "TC-007",
+  "plan": "Test_onboarding.md",
+  "anchor": "tc-007--p0--experience-nothing-preselected-continue-disabled-until-a-pick-quiz-card-is-static"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 13.3,
+ "events": 4,
+ "done": [
+  "First run (reset link), app language English, guest",
+  "3. Tap the quiz card",
+  "4. Weekend hiker",
+  "5. Experienced"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "selected [False, False, False], continue enabled=False",
+   "proof": [
+    "1_initial.png"
+   ],
+   "t": 7.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "card found=True",
+   "proof": [
+    "2_card.png"
+   ],
+   "t": 9.5
+  },
+  "3": {
+   "ok": true,
+   "observed": "selected [False, True, False]",
+   "proof": [
+    "3_weekend.png"
+   ],
+   "t": 11.2
+  },
+  "4": {
+   "ok": true,
+   "observed": "selected [False, False, True]",
+   "proof": [
+    "4_experienced.png"
+   ],
+   "t": 13.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Experience shown",
+   "ok": true,
+   "seen": "no onboarding.experience",
+   "t": 5.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_initial.png",
+  "2_card.png",
+  "3_weekend.png",
+  "4_experienced.png"
+ ]
+}
