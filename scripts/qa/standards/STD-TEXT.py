@@ -20,7 +20,7 @@ def run(c):
         for n, (lang, font) in enumerate((("ru", 1.15), ("uz", 1.15), ("en", 2.0)), 1):
             c.step(n, f"{lang}, font {font} — open the screen")
             font_scale(font)
-            sh("cmd", "locale", "set-app-locales", PKG, "--locales", lang)
+            deep_link(f"irbis://debug/lang/{lang}")  # in-app language (prefs.locale); lands on Debug
             c.checkpoint(f"screen opened ({lang})", open_screen(c), root)
             time.sleep(1)
             if lang != "en":
@@ -32,5 +32,5 @@ def run(c):
         c.result(2, None, f"judge {os.path.basename(comp) if comp else 'the crops'}: ru · uz · en@2.0 side by side",
                  [os.path.basename(p) for p in crops])
     finally:
-        sh("cmd", "locale", "set-app-locales", PKG, "--locales", "en")
+        deep_link("irbis://debug/lang/en")
         font_scale(prev)
