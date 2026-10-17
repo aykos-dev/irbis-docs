@@ -1,6 +1,6 @@
 # places
 
-- Status: Approved (owner, 2026-10-17)
+- Status: Done (2026-10-18)
 - Surfaces: api | app (web CRUD → next feature `places-admin`, Q1)
 - Related ADRs: ADR-001 (guest-first: places are readable without an account), ADR-002 (lat/lng as Float, distance in
   the service layer), ADR-003 (REST, cursor pagination, error codes)
