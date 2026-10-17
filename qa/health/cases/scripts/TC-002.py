@@ -3,27 +3,33 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".
 from drv import *  # noqa
 import re  # noqa
 try:
-    from _feature import *  # noqa  (shared points/accounts/helpers of this feature)
+    from _feature import *  # noqa
 except ImportError:
     pass
 
 META = {
- "title": "Database down shows degraded, not an error",
- "group": "Core",
+ "title": "Database down: DB chip Not-now, API chip stays up, no error",
  "priority": "P1",
- "env": "Android · auto (adb + docker) · resources: DB-DOWN",
- "plan": "Test_health.md",
- "anchor": "tc-002--p1--database-down-shows-degraded-not-an-error",
- "source": "AC2",
- "expected": [
-  "`health.db-chip` shows the Not-now style (red, × icon, label \"Database is down\" or its equivalent) while `health.api-chip` stays Go — screenshot",
-  "No error state and no `health.retry` button (degraded is data, not an error) — screenshot",
-  "Event `health_checked` { status: \"degraded\", db: \"down\" } — event log"
+ "group": "Core",
+ "requirement": "AC2 + AC3 (Q4) — degraded is data, API chip stays Go",
+ "env": "Android · auto (adb + docker)",
+ "precondition": [
+  "Status screen showing ok"
  ],
+ "steps": [
+  "docker compose stop db → check: /health says db down",
+  "Pull to refresh"
+ ],
+ "expected": [
+  "health.db-chip 'Database is down' (Not-now) and health.api-chip 'API is up' (Go) — UI tree",
+  "No error state and no health.retry — UI tree",
+  "Event health_checked {status: degraded, db: down} — event log"
+ ],
+ "postcondition": "docker compose start db",
+ "focus": "health.status-card",
  "caption": {
-  "expected": "`health.db-chip` shows the Not-now style (red, × icon, label \"Database is down\" "
- },
- "plan_hash": "0f9bcf5469"
+  "expected": "API up, DB down, no error"
+ }
 }
 
 

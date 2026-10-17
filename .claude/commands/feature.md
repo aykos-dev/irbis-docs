@@ -53,8 +53,8 @@ media from `design/media/<slug>/` copied into the app's assets, `npm run check` 
 All diffs against the spec, the slop checklist and each repo's Quick gate. Fix rounds via the dev agents (max 2).
 
 ## 6. Test on the Android phone — the QA loop
-1. `/qa-plan <slug>` → concrete cases from the AC.
-2. Build and `/qa-run <slug> build` → proof per case, defects logged to `qa/<slug>/bugs/`.
+1. `/qa-plan <slug>` → case scripts from the AC (the qa-tester subagent; summary only in this conversation).
+2. `/qa-run <slug> build` → feature cases + standards suite on the emulator, defects logged to `qa/<slug>/bugs/`.
 3. For each defect: `/bugfix <slug>/D{n}` (failing test first), then rebuild and `/qa-retest <slug>/D{n} …`.
 4. Repeat 3 until `python3 scripts/qa/case/bugs.py open` shows nothing for this feature — or the owner accepts a
    remaining defect (it stays Open in `qa/BUGS.md` and STATUS.md Known issues).

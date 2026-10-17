@@ -1,144 +1,139 @@
-"""Case library for a feature: one script per case, kept beside the plan and reused by every run and retest.
+"""Case library for a feature. The scripts ARE the test plan; the Markdown plan is generated from them.
 
 Library:  qa/<slug>/cases/scripts/
-            _feature.py   shared points, accounts and helpers of this feature (optional; scripts `from _feature import *`)
-            TC-NNN.py     META (with plan_hash) + run(c)
-A run copies the script it executes into proof/TC-NNN/case.py, so the proof always shows the exact script.
+            _feature.py   PLAN (spec, resources, test data), SCREENS (for the standards suite), shared helpers
+            TC-NNN.py     META (the case, in words) + run(c) (the case, in code)
+Generated: qa/<slug>/cases/Test_<slug>.md   (never edit by hand — edit META and run `doc`)
 
 usage:
-  gencase.py new   <plan.md> TC-NNN [TC-…]     write skeletons for cases that have no script
-  gencase.py check <plan.md>                   ok / stale (the case text changed) / missing / orphan
-  gencase.py hash  <plan.md> TC-NNN            the case's current plan hash
-
-Plan format (qa/<slug>/cases/Test_<slug>.md):
-  ### ★ TC-NNN · P1 · title  … **Requirement:** … **Env:** … **Precondition:** … **Steps:** …
-  **Expected result** (…): - bullet — evidence …   (until the next heading)
-plan_hash = sha1 of the case text, whitespace-normalised, first 10 hex — a script goes stale exactly when the
-plan's wording of that case changes.
+  gencase.py new  <slug> TC-NNN "title" [--priority P1] [--ac AC2]   write a skeleton script (META + run stub)
+  gencase.py doc  <slug>                                             render Test_<slug>.md from PLAN + every META
+  gencase.py list <slug>                                             one line per case: id · priority · title
 """
 import argparse
-import hashlib
+import importlib.util
 import json
 import os
 import re
 import sys
 
-
-def lib_dir(plan):
-    return os.path.join(os.path.dirname(os.path.abspath(plan)), "scripts")
-
-
-def case_text(doc, tc):
-    m = re.search(rf"^### (?:★ )?{tc} · .*?(?=^#{{2,3}} |\Z)", doc, re.M | re.S)
-    return m.group(0) if m else None
-
-
-def plan_hash(plan_doc, tc):
-    text = case_text(plan_doc, tc)
-    if text is None:
-        return None
-    text = re.sub(r"^### (?:★ )?", "### ", text)
-    text = re.sub(r"^---\s*\n", "", text, flags=re.M)
-    return hashlib.sha1(" ".join(text.split()).encode()).hexdigest()[:10]
-
-
-def anchor(heading):
-    h = re.sub(r"[^\w\- ]", "", heading.lower())
-    return h.replace(" ", "-")
-
-
-def parse_case(text, tc):
-    head = re.match(rf"^### (?:★ )?(({tc}) · (P\d) · (.+))$", text, re.M)
-    get = lambda k: (re.search(rf"^\**{k}:\**\s*(.+?)\s*$", text, re.M) or [None, ""])[1]  # noqa: E731
-    exp_i = text.find("**Expected result")
-    exp = [l[2:].strip() for l in text[exp_i:].splitlines() if l.startswith("- ")] if exp_i >= 0 else []
-    post = text.find("**Postcondition")
-    if post > exp_i >= 0:
-        exp = [l[2:].strip() for l in text[exp_i:post].splitlines() if l.startswith("- ")]
-    steps_i = text.find("**Steps:**")
-    steps = [l.strip() for l in text[steps_i:exp_i if exp_i > 0 else None].splitlines()[1:]
-             if re.match(r"\s*\d+\.", l)] if steps_i >= 0 else []
-    pm = re.search(r"\*\*Precondition:\*\*(.*?)(?=\n\*\*Steps|\n\*\*Expected|\Z)", text, re.S)
-    pre = " ".join(l.strip().lstrip("- ").strip() for l in pm.group(1).splitlines() if l.strip()) if pm else ""
-    req = get("Requirement")
-    return {"title": head.group(4), "priority": head.group(3), "env": get("Env"),
-            "source": req.split(" — ")[0] if req else "", "anchor": anchor(head.group(1)), "expected": exp,
-            "steps": steps, "pre": pre}
-
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(HERE), "rec"))
+from config import QA_ROOT  # noqa: E402
 
 SKELETON = '''import os, sys, time
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".."] * 4, "scripts", "qa", "rec"))
 from drv import *  # noqa
-try:
-    from _feature import *  # noqa  (shared points/accounts/helpers of this feature)
-except ImportError:
-    pass
+from _feature import *  # noqa
 
 META = {meta}
 
 
 def run(c):
-    c.pre({pre!r})
-{body}
+    c.pre(" · ".join(META["precondition"]))
+    # one c.step(n, ...) per META["steps"] item; `→ check:` = c.checkpoint(...) (fails → Blocked, never Fail)
+    # one c.result(n, ok, observed, [c.shot(...)]) per META["expected"] bullet; ok=None only when a person must judge
 '''
 
 
-def skeleton(info, plan_name, phash):
-    meta = {"title": info["title"], "group": "Core" if info["priority"] in ("P0", "P1") else "Supplementary",
-            "priority": info["priority"] or "P2", "env": info["env"], "plan": plan_name, "anchor": info["anchor"],
-            "source": info["source"], "expected": info["expected"],
-            "caption": {"expected": (info["expected"] or [""])[0].split(" — ")[0][:80]}, "plan_hash": phash}
-    body = [f"    # {s}" for s in info["steps"]]
-    for i, e in enumerate(info["expected"], 1):
-        body.append(f"    # Expected {i}: {e}")
-        body.append(f"    c.result({i}, None, 'TODO', [])")
-    return SKELETON.format(meta=json.dumps(meta, ensure_ascii=False, indent=1), pre=info["pre"],
-                           body="\n".join(body) or "    pass")
+def lib(slug):
+    return os.path.join(QA_ROOT, slug, "cases", "scripts")
 
 
-def script_hash(path):
-    m = re.search(r'"plan_hash":\s*"([0-9a-f]+)"', open(path, encoding="utf-8").read())
-    return m.group(1) if m else None
+def load_module(path, name):
+    sys.path.insert(0, os.path.dirname(path))
+    sys.path.insert(0, os.path.join(os.path.dirname(HERE), "rec"))
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def cases(slug):
+    """[(tc, META)] in id order, read without running anything on a device."""
+    out = []
+    d = lib(slug)
+    for f in sorted(os.listdir(d)) if os.path.isdir(d) else []:
+        if re.fullmatch(r"TC-\d{3}\.py", f):
+            src = open(os.path.join(d, f), encoding="utf-8").read()
+            m = re.search(r"^META = (\{.*?^\})", src, re.M | re.S)
+            out.append((f[:-3], json.loads(m.group(1)) if m else {"title": "(no META)"}))
+    return out
+
+
+def anchor(tc, meta):
+    return re.sub(r"[^\w\- ]", "", f"{tc} · {meta.get('priority', '')} · {meta.get('title', '')}".lower()).replace(" ", "-")
+
+
+def doc(slug):
+    feat = load_module(os.path.join(lib(slug), "_feature.py"), f"feature_{slug.replace('-', '_')}")
+    plan = getattr(feat, "PLAN", {})
+    rows = cases(slug)
+    spec = plan.get("spec", f"features/{slug}.md")
+    L = [f"# Test_{slug}", "",
+         f"_Generated by `gencase.py doc {slug}` from `cases/scripts/` — edit the scripts' META, not this file._", "",
+         f"**Spec:** [{spec}](../../../{spec}) · the acceptance criteria are the source of truth; when the app and an AC "
+         "disagree, the case keeps the AC's expected result.", ""]
+    if plan.get("resources"):
+        L += ["## Resources", "| Env | Needs |", "|---|---|"] + [f"| {a} | {b} |" for a, b in plan["resources"]] + [""]
+    if plan.get("test_data"):
+        L += ["## Test data", "| ID | What | Value |", "|---|---|---|"] + \
+             [f"| {a} | {b} | {c} |" for a, b, c in plan["test_data"]] + [""]
+    cov = {}
+    for tc, m in rows:
+        ac = (re.match(r"(AC\d+)", m.get("requirement", "")) or [None, "—"])[1]
+        cov.setdefault(ac, []).append(tc)
+    L += ["## Coverage", "| AC | Cases |", "|---|---|"] + [f"| {k} | {', '.join(v)} |" for k, v in sorted(cov.items())]
+    screens = getattr(feat, "SCREENS", {})
+    if screens:
+        L += ["", f"Standards suite (`scripts/qa/standards`, STD-*) runs on screens: {', '.join(sorted(screens))}."]
+    for group in ("Core", "Supplementary"):
+        g = [(tc, m) for tc, m in rows if m.get("group", "Core") == group]
+        if not g:
+            continue
+        L += ["", f"## {group}"]
+        for tc, m in g:
+            L += ["", f"### {tc} · {m.get('priority', '')} · {m.get('title', '')}",
+                  f"**Requirement:** {m.get('requirement', '—')} · **Env:** {m.get('env', '—')}"]
+            if m.get("precondition"):
+                L += ["**Precondition:** " + " · ".join(m["precondition"])]
+            L += ["**Steps:**"] + [f"{i}. {s}" for i, s in enumerate(m.get("steps", []), 1)]
+            L += ["**Expected:**"] + [f"- {e}" for e in m.get("expected", [])]
+            if m.get("postcondition"):
+                L += [f"**Postcondition:** {m['postcondition']}"]
+    out = os.path.join(QA_ROOT, slug, "cases", f"Test_{slug}.md")
+    open(out, "w", encoding="utf-8").write("\n".join(L) + "\n")
+    print(f"{out}: {len(rows)} cases")
+
+
+def new(slug, tc, title, priority, ac):
+    os.makedirs(lib(slug), exist_ok=True)
+    path = os.path.join(lib(slug), f"{tc}.py")
+    if os.path.exists(path):
+        sys.exit(f"{tc} exists — not overwritten")
+    meta = {"title": title, "priority": priority, "group": "Core" if priority in ("P0", "P1") else "Supplementary",
+            "requirement": f"{ac} — ", "env": "Android · auto (adb)", "precondition": [], "steps": [],
+            "expected": [], "focus": "", "caption": {"expected": ""}}
+    open(path, "w", encoding="utf-8").write(SKELETON.format(meta=json.dumps(meta, ensure_ascii=False, indent=1)))
+    print("skeleton", path)
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["new", "check", "hash"])
-    ap.add_argument("plan")
-    ap.add_argument("tcs", nargs="*")
+    ap.add_argument("cmd", choices=["new", "doc", "list"])
+    ap.add_argument("slug")
+    ap.add_argument("tc", nargs="?")
+    ap.add_argument("title", nargs="?", default="")
+    ap.add_argument("--priority", default="P1")
+    ap.add_argument("--ac", default="AC1")
     a = ap.parse_args()
-    plan_doc = open(a.plan, encoding="utf-8").read()
-    lib = lib_dir(a.plan)
-    plan_name = os.path.basename(a.plan)
-    all_tcs = sorted(set(re.findall(r"^### (?:★ )?(TC-\d{3})", plan_doc, re.M)))
-    if a.cmd == "hash":
-        for tc in a.tcs:
-            print(tc, plan_hash(plan_doc, tc))
-        return
-    if a.cmd == "check":
-        have = {f[:-3] for f in os.listdir(lib) if re.match(r"TC-\d{3}\.py$", f)} if os.path.isdir(lib) else set()
-        rows = {"ok": [], "stale": [], "missing": [], "orphan": sorted(have - set(all_tcs))}
-        for tc in all_tcs:
-            if tc not in have:
-                rows["missing"].append(tc)
-            elif script_hash(os.path.join(lib, f"{tc}.py")) != plan_hash(plan_doc, tc):
-                rows["stale"].append(tc)
-            else:
-                rows["ok"].append(tc)
-        for k, v in rows.items():
-            print(f"{k:8s} {len(v):3d}  {' '.join(v)}")
-        return
-    os.makedirs(lib, exist_ok=True)
-    for tc in a.tcs:
-        path = os.path.join(lib, f"{tc}.py")
-        if os.path.exists(path):
-            print(tc, "exists — not overwritten")
-            continue
-        text = case_text(plan_doc, tc)
-        if text is None:
-            sys.exit(f"{tc}: not found in {a.plan}")
-        open(path, "w", encoding="utf-8").write(skeleton(parse_case(text, tc), plan_name, plan_hash(plan_doc, tc)))
-        print(tc, "skeleton written", path)
+    if a.cmd == "new":
+        new(a.slug, a.tc, a.title, a.priority, a.ac)
+    elif a.cmd == "doc":
+        doc(a.slug)
+    else:
+        for tc, m in cases(a.slug):
+            print(f"{tc} · {m.get('priority', '')} · {m.get('group', '')} · {m.get('title', '')}")
 
 
 if __name__ == "__main__":

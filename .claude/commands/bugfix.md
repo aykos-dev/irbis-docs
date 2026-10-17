@@ -8,10 +8,9 @@ Read STATUS.md. If the bug report contains a secret or personal data, say so fir
 with placeholders.
 
 If the argument is a defect ref (`check-in/D3`): resolve it with
-`python3 scripts/qa/case/bugs.py find <ref>` and read that `D{n}_{name}.md` — its Bug section (Steps,
-Actual, Expected, the quoted AC) is the bug report, and Internal notes may already point at the cause in code.
-Do not edit the bug file except to add the fix commit to Internal notes → Notes; verification happens
-on the device with `/qa-retest <ref>`.
+`python3 scripts/qa/case/bugs.py find <ref>` and read that `D{n}_{name}.md` — its Steps, Actual, Expected,
+the quoted AC and "Cause in code" are the bug report. Do not edit the bug file; verification happens on the device
+with `/qa-retest <ref>`, which re-runs the defect's `Cases`.
 
 1. Locate: identify the owning repo(s). Delegate to that repo's dev subagent.
 2. Reproduce: branch fix/<short-slug>. Write a failing test that reproduces the bug. Show it failing.

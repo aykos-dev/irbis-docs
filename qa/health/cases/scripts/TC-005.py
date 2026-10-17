@@ -3,26 +3,30 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".
 from drv import *  # noqa
 import re  # noqa
 try:
-    from _feature import *  # noqa  (shared points/accounts/helpers of this feature)
+    from _feature import *  # noqa
 except ImportError:
     pass
 
 META = {
  "title": "Pull to refresh refetches",
- "group": "Supplementary",
  "priority": "P2",
- "env": "Android · auto (adb) · resources: API-UP",
- "plan": "Test_health.md",
- "anchor": "tc-005--p2--pull-to-refresh-refetches",
- "source": "AC3",
- "expected": [
-  "A new `health_checked` { status: \"ok\" } event after the swipe — event log",
-  "The refresh indicator is visible right after the swipe is released (≤ 0.5 s) — screenshot"
+ "group": "Core",
+ "requirement": "AC3 — pull to refresh refetches",
+ "env": "Android · auto (adb)",
+ "precondition": [
+  "Status screen showing ok, online"
  ],
+ "steps": [
+  "Swipe down on the Status screen"
+ ],
+ "expected": [
+  "New health_checked {status: ok} after the swipe — event log",
+  "Refresh spinner visible right after the swipe — screenshot (human)"
+ ],
+ "focus": null,
  "caption": {
-  "expected": "A new `health_checked` { status: \"ok\" } event after the swipe"
- },
- "plan_hash": "64cb01d339"
+  "expected": "spinner, refreshed"
+ }
 }
 
 

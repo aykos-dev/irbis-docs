@@ -3,26 +3,31 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".
 from drv import *  # noqa
 import re  # noqa
 try:
-    from _feature import *  # noqa  (shared points/accounts/helpers of this feature)
+    from _feature import *  # noqa
 except ImportError:
     pass
 
 META = {
  "title": "Offline shows a persistent banner and keeps the last result",
- "group": "Core",
  "priority": "P1",
- "env": "Android · auto (adb) · resources: OFFLINE",
- "plan": "Test_health.md",
- "anchor": "tc-004--p1--offline-shows-a-persistent-banner-and-keeps-the-last-result",
- "source": "AC3",
- "expected": [
-  "`app.offline-banner` visible and still visible after 15 s (persistent, not a toast) — screenshot ×2",
-  "The last result (\"API is up\") stays visible, marked as possibly out of date — screenshot"
+ "group": "Core",
+ "requirement": "AC3 — offline banner, cached result kept",
+ "env": "Android · auto (adb)",
+ "precondition": [
+  "Status screen showing ok"
  ],
+ "steps": [
+  "Wi-Fi and mobile data off → check: both off"
+ ],
+ "expected": [
+  "app.offline-banner at 5 s and still at 15 s — UI tree",
+  "Last result still shown and marked stale ('Not updated…') — UI tree"
+ ],
+ "postcondition": "network back on",
+ "focus": null,
  "caption": {
-  "expected": "`app.offline-banner` visible and still visible after 15 s (persistent, not a toa"
- },
- "plan_hash": "450016ed0d"
+  "expected": "offline banner, result kept"
+ }
 }
 
 

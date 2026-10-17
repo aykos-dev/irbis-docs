@@ -15,37 +15,34 @@ Device UI in **English** (session.py reads the Location Accuracy switch by its E
 Test account signed in on the phone. Phone/OTP for scripts that must type them: export `IRBIS_QA_PHONE`,
 `IRBIS_QA_OTP` in your shell profile yourself — never in a file or the chat.
 
+## How it fits together (token-lean by design)
+- **Runs happen in the `qa-tester` subagent (Sonnet)**; the main conversation sees only a ≤12-line summary.
+- **The case script is the plan:** `qa/<slug>/cases/scripts/TC-NNN.py` = META (title, requirement, precondition,
+  steps, expected + evidence) + `run(c)`. `gencase.py doc <slug>` renders the readable `Test_<slug>.md`.
+- **Standards suite** (`scripts/qa/standards/STD-*.py`) — dark mode, offline, translated copy + long-text layout —
+  runs on every screen in the feature's `_feature.SCREENS`, so feature cases cover only their ACs.
+- **Evidence:** full screenshot (proof) + a small crop of the case's `focus` testID (what a reviewer reads). Only ids
+  with ❌ or — are looked at; STD-TEXT gives one composite image. No video unless `QA_VIDEO=1`.
+- **Defects** point at their failing case ids (`Cases`); a retest re-runs exactly those. Bug files are short.
+- **run.md**: a table row per case; a full section only for cases that did not pass.
+
 ## Layout
 ```
 irbis-docs/
+  .claude/agents/qa-tester.md   the procedure (plan / run / retest) — loaded only by the subagent
   scripts/qa/
-    rec/   config.py   qa/qa.config.json + env overrides (package, activity, event tag)
-           drv.py      device helpers: nodes/find/tap/wait (text or testID), QA events, mock location,
-                       app launch/deep link, device conditions (network, font, dark, rotation, permissions)
-           rec.py      scrcpy recorder: start/step/shot/stop → render (captions + verdict) → check → prune
-           caption.py  caption strip under the video (Pillow; Homebrew ffmpeg has no drawtext)
-           events.py   parses IRBIS_QA lines from logcat
-           session.py  up [--mock] / down: show taps, Do Not Disturb, mock location; restores everything
-           mockloop.sh re-sends the mock point every second (started by session.py up --mock)
-           blur.py     blur a real person's data in a video before it leaves the machine
-    case/  gencase.py  one script per test case; `check` finds missing/stale scripts via plan_hash
-           runcase.py  new (run folder) · run (one case per call) · finish (render + run.md)
-           casekit.py  the `c` object a case script uses
-           runmd.py    run.md rows and sections
-           bugs.py     next D number · index (qa/BUGS.md) · open · find <slug>/D{n}
+    rec/       config.py (qa.config.json + env) · drv.py (device helpers) · rec.py (steps/events; video opt-in)
+               session.py (up/down; emulator emulates the phone) · events.py · mockloop.sh · caption.py · blur.py
+    case/      gencase.py (new/doc/list) · runcase.py (new/run/finish) · casekit.py (`c`) · runmd.py · bugs.py
+    standards/ _std.py · STD-DARK.py · STD-OFFLINE.py · STD-TEXT.py   (STD-KEYBOARD arrives with the first input screen)
   qa/
-    qa.config.json     Android package / activity / event tag of the build under test
-    BUGS.md            every defect of every feature (generated)
-    _templates/        Test_TEMPLATE.md · BUG_TEMPLATE.md · repro_TEMPLATE.py
-    <slug>/
-      cases/Test_<slug>.md          the plan (/qa-plan)
-      cases/scripts/TC-NNN.py       case library, reused by every run; _feature.py shared helpers
-      runs/YYYY-MM-DD_HHMM/run.md   one run: manifest, table, every case's expected vs actual, defects
-      runs/…/proof/TC-NNN/          screenshots, video.mp4, video_steps.tsv, events.txt, result.json
-      bugs/README.md                this feature's defects (generated) + common setup
-      bugs/D{n}_{name}/             D{n}_{name}.md · video/ · image/ · others/ (repro.py, steps, events)
+    qa.config.json   package, activity, event tag, video, serial, emulate_phone
+    BUGS.md          every defect (generated)
+    _templates/BUG_TEMPLATE.md
+    <slug>/cases/scripts/{_feature.py, TC-NNN.py} · cases/Test_<slug>.md (generated)
+    <slug>/runs/<YYYY-MM-DD_HHMM>/{run.md, proof/<id>/…, proof/_run/review/<id>/*.png}
+    <slug>/bugs/D{n}_{name}/D{n}_{name}.md
 ```
-Media (`*.mp4`, `*.png`) is git-ignored; Markdown, scripts, step times and events are committed.
 
 ## The app's side of the contract (irbis-app engineering standards §16)
 - **testID** on every interactive element and every element a test asserts on: `<feature>.<element>`
@@ -73,19 +70,16 @@ Retests: **Fixed** (expected holds and the bug's code path was exercised) · **N
 
 ## Quick reference
 ```bash
-PY=~/.claude/venvs/qa/bin/python
-python3 scripts/qa/rec/session.py up --mock            # before the first recording
-$PY scripts/qa/case/runcase.py new check-in --build "release apk, irbis-app a1b2c3d" --backend dev
-python3 scripts/qa/case/gencase.py check qa/check-in/cases/Test_check-in.md
-python3 scripts/qa/case/gencase.py new   qa/check-in/cases/Test_check-in.md TC-001
-$PY scripts/qa/case/runcase.py run    qa/check-in/runs/2026-10-20_1400 TC-001
-$PY scripts/qa/case/runcase.py finish qa/check-in/runs/2026-10-20_1400 qa/check-in/runs/2026-10-20_1400/proof/_run/verdicts.json
-python3 scripts/qa/case/bugs.py next check-in      # → D4
-$PY qa/check-in/bugs/D4_…/others/repro.py
-python3 scripts/qa/rec/rec.py render qa/check-in/bugs/D4_… --verdict fail --expected "…" --actual "…"
-python3 scripts/qa/rec/rec.py check  qa/check-in/bugs/D4_…
-python3 scripts/qa/case/bugs.py index
-python3 scripts/qa/rec/session.py down                 # restores the phone; prints the cleanup table
+PY=~/.claude/venvs/qa/bin/python; export QA_SERIAL=emulator-5554
+python3 scripts/qa/rec/session.py up                          # emulator: density 450 + font 1.15 like the phone
+$PY scripts/qa/case/gencase.py new  health TC-006 "title" --priority P1 --ac AC3
+$PY scripts/qa/case/gencase.py doc  health                    # regenerate Test_health.md
+R=$($PY scripts/qa/case/runcase.py new health --build "…" --backend "…" --scope "…")
+$PY scripts/qa/case/runcase.py run $R TC-001
+$PY scripts/qa/case/runcase.py run $R STD-TEXT@status
+$PY scripts/qa/case/runcase.py finish $R $R/proof/_run/verdicts.json
+python3 scripts/qa/case/bugs.py next health | index | open | find health/D2
+python3 scripts/qa/rec/session.py down
 ```
 
 ## Gotchas (from the original runner's measured runs)
@@ -96,7 +90,8 @@ python3 scripts/qa/rec/session.py down                 # restores the phone; pri
 - **Wait for states, not time.** `wait`, `wait_any`, `wait_event`, `no_event(window)` — fixed sleeps only for a
   window the plan names, ≤0.5 s for an animation.
 - **One case per call**, in the foreground. Long background sweeps get killed under memory pressure.
-- **A script's reading can be wrong** (it once read a field behind a dialog as the dialog). The screenshot decides.
+- **A script's reading can be wrong** (it once read a field behind a dialog as the dialog). The crop decides.
+- **uiautomator bounds can differ from what is drawn** (health/D2: a chip overflowed visually while its node stayed inside) — layout checks are judged on the crop.
 - **Two-finger gestures** can't be sent over adb on a non-rooted phone → those cases are manual.
 - **A notification banner** can steal a tap mid-recording → `session.py up` sets Do Not Disturb.
 - **An OTA/JS-only update keeps versionName/versionCode** → record the irbis-app commit; it's the only way to

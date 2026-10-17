@@ -1,4 +1,4 @@
-"""Shared helpers for the health cases: control the local API/DB the phone talks to, and read the Status screen."""
+"""health feature: PLAN (rendered into Test_health.md), SCREENS (for the standards suite), shared helpers."""
 import json
 import os
 import subprocess
@@ -55,3 +55,22 @@ def card_texts():
 
 def app_locale(code):
     sh("cmd", "locale", "set-app-locales", PKG, "--locales", code)
+
+
+PLAN = {
+    "spec": "features/health.md",
+    "resources": [("Android", "emulator pixel-8a emulating the S25 Ultra (session.py up), or the phone; devRelease APK"),
+                  ("Backend", "irbis-api `npm run start:dev` on :3000 + Postgres container `db`; `adb reverse tcp:3000 tcp:3000`")],
+    "test_data": [("API-UP", "API + DB running", "`curl localhost:3000/health` → status ok"),
+                  ("DB-DOWN", "DB stopped, API running", "`docker compose stop db` (irbis-api)"),
+                  ("API-GONE", "API unreachable from the device", "`adb reverse --remove tcp:3000`")],
+}
+
+
+def open_status(c):
+    reverse(True)
+    relaunch()
+    return wait("health.status-card", 15, exact=True) and wait("health.api-chip", 8, exact=True)
+
+
+SCREENS = {"status": {"open": open_status, "root": "health.status-card"}}

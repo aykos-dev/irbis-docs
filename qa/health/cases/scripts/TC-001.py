@@ -3,27 +3,32 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".
 from drv import *  # noqa
 import re  # noqa
 try:
-    from _feature import *  # noqa  (shared points/accounts/helpers of this feature)
+    from _feature import *  # noqa
 except ImportError:
     pass
 
 META = {
  "title": "Status screen shows API and database up",
- "group": "Core",
  "priority": "P0",
- "env": "Android · auto (adb) · resources: API-UP",
- "plan": "Test_health.md",
- "anchor": "tc-001--p0--status-screen-shows-api-and-database-up",
- "source": "AC1",
- "expected": [
-  "Card `health.status-card` shows `health.api-chip` and `health.db-chip` in the Go style, text \"API is up\" and \"Database is up\" — screenshot",
-  "`health.version` shows \"v0.0.1\" (the API's package version) — screenshot",
-  "Event `health_checked` { status: \"ok\", db: \"up\" } — event log"
+ "group": "Core",
+ "requirement": "AC1 — API reachable and DB up shows ok (+AC7 event)",
+ "env": "Android · auto (adb)",
+ "precondition": [
+  "API + DB running",
+  "adb reverse tcp:3000"
  ],
+ "steps": [
+  "Cold start the app → check: health.status-card within 10 s"
+ ],
+ "expected": [
+  "health.api-chip 'API is up' and health.db-chip 'Database is up', both Go — UI tree",
+  "health.version 'v0.0.1' — UI tree",
+  "Event health_checked {status: ok, db: up} — event log"
+ ],
+ "focus": "health.status-card",
  "caption": {
-  "expected": "Card `health.status-card` shows `health.api-chip` and `health.db-chip` in the Go"
- },
- "plan_hash": "baeb375a24"
+  "expected": "API is up, Database is up, v0.0.1"
+ }
 }
 
 

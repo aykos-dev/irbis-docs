@@ -2,7 +2,7 @@
 
 usage:
   bugs.py next  <slug>        the next defect number for a feature (D1, D2 … continue across runs, never reused)
-  bugs.py index               rebuild qa/BUGS.md (every defect of every feature) and qa/<slug>/bugs/README.md
+  bugs.py index               rebuild qa/BUGS.md (every defect of every feature)
   bugs.py open                list the open defects (Open / Not fixed) as `<slug>/D{n}` — the input /qa-retest takes
   bugs.py find  <ref>         path of a defect folder from `check-in/D3`, `D3` (if unique) or a path
 
@@ -27,7 +27,7 @@ def defects():
         title = (re.search(r"^# D\d+ · (.+)$", text, re.M) or [None, os.path.basename(folder)])[1]
         cell = lambda k: (re.search(rf"^\| {k} \| (.+?) \|\s*$", text, re.M) or [None, "—"])[1].strip()  # noqa: E731
         out.append({"slug": slug, "n": num, "ref": f"{slug}/D{num}", "title": title, "status": cell("Status"),
-                    "severity": cell("Severity"), "path": path, "folder": folder})
+                    "severity": cell("Severity"), "cases": cell("Cases"), "path": path, "folder": folder})
     return out
 
 
@@ -51,16 +51,6 @@ def index():
     for d in sorted(ds, key=lambda d: (not is_open(d), *sev_key(d))):
         lines.append(f"| [{d['ref']}]({rel(d['path'], QA_ROOT)}) | {d['severity']} | {d['title']} | {d['status']} |")
     open(os.path.join(QA_ROOT, "BUGS.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
-    for slug in sorted({d["slug"] for d in ds}):
-        readme = os.path.join(QA_ROOT, slug, "bugs", "README.md")
-        old = open(readme, encoding="utf-8").read() if os.path.exists(readme) else ""
-        keep = old[old.find("\n## Common setup"):] if "\n## Common setup" in old else \
-            "\n## Common setup\n\n_Test accounts, points, device setup shared by the repro scripts._\n"
-        rows = [f"| [D{d['n']}]({rel(d['path'], os.path.dirname(readme))}) | {d['severity']} | {d['title']} | {d['status']} |"
-                for d in sorted((d for d in ds if d["slug"] == slug), key=sev_key)]
-        body = (f"# Defects — {slug}\n\nRuns: `../runs/`. Spec: `irbis-docs/features/{slug}.md`.\n\n"
-                "| # | Severity | Defect | Status |\n|---|---|---|---|\n" + "\n".join(rows) + "\n" + keep)
-        open(readme, "w", encoding="utf-8").write(body)
     print(f"indexed {len(ds)} defects ({sum(is_open(d) for d in ds)} open)")
 
 
@@ -83,7 +73,7 @@ def main():
         hits = [d for d in ds if d["ref"] == ref or f"D{d['n']}" == ref or os.path.basename(d["folder"]) == ref]
         if len(hits) != 1:
             sys.exit(f"{ref}: {'not found' if not hits else 'ambiguous — use <slug>/D{n}: ' + ', '.join(h['ref'] for h in hits)}")
-        print(hits[0]["folder"])
+        print(hits[0]["folder"], "\t", hits[0]["cases"])
     else:
         sys.exit(__doc__)
 

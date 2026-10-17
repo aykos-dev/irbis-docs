@@ -31,7 +31,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(HERE), "rec"))
 from casekit import Blocked, Ctx  # noqa: E402
 from config import CACHE, QA_ROOT  # noqa: E402
 from rec import Rec  # noqa: E402
-import gencase  # noqa: E402
 import runmd  # noqa: E402
 
 RENDER_WORKERS = 3
@@ -47,9 +46,8 @@ def new(slug, build, backend="—", scope="all cases in the plan"):
     import drv
     if (why := drv.device_ready()):
         sys.exit(why)
-    plan = os.path.join(QA_ROOT, slug, "cases", f"Test_{slug}.md")
-    if not os.path.exists(plan):
-        sys.exit(f"no plan at {plan} — run /qa-plan {slug} first")
+    if not os.path.isdir(os.path.join(QA_ROOT, slug, "cases", "scripts")):
+        sys.exit(f"no case library for {slug} — run /qa-plan {slug} first")
     run = time.strftime("%Y-%m-%d_%H%M")
     run_dir = os.path.join(QA_ROOT, slug, "runs", run)
     os.makedirs(os.path.join(run_dir, "proof", "_run"), exist_ok=True)
@@ -63,26 +61,24 @@ def new(slug, build, backend="—", scope="all cases in the plan"):
     print(run_dir)
 
 
+STD_DIR = os.path.join(os.path.dirname(HERE), "standards")
+
+
 def prepare(run_dir, tc, force=False):
-    """Copy the library script into proof/TC-NNN/case.py (the run's snapshot); refuse a stale one unless forced."""
+    """Copy the script into proof/<id>/case.py (the run's snapshot of exactly what ran).
+    TC-NNN comes from the feature library; STD-XXX@screen from scripts/qa/standards (the screen comes from the
+    feature's _feature.SCREENS)."""
     import shutil
     lib, case_dir = library(run_dir), os.path.join(run_dir, "proof", tc)
     os.makedirs(case_dir, exist_ok=True)
-    src = os.path.join(lib, f"{tc}.py")
+    for d in (lib, STD_DIR):
+        if d not in sys.path:
+            sys.path.insert(0, d)  # `from _feature import *` / `from _std import …`
+    src = os.path.join(STD_DIR, tc.split("@")[0] + ".py") if tc.startswith("STD-") else os.path.join(lib, f"{tc}.py")
     if os.path.exists(src):
-        if lib not in sys.path:
-            sys.path.insert(0, lib)  # for `from _feature import *`
-        want = gencase.script_hash(src)
-        if want:
-            m = re.search(r'"plan":\s*"([^"]+)"', open(src, encoding="utf-8").read())
-            plan = os.path.join(os.path.dirname(lib), m.group(1)) if m else None
-            now = gencase.plan_hash(open(plan, encoding="utf-8").read(), tc) if plan and os.path.exists(plan) else None
-            if now and now != want and not force:
-                sys.exit(f"{tc}: the plan changed since this script was written (hash {want} → {now}); "
-                         f"update the script (and its plan_hash) or run with --force")
         shutil.copy(src, os.path.join(case_dir, "case.py"))
     elif not os.path.exists(os.path.join(case_dir, "case.py")):
-        sys.exit(f"{tc}: no script — write {src} (gencase.py new …)")
+        sys.exit(f"{tc}: no script at {src} (gencase.py new …)")
     return case_dir
 
 
@@ -112,6 +108,9 @@ def run(run_dir, tcs, force=False):
     case_dir = prepare(run_dir, tc, force)
     mod = load_case(case_dir)
     meta = dict(mod.META, tc=tc)
+    if "@" in tc:
+        meta["screen"] = tc.split("@", 1)[1]
+        meta["title"] = f"{meta['title']} — {meta['screen']}"
     rec = Rec(case_dir, layout="case", title=f"{tc} · {meta['title']}")
     rec.start()
     c = Ctx(case_dir, run_dir, meta, rec)

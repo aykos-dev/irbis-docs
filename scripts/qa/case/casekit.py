@@ -1,4 +1,14 @@
-"""What a case script sees. One case = qa/<slug>/cases/scripts/TC-NNN.py with META and run(c):
+"""What a case script sees. The script IS the test case: its META is the plan (`gencase.py doc` renders
+qa/<slug>/cases/Test_<slug>.md from all scripts), run(c) executes it.
+
+META keys: title, priority (P0–P3), group (Core|Supplementary), requirement ("AC2 — one line"), env,
+precondition [..], steps [..], expected [.. "bullet — evidence"], postcondition (optional), focus (testID to crop
+screenshots to), caption {expected}.
+
+Evidence: c.shot(name) saves the full screenshot (proof) plus a small crop of META["focus"] (or focus=…) into
+proof/_run/review/TC/ — reviewers read ONLY the crop, and only for bullets that are ❌ or — (needs a human).
+
+Example:
 
     META = {"title": "Check-in succeeds 150 m from a verified spot", "group": "Core", "priority": "P1",
             "env": "Android · auto (adb + mock location) · resources: ACC-A, SPOT-1",
@@ -30,7 +40,8 @@ import time
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "rec"))
 import drv  # noqa: E402
 
-THUMB_W = 540
+THUMB_W = 360          # review crops: small on purpose (each image read costs tokens)
+FOCUS_PAD = 24
 
 
 class Blocked(Exception):
@@ -63,7 +74,13 @@ class Ctx:
     def t(self):
         return round(time.time() - self.rec.t0, 1)
 
-    def shot(self, name):
+    def shot(self, name, focus=None):
+        """Full screenshot = proof; a small crop around `focus` (testID) = what a reviewer looks at."""
+        focus = focus or self.meta.get("focus")
+        box = None
+        if focus:
+            n = drv.find(focus, exact=True)
+            box = n["b"] if n else None
         path = self.rec.shot(name)
         self.shots.append(os.path.basename(path))
         try:
@@ -71,9 +88,14 @@ class Ctx:
             review = os.path.join(self.run_dir, "proof", "_run", "review", self.meta["tc"])
             os.makedirs(review, exist_ok=True)
             im = Image.open(path)
-            im.resize((THUMB_W, int(im.height * THUMB_W / im.width))).save(os.path.join(review, os.path.basename(path)))
-        except Exception as e:  # thumbnails are a convenience; the full screenshot is the proof
-            self.note(f"thumbnail failed: {e}")
+            if box:
+                x1, y1, x2, y2 = box
+                im = im.crop((max(0, x1 - FOCUS_PAD), max(0, y1 - FOCUS_PAD),
+                              min(im.width, x2 + FOCUS_PAD), min(im.height, y2 + FOCUS_PAD)))
+            w = min(THUMB_W, im.width)
+            im.resize((w, int(im.height * w / im.width))).save(os.path.join(review, os.path.basename(path)))
+        except Exception as e:  # the crop is a convenience; the full screenshot is the proof
+            self.note(f"review crop failed: {e}")
         return os.path.basename(path)
 
     def checkpoint(self, name, ok, seen=None):

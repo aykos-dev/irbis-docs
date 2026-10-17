@@ -3,27 +3,33 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".
 from drv import *  # noqa
 import re  # noqa
 try:
-    from _feature import *  # noqa  (shared points/accounts/helpers of this feature)
+    from _feature import *  # noqa
 except ImportError:
     pass
 
 META = {
  "title": "API unreachable shows an error with Retry, and Retry recovers",
- "group": "Core",
  "priority": "P1",
- "env": "Android · auto (adb) · resources: API-GONE, API-UP",
- "plan": "Test_health.md",
- "anchor": "tc-003--p1--api-unreachable-shows-an-error-with-retry-and-retry-recovers",
- "source": "AC3",
- "expected": [
-  "After step 2: plain-language error message and `health.retry` visible; no raw status code or stack — screenshot",
-  "After step 3: the card shows \"API is up\" again — screenshot",
-  "Event `health_checked` { status: \"ok\" } after the Retry tap — event log"
+ "group": "Core",
+ "requirement": "AC3 — error state with Retry",
+ "env": "Android · auto (adb)",
+ "precondition": [
+  "API running"
  ],
+ "steps": [
+  "adb reverse --remove tcp:3000, cold start → check: no health_checked in 15 s",
+  "Wait for the error state",
+  "Restore the forward, tap health.retry"
+ ],
+ "expected": [
+  "Error message + health.retry, no raw status code — UI tree",
+  "'API is up' again after Retry — UI tree",
+  "Event health_checked {status: ok} after Retry — event log"
+ ],
+ "focus": "health.status-card",
  "caption": {
-  "expected": "After step 2: plain-language error message and `health.retry` visible; no raw st"
- },
- "plan_hash": "6e3bd62452"
+  "expected": "error + Retry, then recovered"
+ }
 }
 
 

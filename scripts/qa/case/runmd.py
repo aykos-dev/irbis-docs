@@ -1,4 +1,5 @@
-"""run.md rows and case sections from proof/TC-NNN/result.json + the reviewed verdict.
+"""run.md rows and case sections from proof/<id>/result.json + the reviewed verdict.
+Every case gets a Table row; only non-Pass cases get a section (Pass details stay in proof/<id>/result.json).
 
 Used by runcase.py finish. Replaces a case's existing row/section when the case is re-run.
 verdict entry: {"verdict": "Pass|Fail|Blocked|Not run", "line": "what happened, one line",
@@ -63,7 +64,8 @@ def row(res, v):
     bad = [i for i, r in sorted(res["results"].items()) if v.get("ok", {}).get(i, r["ok"]) is False]
     issue = (v.get("reason") or res.get("reason") or "—") if v["verdict"] in ("Blocked", "Not run") else \
         ("❌ " + ", ".join(bad) if bad else "—")
-    return f"| [{tc}](#{tc.lower()}) | {m['title']} | {v['verdict']} | {v.get('line', '—')} | {issue} | [proof/{tc}/](proof/{tc}/) |"
+    link = f"[{tc}](#{tc.lower()})" if v["verdict"] != "Pass" else tc
+    return f"| {link} | {m['title']} | {v['verdict']} | {v.get('line', '—')} | {issue} | [proof/{tc}/](proof/{tc}/) |"
 
 
 def _replace_block(text, heading, tc, new, end_marker):
@@ -72,8 +74,11 @@ def _replace_block(text, heading, tc, new, end_marker):
     stop = text.find(end_marker, start + len(heading))
     stop = len(text) if stop < 0 else stop
     body = text[start:stop]
-    pat = re.compile(rf'(<a id="{tc.lower()}"></a>\n)?### {tc} · .*?(?=\n<a id=|\n### TC-|\Z)', re.S)
-    body = pat.sub(lambda _: new, body, count=1) if pat.search(body) else body.rstrip("\n") + "\n\n" + new + "\n\n"
+    pat = re.compile(rf'(<a id="{re.escape(tc.lower())}"></a>\n)?### {re.escape(tc)} · .*?(?=\n<a id=|\n### (?:TC|STD)-|\Z)', re.S)
+    if new is None:  # a Pass: no section (drop one left by an earlier non-Pass run of the same case)
+        body = pat.sub("", body, count=1)
+    else:
+        body = pat.sub(lambda _: new, body, count=1) if pat.search(body) else body.rstrip("\n") + "\n\n" + new + "\n\n"
     return text[:start] + body + text[stop:]
 
 
@@ -83,7 +88,7 @@ def write(run_md, items):
     for res, v, kept in items:
         tc = res["meta"]["tc"]
         r = row(res, v)
-        rows = re.compile(rf"^\| \[?{tc}\]?.*$", re.M)
+        rows = re.compile(rf"^\| \[?{re.escape(tc)}\]?.*$", re.M)
         if rows.search(text):
             text = rows.sub(lambda _: r, text, count=1)
         else:
@@ -94,7 +99,8 @@ def write(run_md, items):
             if "| TC |" not in block:
                 block += "\n| TC | Case | Verdict | What happened | Issue / note | Proof |\n|---|---|---|---|---|---|"
             text = text[:j] + block + "\n" + r + "\n" + text[nxt:]
-        text = _replace_block(text, "## Cases", tc, section(res, v, kept), "\n## Additional observations")
+        sec = None if v["verdict"] == "Pass" else section(res, v, kept)
+        text = _replace_block(text, "## Cases", tc, sec, "\n## Additional observations")
     open(run_md, "w", encoding="utf-8").write(text)
 
 
@@ -131,6 +137,7 @@ RUN_TEMPLATE = """# Run {run} — {slug}
 |---|---|---|---|---|---|
 
 ## Cases
+_Only cases that did not pass; Pass details are in proof/<id>/result.json._
 
 ## Additional observations
 
