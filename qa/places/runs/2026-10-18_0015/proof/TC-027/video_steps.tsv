@@ -1,0 +1,6 @@
+6.43	1: cold deep link
+8.62	2: unknown id
+9.82	3: Back
+12.66	Expected: The seeded place opens with place.name equal to its name_uz 
+12.66	Result: PASS
+12.66	END

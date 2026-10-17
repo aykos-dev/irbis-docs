@@ -1,0 +1,2 @@
+{"TC-027":{"verdict":"Pass","line":"TC-027 · Pass","conclusion":"Cold deep link to unknown id, Back leaves Place (D2 path reached)."},
+"STD-TEXT@place":{"verdict":"Pass","line":"STD-TEXT@place · script Fail, crop Pass","conclusion":"Crop review: ru and uz copy translated; the flagged strings are the server-provided level name in the right locale (script false positive). uz lock text wraps inside the level card, no overflow (D3 path reached).","ok":{"1":true}}}

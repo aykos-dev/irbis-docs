@@ -1,0 +1,6 @@
+00:15:32.192 tab_opened {"tab": "path"}
+00:15:33.765 tab_opened {"tab": "profile"}
+00:15:37.396 place_viewed {"slug": "boritog-1295", "requiredLevel": 1, "qualifies": true}
+00:15:39.420 tab_opened {"tab": "explore"}
+00:15:39.439 location_permission {"result": "granted"}
+00:15:39.896 explore_loaded {"count": 71, "origin": "device"}
