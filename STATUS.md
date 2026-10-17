@@ -21,4 +21,5 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   `design/media/onboarding/MEDIA.md`. Resume with `/feature onboarding` after auth is merged.
 
 ## Known issues
-- none
+- auth/D1 irbis:// deep links not delivered on Android (no VIEW intent-filter) — fix committed app bf03271 on feat/auth, awaiting retest (`/qa-retest auth/D1`)
+- iOS: Info.plist has no `irbis` URL scheme, so deep links won't open the app on iOS — follow-up, not logged as a defect yet
