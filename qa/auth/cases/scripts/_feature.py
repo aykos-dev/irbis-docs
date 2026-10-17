@@ -16,7 +16,7 @@ from drv import PKG, back, deep_link, find, has, keyboard_shown, nodes, relaunch
 from config import DOCS  # noqa: E402
 
 API = "http://localhost:3000"
-API_LOG = "/private/tmp/claude-501/-Users-sardor-work-irbis/e9262639-c2fe-4f16-8f55-9570ebc01b97/scratchpad/api-qa.log"
+API_LOG = os.environ.get("QA_API_LOG", "/private/tmp/claude-501/-Users-sardor-work-irbis-irbis-docs/ad52b833-b574-44a3-88df-2262ff5f2f40/scratchpad/api-qa.log")
 CACHE_DIR = os.path.expanduser("~/.cache/irbis-qa")
 
 
@@ -275,10 +275,18 @@ PLAN = {
 }
 
 
+def _open_gate():
+    if not open_debug():
+        return False
+    tap("debug.open-gate", exact=True)
+    return wait("auth.gate", 10, exact=True)
+
+
 SCREENS = {
     "login": {"open": lambda c=None: open_login(), "root": "auth.login"},
     "signup": {"open": lambda c=None: open_signup(), "root": "auth.signup"},
     "forgot": {"open": lambda c=None: open_forgot(), "root": "auth.forgot"},
     "guest-profile": {"open": lambda c=None: ensure_guest(), "root": "profile.guest"},
+    "gate": {"open": lambda c=None: _open_gate(), "root": "auth.gate"},
     "account-profile": {"open": lambda c=None: ui_login_from_guest(std_account(), PW), "root": "profile.account"},
 }
