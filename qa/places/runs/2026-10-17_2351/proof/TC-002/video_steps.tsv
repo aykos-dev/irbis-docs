@@ -1,0 +1,5 @@
+3.07	1: read Chuquraq + Qorangur rows
+3.3	2: scan all rows
+3.68	Expected: name_uz of the Chuquraq row is exactly `Chuquraq (Kelin Ko'y
+3.68	Result: PASS
+3.68	END

@@ -1,0 +1,4 @@
+6.39	1: open the place from its Explore card (a link carries no origin)
+8.99	Expected: place.distance shows '8.4 km' with the label 'From you' and 
+8.99	Result: PASS
+8.99	END

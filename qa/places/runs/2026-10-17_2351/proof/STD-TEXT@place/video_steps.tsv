@@ -1,0 +1,5 @@
+0.03	1: ru — open the screen
+5.04	2: uz — open the screen
+7.89	Expected: translated
+7.89	Result: FAIL
+7.89	END

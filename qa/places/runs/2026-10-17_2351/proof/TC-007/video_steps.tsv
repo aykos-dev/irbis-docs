@@ -1,0 +1,5 @@
+2.55	1: default page
+2.57	2: walk the cursor
+2.79	Expected: Default page has 50 items and a non-null nextCursor, total 7
+2.79	Result: PASS
+2.79	END

@@ -1,0 +1,108 @@
+{
+ "meta": {
+  "title": "Distance format: one decimal under 10 km, whole km from 10 km",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC4 — '8.4 km' / '112 km'",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location granted",
+   "Mock position 8.4 km north of one seed place and a second run 112 km away (both computed from the place's coordinates)"
+  ],
+  "steps": [
+   "Pick a peak by SQL; mock the device 8,400 m north of it; open Explore; read its card",
+   "Mock the device 112,000 m north; reopen Explore; read the same card",
+   "Mock 9,900 m, 9,960 m and 10,100 m north; read the card each time"
+  ],
+  "expected": [
+   "Card text contains '8.4 km' — UI tree + screenshot",
+   "Card text contains '112 km' (no decimal) — UI tree + screenshot",
+   "9.9 km distance → '9.9 km'; 10.1 km → '10 km' — UI tree + screenshot (the 9.95–9.99 rounding edge is an open question)"
+  ],
+  "caption": {
+   "expected": "Card text contains '8.4 km'"
+  },
+  "tc": "TC-013",
+  "plan": "Test_places.md",
+  "anchor": "tc-013--p1--distance-format-one-decimal-under-10-km-whole-km-from-10-km"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 36.7,
+ "events": 22,
+ "done": [
+  "Guest, location granted · Mock position 8.4 km north of one seed place and a second run 112 km away (both computed from the place's coordinates)",
+  "1. mock 8400 m from the place",
+  "2. mock 112000 m from the place",
+  "3. mock 9900 m from the place",
+  "4. mock 9960 m from the place",
+  "5. mock 10100 m from the place"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "8400 m: card text \"Bo'ritog', Peak · 8.4 km, Difficulty 1/5\"",
+   "proof": [
+    "d8400.png"
+   ],
+   "t": 7.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "112000 m: card text \"Bo'ritog', Peak · 112 km, Difficulty 1/5 | Bo'ritog' | Peak · 112 km\"",
+   "proof": [
+    "d112000.png"
+   ],
+   "t": 20.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "10100 m: card text \"Bo'ritog', Peak · 10 km, Difficulty 1/5 | Bo'ritog' | Peak · 10 km\"",
+   "proof": [
+    "d10100.png"
+   ],
+   "t": 36.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore + card visible at 8400 m",
+   "ok": true,
+   "seen": "Bo'ritog', Peak · 8.4 km, Difficulty 1/5",
+   "t": 7.2
+  },
+  {
+   "name": "Explore + card visible at 112000 m",
+   "ok": true,
+   "seen": "Bo'ritog', Peak · 112 km, Difficulty 1/5 | Bo'ritog' | Peak · 112 km",
+   "t": 20.1
+  },
+  {
+   "name": "Explore + card visible at 9900 m",
+   "ok": true,
+   "seen": "Bo'ritog', Peak · 9.9 km, Difficulty 1/5 | Bo'ritog' | Peak · 9.9 km",
+   "t": 25.6
+  },
+  {
+   "name": "Explore + card visible at 9960 m",
+   "ok": true,
+   "seen": "Bo'ritog', Peak · 10.0 km, Difficulty 1/5 | Bo'ritog' | Peak · 10.0 km",
+   "t": 30.6
+  },
+  {
+   "name": "Explore + card visible at 10100 m",
+   "ok": true,
+   "seen": "Bo'ritog', Peak · 10 km, Difficulty 1/5 | Bo'ritog' | Peak · 10 km",
+   "t": 36.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "d8400.png",
+  "d112000.png",
+  "d9900.png",
+  "d9960.png",
+  "d10100.png"
+ ]
+}

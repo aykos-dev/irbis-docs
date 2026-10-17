@@ -1,0 +1,7 @@
+2.88	1: types any-of
+2.89	2: difficulty inclusive
+3.07	3: distance boundary
+3.08	4: combined filters
+3.28	Expected: types=peak&types=lake → total 45 (34+11), every item peak or
+3.28	Result: PASS
+3.28	END

@@ -1,0 +1,10 @@
+3.64	1: required level 1
+5.61	2: required level 2
+7.55	3: required level 3
+9.66	4: required level 4
+11.69	5: required level 5
+13.67	6: required level 6
+15.7	7: required level 7
+17.96	Expected: Names shown: 1 Wanderer, 2 Burrower, 3 Pathfinder, 4 Ridge W
+17.96	Result: PASS
+17.96	END

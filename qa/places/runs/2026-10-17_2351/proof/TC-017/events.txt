@@ -1,0 +1,15 @@
+23:55:09.905 tab_opened {"tab": "path"}
+23:55:10.519 tab_opened {"tab": "profile"}
+23:55:17.859 tab_opened {"tab": "path"}
+23:55:18.517 tab_opened {"tab": "explore"}
+23:55:18.525 location_permission {"result": "granted"}
+23:55:18.746 explore_loaded {"count": 71, "origin": "device"}
+23:55:21.210 explore_loaded {"count": 11, "origin": "device"}
+23:55:21.210 explore_filters_applied {"types": "lake", "difficultyMin": null, "difficultyMax": null, "maxKm": null, "count": 11}
+23:55:21.766 tab_opened {"tab": "profile"}
+23:55:22.141 tab_opened {"tab": "explore"}
+23:55:25.238 place_viewed {"slug": "zikrkol-3662", "requiredLevel": 5, "qualifies": false}
+23:55:37.282 tab_opened {"tab": "path"}
+23:55:37.884 tab_opened {"tab": "explore"}
+23:55:37.893 location_permission {"result": "granted"}
+23:55:38.073 explore_loaded {"count": 71, "origin": "device"}

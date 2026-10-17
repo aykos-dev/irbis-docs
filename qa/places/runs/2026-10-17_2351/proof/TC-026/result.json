@@ -1,0 +1,86 @@
+{
+ "meta": {
+  "title": "Locale fallback: Uzbek name and description shown in Russian",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC7 + AC4 — name / description in the app locale, fallback uz",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, app language Russian (`irbis://debug/lang/ru`)",
+   "A place with only name_uz and description_uz (ru/en null), plus a second place with name_en set"
+  ],
+  "steps": [
+   "Open Explore in Russian and find the first card of the uz-only place",
+   "Open its Place",
+   "Switch to English and open the place whose name_en is set"
+  ],
+  "expected": [
+   "Russian UI: the card and place.name show the Uzbek name (name_uz) — UI tree + screenshot",
+   "place.description shows the Uzbek description text — UI tree + screenshot",
+   "English UI: the card for the place with name_en shows the English name, not name_uz — UI tree + screenshot"
+  ],
+  "focus": "place.name",
+  "caption": {
+   "expected": "Russian UI: the card and place.name show the Uzbek name (nam"
+  },
+  "tc": "TC-026",
+  "plan": "Test_places.md",
+  "anchor": "tc-026--p1--locale-fallback-uzbek-name-and-description-shown-in-russian"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.5,
+ "events": 4,
+ "done": [
+  "Guest, app language Russian (`irbis://debug/lang/ru`) · A place with only name_uz and description_uz (ru/en null), plus a second place with name_en set",
+  "1. open the place in Russian",
+  "3. open the en-named place in English"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "place.name \"Bo'ritog'\" vs name_uz \"Bo'ritog'\"",
+   "proof": [
+    "1_ru_name.png"
+   ],
+   "t": 5.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "description text in uz while UI is ru",
+   "proof": [
+    "2_ru_desc.png"
+   ],
+   "t": 6.0
+  },
+  "3": {
+   "ok": true,
+   "observed": "place.name 'QA English Lake'",
+   "proof": [
+    "3_en_name.png"
+   ],
+   "t": 8.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Place opened",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 5.3
+  },
+  {
+   "name": "Place opened",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 7.8
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_ru_name.png",
+  "2_ru_desc.png",
+  "3_en_name.png"
+ ]
+}

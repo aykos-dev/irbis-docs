@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "title": "Map pins: type colours, clusters with count, single-pin tap",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC4 — one pin per place, colour+icon by type, clustered with a count",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location granted + mock at Tashkent centre",
+   "Explore loaded, no filter"
+  ],
+  "steps": [
+   "Screenshot the map at the default zoom",
+   "Filter to Caves only (2 places) and screenshot the map",
+   "Tap the centre of the single pin that is shown → check: place.screen"
+  ],
+  "expected": [
+   "Default zoom shows cluster bubbles with a number — screenshot of explore.map (judged on the crop)",
+   "Caves-only map shows 2 single pins in the cave colour (purple) with the cave icon — screenshot of explore.map (judged on the crop)",
+   "Tapping a single pin opens Place for that cave: place.type reads 'Cave' — UI tree + QA event place_viewed"
+  ],
+  "focus": "explore.map",
+  "caption": {
+   "expected": "Default zoom shows cluster bubbles with a number"
+  },
+  "tc": "TC-012",
+  "plan": "Test_places.md",
+  "anchor": "tc-012--p1--map-pins-type-colours-clusters-with-count-single-pin-tap"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Not run",
+ "duration_s": 23.5,
+ "events": 8,
+ "done": [
+  "Guest, location granted + mock at Tashkent centre · Explore loaded, no filter",
+  "1. map at default zoom",
+  "2. filter Caves only",
+  "3. tap a single pin"
+ ],
+ "results": {
+  "1": {
+   "ok": null,
+   "observed": "needs eyes: clusters with counts",
+   "proof": [
+    "1_map_default.png"
+   ],
+   "t": 11.7
+  },
+  "2": {
+   "ok": null,
+   "observed": "needs eyes: 2 purple cave pins",
+   "proof": [
+    "2_map_caves.png"
+   ],
+   "t": 14.5
+  },
+  "3": {
+   "ok": null,
+   "observed": "no Place opened by the centre tap — pin position is not in the UI tree; manual check",
+   "proof": [
+    "3_after_pin_tap.png"
+   ],
+   "t": 23.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore loaded",
+   "ok": true,
+   "seen": "no list",
+   "t": 11.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_map_default.png",
+  "2_map_caves.png",
+  "3_after_pin_tap.png"
+ ]
+}

@@ -31,7 +31,7 @@ def run(c):
     c.pre(" · ".join(META["precondition"]))
     reset_permission(FINE); reset_permission(COARSE)
     mock_at(*TASHKENT)
-    wait("nav.tab-explore", 10, exact=True); tap("nav.tab-explore", exact=True)
+    open_explore(wait_list=False)
     wait_any(["Don't allow", "Don’t allow"], 12)
     tap("Don't allow") if has("Don't allow") else tap("Don’t allow")
     c.checkpoint("Banner visible after denial", wait("explore.location-banner", 15, exact=True), "no banner")
@@ -47,7 +47,7 @@ def run(c):
     c.step(3, "grant and return")
     grant_location(True)
     t0 = mark()
-    back()
+    launch()  # Back from app settings can land on a Google settings screen; resume the app
     wait("explore.screen", 10, exact=True)
     ev = wait_event("explore_loaded", t0, 15, lambda p: p.get("origin") == "device")
     c.result(3, bool(ev) and not has("explore.location-banner", exact=True) and "near you" in (text_of("explore.count") or ""), f"event {ev}, header {text_of('explore.count')!r}", [c.shot("3_back", "explore.count")])

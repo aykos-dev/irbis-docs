@@ -1,0 +1,76 @@
+{
+ "meta": {
+  "title": "Tapping a card opens Place and Back returns to Explore",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC4 + AC7 — card → Place; Back keeps Explore",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location granted + mock at Tashkent centre",
+   "Explore list loaded"
+  ],
+  "steps": [
+   "Tap the first card (slug from the API for the same point)",
+   "→ check: place.screen within 10 s",
+   "Tap place.back"
+  ],
+  "expected": [
+   "place.screen shows with place.name equal to the card's name; QA event place_viewed {slug: <card slug>, requiredLevel, qualifies} — UI tree + QA event",
+   "After Back explore.screen and explore.count are shown again — UI tree + screenshot"
+  ],
+  "focus": "place.name",
+  "caption": {
+   "expected": "place.screen shows with place.name equal to the card's name;"
+  },
+  "tc": "TC-011",
+  "plan": "Test_places.md",
+  "anchor": "tc-011--p0--tapping-a-card-opens-place-and-back-returns-to-explore"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 14.1,
+ "events": 7,
+ "done": [
+  "Guest, location granted + mock at Tashkent centre · Explore list loaded",
+  "1. tap the first card",
+  "2. tap Back"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "name 'Ozodbosh' vs 'Ozodbosh'; event {'slug': 'ozodbosh-1014', 'requiredLevel': 1, 'qualifies': True}",
+   "proof": [
+    "1_place.png"
+   ],
+   "t": 12.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "Explore shown after Back",
+   "proof": [
+    "2_back.png"
+   ],
+   "t": 13.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore loaded",
+   "ok": true,
+   "seen": "no list",
+   "t": 11.1
+  },
+  {
+   "name": "Place opened",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 12.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_place.png",
+  "2_back.png"
+ ]
+}

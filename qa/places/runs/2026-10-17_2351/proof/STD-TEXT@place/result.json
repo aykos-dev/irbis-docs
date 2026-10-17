@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "title": "Copy is translated — place",
+  "priority": "P2",
+  "group": "Standards",
+  "requirement": "engineering-standards §12 — i18n",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Russian — open the screen",
+   "Uzbek — open the screen"
+  ],
+  "expected": [
+   "No English catalog string left on screen in Russian or Uzbek — UI tree"
+  ],
+  "caption": {
+   "expected": "translated"
+  },
+  "tc": "STD-TEXT@place",
+  "plan": "Test_places.md",
+  "anchor": "std-textplace--p2--copy-is-translated",
+  "screen": "place"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 8.0,
+ "events": 3,
+ "done": [
+  "1. ru — open the screen",
+  "2. uz — open the screen"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "untranslated: {'ru': ['Уровень 2 · Землекоп'], 'uz': ['2-daraja · Qazuvchi']}",
+   "proof": [],
+   "t": 7.6
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened (ru)",
+   "ok": true,
+   "seen": "place.screen",
+   "t": 3.6
+  },
+  {
+   "name": "screen opened (uz)",
+   "ok": true,
+   "seen": "place.screen",
+   "t": 6.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "ru.png",
+  "uz.png"
+ ]
+}

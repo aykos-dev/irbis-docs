@@ -1,0 +1,9 @@
+00:06:58.686 tab_opened {"tab": "path"}
+00:06:59.624 tab_opened {"tab": "profile"}
+00:07:00.620 place_viewed {"slug": "tuzkon-koli-250", "requiredLevel": 1, "qualifies": true}
+00:07:02.769 place_viewed {"slug": "tuzkon-koli-250", "requiredLevel": 2, "qualifies": false}
+00:07:04.729 place_viewed {"slug": "tuzkon-koli-250", "requiredLevel": 3, "qualifies": false}
+00:07:06.784 place_viewed {"slug": "tuzkon-koli-250", "requiredLevel": 4, "qualifies": false}
+00:07:08.765 place_viewed {"slug": "tuzkon-koli-250", "requiredLevel": 5, "qualifies": false}
+00:07:10.865 place_viewed {"slug": "tuzkon-koli-250", "requiredLevel": 6, "qualifies": false}
+00:07:12.833 place_viewed {"slug": "tuzkon-koli-250", "requiredLevel": 7, "qualifies": false}

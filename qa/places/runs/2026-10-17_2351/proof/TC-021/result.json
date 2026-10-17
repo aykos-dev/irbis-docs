@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Location switched off on the device falls back to Tashkent",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC6 — location off → origin Tashkent + banner",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location permission granted",
+   "Device location switched OFF (`cmd location set-location-enabled false`), switched back ON in cleanup"
+  ],
+  "steps": [
+   "Open Explore → check: explore.screen",
+   "Wait for the list (at most 12 s)"
+  ],
+  "expected": [
+   "QA event location_permission {result: unavailable} or explore_loaded {origin: tashkent} — QA event",
+   "Header '71 places from Tashkent' and the banner 'Turn on location to see distances from you' — UI tree + screenshot"
+  ],
+  "focus": "explore.location-banner",
+  "caption": {
+   "expected": "QA event location_permission {result: unavailable} or explor"
+  },
+  "tc": "TC-021",
+  "plan": "Test_places.md",
+  "anchor": "tc-021--p1--location-switched-off-on-the-device-falls-back-to-tashkent"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 15.3,
+ "events": 7,
+ "done": [
+  "Guest, location permission granted · Device location switched OFF (`cmd location set-location-enabled false`), switched back ON in cleanup",
+  "1. open Explore",
+  "2. read header and banner"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "explore_loaded {'count': 71, 'origin': 'tashkent'}; location_permission [{'result': 'unavailable'}]",
+   "proof": [],
+   "t": 14.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "header '71 places from Tashkent'",
+   "proof": [
+    "2_off.png"
+   ],
+   "t": 15.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore screen",
+   "ok": true,
+   "seen": "no explore.screen",
+   "t": 4.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_off.png"
+ ]
+}

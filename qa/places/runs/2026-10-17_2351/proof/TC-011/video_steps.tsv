@@ -1,0 +1,5 @@
+11.66	1: tap the first card
+12.68	2: tap Back
+14.04	Expected: place.screen shows with place.name equal to the card's name;
+14.04	Result: PASS
+14.04	END

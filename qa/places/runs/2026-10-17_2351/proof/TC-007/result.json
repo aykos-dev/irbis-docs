@@ -1,0 +1,61 @@
+{
+ "meta": {
+  "title": "List pagination by cursor covers every place once",
+  "priority": "P2",
+  "group": "Variants",
+  "requirement": "AC2 — cursor, limit default 50, limit 200 single page",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "API up, 71 places seeded"
+  ],
+  "steps": [
+   "GET /v1/places (default limit)",
+   "Follow nextCursor with limit=50 until it is null",
+   "GET limit=200"
+  ],
+  "expected": [
+   "Default page has 50 items and a non-null nextCursor, total 71 — API response",
+   "The pages concatenated give 71 distinct ids in the same order as the single limit=200 page — API response",
+   "limit=200 returns 71 items and nextCursor null — API response"
+  ],
+  "caption": {
+   "expected": "Default page has 50 items and a non-null nextCursor, total 7"
+  },
+  "tc": "TC-007",
+  "plan": "Test_places.md",
+  "anchor": "tc-007--p2--list-pagination-by-cursor-covers-every-place-once"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 2.9,
+ "events": 2,
+ "done": [
+  "API up, 71 places seeded",
+  "1. default page",
+  "2. walk the cursor"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "status 200, items 50, cursor set True, total 71",
+   "proof": [],
+   "t": 2.6
+  },
+  "2": {
+   "ok": true,
+   "observed": "collected 71, distinct 71, same order as limit=200: True",
+   "proof": [],
+   "t": 2.6
+  },
+  "3": {
+   "ok": true,
+   "observed": "items 71, nextCursor None",
+   "proof": [],
+   "t": 2.6
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

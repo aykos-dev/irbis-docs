@@ -1,0 +1,3 @@
+00:07:21.736 tab_opened {"tab": "path"}
+00:07:22.368 tab_opened {"tab": "profile"}
+00:07:24.914 place_viewed {"slug": "boritog-1295", "requiredLevel": 1, "qualifies": true}

@@ -1,0 +1,6 @@
+3.48	1: open the place
+4.7	2: read season bar
+7.17	3: read hazards
+8.37	Expected: The region line 'Tashkent region' is shown
+8.37	Result: PASS
+8.37	END

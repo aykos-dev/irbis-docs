@@ -1,0 +1,16 @@
+23:54:06.950 tab_opened {"tab": "path"}
+23:54:07.634 tab_opened {"tab": "profile"}
+23:54:15.059 tab_opened {"tab": "path"}
+23:54:15.596 tab_opened {"tab": "explore"}
+23:54:15.617 location_permission {"result": "granted"}
+23:54:15.865 explore_loaded {"count": 71, "origin": "device"}
+23:54:19.780 explore_loaded {"count": 61, "origin": "device"}
+23:54:19.780 explore_filters_applied {"types": "", "difficultyMin": 1, "difficultyMax": 3, "maxKm": null, "count": 61}
+23:54:22.192 explore_loaded {"count": 6, "origin": "device"}
+23:54:22.192 explore_filters_applied {"types": "", "difficultyMin": 1, "difficultyMax": 3, "maxKm": 50, "count": 6}
+23:54:23.949 explore_loaded {"count": 48, "origin": "device"}
+23:54:23.950 explore_filters_applied {"types": "", "difficultyMin": 1, "difficultyMax": 3, "maxKm": 100, "count": 48}
+23:54:26.145 explore_loaded {"count": 58, "origin": "device"}
+23:54:26.145 explore_filters_applied {"types": "", "difficultyMin": 1, "difficultyMax": 3, "maxKm": 150, "count": 58}
+23:54:28.276 explore_loaded {"count": 61, "origin": "device"}
+23:54:28.276 explore_filters_applied {"types": "", "difficultyMin": 1, "difficultyMax": 3, "maxKm": null, "count": 61}

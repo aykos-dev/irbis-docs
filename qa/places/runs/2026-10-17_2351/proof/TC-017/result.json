@@ -1,0 +1,88 @@
+{
+ "meta": {
+  "title": "Filters last for the session (tab switch, Place and Back) but not across a restart",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC5 + AC7 — filters kept; Back keeps filters and list position",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location granted + mock at Tashkent centre",
+   "Explore loaded"
+  ],
+  "steps": [
+   "Apply Type = Lakes",
+   "Open another tab and return to Explore",
+   "Scroll the list down by 3 swipes, remember the first visible card slug, open a card, tap Back",
+   "Force-stop and relaunch the app, open Explore"
+  ],
+  "expected": [
+   "After the tab round trip the Type chip still reads 'Lakes' and the header is 11 — UI tree + screenshot",
+   "After Place → Back the chip is unchanged and the first visible card is the same slug as before opening (position kept) — UI tree + screenshot",
+   "After a cold restart the chip has no value and the header is 71 (session only) — UI tree + screenshot"
+  ],
+  "focus": "explore.sheet",
+  "caption": {
+   "expected": "After the tab round trip the Type chip still reads 'Lakes' a"
+  },
+  "tc": "TC-017",
+  "plan": "Test_places.md",
+  "anchor": "tc-017--p1--filters-last-for-the-session-tab-switch-place-and-back-but-not-across-a-restart"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 32.1,
+ "events": 15,
+ "done": [
+  "Guest, location granted + mock at Tashkent centre · Explore loaded",
+  "1. tab round trip",
+  "2. scroll, open card, Back",
+  "3. cold restart"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "chip 'Lakes', header 11",
+   "proof": [
+    "1_kept.png"
+   ],
+   "t": 15.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "first card before explore.card.zikrkol-3662, after ['explore.card.zikrkol-3662'], chip 'Lakes'",
+   "proof": [
+    "2_back.png"
+   ],
+   "t": 28.7
+  },
+  "3": {
+   "ok": true,
+   "observed": "chip 'Type', header 71",
+   "proof": [
+    "3_restart.png"
+   ],
+   "t": 31.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore loaded",
+   "ok": true,
+   "seen": "no list",
+   "t": 11.6
+  },
+  {
+   "name": "cards visible after scrolling",
+   "ok": true,
+   "seen": "['explore.card.zikrkol-3662', 'explore.card.urungoch-nefrit-koli-1528', 'explore.card.bodoq-koli-1675', 'explore.card.temirtosh-2375', 'explore.card.qoraqanish-2465', 'explore.card.tuzkon-koli-250']",
+   "t": 17.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_kept.png",
+  "2_back.png",
+  "3_restart.png"
+ ]
+}

@@ -1,0 +1,12 @@
+00:02:57.909 tab_opened {"tab": "path"}
+00:02:58.650 tab_opened {"tab": "profile"}
+00:03:06.414 tab_opened {"tab": "path"}
+00:03:06.986 tab_opened {"tab": "explore"}
+00:03:06.994 location_permission {"result": "granted"}
+00:03:07.177 explore_loaded {"count": 71, "origin": "device"}
+00:03:10.251 explore_loaded {"count": 2, "origin": "device"}
+00:03:10.251 explore_filters_applied {"types": "cave", "difficultyMin": null, "difficultyMax": null, "maxKm": null, "count": 2}
+00:03:12.098 explore_loaded {"count": 0, "origin": "device"}
+00:03:12.098 explore_filters_applied {"types": "cave", "difficultyMin": 5, "difficultyMax": 5, "maxKm": null, "count": 0}
+00:03:14.374 explore_loaded {"count": 71, "origin": "device"}
+00:03:14.374 explore_filters_applied {"types": "", "difficultyMin": null, "difficultyMax": null, "maxKm": null, "count": 71}

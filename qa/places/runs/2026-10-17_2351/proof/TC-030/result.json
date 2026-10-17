@@ -1,0 +1,110 @@
+{
+ "meta": {
+  "title": "Level names 1–7 and the qualify boundary (level 1 vs 2)",
+  "priority": "P2",
+  "group": "Variants",
+  "requirement": "AC8 — names Wanderer … Snow Legend; boundary requiredLevel 1 qualifies, 2 does not",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest (viewer level 1)",
+   "One local place whose required_level is changed 1 → 7 through set_place() (restored after the run)"
+  ],
+  "steps": [
+   "For n in 1..7 set the place's required_level to n, reopen Place, read the card"
+  ],
+  "expected": [
+   "Names shown: 1 Wanderer, 2 Burrower, 3 Pathfinder, 4 Ridge Walker, 5 Mountain Guardian, 6 Sky Watcher, 7 Snow Legend, each as 'Level n · <name> or higher' — UI tree",
+   "Only n = 1 shows 'You qualify' (place.level-qualify); n = 2…7 show the lock and 'Reach Level n to go here' — UI tree + screenshots"
+  ],
+  "focus": "place.level-card",
+  "caption": {
+   "expected": "Names shown: 1 Wanderer, 2 Burrower, 3 Pathfinder, 4 Ridge W"
+  },
+  "tc": "TC-030",
+  "plan": "Test_places.md",
+  "anchor": "tc-030--p2--level-names-17-and-the-qualify-boundary-level-1-vs-2"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 18.0,
+ "events": 9,
+ "done": [
+  "Guest (viewer level 1) · One local place whose required_level is changed 1 → 7 through set_place() (restored after the run)",
+  "1. required level 1",
+  "2. required level 2",
+  "3. required level 3",
+  "4. required level 4",
+  "5. required level 5",
+  "6. required level 6",
+  "7. required level 7"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "names ok per level: [True, True, True, True, True, True, True]",
+   "proof": [],
+   "t": 17.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "(qualify, locked) per level: [(True, False), (False, True), (False, True), (False, True), (False, True), (False, True), (False, True)]",
+   "proof": [],
+   "t": 17.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Place opened (level 1)",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 4.5
+  },
+  {
+   "name": "Place opened (level 2)",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 6.4
+  },
+  {
+   "name": "Place opened (level 3)",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 8.5
+  },
+  {
+   "name": "Place opened (level 4)",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 10.6
+  },
+  {
+   "name": "Place opened (level 5)",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 12.5
+  },
+  {
+   "name": "Place opened (level 6)",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 14.6
+  },
+  {
+   "name": "Place opened (level 7)",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 16.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "lvl1.png",
+  "lvl2.png",
+  "lvl3.png",
+  "lvl4.png",
+  "lvl5.png",
+  "lvl6.png",
+  "lvl7.png"
+ ]
+}

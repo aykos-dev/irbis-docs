@@ -34,7 +34,7 @@ def run(c):
             if has("place.level-card", exact=True): break
             scroll_down()
         txt = screen_text()
-        names.append(f"Level {n}" in txt and f"{LEVEL_NAMES[n]} or higher" in txt)
+        names.append(f"Level {n} · {LEVEL_NAMES[n]}" in txt and "or higher" in txt)
         flags.append((has("place.level-qualify", exact=True), has("place.level-locked", exact=True) and f"Reach Level {n} to go here" in txt))
         c.shot(f"lvl{n}", "place.level-card")
         sh("am", "force-stop", PKG); time.sleep(0.5)

@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Offline shows a persistent banner and keeps the screen — explore",
+  "priority": "P2",
+  "group": "Standards",
+  "requirement": "engineering-standards §11 — offline state",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen loaded online"
+  ],
+  "steps": [
+   "Open the screen online",
+   "Wi-Fi and mobile data off"
+  ],
+  "expected": [
+   "`app.offline-banner` visible at 5 s and still at 15 s (not a toast) — screenshot",
+   "The screen's content stays visible (cached, not blanked) — screenshot"
+  ],
+  "caption": {
+   "expected": "offline banner, content kept"
+  },
+  "tc": "STD-OFFLINE@explore",
+  "plan": "Test_places.md",
+  "anchor": "std-offlineexplore--p2--offline-shows-a-persistent-banner-and-keeps-the-screen",
+  "screen": "explore"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 24.0,
+ "events": 4,
+ "done": [
+  "1. Open the screen online",
+  "2. Wi-Fi and mobile data off"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "banner at 5 s: True, at 15 s: True",
+   "proof": [
+    "offline.png"
+   ],
+   "t": 21.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "explore.screen visible: True",
+   "proof": [
+    "offline.png"
+   ],
+   "t": 21.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened",
+   "ok": true,
+   "seen": "explore.screen",
+   "t": 8.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "offline.png"
+ ]
+}

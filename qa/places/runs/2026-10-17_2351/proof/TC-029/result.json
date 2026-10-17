@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "title": "Level card: locked (required level 2 → 'Reach Level 2 to go here')",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC8 — lock + 'Reach Level {n} to go here'",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest (viewer level 1)",
+   "A place with required_level 2 (difficulty 2)"
+  ],
+  "steps": [
+   "Open its Place via the link → check: place.level-card",
+   "Read the card"
+  ],
+  "expected": [
+   "Card text contains 'Requires', 'Level 2' and 'Burrower or higher' — UI tree + screenshot",
+   "place.level-locked is shown with 'Reach Level 2 to go here'; place.level-qualify and 'You qualify' are absent — UI tree + screenshot",
+   "QA event place_viewed {requiredLevel: 2, qualifies: false} — QA event"
+  ],
+  "focus": "place.level-card",
+  "caption": {
+   "expected": "Card text contains 'Requires', 'Level 2' and 'Burrower or hi"
+  },
+  "tc": "TC-029",
+  "plan": "Test_places.md",
+  "anchor": "tc-029--p0--level-card-locked-required-level-2--reach-level-2-to-go-here"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 4.7,
+ "events": 3,
+ "done": [
+  "Guest (viewer level 1) · A place with required_level 2 (difficulty 2)",
+  "1. open the place"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "Requires/Level 2/Burrower: False/True/False",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 4.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "locked True, qualify False",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 4.5
+  },
+  "3": {
+   "ok": true,
+   "observed": "event {'slug': 'axsarsoy-1519', 'requiredLevel': 2, 'qualifies': False}",
+   "proof": [],
+   "t": 4.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Place opened",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 3.8
+  },
+  {
+   "name": "level card visible",
+   "ok": true,
+   "seen": "no place.level-card",
+   "t": 3.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_card.png"
+ ]
+}

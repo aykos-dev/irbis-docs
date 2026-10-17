@@ -1,0 +1,6 @@
+3.0	1: open Explore
+12.81	2: read header
+13.03	3: first card
+13.68	Expected: explore.screen, explore.map and explore.sheet are shown, no 
+13.68	Result: PASS
+13.68	END

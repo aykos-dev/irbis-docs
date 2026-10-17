@@ -1,0 +1,78 @@
+{
+ "meta": {
+  "title": "Denying location falls back to Tashkent with a banner",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC6 — denied → 'from Tashkent', banner 'Turn on location to see distances from you'",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location permission reset to 'ask'",
+   "Mock device position far from Tashkent (so a wrong origin would show)"
+  ],
+  "steps": [
+   "Open Explore → check: system dialog",
+   "Tap 'Don't allow'",
+   "Wait for the list"
+  ],
+  "expected": [
+   "QA event location_permission {result: denied} — QA event",
+   "Header '71 places from Tashkent'; explore_loaded {origin: tashkent}; first card = API's first item for the Tashkent origin — UI tree + QA event + API response",
+   "explore.location-banner shows 'Turn on location to see distances from you' and explore.location-turn-on shows 'Turn on' — UI tree + screenshot"
+  ],
+  "focus": "explore.location-banner",
+  "caption": {
+   "expected": "QA event location_permission {result: denied}"
+  },
+  "tc": "TC-019",
+  "plan": "Test_places.md",
+  "anchor": "tc-019--p0--denying-location-falls-back-to-tashkent-with-a-banner"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.7,
+ "events": 5,
+ "done": [
+  "Guest, location permission reset to 'ask' · Mock device position far from Tashkent (so a wrong origin would show)",
+  "1. Don't allow",
+  "2. read header",
+  "3. read banner"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event {'result': 'denied'}",
+   "proof": [],
+   "t": 6.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "header '71 places from Tashkent', event {'count': 71, 'origin': 'tashkent'}",
+   "proof": [
+    "2_list.png"
+   ],
+   "t": 7.6
+  },
+  "3": {
+   "ok": true,
+   "observed": "banner '', button 'Turn on'",
+   "proof": [
+    "3_banner.png"
+   ],
+   "t": 8.4
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "OS permission dialog shown",
+   "ok": true,
+   "seen": "no dialog",
+   "t": 5.5
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_list.png",
+  "3_banner.png"
+ ]
+}

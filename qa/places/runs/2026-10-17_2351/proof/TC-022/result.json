@@ -1,0 +1,73 @@
+{
+ "meta": {
+  "title": "Permission granted but no fix: Tashkent fallback within 10 s",
+  "priority": "P2",
+  "group": "Variants",
+  "requirement": "AC6 — no fix in 10 s → Tashkent + banner",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, permission granted",
+   "No mock position published (mock loop stopped / point cleared) so the device has no fix",
+   "UX timeout, not a security timer: wait at most 12 s once"
+  ],
+  "steps": [
+   "Open Explore with no available fix",
+   "Watch for explore_loaded for at most 12 s"
+  ],
+  "expected": [
+   "explore_loaded {origin: tashkent} arrives between 8 and 12 s after Explore opened — QA event timestamps",
+   "Header '71 places from Tashkent' and the banner are shown — UI tree + screenshot"
+  ],
+  "focus": "explore.location-banner",
+  "caption": {
+   "expected": "explore_loaded {origin: tashkent} arrives between 8 and 12 s"
+  },
+  "tc": "TC-022",
+  "plan": "Test_places.md",
+  "anchor": "tc-022--p2--permission-granted-but-no-fix-tashkent-fallback-within-10-s"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 18.2,
+ "events": 7,
+ "done": [
+  "Guest, permission granted · No mock position published (mock loop stopped / point cleared) so the device has no fix · UX timeout, not a security timer: wait at most 12 s once",
+  "1. open Explore",
+  "2. wait for fallback"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "fallback after None s, event None",
+   "proof": [],
+   "t": 17.1
+  },
+  "2": {
+   "ok": false,
+   "observed": "header '71 places near you'",
+   "proof": [
+    "2_fallback.png"
+   ],
+   "t": 17.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore screen",
+   "ok": true,
+   "seen": "no explore.screen",
+   "t": 4.9
+  },
+  {
+   "name": "device really had no fix (no location_received)",
+   "ok": true,
+   "seen": "a fix arrived — setup failed",
+   "t": 17.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_fallback.png"
+ ]
+}

@@ -1,0 +1,6 @@
+21.59	1: Turn on (1st)
+22.64	2: deny again, Turn on
+24.93	3: grant and return
+27.15	Expected: After the first denial 'Turn on' shows the OS dialog again
+27.15	Result: PASS
+27.15	END

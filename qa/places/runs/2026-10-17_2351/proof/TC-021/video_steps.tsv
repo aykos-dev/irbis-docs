@@ -1,0 +1,5 @@
+3.19	1: open Explore
+14.14	2: read header and banner
+15.2	Expected: QA event location_permission {result: unavailable} or explor
+15.2	Result: PASS
+15.2	END

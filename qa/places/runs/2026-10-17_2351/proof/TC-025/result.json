@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "title": "Season bar, hazards list and region line when set",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC7 — 12 months J–D, today's month marked, legend; hazards list; region only if set",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest",
+   "One local place set to: region 'Tashkent region', season Best for Apr–Oct, Possible Mar and Nov, Closed Dec–Feb, hazards flood + road"
+  ],
+  "steps": [
+   "Open the place via its link and scroll to the season bar",
+   "Read the bar, the legend, the hazards and the region line"
+  ],
+  "expected": [
+   "The region line 'Tashkent region' is shown — UI tree + screenshot",
+   "place.season shows 12 months (place.season-1 … place.season-12), the legend Best / Possible / Closed, and place.season-today marks this month (month number = today's) — UI tree + screenshot",
+   "place.hazards lists Flood and Road (place.hazard-flood, place.hazard-road); place.season-empty and place.hazards-empty are absent — UI tree + screenshot"
+  ],
+  "focus": "place.season",
+  "caption": {
+   "expected": "The region line 'Tashkent region' is shown"
+  },
+  "tc": "TC-025",
+  "plan": "Test_places.md",
+  "anchor": "tc-025--p1--season-bar-hazards-list-and-region-line-when-set"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 8.5,
+ "events": 3,
+ "done": [
+  "Guest · One local place set to: region 'Tashkent region', season Best for Apr–Oct, Possible Mar and Nov, Closed Dec–Feb, hazards flood + road",
+  "1. open the place",
+  "2. read season bar",
+  "3. read hazards"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "region line text present",
+   "proof": [
+    "1_region.png"
+   ],
+   "t": 4.6
+  },
+  "2": {
+   "ok": true,
+   "observed": "months 12, legend ['Best', 'Possible', 'Closed'], today marker True (today is month 10)",
+   "proof": [
+    "2_season.png"
+   ],
+   "t": 6.4
+  },
+  "3": {
+   "ok": true,
+   "observed": "flood True, road True",
+   "proof": [
+    "3_hazards.png"
+   ],
+   "t": 8.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Place opened",
+   "ok": true,
+   "seen": "no place.screen",
+   "t": 4.2
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_region.png",
+  "2_season.png",
+  "3_hazards.png"
+ ]
+}

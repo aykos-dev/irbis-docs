@@ -1,0 +1,7 @@
+23:56:56.438 location_permission {"result": "granted"}
+23:56:56.786 explore_loaded {"count": 71, "origin": "device"}
+23:56:57.719 tab_opened {"tab": "path"}
+23:56:58.386 tab_opened {"tab": "profile"}
+23:56:59.594 tab_opened {"tab": "explore"}
+23:57:09.619 location_permission {"result": "unavailable"}
+23:57:09.860 explore_loaded {"count": 71, "origin": "tashkent"}

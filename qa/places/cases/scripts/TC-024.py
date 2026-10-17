@@ -9,7 +9,7 @@ META = {'title': "Place distance label 'From you' with the device origin",
  'requirement': "AC7 — label 'From you' / 'From Tashkent'",
  'env': 'Android · auto (adb)',
  'precondition': ['Guest', 'Location granted, mock position 8,400 m north of a chosen peak'],
- 'steps': ["Open the peak's Place via its link", 'Read place.distance and the label'],
+ 'steps': ["Open the peak's Place from its Explore card", 'Read place.distance and the label'],
  'expected': ["place.distance shows '8.4 km' with the label 'From you' and not 'From Tashkent' — UI tree + "
               'screenshot'],
  'focus': 'place.distance',
@@ -21,10 +21,12 @@ def run(c):
     c.pre(" · ".join(META["precondition"]))
     slug = pick("type='peak' and difficulty=1")
     la0, ln0 = [float(x) for x in sql(f"select latitude || ' ' || longitude from places where slug='{slug}'").split()]
-    reset_permission(FINE); grant_location(True); mock_at(*offset(la0, ln0, metres_north=8400))
+    la, ln = offset(la0, ln0, metres_north=8400)
+    reset_permission(FINE); grant_location(True); mock_at(la, ln)
     relaunch(); wait("nav.tab-explore", 20, exact=True)
-    c.step(1, "open the place")
-    c.checkpoint("Place opened", open_place_link(slug, f"?lat={offset(la0, ln0, metres_north=8400)[0]}&lng={offset(la0, ln0, metres_north=8400)[1]}"), "no place.screen")
+    c.checkpoint("Explore list loaded with the device origin", open_explore(), "no explore list")
+    c.step(1, "open the place from its Explore card (a link carries no origin)")
+    c.checkpoint("Place opened", open_place(slug), "no place.screen")
     time.sleep(1)
-    txt = screen_text()
-    c.result(1, "From you" in txt and "From Tashkent" not in txt and "8.4" in (text_of("place.distance") or txt), f"distance {text_of('place.distance')!r}, labels you/Tashkent {'From you' in txt}/{'From Tashkent' in txt}", [c.shot("1_dist", "place.distance")])
+    txt = screen_text().lower()  # the label is rendered upper-case
+    c.result(1, "from you" in txt and "from tashkent" not in txt and "8.4 km" in txt, f"labels you/Tashkent {'from you' in txt}/{'from tashkent' in txt}", [c.shot("1_dist", "place.distance")])

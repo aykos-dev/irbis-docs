@@ -1,0 +1,84 @@
+{
+ "meta": {
+  "title": "Type filter Peaks + Lakes: chip value, list and map refetch, QA event",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC5 — type multi-select, active chip shows value",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location granted + mock at Tashkent centre",
+   "Explore loaded with 71 places, no filter"
+  ],
+  "steps": [
+   "Tap the Type chip → check: explore.filter-sheet.type",
+   "Select Peaks and Lakes",
+   "Tap Apply"
+  ],
+  "expected": [
+   "Type chip text reads 'Peaks · Lakes' — UI tree + screenshot",
+   "Header count equals the API total for types=peak,lake (45) and the first card slug equals the API's first item — UI tree + API response",
+   "QA event explore_filters_applied {types: [peak, lake], count: 45} — QA event"
+  ],
+  "focus": "explore.filter.type",
+  "caption": {
+   "expected": "Type chip text reads 'Peaks · Lakes'"
+  },
+  "tc": "TC-014",
+  "plan": "Test_places.md",
+  "anchor": "tc-014--p0--type-filter-peaks--lakes-chip-value-list-and-map-refetch-qa-event"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 15.7,
+ "events": 8,
+ "done": [
+  "Guest, location granted + mock at Tashkent centre · Explore loaded with 71 places, no filter",
+  "1. open Type sheet",
+  "2. select Peaks and Lakes",
+  "3. Apply"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "chip text 'Peaks · Lakes'",
+   "proof": [
+    "1_chip.png"
+   ],
+   "t": 14.6
+  },
+  "2": {
+   "ok": true,
+   "observed": "header 45, api total 45, first card present True",
+   "proof": [
+    "2_list.png"
+   ],
+   "t": 15.4
+  },
+  "3": {
+   "ok": true,
+   "observed": "event {'types': 'peak,lake', 'difficultyMin': None, 'difficultyMax': None, 'maxKm': None, 'count': 45}",
+   "proof": [],
+   "t": 15.4
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore loaded",
+   "ok": true,
+   "seen": "no list",
+   "t": 11.5
+  },
+  {
+   "name": "Type sheet",
+   "ok": true,
+   "seen": "no sheet",
+   "t": 12.8
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_chip.png",
+  "2_list.png"
+ ]
+}

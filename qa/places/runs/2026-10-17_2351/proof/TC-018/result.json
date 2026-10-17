@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "title": "First Explore open asks for location; Allow → device origin",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC6 — OS prompt on first open, granted → 'near you', no banner",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location permission reset to 'ask' (not granted, no user-set flag)",
+   "Mock device position = Tashkent centre"
+  ],
+  "steps": [
+   "Open the Explore tab → check: the system permission dialog is shown within 10 s",
+   "Tap 'While using the app' (or 'Allow')",
+   "Wait for the list"
+  ],
+  "expected": [
+   "The OS location prompt appears the first time Explore opens — screenshot of the dialog + UI tree (text 'Allow' / 'While using the app')",
+   "QA event location_permission {result: granted}; header '71 places near you'; explore.location-banner absent — QA event + UI tree",
+   "Event explore_loaded {origin: device}; the card distances come from the device point (first card equals the API's first item for the mock point) — QA event + UI tree"
+  ],
+  "focus": "explore.sheet",
+  "caption": {
+   "expected": "The OS location prompt appears the first time Explore opens"
+  },
+  "tc": "TC-018",
+  "plan": "Test_places.md",
+  "anchor": "tc-018--p0--first-explore-open-asks-for-location-allow--device-origin"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 14.5,
+ "events": 6,
+ "done": [
+  "Guest, location permission reset to 'ask' (not granted, no user-set flag) · Mock device position = Tashkent centre",
+  "1. open Explore",
+  "2. tap Allow",
+  "3. check origin and first card"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "OS location dialog shown on first Explore open",
+   "proof": [
+    "1_prompt.png"
+   ],
+   "t": 11.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "event {'result': 'granted'}, header '71 places near you', banner False",
+   "proof": [
+    "2_granted.png"
+   ],
+   "t": 13.7
+  },
+  "3": {
+   "ok": true,
+   "observed": "explore_loaded {'count': 71, 'origin': 'device'}; first API slug ozodbosh-1014",
+   "proof": [
+    "3_list.png"
+   ],
+   "t": 14.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "OS permission dialog shown",
+   "ok": true,
+   "seen": "no dialog",
+   "t": 11.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_prompt.png",
+  "2_granted.png",
+  "3_list.png"
+ ]
+}

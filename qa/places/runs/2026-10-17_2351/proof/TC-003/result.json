@@ -1,0 +1,60 @@
+{
+ "meta": {
+  "title": "Seed difficulty and required level bands (boundary elevations)",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC1 — <1500→1, 1500–2499→2, 2500–3199→3, 3200–3799→4, ≥3800→5; level 1/2/3/5/7",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "Seeded LOCAL dev DB (71 rows)"
+  ],
+  "steps": [
+   "For every row compute the expected difficulty from elevation_m and the expected required level from the difficulty",
+   "Report the elevations closest to each boundary (1499/1500, 2499/2500, 3199/3200, 3799/3800)"
+  ],
+  "expected": [
+   "0 rows where difficulty ≠ band(elevation_m) — SQL",
+   "0 rows where required_level ≠ map(difficulty) with 1→1, 2→2, 3→3, 4→5, 5→7 — SQL",
+   "Nearest rows to each boundary (below / at-or-above) listed with their difficulty so a reviewer sees the band edge is honoured — SQL (observed text)"
+  ],
+  "caption": {
+   "expected": "0 rows where difficulty ≠ band(elevation_m)"
+  },
+  "tc": "TC-003",
+  "plan": "Test_places.md",
+  "anchor": "tc-003--p1--seed-difficulty-and-required-level-bands-boundary-elevations"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 4.0,
+ "events": 2,
+ "done": [
+  "Seeded LOCAL dev DB (71 rows)",
+  "1. compare difficulty with band(elevation)",
+  "2. compare required_level with map(difficulty)"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "rows with wrong difficulty: 0",
+   "proof": [],
+   "t": 2.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "rows with wrong level: 0",
+   "proof": [],
+   "t": 2.9
+  },
+  "3": {
+   "ok": true,
+   "observed": "1500: below 1471 m → d1, at/above 1519 m → d2; 2500: below 2486 m → d2, at/above 2533 m → d3; 3200: below 3191 m → d3, at/above 3268 m → d4; 3800: below 3759 m → d4, at/above 3832 m → d5",
+   "proof": [],
+   "t": 3.7
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

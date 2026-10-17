@@ -1,0 +1,6 @@
+4.36	1: cold deep link
+5.77	2: unknown id
+7.03	3: Back
+17.56	Expected: The seeded place opens with place.name equal to its name_uz 
+17.56	Result: FAIL
+17.56	END

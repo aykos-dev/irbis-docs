@@ -1,0 +1,7 @@
+2.84	1: npm run db:seed (1st)
+6.1	2: count rows
+6.1	3: npm run db:seed (2nd)
+8.55	4: count rows and types
+9.34	Expected: After the first run `select count(*) from places` = 71
+9.34	Result: PASS
+9.34	END

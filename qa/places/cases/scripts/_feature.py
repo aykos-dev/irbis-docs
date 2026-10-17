@@ -160,22 +160,32 @@ def count_in_header():
     return int(m.group()) if m else None
 
 
+def _sheet_gone(timeout=6):
+    """Wait for the filter sheet to close (state, not time) so the next chip tap is not swallowed."""
+    end = time.time() + timeout
+    while time.time() < end:
+        if not any(has(f"explore.filter-sheet.{k}", exact=True) for k in ("type", "difficulty", "distance")):
+            return True
+        time.sleep(0.3)
+    return False
+
+
 def apply_filters(types=None, dmin=None, dmax=None, km=None):
     """Open each filter sheet from its chip and apply. `km` None leaves Distance alone; 0 = Any."""
     if types is not None:
         tap("explore.filter.type", exact=True); wait("explore.filter-sheet.type", 5, exact=True)
         for t in types:
             wait(f"explore.filter-option.type-{t}", 5, exact=True); tap(f"explore.filter-option.type-{t}", exact=True)
-        tap("explore.filter.apply", exact=True)
+        tap("explore.filter.apply", exact=True); _sheet_gone()
     if dmin is not None:
         tap("explore.filter.difficulty", exact=True); wait("explore.filter-sheet.difficulty", 5, exact=True)
         wait(f"explore.filter-option.difficulty-min-{dmin}", 5, exact=True); tap(f"explore.filter-option.difficulty-min-{dmin}", exact=True)
         wait(f"explore.filter-option.difficulty-max-{dmax}", 5, exact=True); tap(f"explore.filter-option.difficulty-max-{dmax}", exact=True)
-        tap("explore.filter.apply", exact=True)
+        tap("explore.filter.apply", exact=True); _sheet_gone()
     if km is not None:
         tap("explore.filter.distance", exact=True); wait("explore.filter-sheet.distance", 5, exact=True)
         wait(f"explore.filter-option.distance-{km or 'any'}", 5, exact=True); tap(f"explore.filter-option.distance-{km or 'any'}", exact=True)
-        tap("explore.filter.apply", exact=True)
+        tap("explore.filter.apply", exact=True); _sheet_gone()
     time.sleep(0.5)
 
 

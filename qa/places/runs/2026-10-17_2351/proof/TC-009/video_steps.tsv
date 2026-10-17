@@ -1,0 +1,6 @@
+2.48	1: unknown uuid
+2.5	2: non-uuid
+2.5	3: signed-in vs guest viewer
+2.91	Expected: Unknown uuid → 404, code PLACE_NOT_FOUND
+2.91	Result: PASS
+2.91	END

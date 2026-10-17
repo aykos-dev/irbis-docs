@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "title": "'Turn on' after one denial re-asks; after a second denial it opens app settings; granting there switches to device origin",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC6 — re-ask if the OS allows, else app settings; return with permission → device origin without restart",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, location permission reset to 'ask'",
+   "Mock device position = Tashkent centre",
+   "Explore opened once and denied (banner visible)"
+  ],
+  "steps": [
+   "Open Explore and deny once → check: banner shows",
+   "Tap 'Turn on' → check: the system dialog appears again",
+   "Deny again (now blocked); tap 'Turn on' → check: the app's settings screen opens",
+   "Grant location (`pm grant`, the settings toggle's effect) and return to the app with Back"
+  ],
+  "expected": [
+   "After the first denial 'Turn on' shows the OS dialog again — UI tree + screenshot",
+   "After the second denial 'Turn on' opens Android app settings for the Irbis package (not the dialog) — UI tree (settings screen text) + screenshot",
+   "Back in the app without a restart: banner gone, header '… places near you', event explore_loaded {origin: device} after the return — UI tree + QA event"
+  ],
+  "focus": "explore.location-banner",
+  "caption": {
+   "expected": "After the first denial 'Turn on' shows the OS dialog again"
+  },
+  "tc": "TC-020",
+  "plan": "Test_places.md",
+  "anchor": "tc-020--p1--turn-on-after-one-denial-re-asks-after-a-second-denial-it-opens-app-settings-granting-there-switches-to-device-origin"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 27.2,
+ "events": 9,
+ "done": [
+  "Guest, location permission reset to 'ask' · Mock device position = Tashkent centre · Explore opened once and denied (banner visible)",
+  "1. Turn on (1st)",
+  "2. deny again, Turn on",
+  "3. grant and return"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "OS dialog shown again",
+   "proof": [
+    "1_reask.png"
+   ],
+   "t": 22.6
+  },
+  "2": {
+   "ok": true,
+   "observed": "settings screen marker 'App info'",
+   "proof": [
+    "2_settings.png"
+   ],
+   "t": 24.9
+  },
+  "3": {
+   "ok": true,
+   "observed": "event {'count': 71, 'origin': 'device'}, header '71 places near you'",
+   "proof": [
+    "3_back.png"
+   ],
+   "t": 26.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Banner visible after denial",
+   "ok": true,
+   "seen": "no banner",
+   "t": 21.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_reask.png",
+  "2_settings.png",
+  "3_back.png"
+ ]
+}

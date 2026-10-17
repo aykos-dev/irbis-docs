@@ -1,0 +1,6 @@
+23:52:21.614 tab_opened {"tab": "path"}
+23:52:22.300 tab_opened {"tab": "profile"}
+23:52:29.962 tab_opened {"tab": "path"}
+23:52:30.371 tab_opened {"tab": "explore"}
+23:52:30.385 location_permission {"result": "granted"}
+23:52:30.739 explore_loaded {"count": 71, "origin": "device"}

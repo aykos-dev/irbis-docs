@@ -1,0 +1,72 @@
+{
+ "meta": {
+  "title": "List filters combine with AND (types, difficulty, distance incl. boundaries)",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC2 — types any-of, difficulty inclusive, maxDistanceKm inclusive, total after filters",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "API up, 71 places seeded",
+   "Origin = Tashkent fallback"
+  ],
+  "steps": [
+   "GET types=peak&types=lake → counts",
+   "GET difficultyMin=2&difficultyMax=2 and difficultyMin=1&difficultyMax=1",
+   "Pick the integer km k = ceil(distance of the 10th nearest place); GET maxDistanceKm=k and maxDistanceKm=k-1",
+   "GET types=waterfall&difficultyMin=1&difficultyMax=2&maxDistanceKm=100"
+  ],
+  "expected": [
+   "types=peak&types=lake → total 45 (34+11), every item peak or lake, items = total — API response",
+   "difficulty 2..2 → only difficulty 2 and total = local row count with difficulty 2; 1..1 likewise (inclusive ends) — API response",
+   "maxDistanceKm=k includes every place with distanceM ≤ k×1000 (equals the unfiltered subset) and k−1 drops exactly the places with distanceM in (k−1)×1000 < d ≤ k×1000; `total` equals the returned count — API response",
+   "Combined filters = intersection of the three single-filter result sets; total = its size — API response"
+  ],
+  "caption": {
+   "expected": "types=peak&types=lake → total 45 (34+11), every item peak or"
+  },
+  "tc": "TC-005",
+  "plan": "Test_places.md",
+  "anchor": "tc-005--p1--list-filters-combine-with-and-types-difficulty-distance-incl-boundaries"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 3.4,
+ "events": 2,
+ "done": [
+  "API up, 71 places seeded · Origin = Tashkent fallback",
+  "1. types any-of",
+  "2. difficulty inclusive",
+  "3. distance boundary",
+  "4. combined filters"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "status 200, total 45, types ['lake', 'peak']",
+   "proof": [],
+   "t": 2.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "d1: total 18 / db 18; d2: total 32 / db 32",
+   "proof": [],
+   "t": 3.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "k=54: 10/10 items, k-1: 9/9, totals 10/9",
+   "proof": [],
+   "t": 3.1
+  },
+  "4": {
+   "ok": true,
+   "observed": "status 200, got 20, expected 20, total 20",
+   "proof": [],
+   "t": 3.1
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

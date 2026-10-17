@@ -1,0 +1,6 @@
+11.99	1: open Type sheet
+12.78	2: select Peaks and Lakes
+13.17	3: Apply
+15.65	Expected: Type chip text reads 'Peaks · Lakes'
+15.65	Result: PASS
+15.65	END

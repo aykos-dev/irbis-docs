@@ -1,0 +1,71 @@
+{
+ "meta": {
+  "title": "Deep link irbis://place/<id> opens Place from a cold start; an unknown id is handled",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC7 — deep link opens Place; error state",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "App force-stopped"
+  ],
+  "steps": [
+   "Force-stop, then open irbis://place/<id of a seeded peak>",
+   "Open irbis://place/00000000-0000-4000-8000-000000000000",
+   "Tap Back / the on-screen back action"
+  ],
+  "expected": [
+   "The seeded place opens with place.name equal to its name_uz and QA event place_viewed {slug} — UI tree + QA event",
+   "The unknown id shows place.not-found with the text 'This place isn't available' (ru 'Это место недоступно', uz 'Bu joy mavjud emas') and a back button (place.not-found-back); no place.name, no crash — UI tree + screenshot",
+   "Back leaves the error state to a tab screen without a crash — UI tree"
+  ],
+  "focus": "place.screen",
+  "caption": {
+   "expected": "The seeded place opens with place.name equal to its name_uz "
+  },
+  "tc": "TC-027",
+  "plan": "Test_places.md",
+  "anchor": "tc-027--p1--deep-link-irbisplaceid-opens-place-from-a-cold-start-an-unknown-id-is-handled"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 17.6,
+ "events": 3,
+ "done": [
+  "Guest, onboarding done · App force-stopped",
+  "1. cold deep link",
+  "2. unknown id",
+  "3. Back"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "name \"Bo'ritog'\", event {'slug': 'boritog-1295', 'requiredLevel': 1, 'qualifies': True}",
+   "proof": [
+    "1_link.png"
+   ],
+   "t": 5.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "state 'place.not-found', text True",
+   "proof": [
+    "2_notfound.png"
+   ],
+   "t": 7.0
+  },
+  "3": {
+   "ok": false,
+   "observed": "tab bar visible, no crash",
+   "proof": [],
+   "t": 17.4
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": [
+  "1_link.png",
+  "2_notfound.png"
+ ]
+}

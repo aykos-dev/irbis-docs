@@ -1,0 +1,4 @@
+23:57:57.297 tab_opened {"tab": "path"}
+23:57:58.034 tab_opened {"tab": "profile"}
+23:58:00.181 place_viewed {"slug": "boritog-1295", "requiredLevel": 1, "qualifies": true}
+23:58:02.664 place_viewed {"slug": "tuzkon-koli-250", "requiredLevel": 1, "qualifies": true}

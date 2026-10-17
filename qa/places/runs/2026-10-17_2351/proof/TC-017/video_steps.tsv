@@ -1,0 +1,6 @@
+13.55	1: tab round trip
+15.72	2: scroll, open card, Back
+28.75	3: cold restart
+31.98	Expected: After the tab round trip the Type chip still reads 'Lakes' a
+31.98	Result: PASS
+31.98	END

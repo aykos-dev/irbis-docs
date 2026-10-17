@@ -1,0 +1,6 @@
+11.26	1: map at default zoom
+11.72	2: filter Caves only
+14.46	3: tap a single pin
+23.39	Expected: Default zoom shows cluster bubbles with a number
+23.39	Result: NOT RUN
+23.39	END

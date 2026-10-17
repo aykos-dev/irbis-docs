@@ -1,0 +1,63 @@
+{
+ "meta": {
+  "title": "Place detail errors and signed-in viewer",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC3 — unknown uuid 404 PLACE_NOT_FOUND, non-uuid 400, signed-in = guest viewer",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "API up",
+   "A throwaway QA user signed up through the API (token kept in memory only)"
+  ],
+  "steps": [
+   "GET /v1/places/00000000-0000-4000-8000-000000000000",
+   "GET /v1/places/not-a-uuid and /v1/places/123",
+   "GET a level-2 place with the QA user's token and without"
+  ],
+  "expected": [
+   "Unknown uuid → 404, code PLACE_NOT_FOUND — API response",
+   "`not-a-uuid` and `123` → 400 VALIDATION_FAILED — API response",
+   "Signed-in and guest responses carry the same viewer {level: 1, qualifies: false} for a level-2 place — API response"
+  ],
+  "caption": {
+   "expected": "Unknown uuid → 404, code PLACE_NOT_FOUND"
+  },
+  "tc": "TC-009",
+  "plan": "Test_places.md",
+  "anchor": "tc-009--p1--place-detail-errors-and-signed-in-viewer"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 3.0,
+ "events": 2,
+ "done": [
+  "API up · A throwaway QA user signed up through the API (token kept in memory only)",
+  "1. unknown uuid",
+  "2. non-uuid",
+  "3. signed-in vs guest viewer"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "status 404, code PLACE_NOT_FOUND",
+   "proof": [],
+   "t": 2.5
+  },
+  "2": {
+   "ok": true,
+   "observed": "[(400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED')]",
+   "proof": [],
+   "t": 2.5
+  },
+  "3": {
+   "ok": true,
+   "observed": "guest {'level': 1, 'qualifies': False}, signed-in {'level': 1, 'qualifies': False}",
+   "proof": [],
+   "t": 2.7
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

@@ -1,0 +1,5 @@
+4.46	1: open the place in Russian
+7.04	3: open the en-named place in English
+8.42	Expected: Russian UI: the card and place.name show the Uzbek name (nam
+8.42	Result: PASS
+8.42	END

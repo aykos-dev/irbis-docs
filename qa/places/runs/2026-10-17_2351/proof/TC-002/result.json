@@ -1,0 +1,60 @@
+{
+ "meta": {
+  "title": "Seed name cleaning and slug rules",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC1 — strip '(… m)', slug = kebab + elevation, ru/en null",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "Seeded LOCAL dev DB (71 rows)"
+  ],
+  "steps": [
+   "Query the row 'Chuquraq' with the parenthesised name `Chuquraq (27 m.) (Kelin Ko'ylak)` and 'Qorangur' (2943 m. in source, elevation 2941)",
+   "Check every row: no `(… m)` height left in name_uz, slug = lowercase ASCII + `-` + elevation, slugs unique, name_ru / name_en / region null"
+  ],
+  "expected": [
+   "name_uz of the Chuquraq row is exactly `Chuquraq (Kelin Ko'ylak)` (the second parenthesis stays) — SQL",
+   "Qorangur row: name_uz `Qorangur`, slug `qorangur-2941` — SQL",
+   "Over all 71 rows: 0 names matching `\\(\\s*\\d+\\s*m\\.?\\s*\\)`, 0 slugs not matching `^[a-z0-9]+(-[a-z0-9]+)*-<elevation>$`, 71 distinct slugs, 0 non-null name_ru/name_en/region, 0 non-empty season/hazards — SQL"
+  ],
+  "caption": {
+   "expected": "name_uz of the Chuquraq row is exactly `Chuquraq (Kelin Ko'y"
+  },
+  "tc": "TC-002",
+  "plan": "Test_places.md",
+  "anchor": "tc-002--p1--seed-name-cleaning-and-slug-rules"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 3.8,
+ "events": 2,
+ "done": [
+  "Seeded LOCAL dev DB (71 rows)",
+  "1. read Chuquraq + Qorangur rows",
+  "2. scan all rows"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "Chuquraq row name_uz = \"Chuquraq (Kelin Ko'ylak)\"",
+   "proof": [],
+   "t": 3.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "Qorangur row = 'Qorangur|qorangur-2941'",
+   "proof": [],
+   "t": 3.3
+  },
+  "3": {
+   "ok": true,
+   "observed": "rows 71, height-in-name 0, bad slugs [], rows with ru/en/region/season/hazards 0",
+   "proof": [],
+   "t": 3.5
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

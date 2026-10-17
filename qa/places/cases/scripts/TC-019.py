@@ -26,7 +26,7 @@ def run(c):
     reset_permission(FINE); reset_permission(COARSE)
     mock_at(*offset(41.0, 71.0))
     t0 = mark()
-    wait("nav.tab-explore", 10, exact=True); tap("nav.tab-explore", exact=True)
+    open_explore(wait_list=False)
     c.checkpoint("OS permission dialog shown", wait_any(["Don't allow", "Don’t allow", "Deny"], 12), "no dialog")
     c.step(1, "Don't allow")
     tap("Don't allow") if has("Don't allow") else (tap("Don’t allow") if has("Don’t allow") else tap("Deny"))

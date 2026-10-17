@@ -1,0 +1,184 @@
+{
+ "STD-DARK@explore": {
+  "verdict": "Pass",
+  "line": "STD-DARK@explore · Pass",
+  "conclusion": "Crop: chips, sheet and cards are dark. Script sampled the map tile pixel (map stays light, not app chrome). Observation: map tiles do not follow dark mode."
+ },
+ "STD-DARK@place": {
+  "verdict": "Pass",
+  "line": "STD-DARK@place · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-OFFLINE@explore": {
+  "verdict": "Pass",
+  "line": "STD-OFFLINE@explore · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-OFFLINE@place": {
+  "verdict": "Pass",
+  "line": "STD-OFFLINE@place · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "STD-TEXT@explore": {
+  "verdict": "Pass",
+  "line": "STD-TEXT@explore · Pass",
+  "conclusion": "Crops: ru and uz fully translated; script flagged type+distance strings ('Водопад · 47 км', 'Sharshara · 47 km') which are translated. No overflow."
+ },
+ "STD-TEXT@place": {
+  "verdict": "Fail",
+  "line": "STD-TEXT@place · Fail",
+  "conclusion": "uz crop: lock line 'Bu yerga borish uchun 2-daraja...' runs past the right edge of the level card (clipped at border). ru fine; script flagged strings were false positives."
+ },
+ "TC-001": {
+  "verdict": "Pass",
+  "line": "TC-001 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-002": {
+  "verdict": "Pass",
+  "line": "TC-002 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-003": {
+  "verdict": "Pass",
+  "line": "TC-003 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-004": {
+  "verdict": "Pass",
+  "line": "TC-004 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-005": {
+  "verdict": "Pass",
+  "line": "TC-005 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-006": {
+  "verdict": "Pass",
+  "line": "TC-006 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-007": {
+  "verdict": "Pass",
+  "line": "TC-007 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-008": {
+  "verdict": "Pass",
+  "line": "TC-008 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-009": {
+  "verdict": "Pass",
+  "line": "TC-009 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-010": {
+  "verdict": "Pass",
+  "line": "TC-010 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-011": {
+  "verdict": "Pass",
+  "line": "TC-011 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-012": {
+  "verdict": "Not run",
+  "line": "TC-012 · Not run",
+  "conclusion": "",
+  "title": "Map pins: type colours, clusters with count, single-pin tap",
+  "reason": "Pins are not in the UI tree. Default zoom shows cluster '6' (step 1 plausible) but Caves-only map shows no pins in the viewport (caves 80/102 km away, camera not fitted) and no pin could be tapped; owner to check pin colour/icon and tap manually."
+ },
+ "TC-013": {
+  "verdict": "Pass",
+  "line": "TC-013 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-014": {
+  "verdict": "Pass",
+  "line": "TC-014 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-015": {
+  "verdict": "Pass",
+  "line": "TC-015 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-016": {
+  "verdict": "Pass",
+  "line": "TC-016 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-017": {
+  "verdict": "Pass",
+  "line": "TC-017 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-018": {
+  "verdict": "Pass",
+  "line": "TC-018 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-019": {
+  "verdict": "Pass",
+  "line": "TC-019 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-020": {
+  "verdict": "Pass",
+  "line": "TC-020 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-021": {
+  "verdict": "Pass",
+  "line": "TC-021 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-022": {
+  "verdict": "Blocked",
+  "line": "TC-022 · Blocked",
+  "conclusion": "Setup: with the mock loop session running the app got a device origin immediately (stale last-known fix, no location_received event), so a real 'no fix' state could not be produced. Needs a run without the mock session or manual check."
+ },
+ "TC-023": {
+  "verdict": "Pass",
+  "line": "TC-023 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-024": {
+  "verdict": "Pass",
+  "line": "TC-024 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-025": {
+  "verdict": "Pass",
+  "line": "TC-025 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-026": {
+  "verdict": "Pass",
+  "line": "TC-026 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-027": {
+  "verdict": "Fail",
+  "line": "TC-027 · Fail · ✅✅❌",
+  "conclusion": "Step 3: after a cold deep link to an unknown id, tapping place.not-found-back leaves the not-found screen unchanged (goBack with empty stack is a no-op); no tab bar. Re-checked with a standalone cold link."
+ },
+ "TC-028": {
+  "verdict": "Pass",
+  "line": "TC-028 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-029": {
+  "verdict": "Pass",
+  "line": "TC-029 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ },
+ "TC-030": {
+  "verdict": "Pass",
+  "line": "TC-030 · Pass",
+  "conclusion": "All expected bullets observed with proof."
+ }
+}

@@ -1,0 +1,5 @@
+2.69	1: compare difficulty with band(elevation)
+2.8	2: compare required_level with map(difficulty)
+3.9	Expected: 0 rows where difficulty ≠ band(elevation_m)
+3.9	Result: PASS
+3.9	END

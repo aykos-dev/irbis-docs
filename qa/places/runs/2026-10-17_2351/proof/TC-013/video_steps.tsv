@@ -1,0 +1,8 @@
+2.81	1: mock 8400 m from the place
+7.22	2: mock 112000 m from the place
+20.09	3: mock 9900 m from the place
+25.56	4: mock 9960 m from the place
+30.64	5: mock 10100 m from the place
+36.55	Expected: Card text contains '8.4 km'
+36.55	Result: PASS
+36.55	END

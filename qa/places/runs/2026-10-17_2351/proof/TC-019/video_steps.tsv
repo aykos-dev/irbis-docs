@@ -1,0 +1,6 @@
+5.51	1: Don't allow
+7.1	2: read header
+7.63	3: read banner
+8.65	Expected: QA event location_permission {result: denied}
+8.65	Result: PASS
+8.65	END

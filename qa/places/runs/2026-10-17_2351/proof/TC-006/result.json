@@ -1,0 +1,63 @@
+{
+ "meta": {
+  "title": "List validation: 400 VALIDATION_FAILED matrix with boundary values",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC2 — lat/lng pair, ranges, difficulty order, unknown type; valid edges accepted",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "API up, 71 places seeded"
+  ],
+  "steps": [
+   "GET with only lat=41.2995; only lng=69.2401",
+   "GET lat=90.0001 and lat=-90.0001; lng=180.0001 and lng=-180.0001",
+   "GET difficultyMin=4&difficultyMax=2; difficultyMin=0; difficultyMax=6; maxDistanceKm=0; maxDistanceKm=1001; limit=0; limit=201; types=hill",
+   "GET the valid edges lat=90&lng=180, lat=-90&lng=-180, difficultyMin=3&difficultyMax=3, maxDistanceKm=1, maxDistanceKm=1000, limit=1, limit=200"
+  ],
+  "expected": [
+   "The 2 single-coordinate requests and the 4 out-of-range coordinates → 400, body code VALIDATION_FAILED — API response",
+   "difficulty min>max, 0, 6, maxDistanceKm 0 and 1001, limit 0 and 201, unknown type → 400 VALIDATION_FAILED each — API response",
+   "Every valid edge value → 200 (limit=1 returns exactly 1 item, total still counts all) — API response"
+  ],
+  "caption": {
+   "expected": "The 2 single-coordinate requests and the 4 out-of-range coor"
+  },
+  "tc": "TC-006",
+  "plan": "Test_places.md",
+  "anchor": "tc-006--p1--list-validation-400-validation_failed-matrix-with-boundary-values"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 2.8,
+ "events": 2,
+ "done": [
+  "API up, 71 places seeded",
+  "1. coordinate errors",
+  "2. range / type errors",
+  "3. valid edges"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "[(400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED')]",
+   "proof": [],
+   "t": 2.5
+  },
+  "2": {
+   "ok": true,
+   "observed": "[(400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED'), (400, 'VALIDATION_FAILED')]",
+   "proof": [],
+   "t": 2.5
+  },
+  "3": {
+   "ok": true,
+   "observed": "statuses [200, 200, 200, 200, 200, 200, 200]; limit=1 → 1 item, total 71",
+   "proof": [],
+   "t": 2.5
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

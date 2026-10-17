@@ -1,0 +1,5 @@
+3.74	1: open Explore
+4.92	2: wait for fallback
+18.12	Expected: explore_loaded {origin: tashkent} arrives between 8 and 12 s
+18.12	Result: BLOCKED
+18.12	END

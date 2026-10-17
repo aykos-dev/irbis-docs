@@ -1,0 +1,6 @@
+2.46	1: coordinate errors
+2.48	2: range / type errors
+2.49	3: valid edges
+2.74	Expected: The 2 single-coordinate requests and the 4 out-of-range coor
+2.74	Result: PASS
+2.74	END

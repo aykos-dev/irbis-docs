@@ -1,0 +1,62 @@
+{
+ "meta": {
+  "title": "Copy is translated — explore",
+  "priority": "P2",
+  "group": "Standards",
+  "requirement": "engineering-standards §12 — i18n",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Russian — open the screen",
+   "Uzbek — open the screen"
+  ],
+  "expected": [
+   "No English catalog string left on screen in Russian or Uzbek — UI tree"
+  ],
+  "caption": {
+   "expected": "translated"
+  },
+  "tc": "STD-TEXT@explore",
+  "plan": "Test_places.md",
+  "anchor": "std-textexplore--p2--copy-is-translated",
+  "screen": "explore"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 21.6,
+ "events": 8,
+ "done": [
+  "1. ru — open the screen",
+  "2. uz — open the screen"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "untranslated: {'ru': ['Водопад · 47 км', 'Водопад · 47 км'], 'uz': ['Sharshara · 47 km', 'Sharshara · 47 km']}",
+   "proof": [],
+   "t": 21.2
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened (ru)",
+   "ok": true,
+   "seen": "explore.screen",
+   "t": 8.9
+  },
+  {
+   "name": "screen opened (uz)",
+   "ok": true,
+   "seen": "explore.screen",
+   "t": 19.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "ru.png",
+  "uz.png"
+ ]
+}
