@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Open · found 2026-10-17 |
+| Status | Fixed · retest 2026-10-18 |
 | Severity | 4 - Low |
 | Cases | STD-TEXT@place |
 | Found | run [2026-10-17_2351](../../runs/2026-10-17_2351/run.md) · build irbis-app 601a6d4 · emulator pixel-8a (font 1.15) |
@@ -22,3 +22,4 @@
 **Cause in code:** `irbis-app/src/features/places/components/LevelCard.tsx:62` — status row (`place.level-locked`) text lacks `flexShrink: 1`/wrapping. Unconfirmed.
 
 ## Retests
+- 2026-10-18 · irbis-app feadf6e · run 2026-10-18_0015 · STD-TEXT@place uz crop, lock text wraps inside the card: Fixed.

@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Open · found 2026-10-17 |
+| Status | Fixed · retest 2026-10-18 |
 | Severity | 3 - Medium |
 | Cases | TC-027 |
 | Found | run [2026-10-17_2351](../../runs/2026-10-17_2351/run.md) · build irbis-app 601a6d4 · emulator pixel-8a |
@@ -23,3 +23,4 @@
 **Cause in code:** `irbis-app/src/features/places/screens/PlaceScreen.tsx:47` — `const goBack = () => navigation.goBack();` with no `canGoBack()` fallback to `MainTabs`.
 
 ## Retests
+- 2026-10-18 · irbis-app feadf6e · run 2026-10-18_0015 · TC-027 Pass, Back leaves the not-found screen: Fixed.

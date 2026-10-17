@@ -1,5 +1,5 @@
 # Run 2026-10-18_0015 — places
-**Status:** in progress
+**Status:** closed
 **Build:** uz.irbis.app.dev 1.0-dev (1) — irbis-app feat/places feadf6e
 **Backend:** irbis-api feat/places 46e03e6
 **Device:** sdk_gphone64_arm64 (Android 15), emulating the phone (density 450, font 1.15)
