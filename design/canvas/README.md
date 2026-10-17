@@ -1,7 +1,7 @@
 # Irbis design canvas — snapshot
 
 - Source: https://claude.ai/artifact/CuodB816iZnDTUej2UiALf (claude.ai Design canvas, owner: Sardor)
-- Canvas version: `1792219955-d3a2 (2026-10-17: Accounts page; auth rules: password 6+, code 5 min, resend 1:00)`
+- Canvas version: `1792220545-f5f0 (2026-10-17: Accounts page; auth rules; Admin web page)`
 - Snapshot date: 2026-10-16
 - **Snapshot — the canvas is the source of truth; re-sync when it changes.**
 - Files: `*.dc.html` are the boards (design-canvas component format, not runnable as-is; `/_blob/<id>` image references are canvas assets, see `../assets.md`). `canvas.json` holds board titles, pages, sizes and canvas notes (rules and animation notes; see `../canvas-rules.md`).
@@ -156,3 +156,12 @@
 | AccForgot.dc.html | A4 Forgot password | 390×844 |
 | AccReset.dc.html | A5 Reset with SMS code | 390×844 |
 | AccGuestProfile.dc.html | A6 Profile — guest | 390×844 |
+
+### Admin web (added 2026-10-17, feature `auth`)
+| File | Title | Size |
+|---|---|---|
+| AdmLogin.dc.html | W2 Admin log in | 1440×900 (page) |
+| AdmDashboard.dc.html | W3 Dashboard | 1440×1000 (page) |
+| AdmUsers.dc.html | W4 Users | 1440×1000 (page) |
+| AdmUserDetail.dc.html | W5 User detail | 1440×1000 (page) |
+| AdmBlockDialog.dc.html | W6 Block dialog (pattern for every action) | 1440×900 (page) |

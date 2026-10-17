@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Admin dashboard</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+.page{--bg:#F7F7F2;--card:#FFFFFF;--line:#E5E5DC;--ink:#1F2A2E;--body:#3C4A4F;--muted:#5E6E74;--soft:#EEF0E8;--tint:#E3F7F5;font-family:'Nunito',system-ui,sans-serif;color:var(--body);background:var(--bg);min-height:100vh}
+p,h1,h2,h3{margin:0}
+.h1{font-weight:900;font-size:28px;line-height:1.15;color:var(--ink)}
+.h2{font-weight:900;font-size:22px;line-height:1.2;color:var(--ink)}
+.h3{font-weight:800;font-size:17px;line-height:1.25;color:var(--ink)}
+.t{font-weight:700;font-size:15px;line-height:1.45}
+.s{font-weight:700;font-size:13px;line-height:1.35;color:var(--muted)}
+.cap{font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--card);border:2px solid var(--line);border-bottom-width:4px;border-radius:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 18px;border:0;border-radius:14px;font-family:'Nunito',sans-serif;font-weight:900;font-size:14px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;text-decoration:none;white-space:nowrap}
+.bp{background:#0C807A;color:#FFFFFF;box-shadow:0 4px 0 #075B56}
+.bw{background:var(--card);color:#0C807A;border:2px solid var(--line);box-shadow:0 4px 0 var(--line)}
+.bd{background:#D93636;color:#FFFFFF;box-shadow:0 4px 0 #A12121}
+.chip{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:999px;font-weight:800;font-size:12px;white-space:nowrap}
+.go{background:#DFF6E7;color:#1B6B3E}.no{background:#FFE1E1;color:#B32424}.ca{background:#FFF1BF;color:#6E4E00}.lk{background:#ECEEEF;color:#56646A}.tl{background:#E3F7F5;color:#0C807A}
+.in{min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--card);padding:8px 12px;font:700 14px 'Nunito',sans-serif;color:var(--ink)}
+.lbl{font-weight:900;font-size:13px;color:var(--ink)}
+.side{flex:0 0 240px;background:var(--card);border-right:2px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:6px}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;font-weight:800;font-size:15px;color:var(--muted);text-decoration:none}
+.nav.on{background:var(--tint);color:#0C807A;border:2px solid #1CB0A8}
+.main{flex:999 1 640px;min-width:0;padding:28px 32px;display:flex;flex-direction:column;gap:22px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-weight:900;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:2px solid var(--line);white-space:nowrap}
+.tbl td{padding:12px;border-bottom:2px solid #F0F0EA;font-weight:700;color:var(--ink);white-space:nowrap}
+.st{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div class="page" style="display: flex; flex-wrap: wrap">
+  <aside class="side" aria-label="Admin navigation">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 0 6px 18px">
+      <img src="/_blob/68fc129c9d7433afd4cf66f5c7574e03" alt="Irbis" style="width: 40px; height: 40px; border-radius: 10px">
+      <div><p class="h3">Irbis</p><p class="s">Admin</p></div>
+    </div>
+    <a class="nav on" href="AdmDashboard.dc.html"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M4 13h6V4H4zM14 20h6V4h-6zM4 20h6v-3H4z"></path></svg>Dashboard</a>
+    <a class="nav" href="AdmUsers.dc.html"><svg viewBox="0 0 24 24" style="width: 22px; height: 22px"><path class="st" d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21c0-4 3-6.5 7-6.5s7 2.5 7 6.5M17 4.5a3.5 3.5 0 0 1 0 7M22 21c0-3-1.6-5-4-6"></path></svg>Users</a>
+    <div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 6px; border-top: 2px solid #EEF0E8">
+      <span style="width: 36px; height: 36px; border-radius: 50%; background: #E3F7F5; color: #0C807A; display: flex; align-items: center; justify-content: center; font-weight: 900">A</span>
+      <div style="flex-grow: 1"><p class="h3" style="font-size: 14px">admin_one</p><p class="s">Admin</p></div>
+      <a class="s" href="AdmLogin.dc.html" style="color: #0C807A; font-weight: 900">Sign out</a>
+    </div>
+  </aside>
+  <main class="main">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+      <div><h1 class="h1">Dashboard</h1><p class="s">Users at a glance · sample data</p></div>
+      <span class="chip tl">Updated just now</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px"><div class="card" style="padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><p class="cap">Total users</p><p style="font-weight: 900; font-size: 32px; color: #1F2A2E; font-variant-numeric: tabular-nums">1,284</p></div><div class="card" style="padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><p class="cap">New today</p><p style="font-weight: 900; font-size: 32px; color: #1F2A2E; font-variant-numeric: tabular-nums">23</p><p class="s">+4 vs yesterday</p></div><div class="card" style="padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><p class="cap">New in 7 days</p><p style="font-weight: 900; font-size: 32px; color: #1F2A2E; font-variant-numeric: tabular-nums">162</p></div><div class="card" style="padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><p class="cap">Active in 7 days</p><p style="font-weight: 900; font-size: 32px; color: #1F2A2E; font-variant-numeric: tabular-nums">618</p><p class="s">48% of users</p></div><div class="card" style="padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><p class="cap">Blocked</p><p style="font-weight: 900; font-size: 32px; color: #1F2A2E; font-variant-numeric: tabular-nums">7</p></div><div class="card" style="padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><p class="cap">With recovery phone</p><p style="font-weight: 900; font-size: 32px; color: #1F2A2E; font-variant-numeric: tabular-nums">41%</p></div></div>
+    <div class="card" style="padding: 20px 22px; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline"><p class="h3">Sign-ups per day</p><p class="s">last 30 days</p></div>
+      <svg viewBox="0 0 1000 224" role="img" aria-label="Sign-ups per day, last 30 days" style="width: 100%; height: 240px">
+        <line x1="0" y1="200" x2="1000" y2="200" style="stroke: #E5E5DC; stroke-width: 2"></line>
+        <line x1="0" y1="100" x2="1000" y2="100" style="stroke: #EEF0E8; stroke-width: 2"></line>
+        <polyline points="0,179 34,172 69,158 103,165 138,151 172,137 207,144 241,158 276,130 310,116 345,123 379,137 414,109 448,95 483,116 517,102 552,88 586,74 621,95 655,81 690,67 724,53 759,74 793,46 828,60 862,32 897,39 931,18 966,25 1000,39" style="fill: none; stroke: #0C807A; stroke-width: 3; stroke-linejoin: round"></polyline>
+        <text x="0" y="220" style="font: 700 12px Nunito, sans-serif; fill: #5E6E74">Sep 18</text>
+        <text x="1000" y="220" text-anchor="end" style="font: 700 12px Nunito, sans-serif; fill: #5E6E74">Oct 17</text>
+      </svg>
+    </div>
+    <p class="s">Aggregates only — individual accounts are in Users.</p>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

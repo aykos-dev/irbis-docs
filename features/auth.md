@@ -1,15 +1,17 @@
 # auth
 
-- Status: Draft — awaiting approval (questions answered 2026-10-17)
-- Surfaces: api | app (web admin log-in is out of scope — first web feature)
+- Status: Draft — awaiting approval (questions answered 2026-10-17; web admin added 2026-10-17)
+- Surfaces: api | app | web
 - Related ADRs: ADR-001 (auth), ADR-003 (API style)
 - Requirements: Product Overview § Accounts & sign-in · Screens: `design/canvas/AccLogin`, `AccSignup`, `AccGate`,
-  `AccForgot`, `AccReset`, `AccGuestProfile`, `Nav` (bottom tabs)
+  `AccForgot`, `AccReset`, `AccGuestProfile`, `Nav` (bottom tabs); web: `AdmLogin`, `AdmDashboard`, `AdmUsers`,
+  `AdmUserDetail`, `AdmBlockDialog`
 
 ## Goal
 Anyone can use Irbis without an account. A bottom tab bar is the app's home; the Profile tab lets a guest create an
 account or log in (username + password), and a shared log-in prompt is ready for every later feature that saves or
-earns. Forgotten passwords are reset with an SMS code when the account has a recovery phone.
+earns. Forgotten passwords are reset with an SMS code when the account has a recovery phone. The Irbis team manages
+users in the admin web panel: a dashboard, a searchable users table, user detail with actions, and an audit log.
 
 ## API
 | Method | Path | Auth | Request | Response | Errors (code) |
@@ -25,12 +27,26 @@ earns. Forgotten passwords are reset with an SMS code when the account has a rec
 | POST | /v1/me/recovery-phone/verify | user | code | me | CODE_INVALID, CODE_EXPIRED, CODE_ATTEMPTS |
 | GET | /v1/me | user | — | me { id, username, locale, hasRecoveryPhone, createdAt } | — |
 | POST | /v1/me/guest-merge | user | { locale?, onboarding? } (extensible) | merged summary | VALIDATION_FAILED |
+| POST | /v1/admin/auth/log-in | public | username, password | access token + me; refresh token as httpOnly Secure SameSite cookie | INVALID_CREDENTIALS, ACCOUNT_LOCKED, NOT_ADMIN |
+| POST | /v1/admin/auth/refresh · /sign-out | refresh cookie | — | access token · 204 | REFRESH_INVALID |
+| GET | /v1/admin/stats/users | admin | — | { total, newToday, new7d, active7d, blocked, withPhonePct, signupsByDay[30] } | — |
+| GET | /v1/admin/users?q=&status=&role=&joined=&sort=&cursor=&limit= | admin | — | { items[], nextCursor, total } (phone masked) | VALIDATION_FAILED |
+| GET | /v1/admin/users/:id | admin | — | user detail (phone masked, sessions count, level) | NOT_FOUND |
+| POST | /v1/admin/users/:id/block · /unblock | admin | reasonCode, note | user | NOT_FOUND, ALREADY_BLOCKED |
+| PUT | /v1/admin/users/:id/password | admin | newPassword, note | 204 | PASSWORD_WEAK, NOT_FOUND |
+| PUT | /v1/admin/users/:id/recovery-phone | admin | phone, note | user | PHONE_INVALID, NOT_FOUND |
+| PUT | /v1/admin/users/:id/role | admin | role, note | user | CANNOT_CHANGE_OWN_ROLE, NOT_FOUND |
+| GET | /v1/admin/users/:id/audit | admin | — | { items[] } (who, action, reasonCode, note, at) | NOT_FOUND |
 
 ## Data model changes
 `User` (username unique on `lower(username)`, passwordHash argon2id, recoveryPhone? encrypted at rest +
 recoveryPhoneVerifiedAt?, locale, createdAt), `RefreshToken` (familyId, tokenHash, expiresAt, revokedAt, replacedById),
 `PasswordReset` (userId, codeHash, expiresAt, attempts, usedAt), `LoginAttempt` (username, ip, at, ok),
-`SmsCode` for phone verification (or shared with PasswordReset via a `purpose` column). Migration `auth_init`.
+`SmsCode` for phone verification (or shared with PasswordReset via a `purpose` column); on `User` also
+`role` (user|admin), `blockedAt?`, `blockReasonCode?`, `lastActiveAt`; `AdminAuditLog` (adminId, userId, action,
+reasonCode, note, at — never a password or full phone). Migration `auth_init`.
+CLI `npm run admin:create` (irbis-api): prompts for username + password in the terminal (hidden input), creates or
+promotes an admin; never takes the password as an argument.
 `SmsSender` interface: `FakeSmsSender` (dev/test only — logs `code for user …: 123456` to the API log; refuses to load
 when `NODE_ENV=production` or `APP_ENV` is staging/prod), real adapter later with owner-provided `.env` keys.
 
@@ -68,6 +84,23 @@ when `NODE_ENV=production` or `APP_ENV` is staging/prod), real adapter later wit
   returns to the guest state with a toast.
 - **AC10** — The Status screen (M0) is no longer the first screen; it is reachable in dev/staging builds through the
   Debug screen and the deep link `irbis://debug/status`.
+- **AC11** — A blocked user cannot log in (app shows "Your account is blocked" with the reason category, A1 error
+  state); a signed-in user who gets blocked is signed out on their next request or refresh and sees the same message.
+- **AC12** — Web admin log-in (W2): only role `admin` can sign in (others get "This account has no admin access");
+  same lockout as the app; access token in memory, refresh token in an httpOnly cookie; every admin route requires
+  `admin` on the API.
+- **AC13** — Dashboard (W3): tiles total users, new today, new in 7 days, active in 7 days, blocked, share with a
+  recovery phone, and a 30-day sign-ups line chart; aggregates only; loading / error + retry / empty states.
+- **AC14** — Users (W4): search by username (debounced), filter by status (active / blocked / locked), role, joined
+  (today / 7 days / 30 days); sort by joined or last active; server-side cursor pagination with total; filters and
+  page live in the URL; recovery phone always masked (`+998 •• ••• •• 67`); no export.
+- **AC15** — User detail (W5) shows account facts and actions, each in a confirm dialog with a required reason
+  (W6 pattern): **block / unblock** (block signs the user out everywhere), **set password** (permanent, 6–64, signs
+  the user out everywhere), **edit recovery phone** (marked verified at once), **change role** (an admin can't change
+  their own role). Each action appends an audit-log entry (admin, action, reason, note, time) shown on the page,
+  newest first; passwords and full phone numbers are never logged.
+- **AC16** — The first admin is created with `npm run admin:create` in irbis-api (hidden prompt; documented in
+  SETUP.md); no admin can be created through the public API.
 
 ### Required UI states (every touched client)
 - [ ] Loading: submit buttons pending (no double submit); availability check spinner in the field
@@ -80,7 +113,7 @@ when `NODE_ENV=production` or `APP_ENV` is staging/prod), real adapter later wit
 ### QA events (app, dev/staging builds)
 `auth_gate_shown { reason }` · `auth_gate_dismissed { reason }` · `signed_up { has_phone }` · `logged_in` ·
 `log_in_failed { code }` · `guest_merged { items }` · `password_reset_requested` · `password_reset_done` ·
-`recovery_phone_verified` · `signed_out` · `tab_opened { tab }`
+`recovery_phone_verified` · `signed_out` · `tab_opened { tab }` · `account_blocked_shown`
 
 ### testIDs (app)
 `nav.tab-path`, `nav.tab-explore`, `nav.tab-lessons`, `nav.tab-community`, `nav.tab-profile`,
@@ -88,7 +121,11 @@ when `NODE_ENV=production` or `APP_ENV` is staging/prod), real adapter later wit
 `auth.submit`, `auth.error`, `auth.forgot-link`, `auth.continue-guest`, `auth.code`, `auth.resend`,
 `auth.new-password`, `auth.gate`, `auth.gate-signup`, `auth.gate-login`, `auth.gate-not-now`,
 `profile.guest`, `profile.guest-signup`, `profile.guest-login`, `profile.username`, `profile.recovery-phone`,
-`profile.sign-out`, `debug.open-gate`, `empty.coming-soon`
+`profile.sign-out`, `debug.open-gate`, `empty.coming-soon`, `auth.blocked`
+
+### Web test hooks (data-testid)
+`admin.login-*`, `admin.stat-*`, `admin.signups-chart`, `admin.users-search`, `admin.users-filter-*`,
+`admin.users-table`, `admin.user-action-*`, `admin.dialog-reason`, `admin.dialog-confirm`, `admin.audit-table`
 
 ## Media
 `design/media/auth/MEDIA.md` — all from the canvas, owner confirmed final (2026-10-17).
@@ -98,7 +135,7 @@ when `NODE_ENV=production` or `APP_ENV` is staging/prod), real adapter later wit
   (owner decision Q6) — not a placeholder to be flagged by review; each feature replaces its tab's content.
 
 ## Out of scope
-- Social log-in, email, two-factor, username change, account deletion (with `profile`), web admin log-in screen,
+- Social log-in, email, two-factor, username change, account deletion (with `profile`), CSV export, moderator role,
   real SMS provider adapter (owner adds keys later), onboarding screens.
 
 ## Assumptions
@@ -113,3 +150,7 @@ when `NODE_ENV=production` or `APP_ENV` is staging/prod), real adapter later wit
 - Q8 (owner, 2026-10-17): log-in prompt built as a shared hook + sheet, dev Debug trigger for QA.
 - Q9 (owner, 2026-10-17): guest-merge mechanism now (language today); later features add their items and XP rules.
 - Q10 (owner, 2026-10-17): canvas mascot / panda / nav icons are final art.
+- Q11 (owner, 2026-10-17): web admin in this feature — actions: block/unblock with reason, set a user's password
+  (permanent), edit recovery phone (trusted at once, reason + audit), change role.
+- Q12 (owner, 2026-10-17): dashboard = counts + 30-day sign-up chart; users table = search + filters + detail + audit,
+  no export; design on the canvas first (W2–W6); first admin via CLI.

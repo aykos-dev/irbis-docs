@@ -693,6 +693,51 @@
    "h": 844,
    "title": "A6 Profile — guest",
    "page": "account"
+  },
+  "AdmLogin.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1440,
+   "h": 900,
+   "title": "W2 Admin log in",
+   "page": "admin",
+   "expand": "fill"
+  },
+  "AdmDashboard.dc.html": {
+   "x": 1520,
+   "y": 0,
+   "w": 1440,
+   "h": 1000,
+   "title": "W3 Dashboard",
+   "page": "admin",
+   "expand": "fill"
+  },
+  "AdmUsers.dc.html": {
+   "x": 0,
+   "y": 1200,
+   "w": 1440,
+   "h": 1000,
+   "title": "W4 Users",
+   "page": "admin",
+   "expand": "fill"
+  },
+  "AdmUserDetail.dc.html": {
+   "x": 1520,
+   "y": 1200,
+   "w": 1440,
+   "h": 1000,
+   "title": "W5 User detail",
+   "page": "admin",
+   "expand": "fill"
+  },
+  "AdmBlockDialog.dc.html": {
+   "x": 0,
+   "y": 2400,
+   "w": 1440,
+   "h": 900,
+   "title": "W6 Block dialog (same pattern for every action)",
+   "page": "admin",
+   "expand": "fill"
   }
  },
  "createdOnFiles": {
@@ -1109,6 +1154,23 @@
    "x": 2820,
    "y": 0,
    "text": "Guests can explore everything without an account: places, conditions, Explore map, feed, lessons. SOS and Safety work without an account, always.\n\nLog-in is asked only when an action saves or earns: check in, start a trip plan, earn XP or badges, post, like, comment, join a group, play online games (A3 sheet; \"Not now\" returns to where they were).\n\nWhat a guest did (onboarding choices, lesson progress, saved places) stays on the phone and moves into the account on sign-up or log-in.\n\nSign-up: username + password; recovery phone optional, used only for a 6-digit SMS reset code (A4, A5). No phone = no self-service reset.\n\nTrusted account (fair likes, reports) = older than 7 days."
+  },
+  "t_admin": {
+   "kind": "title1",
+   "maxW": 2960,
+   "page": "admin",
+   "text": "Irbis Admin (web) — users",
+   "x": 0,
+   "y": -300
+  },
+  "n_admin": {
+   "fill": "teal",
+   "page": "admin",
+   "w": 420,
+   "maxH": 720,
+   "x": 1520,
+   "y": 2400,
+   "text": "Admin web, users (feature `auth`).\n\nDashboard: aggregates only — total, new today / 7 days, active 7 days, blocked, share with a recovery phone, 30-day sign-ups chart.\n\nUsers: search by username; filter status / role / joined; sort; server pagination; recovery phone always masked; no CSV export.\n\nUser detail actions: block / unblock (reason), set password (permanent, signs the user out everywhere), edit recovery phone (trusted at once), change role (not your own). Every action needs a reason and lands in the audit log (who, what, when, reason — never the password).\n\nFirst admin: created by the owner with `npm run admin:create` in irbis-api (password typed locally, never in chat)."
   }
  },
  "order": [
@@ -1197,7 +1259,12 @@
   "AccGate.dc.html",
   "AccForgot.dc.html",
   "AccReset.dc.html",
-  "AccGuestProfile.dc.html"
+  "AccGuestProfile.dc.html",
+  "AdmLogin.dc.html",
+  "AdmDashboard.dc.html",
+  "AdmUsers.dc.html",
+  "AdmUserDetail.dc.html",
+  "AdmBlockDialog.dc.html"
  ],
  "pages": [
   {
@@ -1251,6 +1318,10 @@
   {
    "id": "more",
    "name": "Settings, search & business"
+  },
+  {
+   "id": "admin",
+   "name": "Admin web"
   }
  ],
  "title": "Irbis — Mobile App UI"
