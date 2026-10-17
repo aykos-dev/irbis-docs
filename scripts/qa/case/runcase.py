@@ -136,7 +136,7 @@ def run(run_dir, tcs, force=False):
 def finish(run_dir, verdicts_path):
     verdicts = json.load(open(verdicts_path, encoding="utf-8"))
     items, jobs = [], []
-    plan = next((runmd.load(os.path.join(run_dir, "proof", t))["meta"]["plan"] for t in verdicts
+    plan = next((runmd.load(os.path.join(run_dir, "proof", t))["meta"].get("plan") for t in verdicts
                  if os.path.exists(os.path.join(run_dir, "proof", t, "result.json"))), None)
     for tc, v in verdicts.items():
         case_dir = os.path.join(run_dir, "proof", tc)

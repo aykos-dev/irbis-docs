@@ -1,0 +1,6 @@
+0.0	1: Remove the port forward and cold start
+15.73	2: Wait for the error state
+16.91	3: Restore the forward and tap Retry
+17.84	Expected: error + Retry, then recovered
+17.84	Result: PASS
+17.84	END

@@ -1,0 +1,5 @@
+1.22	1: Turn Wi-Fi and mobile data off
+14.26	Setup: Restore network
+16.62	Expected: offline banner, result kept
+16.62	Result: PASS
+16.62	END

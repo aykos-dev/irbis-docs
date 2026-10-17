@@ -23,7 +23,6 @@ META = {
   "New health_checked {status: ok} after the swipe — event log",
   "Refresh spinner visible right after the swipe — screenshot (human)"
  ],
- "focus": null,
  "caption": {
   "expected": "spinner, refreshed"
  }

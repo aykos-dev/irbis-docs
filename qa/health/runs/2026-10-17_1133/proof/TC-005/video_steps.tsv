@@ -1,0 +1,4 @@
+3.06	1: Pull to refresh
+4.2	Expected: spinner, refreshed
+4.2	Result: PASS
+4.2	END

@@ -1,0 +1,10 @@
+{
+"TC-001":{"verdict":"Pass","line":"✅✅✅","conclusion":"API and DB chips up"},
+"TC-002":{"verdict":"Pass","line":"✅✅✅","conclusion":"DB chip down, API chip up, no error"},
+"TC-003":{"verdict":"Pass","line":"✅✅✅","conclusion":"error + Retry recovers"},
+"TC-004":{"verdict":"Pass","line":"✅✅","conclusion":"banner persists, last result kept"},
+"TC-005":{"verdict":"Pass","line":"✅✅","ok":{"2":true},"actual":{"2":"spinner visible in crop"},"conclusion":"event fired, spinner seen"},
+"STD-DARK@status":{"verdict":"Pass","line":"✅","conclusion":"ok"},
+"STD-OFFLINE@status":{"verdict":"Pass","line":"✅✅","conclusion":"ok"},
+"STD-TEXT@status":{"verdict":"Pass","line":"✅—","ok":{"1":true,"2":true},"actual":{"1":"only v0.0.1 (version number, not copy) flagged; false positive","2":"composite: no clipping in ru/uz/en@2.0"},"conclusion":"Script flagged v0.0.1 as untranslated; it is a version string. Layout fine."}
+}

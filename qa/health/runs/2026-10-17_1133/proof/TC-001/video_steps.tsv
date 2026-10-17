@@ -1,0 +1,4 @@
+0.56	1: Cold start the app
+3.38	Expected: API is up, Database is up, v0.0.1
+3.38	Result: PASS
+3.38	END

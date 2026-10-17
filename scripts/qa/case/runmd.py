@@ -29,7 +29,7 @@ def proof_refs(tc, r, video_kept):
 def section(res, v, video_kept):
     m, tc = res["meta"], res["meta"]["tc"]
     head = (f"**Group:** {m.get('group', '—')} · **Priority:** {m.get('priority', '—')} · **Env:** {m.get('env', '—')}\n"
-            f"**Case:** {m['title']} · [→ {m['plan']}](../../cases/{m['plan']}#{m.get('anchor') or tc.lower()})")
+            f"**Case:** {m['title']} · [→ {m.get('plan', '')}](../../cases/{m.get('plan', '')}#{m.get('anchor') or tc.lower()})")
     lines = [f'<a id="{tc.lower()}"></a>', f"### {tc} · {v['verdict']} · {m['title']}", head]
     if res.get("stub"):
         lines.append(f"**{'Reason' if v['verdict'] in ('Blocked', 'Not run') else 'Proof'}:** {v.get('reason', '—')}")

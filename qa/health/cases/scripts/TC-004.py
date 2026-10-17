@@ -24,7 +24,6 @@ META = {
   "Last result still shown and marked stale ('Not updated…') — UI tree"
  ],
  "postcondition": "network back on",
- "focus": null,
  "caption": {
   "expected": "offline banner, result kept"
  }

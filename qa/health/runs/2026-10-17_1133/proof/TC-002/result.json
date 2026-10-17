@@ -1,0 +1,79 @@
+{
+ "meta": {
+  "title": "Database down: DB chip Not-now, API chip stays up, no error",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC2 + AC3 (Q4) — degraded is data, API chip stays Go",
+  "env": "Android · auto (adb + docker)",
+  "precondition": [
+   "Status screen showing ok"
+  ],
+  "steps": [
+   "docker compose stop db → check: /health says db down",
+   "Pull to refresh"
+  ],
+  "expected": [
+   "health.db-chip 'Database is down' (Not-now) and health.api-chip 'API is up' (Go) — UI tree",
+   "No error state and no health.retry — UI tree",
+   "Event health_checked {status: degraded, db: down} — event log"
+  ],
+  "postcondition": "docker compose start db",
+  "focus": "health.status-card",
+  "caption": {
+   "expected": "API up, DB down, no error"
+  },
+  "tc": "TC-002"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 7.3,
+ "events": 2,
+ "done": [
+  "App open on the Status screen showing ok (TC-001's postcondition)",
+  "1. Stop the database container",
+  "2. Pull to refresh"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "db down shown: True; texts: ['11:33', 'IRBIS', 'Status', 'API is up', 'Database is down', 'v0.0.1', 'Checked at 11:33\\u202fAM', 'Environment: dev']",
+   "proof": [
+    "2_degraded.png"
+   ],
+   "t": 6.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "no error state / Retry",
+   "proof": [
+    "2_degraded.png"
+   ],
+   "t": 6.3
+  },
+  "3": {
+   "ok": true,
+   "observed": "event: {'status': 'degraded', 'db': 'down'}",
+   "proof": [],
+   "t": 6.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "status ok first",
+   "ok": true,
+   "seen": "['11:33', 'IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1']",
+   "t": 3.6
+  },
+  {
+   "name": "API reports db down",
+   "ok": true,
+   "seen": "{'status': 'degraded', 'db': 'down', 'version': '0.0.1', 'time': '2026-10-17T06:33:16.672Z'}",
+   "t": 4.2
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "2_degraded.png"
+ ]
+}

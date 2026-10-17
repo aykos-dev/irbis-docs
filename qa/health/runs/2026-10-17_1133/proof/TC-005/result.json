@@ -1,0 +1,61 @@
+{
+ "meta": {
+  "title": "Pull to refresh refetches",
+  "priority": "P2",
+  "group": "Core",
+  "requirement": "AC3 — pull to refresh refetches",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Status screen showing ok, online"
+  ],
+  "steps": [
+   "Swipe down on the Status screen"
+  ],
+  "expected": [
+   "New health_checked {status: ok} after the swipe — event log",
+   "Refresh spinner visible right after the swipe — screenshot (human)"
+  ],
+  "focus": null,
+  "caption": {
+   "expected": "spinner, refreshed"
+  },
+  "tc": "TC-005"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Not run",
+ "duration_s": 4.3,
+ "events": 2,
+ "done": [
+  "App open on the Status screen showing ok, online",
+  "1. Pull to refresh"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "event after swipe: {'status': 'ok', 'db': 'up'}",
+   "proof": [],
+   "t": 4.0
+  },
+  "2": {
+   "ok": null,
+   "observed": "refresh indicator: judge from the screenshot taken right after the swipe",
+   "proof": [
+    "1_spinner.png"
+   ],
+   "t": 4.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "status ok first",
+   "ok": true,
+   "seen": "['11:34', 'IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1']",
+   "t": 1.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_spinner.png"
+ ]
+}

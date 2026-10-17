@@ -1,0 +1,5 @@
+0.02	1: Open the screen online
+2.83	2: Wi-Fi and mobile data off
+18.55	Expected: offline banner, content kept
+18.55	Result: PASS
+18.55	END

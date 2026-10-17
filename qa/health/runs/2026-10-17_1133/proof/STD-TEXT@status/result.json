@@ -1,0 +1,80 @@
+{
+ "meta": {
+  "title": "Copy is translated and layout survives long text — status",
+  "priority": "P2",
+  "group": "Standards",
+  "requirement": "engineering-standards §12/§13 — i18n, +40% text, largest font",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "screen reachable"
+  ],
+  "steps": [
+   "Russian, font 1.15 — open the screen",
+   "Uzbek, font 1.15 — open the screen",
+   "English, font 2.0 — open the screen"
+  ],
+  "expected": [
+   "No English catalog string left on screen in Russian or Uzbek — UI tree",
+   "Nothing clipped or overflowing its container in any of the three — one composite crop (human)"
+  ],
+  "caption": {
+   "expected": "translated, nothing overflows"
+  },
+  "tc": "STD-TEXT@status",
+  "screen": "status"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 14.1,
+ "events": 5,
+ "done": [
+  "1. ru, font 1.15 — open the screen",
+  "2. uz, font 1.15 — open the screen",
+  "3. en, font 2.0 — open the screen"
+ ],
+ "results": {
+  "1": {
+   "ok": false,
+   "observed": "untranslated: {'ru': ['v0.0.1'], 'uz': ['v0.0.1']}",
+   "proof": [],
+   "t": 12.2
+  },
+  "2": {
+   "ok": null,
+   "observed": "judge _composite.png: ru · uz · en@2.0 side by side",
+   "proof": [
+    "ru_font1.15.png",
+    "uz_font1.15.png",
+    "en_font2.0.png"
+   ],
+   "t": 12.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "screen opened (ru)",
+   "ok": true,
+   "seen": "health.status-card",
+   "t": 2.9
+  },
+  {
+   "name": "screen opened (uz)",
+   "ok": true,
+   "seen": "health.status-card",
+   "t": 7.1
+  },
+  {
+   "name": "screen opened (en)",
+   "ok": true,
+   "seen": "health.status-card",
+   "t": 10.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "ru_font1.15.png",
+  "uz_font1.15.png",
+  "en_font2.0.png"
+ ]
+}

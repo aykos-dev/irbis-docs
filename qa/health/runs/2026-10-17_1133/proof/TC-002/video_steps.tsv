@@ -1,0 +1,7 @@
+3.6	1: Stop the database container
+4.73	2: Pull to refresh
+6.01	Observed: db chip down: True
+6.26	Setup: Restore: start the database container
+7.19	Expected: API up, DB down, no error
+7.19	Result: PASS
+7.19	END

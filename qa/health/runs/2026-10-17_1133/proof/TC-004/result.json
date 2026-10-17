@@ -1,0 +1,72 @@
+{
+ "meta": {
+  "title": "Offline shows a persistent banner and keeps the last result",
+  "priority": "P1",
+  "group": "Core",
+  "requirement": "AC3 — offline banner, cached result kept",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Status screen showing ok"
+  ],
+  "steps": [
+   "Wi-Fi and mobile data off → check: both off"
+  ],
+  "expected": [
+   "app.offline-banner at 5 s and still at 15 s — UI tree",
+   "Last result still shown and marked stale ('Not updated…') — UI tree"
+  ],
+  "postcondition": "network back on",
+  "focus": null,
+  "caption": {
+   "expected": "offline banner, result kept"
+  },
+  "tc": "TC-004"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 16.7,
+ "events": 2,
+ "done": [
+  "App open on the Status screen showing ok",
+  "1. Turn Wi-Fi and mobile data off"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "banner at 5 s: True, at 15 s: True",
+   "proof": [
+    "1_offline_5s.png",
+    "1_offline_15s.png"
+   ],
+   "t": 14.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "result kept: True, marked stale: True; texts: ['11:34', \"You're offline. Showing the last saved data.\", 'IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1', 'Checked at 11:34\\u202fAM', 'Not updated — this is the last known result.', 'Environment: dev']",
+   "proof": [
+    "1_offline_15s.png"
+   ],
+   "t": 14.3
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "status ok first",
+   "ok": true,
+   "seen": "['11:34', 'IRBIS', 'Status', 'API is up', 'Database is up', 'v0.0.1']",
+   "t": 1.2
+  },
+  {
+   "name": "Wi-Fi and mobile data off",
+   "ok": true,
+   "seen": "wifi_on=0 mobile_data=0",
+   "t": 3.4
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_offline_5s.png",
+  "1_offline_15s.png"
+ ]
+}
