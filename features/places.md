@@ -125,6 +125,9 @@ gallery (no photo storage yet).
 - Q8 (owner, 2026-10-17): canvas peak/lake/cave SVGs final; waterfall/canyon placeholders; no photos.
 - Q9 (owner, 2026-10-17): the auth shell test drops Explore from its coming-soon loop and from its expected
   `tab_opened` list (Explore is real now); no other change to that test.
+- QA clarifications (from spec/briefs, 2026-10-17): distance format decides on the raw value (9.96 km < 10 → one
+  decimal → "10.0 km"); unknown place id (deep link) → empty state "This place isn't available" + back; `types`
+  accepts repeated keys and a comma list.
 - Sorting is by distance, not the canvas's "Sorted by fit" (fit belongs to `weekly-path`).
 - Device location comes from MapLibre's location manager; a separate geolocation package needs approval first.
 
