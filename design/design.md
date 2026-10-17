@@ -108,6 +108,11 @@ by family name (`Nunito-Black` …), never `fontWeight`.
 - Icons: 2.5 px stroke, round caps and joins, 20 px default (inline SVG on the canvas → `shared/components/Icon`).
 - Touch targets ≥ 44 pt.
 - Mascot on a card: 88 (`sizes.mascotCard`, added by M0 `health`).
+- Inputs: min-height 52 (`sizes.inputMinHeight`), radius 14 (`radii.input`), 2 px `line` border (canvas A1/A2/A4).
+- Checkbox: 26 square, radius 8 (`radii.checkbox`) (canvas A2).
+- Icon tile (perk rows): 36 (`sizes.iconTile`), radius 12 (canvas A3).
+- One-time-code box: height 58 (`sizes.otpBoxHeight`), radius 14, 4 px bottom edge (canvas A5).
+- Web admin (canvas W2–W6): sidebar 240 wide; table cells 12 px padding; inputs 44 high, radius 12; buttons 44 high.
 - Skeleton pulse: opacity 1 ↔ 0.5, 900 ms per half-cycle *(added by M0 — confirm)*.
 - Press feedback: scale 0.97 + opacity 0.9, 150 ms (engineering standards §1).
 - `maxFontSizeMultiplier` per typography token: not set yet — decide with the first text-heavy feature.
