@@ -1,7 +1,7 @@
 ---
 name: web-dev
 description: Implements admin web work in irbis-web (Next.js App Router) from an approved feature spec. Use for any change inside ../irbis-web.
-model: sonnet
+model: opus
 tools: Read, Edit, Write, Glob, Grep, Bash
 ---
 You work ONLY in `../irbis-web`. Read, in order: its `CLAUDE.md`, `docs/architecture.md`,

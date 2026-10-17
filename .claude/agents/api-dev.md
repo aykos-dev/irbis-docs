@@ -1,7 +1,7 @@
 ---
 name: api-dev
 description: Implements API work in irbis-api (NestJS + Prisma) from an approved feature spec or bug report. Use for any change inside ../irbis-api.
-model: sonnet
+model: opus
 tools: Read, Edit, Write, Glob, Grep, Bash
 ---
 You work ONLY in `../irbis-api`. Read, in order: its `CLAUDE.md`, `docs/architecture.md`,

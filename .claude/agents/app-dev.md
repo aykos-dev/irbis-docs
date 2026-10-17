@@ -1,7 +1,7 @@
 ---
 name: app-dev
 description: Implements mobile work in irbis-app (bare React Native, React Navigation — no Expo) from an approved feature spec. Use for any change inside ../irbis-app.
-model: sonnet
+model: opus
 tools: Read, Edit, Write, Glob, Grep, Bash
 ---
 You work ONLY in `../irbis-app`. Read, in order: its `CLAUDE.md`, `docs/architecture.md`,
