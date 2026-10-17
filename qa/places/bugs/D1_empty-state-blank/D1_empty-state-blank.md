@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Open · found 2026-10-17 |
+| Status | Fixed · retest 2026-10-17 |
 | Severity | 2 - High |
 | Cases | TC-016 |
 | Found | run [2026-10-17_2317](../../runs/2026-10-17_2317/run.md) · build irbis-app bf409c5 · emulator pixel-8a |
@@ -22,3 +22,4 @@
 **Cause in code:** not located. Suspects: `irbis-app/src/features/places/screens/ExploreScreen.tsx:77` EmptyState inside `BottomSheet` (children invisible), or the `FadeIn` entering animation in `src/shared/components/EmptyState.tsx` never completing.
 
 ## Retests
+- 2026-10-17 · run [2026-10-17_2337](../../runs/2026-10-17_2337/run.md) · irbis-app 601a6d4 · TC-016 Pass: empty text + mascot + Reset shown, reset restores 71 / default chips. Fixed.
