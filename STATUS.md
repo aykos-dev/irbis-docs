@@ -14,7 +14,7 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   QA (STD-TEXT now translation only). Owner manual checks pending: Onb5/selection haptics, first-run preselect on a
   uz/ru device, iOS (2026-10-17)
 - M0 — api 8fb74fa, web f6c295f, app b0d7e37; `health` QA: phone run 0117 (6/9) → health/D1 + D2 fixed → emulator run 1119 9/9 (2026-10-17)
-- places — branches `feat/places` (api 46e03e6, app 18603da; not merged to main). Seed 71 places from data.ts, public
+- places — merged to main (api 46e03e6, app 18603da). Seed 71 places from data.ts, public
   list + detail, app Explore (MapLibre map, filters, location/Tashkent fallback) + Place. QA: core run 2317 11/12 →
   D1 fixed (retest 2337); full run 2351 32/36 → D2, D3 fixed (retest 0015); TC-012 pins and TC-022 no-fix fallback
   manual for owner; 0 open places defects. Owner checks pending: pins/clusters, real GPS + OS prompt, iOS (2026-10-18)
