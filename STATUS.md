@@ -12,6 +12,7 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - none — M0 done; next feature when the owner says so
 
 ## Next
+- Phase 1 feature 1 (`auth` proposed) — starts when the owner says so
 
 ## Known issues
 - none
