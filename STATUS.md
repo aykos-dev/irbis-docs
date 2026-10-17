@@ -22,6 +22,7 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- places/D2 (back dead after cold deep link) + D3 (uz level-lock text overflow) — fixes committed app c9365a1 / feadf6e on feat/places, awaiting retest (`/qa-retest places/D2 places/D3`)
 - irbis-api admin e2e `GET /v1/admin/users joined=today` (test/admin.e2e-spec.ts:461) fails at 00:11 Tashkent (expected 4, got 0); passed earlier the same day with no code change — likely UTC vs Asia/Tashkent day boundary in auth admin filter or its test; pre-existing, needs `/bugfix` (2026-10-18)
 - places/D1 Explore empty state blank after a no-match filter — fix committed app 601a6d4 on feat/places, awaiting retest (`/qa-retest places/D1`)
 - onboarding placeholders: 4 Lottie files (irbis-wave, irbis-nod, irbis-clap, onb5-reveal) show static art / simple Reanimated; backpack SVG; native launch screen is teal only — swap when the owner drops files in `design/media/onboarding/`
