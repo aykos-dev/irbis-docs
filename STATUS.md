@@ -18,6 +18,8 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding — resumed 2026-10-17 (answers Q1–Q4 in `features/onboarding.md`, media in `design/media/onboarding/MEDIA.md`)
 
 ## Known issues
+- onboarding/D3 font-scale change restarted onboarding (no fontScale in configChanges) — fix committed app 96e76eb on feat/onboarding, awaiting retest
+- onboarding/D2 Welcome CTAs off-screen at font 2.0 — not reproduced by dev (screen scrolls; QA swipe hit the gesture bar), awaiting retest
 - auth/D1 irbis:// deep links not delivered on Android (no VIEW intent-filter) — fix committed app bf03271 on feat/auth, awaiting retest (`/qa-retest auth/D1`)
 - STD-TEXT now switches the in-app language via dev/staging link `irbis://debug/lang/<uz|ru|en>` (app 46b279c on feat/auth); re-run STD-TEXT on the auth screens in the full run
 - iOS: Info.plist has no `irbis` URL scheme, so deep links won't open the app on iOS — follow-up, not logged as a defect yet
