@@ -9,7 +9,11 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - M0 — api 8fb74fa, web f6c295f, app b0d7e37; `health` QA: phone run 0117 (6/9) → health/D1 + D2 fixed → emulator run 1119 9/9 (2026-10-17)
 
 ## In progress
-- auth — spec approved 2026-10-17; building api → app + web → review → QA
+- auth — built + reviewed (PASS) on `feat/auth`: api fe8f543, app 1a4978d, web 900fe79 (not merged). Next, in a FRESH session
+  from irbis-docs: `/qa-plan auth` then `/qa-run auth installed` (emulator; app build 4c563f2 installed) → bugfix/retest
+  loop → merge feat/auth → wrap up. First QA attempt stopped at the usage limit (2026-10-17).
+  Owner to-dos: create the first admin with `npm run admin:create` (irbis-api) to try the web panel;
+  `irbis-web/.env.local`. Real SMS provider: later (staging can't boot until its adapter exists).
 
 ## Next
 
