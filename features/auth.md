@@ -1,6 +1,6 @@
 # auth
 
-- Status: Draft — awaiting approval (questions answered 2026-10-17; web admin added 2026-10-17)
+- Status: Approved (owner, 2026-10-17)
 - Surfaces: api | app | web
 - Related ADRs: ADR-001 (auth), ADR-003 (API style)
 - Requirements: Product Overview § Accounts & sign-in · Screens: `design/canvas/AccLogin`, `AccSignup`, `AccGate`,
