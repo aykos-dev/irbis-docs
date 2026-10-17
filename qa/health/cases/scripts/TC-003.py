@@ -40,6 +40,8 @@ def run(c):
     try:
         t0 = c.mark()
         relaunch()
+        time.sleep(1)
+        deep_link("irbis://debug/status")
         c.checkpoint("API unreachable from the phone", c.no_event("health_checked", t0, 15), "health_checked arrived")
         c.step(2, "Wait for the error state")
         err = wait("health.retry", 30, exact=True)

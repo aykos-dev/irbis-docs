@@ -36,8 +36,7 @@ META = {
 def run(c):
     c.pre("App open on the Status screen showing ok (TC-001's postcondition)")
     reverse(True)
-    relaunch()
-    c.checkpoint("status ok first", wait("API is up", 15), card_texts()[:6])
+    c.checkpoint("status ok first", open_status(c) and wait("API is up", 15), card_texts()[:6])
     c.step(1, "Stop the database container")
     body = db(False)
     c.checkpoint("API reports db down", bool(body and body.get("db") == "down"), body)

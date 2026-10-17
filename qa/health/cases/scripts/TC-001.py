@@ -18,7 +18,7 @@ META = {
   "adb reverse tcp:3000"
  ],
  "steps": [
-  "Cold start the app → check: health.status-card within 10 s"
+  "Cold start, open irbis://debug/status → check: health.status-card within 15 s"
  ],
  "expected": [
   "health.api-chip 'API is up' and health.db-chip 'Database is up', both Go — UI tree",
@@ -38,8 +38,8 @@ def run(c):
     st, body = api_health()
     c.checkpoint("API up from the Mac", st == 200 and body.get("db") == "up", (st, body))
     t0 = c.mark()
-    c.step(1, "Cold start the app")
-    relaunch()
+    c.step(1, "Cold start the app and open Status (irbis://debug/status)")
+    open_status(c)
     c.checkpoint("status card shown", wait("health.status-card", 10, exact=True), "no health.status-card in 10 s")
     wait("API is up", 8)
     shot = c.shot("1_status")

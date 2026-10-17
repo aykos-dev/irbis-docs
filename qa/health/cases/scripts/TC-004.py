@@ -33,8 +33,7 @@ META = {
 def run(c):
     c.pre('App open on the Status screen showing ok')
     reverse(True)
-    relaunch()
-    c.checkpoint("status ok first", wait("API is up", 15), card_texts()[:6])
+    c.checkpoint("status ok first", open_status(c) and wait("API is up", 15), card_texts()[:6])
     c.step(1, "Turn Wi-Fi and mobile data off")
     set_network(False, False)
     try:

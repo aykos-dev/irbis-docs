@@ -32,8 +32,7 @@ META = {
 def run(c):
     c.pre('App open on the Status screen showing ok, online')
     reverse(True)
-    relaunch()
-    c.checkpoint("status ok first", wait("API is up", 15), card_texts()[:6])
+    c.checkpoint("status ok first", open_status(c) and wait("API is up", 15), card_texts()[:6])
     time.sleep(1)
     t0 = c.mark()
     c.step(1, "Pull to refresh")

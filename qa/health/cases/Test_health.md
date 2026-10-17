@@ -32,7 +32,7 @@ Standards suite (`scripts/qa/standards`, STD-*) runs on screens: status.
 **Requirement:** AC1 — API reachable and DB up shows ok (+AC7 event) · **Env:** Android · auto (adb)
 **Precondition:** API + DB running · adb reverse tcp:3000
 **Steps:**
-1. Cold start the app → check: health.status-card within 10 s
+1. Cold start, open irbis://debug/status → check: health.status-card within 15 s
 **Expected:**
 - health.api-chip 'API is up' and health.db-chip 'Database is up', both Go — UI tree
 - health.version 'v0.0.1' — UI tree

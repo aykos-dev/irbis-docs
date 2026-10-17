@@ -6,7 +6,7 @@ import time
 import urllib.error
 import urllib.request
 
-from drv import PKG, has, nodes, relaunch, sh, wait  # noqa: F401
+from drv import PKG, deep_link, has, nodes, relaunch, sh, wait  # noqa: F401
 
 from config import DOCS  # noqa: E402
 
@@ -67,9 +67,12 @@ PLAN = {
 }
 
 
-def open_status(c):
+def open_status(c=None):
+    """Status is a dev/staging Debug screen since `auth` (AC10): cold start, then the deep link."""
     reverse(True)
     relaunch()
+    time.sleep(1)
+    deep_link("irbis://debug/status")
     return wait("health.status-card", 15, exact=True) and wait("health.api-chip", 8, exact=True)
 
 
