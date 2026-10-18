@@ -1,0 +1,1 @@
+{"TC-009":{"verdict":"Fail","line":"TC-009 · Fail","conclusion":"Offline Explore (cold start) still shows 'Can't reach Irbis', no explore.card.<slug>.status; also place.condition-updated read empty in this run (card+Caution chip present)."}}

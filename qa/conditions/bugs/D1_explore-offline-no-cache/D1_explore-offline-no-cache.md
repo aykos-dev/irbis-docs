@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Open · found 2026-10-18 |
+| Status | Not fixed · retest 2026-10-18 |
 | Severity | 3 - Medium |
 | Cases | TC-009 |
 | Found | run [2026-10-18_1216](../../runs/2026-10-18_1216/run.md) · build irbis-app 92887f9 · emulator-5554 |
@@ -23,3 +23,4 @@
 **Cause in code:** not located
 
 ## Retests
+- 2026-10-18 · build irbis-app f5f59cc (incl. c01c7e5) · [run 2026-10-18_1300](../../runs/2026-10-18_1300/run.md) · Not fixed: cold-start offline, Explore still shows "Can't reach Irbis", no status chip ([proof](../../runs/2026-10-18_1300/proof/TC-009/2_offline_explore.png)). Path reached.
