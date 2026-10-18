@@ -1,13 +1,8 @@
-12:38:57.500 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
-12:39:07.566 tab_opened {"tab": "path"}
-12:39:10.751 tab_opened {"tab": "profile"}
-12:39:24.636 tab_opened {"tab": "path"}
-12:39:26.839 tab_opened {"tab": "explore"}
-12:39:26.854 location_permission {"result": "granted"}
-12:39:27.103 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
-12:39:28.193 place_viewed {"slug": "ozodbosh-1014", "requiredLevel": 1, "qualifies": true}
-12:39:28.238 condition_viewed {"slug": "ozodbosh-1014", "status": "caution", "source": "forecast", "ageMin": 0}
-12:39:41.767 tab_opened {"tab": "path"}
-12:39:42.456 tab_opened {"tab": "explore"}
-12:39:42.465 location_permission {"result": "granted"}
-12:39:47.840 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
+12:51:31.226 tab_opened {"tab": "path"}
+12:51:33.569 tab_opened {"tab": "profile"}
+12:51:47.589 tab_opened {"tab": "path"}
+12:51:49.308 tab_opened {"tab": "explore"}
+12:51:49.326 location_permission {"result": "granted"}
+12:51:49.542 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
+12:51:50.664 place_viewed {"slug": "ozodbosh-1014", "requiredLevel": 1, "qualifies": true}
+12:51:50.664 condition_viewed {"slug": "ozodbosh-1014", "status": "caution", "source": "forecast", "ageMin": 0}

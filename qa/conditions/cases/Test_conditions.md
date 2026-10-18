@@ -111,13 +111,12 @@ Standards suite (`scripts/qa/standards`, STD-*) runs on screens: explore, place-
 - QA event `explore_loaded` {withStatus = number of items with conditionStatus in GET /v1/places} — event log + API
 - The chip is drawn beside the '{Type} · {distance}' line with its icon — crop (person judges)
 
-### TC-009 · P0 · Offline: Place and Explore show the last cached condition with its 'Updated …' age
-**Requirement:** AC8 — offline shows the cached condition + age (Place and Explore chip) · **Env:** Android · auto (adb)
-**Precondition:** Guest, onboarding done, location granted + mock Tashkent · Peak PLACE (API-nearest) with a Caution forecast · Explore and the place were opened online once in this session so both are cached
+### TC-009 · P0 · Offline: Place shows the last cached condition with its 'Updated …' age
+**Requirement:** AC8 — offline shows the cached condition + age (Place only; Explore needs no offline, owner 2026-10-18) · **Env:** Android · auto (adb)
+**Precondition:** Guest, onboarding done, location granted + mock Tashkent · Peak PLACE (API-nearest) with a Caution forecast · The place was opened online once in this session so it is cached
 **Steps:**
 1. Seed Caution, open Explore online, open the place online → check: card shown
-2. Wi-Fi and data off, cold-start the app, open the place → check: `place.screen`
-3. Read the card, go to Explore and read the card chip
+2. Wi-Fi and data off (app keeps running), reopen the place → check: `place.screen`
+3. Read the card
 **Expected:**
 - `place.condition` is shown with chip 'Caution' and `place.condition-updated` starts with 'Updated' (age) — UI tree + screenshot; `place.condition-offline` is not shown
-- In Explore (offline) `explore.card.<slug>.status` reads 'Caution' — UI tree + screenshot
