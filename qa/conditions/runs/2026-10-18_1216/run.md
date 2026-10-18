@@ -6,14 +6,14 @@
 **Accounts:** see Test data; phone numbers masked
 **Tester:** Claude (auto) + owner (manual)
 **Scope:** core
-**Blocked reasons:** TC-009 — Place does not open offline from cached Explore data
+**Blocked reasons:** —
 **Plan:** ../../cases/Test_conditions.md
 
 ## Results
-6 Pass (TC-001..006) / 0 Fail / 1 Blocked (TC-009) / 0 not run. Case-script fixes during the run (chip text de-dupe, scroll to reason, case-insensitive credit, TASHKENT import); first verdicts were script errors, the app was correct.
+6 Pass (TC-001..006) / 1 Fail (TC-009 -> D1) / 0 Blocked / 0 not run. TC-009 first Blocked, then rewritten per Q10 (open online, go offline, reopen) and rerun on the same build. Case-script fixes during the run (chip text de-dupe, scroll to reason, case-insensitive credit, TASHKENT import); first verdicts were script errors, the app was correct.
 
 ## Defects
-None.
+D1 conditions: Explore offline shows connection error, no cached chip (TC-009).
 
 ## Table
 | TC | Case | Verdict | What happened | Issue / note | Proof |
@@ -40,5 +40,5 @@ _Only cases that did not pass; Pass details are in proof/<id>/result.json._
 ## Additional observations
 
 ## Follow-ups
-- TC-009: Place cannot be opened offline from cached Explore data; owner decides whether AC requires it (possible defect) or the case should be done manually.
+- TC-009 Place part passes; Explore part fails (D1), owner to confirm AC reading.
 - Emulator screen slept mid-run (first TC-001 attempts Not run); `svc power stayon true` set.

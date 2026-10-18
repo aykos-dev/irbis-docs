@@ -29,10 +29,9 @@ def run(c):
     c.step(1, "seed + online views"); seed(slug, sun={"wind_speed_10m_max": 40})
     c.checkpoint("Explore opened", explore_ready(), "no explore.count")
     c.checkpoint("card shown online", show_place(slug, fresh=False) == "place.condition", "no condition online")
-    c.step(2, "offline cold start")
+    c.step(2, "go offline (app stays running), reopen Place")
     set_network(False, False)
     try:
-        relaunch(); wait("nav.tab-explore", 25, exact=True)
         c.checkpoint("place opens offline", open_place_link(slug), "place.screen missing offline")
         for _ in range(8):
             if any(has(t, exact=True) for t in CARD_TIDS): break

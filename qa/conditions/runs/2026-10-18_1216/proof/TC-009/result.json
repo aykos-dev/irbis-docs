@@ -27,37 +27,58 @@
   "plan": "Test_conditions.md",
   "anchor": "tc-009--p0--offline-place-and-explore-show-the-last-cached-condition-with-its-updated--age"
  },
- "status": "blocked",
- "reason": "checkpoint 'place opens offline' did not hold: place.screen missing offline",
- "proposed": "Blocked",
- "duration_s": 31.8,
- "events": 11,
+ "status": "done",
+ "reason": null,
+ "proposed": "Fail",
+ "duration_s": 53.6,
+ "events": 13,
  "done": [
   "Guest, onboarding done, location granted + mock Tashkent · Peak PLACE (API-nearest) with a Caution forecast · Explore and the place were opened online once in this session so both are cached",
   "1. seed + online views",
-  "2. offline cold start"
+  "2. go offline (app stays running), reopen Place",
+  "3. read card, then Explore"
  ],
- "results": {},
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "card True, chip 'Caution', updated 'Updated just now · forecast'",
+   "proof": [
+    "1_offline_place.png"
+   ],
+   "t": 37.3
+  },
+  "2": {
+   "ok": false,
+   "observed": "explore chip None",
+   "proof": [
+    "2_offline_explore.png"
+   ],
+   "t": 51.2
+  }
+ },
  "checkpoints": [
   {
    "name": "Explore opened",
    "ok": true,
    "seen": "no explore.count",
-   "t": 14.8
+   "t": 32.0
   },
   {
    "name": "card shown online",
    "ok": true,
    "seen": "no condition online",
-   "t": 15.9
+   "t": 33.0
   },
   {
    "name": "place opens offline",
-   "ok": false,
+   "ok": true,
    "seen": "place.screen missing offline",
-   "t": 29.4
+   "t": 35.3
   }
  ],
  "notes": [],
- "shots": []
+ "shots": [
+  "1_offline_place.png",
+  "2_offline_explore.png"
+ ]
 }
