@@ -143,7 +143,10 @@ From `design/media/conditions/MEDIA.md` (Q8): canvas status icons and worried Ir
 - Q10 (owner, 2026-10-18): offline Place needs that place opened online before (query cache); a never-opened place
   offline is not a defect (TC-009 opens it online first). Weather credit renders uppercase (caption style) — accepted.
 - Q11 (owner, 2026-10-18): after an app restart while offline, Explore shows its last loaded list (status chips, the
-  header's origin as loaded) from the saved cache, like Place.
+  header's origin as loaded) from the saved cache. Correction (2026-10-18): the question wrongly said Place already
+  did this — the app had no persisted cache. Fix: Explore's last list saved in MMKV `explore.lastList` (app 23e2895).
+- Q12 (owner, 2026-10-18): Place (detail + condition) after an offline restart is a later feature (offline maps /
+  Safety); until then it shows the offline message + retry. TC-009 reads Place while the app runs.
 - Impl (2026-10-18, app 92887f9): condition components live in `src/shared/components/conditions/` (no
   feature→feature imports), hook in `features/places/hooks/usePlaceCondition.ts`; reason testIDs count from 1;
   extra testIDs `place.condition-offline`, `-skeleton`, `-title`, `-mascot`, `place.weather-summary`, `place.hazard.<h>.level`.

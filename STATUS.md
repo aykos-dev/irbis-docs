@@ -27,7 +27,8 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
-- conditions/D1 offline Explore lost the cached list when the origin changed — fix committed app c01c7e5 (merged feat/conditions f5f59cc), awaiting retest (`/qa-retest conditions/D1`) (2026-10-18)
+- Place (detail + condition) is memory-only: after an offline app restart it shows the offline message (owner Q12: later, with offline maps / Safety) (2026-10-18)
+- conditions/D1 offline Explore lost its list (origin change: app c01c7e5; offline restart: app 23e2895, merged feat/conditions 5a06b89) — fix committed, awaiting retest (`/qa-retest conditions/D1`) (2026-10-18)
 - conditions (review notes, non-blocking): concurrent override creates could leave two active (no partial unique
   index, api conditions.repository.ts:489); expired override / future-start closure shows source with `text: null`
   until the next hourly run; `COND_STALE_HOURS` unused; `created_by_id` FKs RESTRICT admin hard-delete; web place
