@@ -140,6 +140,8 @@ From `design/media/conditions/MEDIA.md` (Q8): canvas status icons and worried Ir
 
 - Q9 (owner, 2026-10-18): the places Explore test's expected `explore_loaded` event gains `withStatus: 0` (app
   92887f9); no other change to that test.
+- Q10 (owner, 2026-10-18): offline Place needs that place opened online before (query cache); a never-opened place
+  offline is not a defect (TC-009 opens it online first). Weather credit renders uppercase (caption style) — accepted.
 - Impl (2026-10-18, app 92887f9): condition components live in `src/shared/components/conditions/` (no
   feature→feature imports), hook in `features/places/hooks/usePlaceCondition.ts`; reason testIDs count from 1;
   extra testIDs `place.condition-offline`, `-skeleton`, `-title`, `-mascot`, `place.weather-summary`, `place.hazard.<h>.level`.
