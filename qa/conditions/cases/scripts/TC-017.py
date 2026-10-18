@@ -31,11 +31,13 @@ def run(c):
     c.step(1, "seed, closure, override"); seed(slug); closure(slug, "QA Yopiq"); o = override(slug, "caution", "QA Ehtiyot boling")
     t0, tid, shot = view(c, slug, "1_override")
     c.checkpoint("condition card shown", tid == "place.condition", tid)
+    reveal("place.condition-reason.1")
     up = tidtext("place.condition-updated") or ""
     c.result(1, text_in("place.condition-status") == "Caution" and tidtext("place.condition-title") == "Caution this weekend" and up.endswith("· Irbis team") and tidtext("place.condition-reason.1") == "QA Ehtiyot boling", f"chip {text_in('place.condition-status')!r}, updated {up!r}, reason {tidtext('place.condition-reason.1')!r}", [shot])
     c.step(2, "end override")
     st, _, _ = api("POST", f"/v1/admin/overrides/{o['id']}/end", None, admin())
     c.checkpoint("override ended", st == 200, st)
     t0, tid, shot = view(c, slug, "2_closure")
+    reveal("place.condition-reason.1")
     up = tidtext("place.condition-updated") or ""
     c.result(2, text_in("place.condition-status") == "Not now" and up.endswith("· closure") and tidtext("place.condition-reason.1") == "QA Yopiq", f"chip {text_in('place.condition-status')!r}, updated {up!r}, reason {tidtext('place.condition-reason.1')!r}", [shot])

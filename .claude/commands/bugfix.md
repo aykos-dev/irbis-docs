@@ -18,7 +18,7 @@ with `/qa-retest <ref>`, which re-runs the defect's `Cases`.
 3. Fix: smallest change that makes it pass. Do not modify other existing tests.
 4. Verify: `npm run check` green. If the fix changes the API contract, run `openapi:export`
    and `gen:api` + check in affected clients.
-5. Review: reviewer subagent on the diff (short pass).
+5. No reviewer subagent (owner decision 2026-10-18).
 6. Wrap up: add a line to STATUS.md (Known issues → "fix committed, awaiting retest" for a defect ref,
    else resolved / Done). Commit, do not push.
    Reply with root cause (1–2 lines), the test name, and final check output. For a defect ref, end with:

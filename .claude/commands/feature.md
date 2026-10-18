@@ -1,5 +1,5 @@
 ---
-description: Build one feature end to end — questions + media first, then app/api/web, then review and hand over for the owner's manual test; stop when done
+description: Build one feature end to end — questions + media first, then app/api/web, then hand over for the owner's manual test; stop when done
 argument-hint: <slug> [— extra notes, constraints, out of scope]
 ---
 Build feature: $ARGUMENTS
@@ -63,9 +63,9 @@ brief and the listed files; replies ≤10 lines. Values the doc calls "decided a
 One fresh agent per brief. The brief already contains the copy, testIDs and the generated hooks to use; media is
 copied from `design/media/<slug>/`.
 
-## 5. Review (subagent: reviewer — risky parts only)
-Diff stats + risky files (auth, data access, value/XP, new endpoints, edited tests) against the spec and the slop
-checklist. Blocking fixes go back as a short fix brief to a fresh dev agent (max 2 rounds).
+## 5. No reviewer
+Do not launch the reviewer subagent (owner decision 2026-10-18). Each dev agent's `npm run check` (green, output in
+its summary) is the gate; the slop checklist in CLAUDE.md stays binding for the dev agents.
 
 ## 6. Hand over for manual testing (owner)
 No QA agents or `/qa-*` commands (owner decision 2026-10-18). Testing is manual by the owner on Android and iOS.

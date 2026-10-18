@@ -111,7 +111,7 @@ def seed(slug, sat=None, sun=None, stale_h=0, clear=False, **by_date):
         sql(f"insert into place_forecasts(place_id,daily,fetched_at) values('{pid}','{json.dumps(daily)}'::jsonb,now())")
     recompute_place(slug)
     if stale_h:
-        sql(f"update place_conditions set computed_at=now()-interval '{stale_h} hours' where place_id='{pid}'")
+        sql(f"update place_conditions set computed_at=now()-interval '{stale_h} hours 2 minutes' where place_id='{pid}'")
 
 
 def cond(slug):
@@ -123,8 +123,8 @@ def cond(slug):
 # ---------------- isolation ----------------
 def before_case():
     P.before_case()                       # login attempts, place rows restored (season/hazards), onboarding, guest
-    sql("delete from condition_overrides where reason_uz like 'QA%'")
-    sql("delete from closures where reason_uz like 'QA%'")
+    sql("delete from condition_overrides where reason_uz like 'QA%' or reason_uz='Q'")
+    sql("delete from closures where reason_uz like 'QA%' or reason_uz='Q'")
     set_network(True, True)
     sh("settings", "put", "global", "airplane_mode_on", "0")
 

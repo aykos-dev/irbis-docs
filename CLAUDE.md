@@ -29,7 +29,7 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 
 ## Commands
 - `/feature <slug>`: read doc + canvas → **ask rules and media (stop)** → spec (short approval) → api → app/web →
-  review → manual test checklist for the owner → wrap up and **stop** (next feature only when the owner says so).
+  manual test checklist for the owner (no reviewer subagent, owner 2026-10-18) → wrap up and **stop** (next feature only when the owner says so).
 - `/bugfix <error/log + failing behaviour> | <slug>/D{n}`: reproduce with a failing test, then fix.
 - Testing is manual by the owner (Android + iOS); no `/qa-*` commands or qa-tester agent (owner, 2026-10-18).
 - Every repo: `npm run check` (quiet: lint + typecheck + tests + slop grep). `npm run gen:api` in web/app.
@@ -55,7 +55,7 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 - "Done" means `npm run check` passed and its output is pasted in the summary.
 - Commit locally, never push. Never change decisions in `decisions/` silently — propose a new ADR.
 
-## Slop checklist (reviewer uses this)
+## Slop checklist (dev agents check their own work against it)
 1. Test diffs: existing tests edited/deleted/skipped? Everything mocked so nothing real is tested?
 2. Contract: clients use generated hooks only; no hand-written fetch or API types.
 3. Verified: check output present and green in every touched repo.

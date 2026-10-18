@@ -32,6 +32,7 @@ def run(c):
     c.checkpoint("condition card shown", tid == "place.condition", tid)
     c.step(3, "read reasons")
     c.result(1, text_in("place.condition-status") == "Not now" and has("place.condition-mascot", exact=True), f"chip {text_in('place.condition-status')!r}", [shot])
+    reveal("place.condition-reason.3")
     r = [tidtext(f"place.condition-reason.{i}") for i in (1, 2, 3)]
     c.result(2, r[0] == "Thunderstorm on Sunday" and all(r) and not has("place.condition-reason.4", exact=True), f"reasons {r}", [shot])
     c.result(3, all(x and (x.startswith("Strong wind on Sunday") or x.startswith("Rain likely on Sunday") or x.startswith("Heat on Sunday")) for x in r[1:]), f"reasons 2-3 {r[1:]}", [shot])

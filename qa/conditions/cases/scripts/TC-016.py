@@ -2,6 +2,7 @@ import os, sys, time
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), *[".."] * 4, "scripts", "qa", "rec"))
 from drv import *  # noqa
 from _feature import *  # noqa
+from _feature import _admin  # noqa
 
 META = {'title': 'Admin API matrix: roles, reason and date boundaries, end twice = 409, one active override',
  'priority': 'P1',
@@ -22,7 +23,7 @@ META = {'title': 'Admin API matrix: roles, reason and date boundaries, end twice
               'Second end of a closure → 409 CLOSURE_ALREADY_ENDED; second end of an override → 409 '
               'OVERRIDE_ALREADY_ENDED — API response',
               'After creating two overrides condition-controls lists exactly one without endedAt (the newer); '
-              'createdById of the closures = the admin — API response'],
+              'createdById of the closures = the admin — LOCAL DB row (the API response does not expose it)'],
  'caption': {'expected': 'No token → 401 UNAUTHENTICATED; user token → 403 — API response'}
 }
 
@@ -65,4 +66,4 @@ def run(c):
     st, ctl, _ = api("GET", f"/v1/admin/places/{pid}/condition-controls", None, tok)
     act = [o for o in ctl.get("overrides", []) if not o.get("endedAt")]
     cl = ctl.get("closures", [])
-    c.result(5, st == 200 and len(act) == 1 and act[0]["id"] == o4["id"] and cl and all(x.get("createdById") == _admin["id"] for x in cl), f"status {st}, active overrides {len(act)}, closures {len(cl)}")
+    c.result(5, st == 200 and len(act) == 1 and act[0]["id"] == o4["id"] and cl and sql(f"select count(*) from closures where place_id='{pid}' and created_by_id<>'{_admin['id']}'").strip() == "0", f"status {st}, active overrides {len(act)}, closures {len(cl)}")
