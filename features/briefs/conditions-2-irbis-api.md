@@ -35,6 +35,13 @@
     `Override { id, placeId, status, reason, expiresAt, createdAt, endedAt, active }` — never admin passwords/phones;
     ids of creator/ender not exposed.
 
+## From slice 1 (api 44e08b5)
+- `opensMonth` is not stored: derive it at read time with the exported `nextOpenMonth(season, month)` (Tashkent month)
+  when status is `seasonal_lock`; no new column.
+- Seasonal lock has empty `reasons` — fine; clients use `opensMonth`.
+- The cron is active in e2e and may call the real Open-Meteo: add config `CONDITIONS_JOB_ENABLED` (default `true`,
+  `false` in the e2e/test env) and skip registering/running the cron when false; `runNow()` still works (stubbed client).
+
 ## Errors (code → status)
 VALIDATION_FAILED 400 · PLACE_NOT_FOUND 404 · CLOSURE_NOT_FOUND 404 · OVERRIDE_NOT_FOUND 404 ·
 CLOSURE_ALREADY_ENDED 409 · OVERRIDE_ALREADY_ENDED 409 · RECOMPUTE_RUNNING 409 · UNAUTHORIZED 401 · FORBIDDEN 403
