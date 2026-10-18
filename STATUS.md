@@ -20,7 +20,7 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   manual for owner; 0 open places defects. Owner checks pending: pins/clusters, real GPS + OS prompt, iOS (2026-10-18)
 
 ## In progress
-- (none)
+- conditions — spec approved, briefs 1–4 (api engine, api endpoints, web admin, app); in progress (2026-10-18)
 
 ## Next
 - places-admin — web CRUD for places (split from places, Q1)
