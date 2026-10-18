@@ -138,6 +138,11 @@ From `design/media/conditions/MEDIA.md` (Q8): canvas status icons and worried Ir
 - Q7 (owner, 2026-10-18): reason text = client templates from reason codes; closures/overrides show admin text.
 - Q8 (owner, 2026-10-18): canvas status icons + worried Irbis final; weather glyphs placeholder.
 
+- Q9 (owner, 2026-10-18): the places Explore test's expected `explore_loaded` event gains `withStatus: 0` (app
+  92887f9); no other change to that test.
+- Impl (2026-10-18, app 92887f9): condition components live in `src/shared/components/conditions/` (no
+  feature→feature imports), hook in `features/places/hooks/usePlaceCondition.ts`; reason testIDs count from 1;
+  extra testIDs `place.condition-offline`, `-skeleton`, `-title`, `-mascot`, `place.weather-summary`, `place.hazard.<h>.level`.
 - Impl (2026-10-18, api 2e52ef3): `conditionStatus` is omitted from list items of places with no condition row
   (optional field) so the existing places e2e `toEqual` stays untouched — clients treat absent as null. The cron is
   registered but no-ops when `CONDITIONS_JOB_ENABLED=false`. 401 code is the repo's `UNAUTHENTICATED`.
