@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Not fixed · retest 2026-10-18 |
+| Status | Fixed · retest 2026-10-18 |
 | Severity | 3 - Medium |
 | Cases | TC-009 |
 | Found | run [2026-10-18_1216](../../runs/2026-10-18_1216/run.md) · build irbis-app 92887f9 · emulator-5554 |
