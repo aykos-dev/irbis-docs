@@ -1,0 +1,6 @@
+22.84	1: seed + online views
+55.98	2: go offline (app stays running), reopen Place
+63.73	3: read card, then Explore
+79.06	Expected: `place.condition` is shown with chip 'Caution' and `place.condition-up
+79.06	Result: BLOCKED
+79.06	END

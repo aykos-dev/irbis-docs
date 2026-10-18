@@ -24,3 +24,4 @@
 
 ## Retests
 - 2026-10-18 · build irbis-app f5f59cc (incl. c01c7e5) · [run 2026-10-18_1300](../../runs/2026-10-18_1300/run.md) · Not fixed: cold-start offline, Explore still shows "Can't reach Irbis", no status chip ([proof](../../runs/2026-10-18_1300/proof/TC-009/2_offline_explore.png)). Path reached.
+- 2026-10-18 · build irbis-app 70998f6 (c01c7e5, 23e2895, 4eaca16) · [run 2026-10-18_1320](../../runs/2026-10-18_1320/run.md) · Fixed: Q11 holds after offline cold restart (Explore cached list with Caution chip); Place card + Updated age offline while running (Q12). Path reached. Script: TC-009 now scrolls to condition-updated and relaunches offline before Explore. Run 1318 Blocked (no mock location).

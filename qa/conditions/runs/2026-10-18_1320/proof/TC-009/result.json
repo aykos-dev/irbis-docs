@@ -1,0 +1,84 @@
+{
+ "meta": {
+  "title": "Offline: Place and Explore show the last cached condition with its 'Updated …' age",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC8 — offline shows the cached condition + age (Place and Explore chip)",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done, location granted + mock Tashkent",
+   "Peak PLACE (API-nearest) with a Caution forecast",
+   "Explore and the place were opened online once in this session so both are cached"
+  ],
+  "steps": [
+   "Seed Caution, open Explore online, open the place online → check: card shown",
+   "Wi-Fi and data off, cold-start the app, open the place → check: `place.screen`",
+   "Read the card, go to Explore and read the card chip"
+  ],
+  "expected": [
+   "`place.condition` is shown with chip 'Caution' and `place.condition-updated` starts with 'Updated' (age) — UI tree + screenshot; `place.condition-offline` is not shown",
+   "In Explore (offline) `explore.card.<slug>.status` reads 'Caution' — UI tree + screenshot"
+  ],
+  "caption": {
+   "expected": "`place.condition` is shown with chip 'Caution' and `place.condition-up"
+  },
+  "focus": "place.condition",
+  "tc": "TC-009",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-009--p0--offline-place-and-explore-show-the-last-cached-condition-with-its-updated--age"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 30.9,
+ "events": 13,
+ "done": [
+  "Guest, onboarding done, location granted + mock Tashkent · Peak PLACE (API-nearest) with a Caution forecast · Explore and the place were opened online once in this session so both are cached",
+  "1. seed + online views",
+  "2. go offline (app stays running), reopen Place",
+  "3. read card, then Explore"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "card True, chip 'Caution', updated 'Updated just now · forecast'",
+   "proof": [
+    "1_offline_place.png"
+   ],
+   "t": 20.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "explore chip 'Caution'",
+   "proof": [
+    "2_offline_explore.png"
+   ],
+   "t": 28.5
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore opened",
+   "ok": true,
+   "seen": "no explore.count",
+   "t": 14.7
+  },
+  {
+   "name": "card shown online",
+   "ok": true,
+   "seen": "no condition online",
+   "t": 15.7
+  },
+  {
+   "name": "place opens offline",
+   "ok": true,
+   "seen": "place.screen missing offline",
+   "t": 18.1
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_offline_place.png",
+  "2_offline_explore.png"
+ ]
+}

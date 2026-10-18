@@ -1,0 +1,13 @@
+13:20:46.360 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
+13:20:47.543 tab_opened {"tab": "path"}
+13:20:48.146 tab_opened {"tab": "profile"}
+13:20:58.364 tab_opened {"tab": "path"}
+13:20:58.959 tab_opened {"tab": "explore"}
+13:20:58.968 location_permission {"result": "granted"}
+13:20:59.381 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
+13:21:00.504 place_viewed {"slug": "ozodbosh-1014", "requiredLevel": 1, "qualifies": true}
+13:21:00.504 condition_viewed {"slug": "ozodbosh-1014", "status": "caution", "source": "forecast", "ageMin": 0}
+13:21:06.162 tab_opened {"tab": "path"}
+13:21:12.151 tab_opened {"tab": "explore"}
+13:21:12.254 location_permission {"result": "granted"}
+13:21:14.852 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}

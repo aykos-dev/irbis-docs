@@ -38,8 +38,10 @@ def run(c):
             scroll_down()
         shot = c.shot("1_offline_place", "place.condition" if has("place.condition", exact=True) else None)
         c.step(3, "read card, then Explore")
+        reveal("place.condition-updated")
         up = tidtext("place.condition-updated") or ""
         c.result(1, has("place.condition", exact=True) and text_in("place.condition-status") == "Caution" and up.startswith("Updated") and not has("place.condition-offline", exact=True), f"card {has('place.condition', exact=True)}, chip {text_in('place.condition-status')!r}, updated {up!r}", [shot])
+        relaunch(); time.sleep(6)  # cold start while offline (Q11)
         open_explore(wait_list=False); wait("explore.screen", 10, exact=True)
         for _ in range(3):
             if has(f"explore.card.{slug}.status", exact=True): break
