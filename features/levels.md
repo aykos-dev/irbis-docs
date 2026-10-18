@@ -1,6 +1,6 @@
 # levels
 
-- Status: Approved (2026-10-18)
+- Status: Done (2026-10-18) — manual test by owner pending
 - Surfaces: api | app (web: no code change; admin user detail shows the real level from the api)
 - Related ADRs: ADR-001 (guest-first: guests see Level 1, earning needs an account), ADR-002, ADR-003
 - Requirements: Product Overview § Levels & companions (levels table), § XP, streaks, leagues & gems (XP sources),
@@ -147,6 +147,8 @@ ibex catching. Placeholder (STATUS known issue, Q10): 10 handing/catching poses 
 - Q10 (owner, 2026-10-18): evolution ships as a labelled Reanimated placeholder; poses + Lottie later.
 - Q11 (owner, 2026-10-18): canvas companion SVGs are final; export into the app.
 - Q12 (owner, 2026-10-18): admin shows the real level only; no XP adjust, no web code change.
+- Q13 (owner, 2026-10-18): the api agent may update 3 existing assertions to the new contract — `/v1/me` key list
+  (auth-recovery.e2e), admin `level` + list keys (admin.e2e), places.service.spec fake config (`levelsStartLevel`).
 
 ## Open questions
 - none

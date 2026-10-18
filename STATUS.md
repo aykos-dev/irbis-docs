@@ -24,6 +24,12 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   QA: core 7/7 P0 pass (run 1216 + TC-009 retest 1320), D1 fixed; full run not done. From now on testing is manual
   by the owner (Q13). Owner checks pending: AC1–AC8 by hand, web admin, iOS (2026-10-18)
 
+- levels — on `feat/levels` (stacked on `feat/conditions`), not merged (api 841e4c6, 4f051a5, bd33bdd · app 302b72e,
+  2fb47df · web no change). XP ledger + GameConfig (levels.table, xp.dailyCaps) + level engine + LevelFact counters for
+  lessons/check-ins/spots; /v1/levels, /v1/me/level, level-up seen, QA grant (`QA_TOOLS_ENABLED`); optional auth on
+  public routes; real level on Place, /v1/me and admin users. App: Level, Companions, LevelUp (placeholder evolution),
+  Profile badge, Explore lock chips, `irbis://debug/levels/grant`. Manual test by owner pending: AC1–AC8, iOS (2026-10-18)
+
 ## In progress
 - (none)
 
@@ -32,6 +38,15 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- levels placeholders: LevelUp evolution is a Reanimated sequence — 10 handing/catching poses + `levelup-evolution.json`
+  Lottie missing (only fox→ibex art is real); backpack is the onboarding placeholder — swap when the owner drops files in
+  `design/media/levels/` (2026-10-18)
+- levels: lesson/check-in/spot bars only move via the QA grant until `lessons`, `check-in`, `add-a-spot` call
+  `award`/`recordFact`; lesson tier sizes (6, all = 36) are config guesses until `lessons`; `QA_TOOLS_ENABLED` not in
+  irbis-api `.env.example` (file permission-blocked) — add by hand; colours #8C5A33, #0B6F6A, #FFD95A used but not in
+  design.md; Explore lock uses the live level only (no offline fallback); place refetch on login untested (2026-10-18)
+- irbis-app test harness: `navigate()` in app/__tests__/auth/harness.tsx (sync act) breaks the next test after a
+  signed-in one — pre-existing, levels tests work around it; needs `/bugfix` (2026-10-18)
 - Place (detail + condition) is memory-only: after an offline app restart it shows the offline message (owner Q12: later, with offline maps / Safety) (2026-10-18)
 - conditions (review notes, non-blocking): concurrent override creates could leave two active (no partial unique
   index, api conditions.repository.ts:489); expired override / future-start closure shows source with `text: null`
