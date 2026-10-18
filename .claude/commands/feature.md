@@ -1,5 +1,5 @@
 ---
-description: Build one feature end to end — questions + media first, then app/api/web, then the Android QA loop; stop when done
+description: Build one feature end to end — questions + media first, then app/api/web, then review and hand over for the owner's manual test; stop when done
 argument-hint: <slug> [— extra notes, constraints, out of scope]
 ---
 Build feature: $ARGUMENTS
@@ -66,18 +66,14 @@ copied from `design/media/<slug>/`.
 Diff stats + risky files (auth, data access, value/XP, new endpoints, edited tests) against the spec and the slop
 checklist. Blocking fixes go back as a short fix brief to a fresh dev agent (max 2 rounds).
 
-## 6. Test on the Android phone — the QA loop
-1. `/qa-plan <slug>` → case scripts from the AC (the qa-tester subagent; summary only in this conversation).
-2. `/qa-run <slug> build` → P0 cases (`core`) on the emulator, defects logged to `qa/<slug>/bugs/`.
-3. For each defect: `/bugfix <slug>/D{n}` (failing test first), then rebuild and `/qa-retest <slug>/D{n} …`.
-4. Repeat 3 until `python3 scripts/qa/case/bugs.py open` shows nothing for this feature — or the owner accepts a
-   remaining defect (it stays Open in `qa/BUGS.md` and STATUS.md Known issues).
-5. Once before merge: `/qa-run <slug> installed full` (all cases + standards suite); new defects go through 3.
-iOS is checked by hand by the owner; ask them to, and note the result.
+## 6. Hand over for manual testing (owner)
+No QA agents or `/qa-*` commands (owner decision 2026-10-18). Testing is manual by the owner on Android and iOS.
+Give the owner a short checklist: one line per AC with where to look and what to expect. Bugs they report go
+through `/bugfix <error/log + failing behaviour>` (failing test first).
 
 ## 7. Wrap up and STOP
 (Next feature = new session or `/clear` — never carry this feature's history into the next.)
-Spec → Done. STATUS.md: Done line with commits per repo, QA run + retest results, open defects and placeholders.
+Spec → Done. STATUS.md: Done line with commits per repo, "manual test by owner pending", open issues and placeholders.
 Commit irbis-docs. Do not push.
-Reply: what was built per surface, AC → test coverage, QA totals (pass / fail / fixed), anything open or
+Reply: what was built per surface, AC → test coverage, the manual test checklist, anything open or
 placeholder, and "Ready for the next feature when you say so." Do **not** start another feature.

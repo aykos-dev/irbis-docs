@@ -1,6 +1,6 @@
 # conditions
 
-- Status: Approved (owner, 2026-10-18)
+- Status: Done (2026-10-18) — manual test by owner pending
 - Surfaces: api | web | app
 - Related ADRs: ADR-001 (conditions readable without an account), ADR-002, ADR-003 (REST, cursor, error codes),
   **ADR-004 (new): job runner `@nestjs/schedule` + weather provider Open-Meteo**
@@ -153,6 +153,8 @@ From `design/media/conditions/MEDIA.md` (Q8): canvas status icons and worried Ir
 - Impl (2026-10-18, api 2e52ef3): `conditionStatus` is omitted from list items of places with no condition row
   (optional field) so the existing places e2e `toEqual` stays untouched — clients treat absent as null. The cron is
   registered but no-ops when `CONDITIONS_JOB_ENABLED=false`. 401 code is the repo's `UNAUTHENTICATED`.
+
+- Q13 (owner, 2026-10-18): no more QA agents; testing is manual by the owner. The full run was not done.
 
 ## Open questions
 - Open-Meteo commercial plan before production launch (owner).

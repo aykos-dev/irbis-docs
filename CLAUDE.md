@@ -29,12 +29,9 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 
 ## Commands
 - `/feature <slug>`: read doc + canvas → **ask rules and media (stop)** → spec (short approval) → api → app/web →
-  review → Android QA loop until no open defects → wrap up and **stop** (next feature only when the owner says so).
+  review → manual test checklist for the owner → wrap up and **stop** (next feature only when the owner says so).
 - `/bugfix <error/log + failing behaviour> | <slug>/D{n}`: reproduce with a failing test, then fix.
-- `/qa-plan <slug>`: concrete, AC-traced Android test plan → `qa/<slug>/cases/`.
-- `/qa-run <slug> [build]`: run it on the Android phone, proof per case, defects → `qa/<slug>/bugs/D{n}_…/`.
-- `/qa-retest <slug>/D{n} … | open`: re-check logged defects on a new build (Fixed / Not fixed / Not reached).
-  Loop: `/qa-run` → `/bugfix <ref>` → `/qa-retest <ref>`. Index of all defects: `qa/BUGS.md`. iOS: by hand.
+- Testing is manual by the owner (Android + iOS); no `/qa-*` commands or qa-tester agent (owner, 2026-10-18).
 - Every repo: `npm run check` (quiet: lint + typecheck + tests + slop grep). `npm run gen:api` in web/app.
 
 ## Hard rules

@@ -18,9 +18,14 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   list + detail, app Explore (MapLibre map, filters, location/Tashkent fallback) + Place. QA: core run 2317 11/12 →
   D1 fixed (retest 2337); full run 2351 32/36 → D2, D3 fixed (retest 0015); TC-012 pins and TC-022 no-fix fallback
   manual for owner; 0 open places defects. Owner checks pending: pins/clusters, real GPS + OS prompt, iOS (2026-10-18)
+- conditions — on `feat/conditions`, not merged (api 44e08b5, 2e52ef3, 7974da3 · web f84fc3f · app 92887f9, D1 fixes
+  c01c7e5, 23e2895, 4eaca16 → 70998f6). Hourly Open-Meteo job + status rules, public condition endpoint, admin
+  closures/overrides/recompute, web Conditions page, app condition card + weather + hazards now + Explore chips.
+  QA: core 7/7 P0 pass (run 1216 + TC-009 retest 1320), D1 fixed; full run not done. From now on testing is manual
+  by the owner (Q13). Owner checks pending: AC1–AC8 by hand, web admin, iOS (2026-10-18)
 
 ## In progress
-- conditions — spec approved, briefs 1–4 (api engine, api endpoints, web admin, app); in progress (2026-10-18)
+- (none)
 
 ## Next
 - places-admin — web CRUD for places (split from places, Q1)
@@ -28,7 +33,6 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 
 ## Known issues
 - Place (detail + condition) is memory-only: after an offline app restart it shows the offline message (owner Q12: later, with offline maps / Safety) (2026-10-18)
-- conditions/D1 offline Explore lost its list (origin change: app c01c7e5; offline restart: app 23e2895, merged feat/conditions 5a06b89) — fix committed, awaiting retest (`/qa-retest conditions/D1`) (2026-10-18)
 - conditions (review notes, non-blocking): concurrent override creates could leave two active (no partial unique
   index, api conditions.repository.ts:489); expired override / future-start closure shows source with `text: null`
   until the next hourly run; `COND_STALE_HOURS` unused; `created_by_id` FKs RESTRICT admin hard-delete; web place

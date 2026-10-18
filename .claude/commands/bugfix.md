@@ -22,4 +22,4 @@ with `/qa-retest <ref>`, which re-runs the defect's `Cases`.
 6. Wrap up: add a line to STATUS.md (Known issues → "fix committed, awaiting retest" for a defect ref,
    else resolved / Done). Commit, do not push.
    Reply with root cause (1–2 lines), the test name, and final check output. For a defect ref, end with:
-   "Build the app and run `/qa-retest <ref>` to verify on the device." 
+   "Build the app and check it by hand on the device." (No `/qa-retest` — owner tests manually, 2026-10-18.) 
