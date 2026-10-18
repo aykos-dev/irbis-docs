@@ -34,6 +34,13 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 - Testing is manual by the owner (Android + iOS); no `/qa-*` commands or qa-tester agent (owner, 2026-10-18).
 - Every repo: `npm run check` (quiet: lint + typecheck + tests + slop grep). `npm run gen:api` in web/app.
 
+## Code map (graphify)
+- Each code repo has a code-only graph in `graphify-out/` (git-ignored locally; built by tree-sitter, no LLM).
+  Before grepping or opening files to find where something lives, ask the graph:
+  `graphify explain "<Symbol>"` · `graphify path "<A>" "<B>"` · `graphify query "<question>"` (run in that repo).
+  Open only the files it points to. Read `graphify-out/GRAPH_REPORT.md` instead of browsing a repo.
+- Refresh after code changes: `graphify update .` in each touched repo (free, seconds).
+
 ## Hard rules
 - Never modify or skip an existing test to make it pass. Report it instead.
 - Ask before adding any package.

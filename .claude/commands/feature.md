@@ -21,6 +21,7 @@ delegates, and relays ≤10-line summaries — it never reads generated code, fu
   numbers and notes. Light + dark variants if present.
 - Each touched repo's `docs/architecture.md` (domain model, structure) so the plan fits what exists.
 - Existing code for anything this feature builds on (models, endpoints, components) — reuse, don't duplicate.
+  Find it with `graphify explain/query` in each repo (see CLAUDE.md → Code map), not by browsing files.
 
 ## 1. Ask before building — rules and media (STOP for answers)
 **Rules.** List every point where the doc, the canvas and the existing code leave a choice open or disagree and the
@@ -74,6 +75,6 @@ through `/bugfix <error/log + failing behaviour>` (failing test first).
 ## 7. Wrap up and STOP
 (Next feature = new session or `/clear` — never carry this feature's history into the next.)
 Spec → Done. STATUS.md: Done line with commits per repo, "manual test by owner pending", open issues and placeholders.
-Commit irbis-docs. Do not push.
+Run `graphify update .` in each touched code repo. Commit irbis-docs. Do not push.
 Reply: what was built per surface, AC → test coverage, the manual test checklist, anything open or
 placeholder, and "Ready for the next feature when you say so." Do **not** start another feature.

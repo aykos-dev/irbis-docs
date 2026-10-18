@@ -15,3 +15,6 @@ Flow: branch named in the brief → tests for the slice's ACs first (budget in R
 until green (quiet commands only; long output through `tail`) → commit → reply ≤10 lines.
 Ask (return to caller) before: any package not approved in the brief, editing an existing migration, anything outside the slice.
 Never modify, skip or weaken an existing test to make it pass — report it.
+
+## Finding code
+Before grepping or opening files outside the brief's list, ask the repo's code graph: `graphify explain "<Symbol>"`, `graphify path "<A>" "<B>"` or `graphify query "<question>"` (run in the repo; binary at `~/.local/bin/graphify`). Open only the files it points to. If `graphify-out/` is missing, fall back to grep.

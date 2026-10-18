@@ -59,3 +59,31 @@ prompts. If you want stills to brief the animator, use the mascot prompt below w
 Mascot pose prompt (only for animator reference): *Chibi snow-leopard cub "Irbis" with a big round head, soft grey
 fur with dark rosettes, pale belly, big friendly eyes, tiny orange backpack, flat vector, no outlines, transparent
 background, full body, pose: <waving one paw | nodding with eyes closed | clapping both paws>.*
+
+## D. Weather glyphs — `design/media/conditions/` (Place → "Weather this weekend" card)
+Status: placeholders (spec conditions Q8). Six glyphs, one per weather group the app maps from the Open-Meteo
+weather code: sun (0–1), cloud (2–3, 45–48 fog), rain (51–67, 80–82), snow (71–77, 85–86), storm (95–99), plus
+wind (shown beside the wind value). Best drawn by hand on a 24×24 grid; use the prompt for a draft.
+
+Weather icon style block (paste before every prompt): *Single minimal weather icon for a friendly, Duolingo-style
+outdoor app. 24×24 grid with 2 px padding, transparent background, 2.5 px strokes with round caps and joins, simple
+flat fills, no outlines around fills, no gradients, no shadows, no text, no face or mascot. Chunky, rounded,
+cheerful, must read at 20 px and at 16 px. Same stroke weight and corner roundness across the whole set.*
+
+| File | Colours (`design/design.md`) | Prompt (after the style block) |
+|---|---|---|
+| `weather-sun.svg` | gold `#FFC800`, rays `#D9A500` | A round sun disc in the centre with 8 short, evenly spaced rounded rays around it. |
+| `weather-cloud.svg` | stone `#8A979C` fill, `#56646A` stroke | One soft, puffy cloud made of three overlapping round bumps with a flat rounded base, centred. |
+| `weather-rain.svg` | cloud stone `#8A979C`, drops sky `#4CA9FF` | The same puffy cloud in the upper two-thirds, with three short slanted rounded raindrop lines falling below it. |
+| `weather-snow.svg` | cloud stone `#8A979C`, flakes sky `#4CA9FF` | The same puffy cloud in the upper two-thirds, with three small six-armed snowflakes (simple asterisk shapes) below it. |
+| `weather-storm.svg` | cloud `#56646A`, bolt gold `#FFC800` | A darker version of the same puffy cloud with one bold zig-zag lightning bolt coming out of its base. |
+| `weather-wind.svg` | teal `#1CB0A8` | Three horizontal wind lines of different lengths, the top and bottom ones ending in a small rounded curl. |
+
+Example (full prompt, storm): *Single minimal weather icon for a friendly, Duolingo-style outdoor app. 24×24 grid
+with 2 px padding, transparent background, 2.5 px strokes with round caps and joins, simple flat fills, no outlines
+around fills, no gradients, no shadows, no text, no face or mascot. Chunky, rounded, cheerful, must read at 20 px
+and at 16 px. Same stroke weight and corner roundness across the whole set. A darker version of the same puffy cloud
+with one bold zig-zag lightning bolt coming out of its base. Cloud colour #56646A, bolt #FFC800.*
+
+Delivery: SVG only (the app draws them with react-native-svg; colours stay as fills/strokes, no embedded images).
+Check dark mode: on the dark card background every glyph must still have contrast; keep the colours above.

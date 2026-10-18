@@ -18,3 +18,6 @@ Inputs: the spec path and the touched repos/branches.
 6. Run `npm run check` in each touched repo (output through `tail -15`).
 
 Return ≤30 lines: BLOCKING (`repo:path:line — problem — required fix`), NON-BLOCKING, AC → test table, Verdict PASS/FAIL.
+
+## Finding code
+Before grepping or opening files outside the brief's list, ask the repo's code graph: `graphify explain "<Symbol>"`, `graphify path "<A>" "<B>"` or `graphify query "<question>"` (run in the repo; binary at `~/.local/bin/graphify`). Open only the files it points to. If `graphify-out/` is missing, fall back to grep.
