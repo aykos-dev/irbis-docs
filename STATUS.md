@@ -27,6 +27,12 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- conditions (review notes, non-blocking): concurrent override creates could leave two active (no partial unique
+  index, api conditions.repository.ts:489); expired override / future-start closure shows source with `text: null`
+  until the next hourly run; `COND_STALE_HOURS` unused; `created_by_id` FKs RESTRICT admin hard-delete; web place
+  conditions page heading is generic "Place conditions" (fix: `usePlacesGet` for the name) (2026-10-18)
+- conditions placeholders: weather glyphs (sun, cloud, rain, storm, wind, snow) — swap when the owner drops files in
+  `design/media/conditions/`; Open-Meteo free tier is non-commercial — paid plan before launch
 - places placeholders: waterfall + canyon type icons and colours (#2BA3C4, #D9733F, not in design.md) — hero art for all
   7 types is the owner's (app c062e05, 2026-10-18)
 - places: map tiles stay light in dark mode (OpenFreeMap liberty style); place descriptions render Markdown as plain text;
