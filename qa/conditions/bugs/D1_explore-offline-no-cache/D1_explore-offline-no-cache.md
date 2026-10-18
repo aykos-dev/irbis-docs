@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | Withdrawn · not a defect (owner 2026-10-18: Explore needs no offline) |
+| Status | Open · found 2026-10-18 |
 | Severity | 3 - Medium |
 | Cases | TC-009 |
 | Found | run [2026-10-18_1216](../../runs/2026-10-18_1216/run.md) · build irbis-app 92887f9 · emulator-5554 |

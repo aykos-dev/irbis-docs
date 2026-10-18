@@ -1,6 +1,6 @@
-12.69	1: seed + online views
-27.79	2: go offline (app stays running), reopen Place
-30.8	3: read card, then Explore
-35.59	Expected: `place.condition` is shown with chip 'Caution' and `place.condition-up
-35.59	Result: PASS
-35.59	END
+17.98	1: seed + online views
+32.96	2: go offline (app stays running), reopen Place
+35.96	3: read card, then Explore
+53.5	Expected: `place.condition` is shown with chip 'Caution' and `place.condition-up
+53.5	Result: FAIL
+53.5	END
