@@ -60,6 +60,10 @@ xavfi; GOOD_WEATHER Good weather / Хорошая погода / Ob-havo yaxshi;
 ## testIDs
 `conditions-table`, `conditions-filter`, `conditions-recompute`, `conditions-row-<slug>`, `closure-form`, `override-form`
 
+## Note from api (2e52ef3)
+`PlaceListItem.conditionStatus` is optional (absent when a place has no condition yet) — treat absent like null.
+Run `npm run gen:api` against irbis-api `feat/conditions` `openapi.json` (21 new schemas).
+
 ## Approved packages
 none (native datetime-local inputs; no date picker package)
 

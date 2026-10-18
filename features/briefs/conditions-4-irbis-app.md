@@ -58,6 +58,10 @@
 | offline / error / retry | You're offline — condition not loaded / Couldn't load the condition / Try again | Нет сети — состояние не загружено / Не удалось загрузить состояние / Повторить | Internet yoʻq — holat yuklanmadi / Holatni yuklab boʻlmadi / Qayta urinish |
 Weather-row day labels use nominative: Sat/Sun → ru "Сб"/"Вс", uz "Sha"/"Yak", en "Sat"/"Sun" (`dayShort.*`).
 
+## Note from api (2e52ef3)
+`PlaceListItem.conditionStatus` is optional (absent when a place has no condition yet) — treat absent like null.
+Run `npm run gen:api` against irbis-api `feat/conditions` `openapi.json` (21 new schemas).
+
 ## Approved packages
 none · weather glyphs are simple react-native-svg placeholders (owner art later)
 
