@@ -1,0 +1,86 @@
+{
+ "meta": {
+  "title": "Place shows the Go card for a mild weekend: chip, title, age + source, good-weather reason",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 + AC2 — Go this weekend, 'Updated {relative} · {source}', GOOD_WEATHER line",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE, forecast fixture MILD for the weekend window (24°/12°, wind 10 km/h, rain 10 %, code 1), no closure/override, season not closed"
+  ],
+  "steps": [
+   "Seed the MILD forecast and recompute the place",
+   "Cold-start the app and open the place (deep link) → check: a condition card testID shows within 15 s",
+   "Read the card"
+  ],
+  "expected": [
+   "Chip `place.condition-status` reads 'Go' and `place.condition-title` reads 'Go this weekend' — UI tree + screenshot",
+   "`place.condition-updated` matches 'Updated just now · forecast' (or 'N min ago') — UI tree",
+   "`place.condition-reason.1` matches 'Good weather on Saturday|Sunday, wind up to 10 km/h' and there is no reason.2 and no worried Irbis (`place.condition-mascot`) — UI tree",
+   "QA event `condition_viewed` {slug, status: go, source: forecast, ageMin ≤ 2} — event log"
+  ],
+  "caption": {
+   "expected": "Chip `place.condition-status` reads 'Go' and `place.condition-title` r"
+  },
+  "focus": "place.condition",
+  "tc": "TC-001",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-001--p0--place-shows-the-go-card-for-a-mild-weekend-chip-title-age--source-good-weather-reason"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 10.3,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE, forecast fixture MILD for the weekend window (24°/12°, wind 10 km/h, rain 10 %, code 1), no closure/override, season not closed",
+  "1. seed MILD",
+  "2. open place",
+  "3. read card"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "chip 'Go', title 'Go this weekend'",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 9.2
+  },
+  "2": {
+   "ok": true,
+   "observed": "updated 'Updated just now · forecast'",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 9.3
+  },
+  "3": {
+   "ok": true,
+   "observed": "reason.1 'Good weather on Sunday, wind up to 10 km/h', reason.2 False, mascot False",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 10.0
+  },
+  "4": {
+   "ok": true,
+   "observed": "event {'slug': 'patandazboshi-1824', 'status': 'go', 'source': 'forecast', 'ageMin': 0}",
+   "proof": [],
+   "t": 10.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "condition card shown",
+   "ok": true,
+   "seen": "place.condition",
+   "t": 8.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_card.png"
+ ]
+}

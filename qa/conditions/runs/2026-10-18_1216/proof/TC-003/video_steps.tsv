@@ -1,0 +1,6 @@
+5.92	1: season + seed
+6.5	2: open place
+9.21	3: read card
+10.22	Expected: Chip reads 'Seasonal lock' and title equals 'Closed for the season · O
+10.22	Result: PASS
+10.22	END

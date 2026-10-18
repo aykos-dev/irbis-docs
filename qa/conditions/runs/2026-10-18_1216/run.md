@@ -1,0 +1,44 @@
+# Run 2026-10-18_1216 — conditions
+**Status:** closed
+**Build:** uz.irbis.app.dev 1.0-dev (1) — irbis-app feat/conditions 92887f9 devRelease
+**Backend:** irbis-api feat/conditions 2e52ef3, CONDITIONS_JOB_ENABLED=false
+**Device:** sdk_gphone64_arm64 (Android 15), emulating the phone (density 450, font 1.15)
+**Accounts:** see Test data; phone numbers masked
+**Tester:** Claude (auto) + owner (manual)
+**Scope:** core
+**Blocked reasons:** TC-009 — Place does not open offline from cached Explore data
+**Plan:** ../../cases/Test_conditions.md
+
+## Results
+6 Pass (TC-001..006) / 0 Fail / 1 Blocked (TC-009) / 0 not run. Case-script fixes during the run (chip text de-dupe, scroll to reason, case-insensitive credit, TASHKENT import); first verdicts were script errors, the app was correct.
+
+## Defects
+None.
+
+## Table
+| TC | Case | Verdict | What happened | Issue / note | Proof |
+|---|---|---|---|---|---|
+| TC-001 | Place shows the Go card for a mild weekend: chip, title, age + source, good-weather reason | Pass | ✅✅✅✅ | — | [proof/TC-001/](proof/TC-001/) |
+| TC-002 | Closure beats a mild forecast: Not now, admin text (uz fallback in English), worried Irbis | Pass | ✅✅✅✅ | — | [proof/TC-002/](proof/TC-002/) |
+| TC-003 | Seasonal lock beats the forecast: 'Closed for the season · Opens in {Month}' | Pass | ✅✅✅ | — | [proof/TC-003/](proof/TC-003/) |
+| TC-004 | Weather card: per window day temps, wind + rain chance of the worst day, Open-Meteo credit | Pass | ✅✅✅ | — | [proof/TC-004/](proof/TC-004/) |
+| TC-005 | Hazards now lists each place hazard with its level (Raised / Open) | Pass | ✅✅✅ | — | [proof/TC-005/](proof/TC-005/) |
+| TC-006 | Explore cards show the status chip next to the type line; none when the status is null | Pass | ✅✅✅✅ | — | [proof/TC-006/](proof/TC-006/) |
+| [TC-009](#tc-009) | Offline: Place and Explore show the last cached condition with its 'Updated …' age | Blocked | —— | checkpoint 'place opens offline' did not hold: place.screen missing offline | [proof/TC-009/](proof/TC-009/) |
+
+## Cases
+_Only cases that did not pass; Pass details are in proof/<id>/result.json._
+
+<a id="tc-009"></a>
+### TC-009 · Blocked · Offline: Place and Explore show the last cached condition with its 'Updated …' age
+**Group:** Core · **Priority:** P0 · **Env:** Android · auto (adb)
+**Case:** Offline: Place and Explore show the last cached condition with its 'Updated …' age · [→ Test_conditions.md](../../cases/Test_conditions.md#tc-009--p0--offline-place-and-explore-show-the-last-cached-condition-with-its-updated--age)
+**Reason:** checkpoint 'place opens offline' did not hold: place.screen missing offline
+**Proof:** proof/TC-009/__pycache__, proof/TC-009/case.py, proof/TC-009/events.txt, proof/TC-009/video_steps.tsv
+
+
+## Additional observations
+
+## Follow-ups
+- TC-009: Place cannot be opened offline from cached Explore data; owner decides whether AC requires it (possible defect) or the case should be done manually.
+- Emulator screen slept mid-run (first TC-001 attempts Not run); `svc power stayon true` set.

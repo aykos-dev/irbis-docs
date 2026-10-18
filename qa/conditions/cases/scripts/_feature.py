@@ -25,6 +25,7 @@ api, sql, make_user = P.api, P.sql, P.make_user
 pick, pid_of, set_place, text_of, places, all_places = P.pick, P.pid_of, P.set_place, P.text_of, P.places, P.all_places
 open_explore, open_place_link, explore_ready, card_text = P.open_explore, P.open_place_link, P.explore_ready, P.card_text
 
+TASHKENT = P.TASHKENT
 TZ = ZoneInfo("Asia/Tashkent")
 MILD = {"weather_code": 1, "temperature_2m_max": 24, "temperature_2m_min": 12, "wind_speed_10m_max": 10,
         "wind_gusts_10m_max": 18, "precipitation_sum": 0, "precipitation_probability_max": 10, "snowfall_sum": 0}
@@ -176,7 +177,11 @@ def text_in(tid):
         return None
     x1, y1, x2, y2 = n["b"]
     parts = [n["text"], n["desc"]] + [m["text"] or m["desc"] for m in ns if m is not n and x1 <= m["x"] <= x2 and y1 <= m["y"] <= y2]
-    return " | ".join(p for p in parts if p)
+    out = []
+    for p in parts:
+        if p and p not in out:
+            out.append(p)
+    return " | ".join(out)
 
 
 def tidtext(tid):

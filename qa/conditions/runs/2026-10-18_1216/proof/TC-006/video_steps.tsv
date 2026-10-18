@@ -1,0 +1,6 @@
+4.93	1: seed A, clear B
+5.86	2: open Explore
+15.64	3: read cards
+16.12	Expected: `explore.card.<A>.status` exists and reads 'Go'; it sits on the same c
+16.12	Result: PASS
+16.12	END

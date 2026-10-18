@@ -1,0 +1,86 @@
+{
+ "meta": {
+  "title": "Explore cards show the status chip next to the type line; none when the status is null",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC8 — chip (colour + icon + label) on cards, none when null, explore_loaded.withStatus",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done, location granted, mock position Tashkent",
+   "API-nearest place A has a Go forecast, the second-nearest place B has no forecast (status null)"
+  ],
+  "steps": [
+   "Seed A (MILD) and clear B",
+   "Open Explore → check: list loaded",
+   "Read cards A and B"
+  ],
+  "expected": [
+   "`explore.card.<A>.status` exists and reads 'Go'; it sits on the same card as the type line — UI tree + screenshot",
+   "Card B has no `explore.card.<B>.status` node — UI tree",
+   "QA event `explore_loaded` {withStatus = number of items with conditionStatus in GET /v1/places} — event log + API",
+   "The chip is drawn beside the '{Type} · {distance}' line with its icon — crop (person judges)"
+  ],
+  "caption": {
+   "expected": "`explore.card.<A>.status` exists and reads 'Go'; it sits on the same c"
+  },
+  "focus": "explore.sheet",
+  "tc": "TC-006",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-006--p0--explore-cards-show-the-status-chip-next-to-the-type-line-none-when-the-status-is-null"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Not run",
+ "duration_s": 16.2,
+ "events": 6,
+ "done": [
+  "Guest, onboarding done, location granted, mock position Tashkent · API-nearest place A has a Go forecast, the second-nearest place B has no forecast (status null)",
+  "1. seed A, clear B",
+  "2. open Explore",
+  "3. read cards"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "A status 'Go'",
+   "proof": [
+    "1_explore.png"
+   ],
+   "t": 15.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "B status node present: False",
+   "proof": [
+    "1_explore.png"
+   ],
+   "t": 15.9
+  },
+  "3": {
+   "ok": true,
+   "observed": "event {'count': 71, 'origin': 'device', 'withStatus': 70}, api count 70",
+   "proof": [],
+   "t": 15.9
+  },
+  "4": {
+   "ok": null,
+   "observed": "judge on the crop: chip beside the type line",
+   "proof": [
+    "1_explore.png"
+   ],
+   "t": 15.9
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Explore opened",
+   "ok": true,
+   "seen": "no explore.count",
+   "t": 14.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_explore.png"
+ ]
+}

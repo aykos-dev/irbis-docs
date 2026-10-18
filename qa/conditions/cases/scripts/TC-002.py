@@ -36,6 +36,7 @@ def run(c):
     c.result(1, text_in("place.condition-status") == "Not now" and tidtext("place.condition-title") == "Not now this weekend" and has("place.condition-mascot", exact=True), f"chip {text_in('place.condition-status')!r}, mascot {has('place.condition-mascot', exact=True)}", [shot])
     up = tidtext("place.condition-updated") or ""
     c.result(2, up.endswith("· closure"), f"updated {up!r}", [shot])
+    reveal("place.condition-reason.1")
     r1 = tidtext("place.condition-reason.1") or ""
     c.result(3, r1 == "QA Yopiq: toshqin" and not has("place.condition-reason.2", exact=True) and not has("Good weather"), f"reason.1 {r1!r}", [shot])
     ev = viewed(t0, slug)

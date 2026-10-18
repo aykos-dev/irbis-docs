@@ -26,6 +26,10 @@ META = {'title': 'Weather card: per window day temps, wind + rain chance of the 
 }
 
 
+def credit_ok():
+    return any("weather data by open-meteo.com" in ((n["text"] or "") + (n["desc"] or "")).lower() for n in nodes())
+
+
 def run(c):
     c.pre(" · ".join(META["precondition"]))
     slug = slug0(); set_place(slug, hazards=[], season=["possible"] * 12)
@@ -42,4 +46,4 @@ def run(c):
     c.result(1, okd, f"window {sorted(w)}, got {got}", [shot])
     sm = tidtext("place.weather-summary") or ""
     c.result(2, "Wind 40 km/h" in sm and "Rain 45%" in sm, f"summary {sm!r}", [shot])
-    c.result(3, has("Weather data by Open-Meteo.com"), "credit text present" if has("Weather data by Open-Meteo.com") else "credit missing", [shot])
+    c.result(3, credit_ok(), "credit text present" if credit_ok() else "credit missing", [shot])

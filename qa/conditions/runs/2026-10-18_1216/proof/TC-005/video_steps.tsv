@@ -1,0 +1,6 @@
+5.45	1: seed
+6.0	2: open place
+9.91	3: read rows
+10.8	Expected: `place.hazard.mudslide` and `place.hazard.flood` exist and their `.lev
+10.8	Result: PASS
+10.8	END

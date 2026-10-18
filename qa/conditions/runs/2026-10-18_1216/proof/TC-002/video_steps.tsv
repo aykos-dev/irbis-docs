@@ -1,0 +1,6 @@
+5.89	1: seed + closure
+6.52	2: open place
+9.79	3: read card
+12.48	Expected: Chip reads 'Not now', title 'Not now this weekend', `place.condition-m
+12.48	Result: PASS
+12.48	END

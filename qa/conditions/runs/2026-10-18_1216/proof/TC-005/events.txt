@@ -1,0 +1,5 @@
+12:23:52.432 tab_opened {"tab": "path"}
+12:23:53.092 tab_opened {"tab": "profile"}
+12:23:57.701 tab_opened {"tab": "path"}
+12:23:58.346 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+12:23:58.346 condition_viewed {"slug": "patandazboshi-1824", "status": "caution", "source": "hazard_rule", "ageMin": 0}

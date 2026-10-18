@@ -1,0 +1,5 @@
+5.64	1: seed + online views
+15.91	2: offline cold start
+31.67	Expected: `place.condition` is shown with chip 'Caution' and `place.condition-up
+31.67	Result: BLOCKED
+31.67	END

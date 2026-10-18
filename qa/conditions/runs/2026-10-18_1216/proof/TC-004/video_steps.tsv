@@ -1,0 +1,6 @@
+5.41	1: seed
+5.97	2: open place
+9.58	3: read card
+10.47	Expected: For each day of the window (Sat+Sun, or Sun only when today is Sunday 
+10.47	Result: PASS
+10.47	END

@@ -1,0 +1,5 @@
+12:26:54.598 tab_opened {"tab": "path"}
+12:26:55.260 tab_opened {"tab": "profile"}
+12:27:00.208 tab_opened {"tab": "path"}
+12:27:00.810 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+12:27:00.810 condition_viewed {"slug": "patandazboshi-1824", "status": "seasonal_lock", "source": "season", "ageMin": 0}

@@ -1,0 +1,6 @@
+5.58	1: seed MILD
+6.13	2: open place
+8.86	3: read card
+10.23	Expected: Chip `place.condition-status` reads 'Go' and `place.condition-title` r
+10.23	Result: PASS
+10.23	END
