@@ -18,17 +18,24 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   list + detail, app Explore (MapLibre map, filters, location/Tashkent fallback) + Place. QA: core run 2317 11/12 →
   D1 fixed (retest 2337); full run 2351 32/36 → D2, D3 fixed (retest 0015); TC-012 pins and TC-022 no-fix fallback
   manual for owner; 0 open places defects. Owner checks pending: pins/clusters, real GPS + OS prompt, iOS (2026-10-18)
-- conditions — on `feat/conditions`, not merged (api 44e08b5, 2e52ef3, 7974da3 · web f84fc3f · app 92887f9, D1 fixes
+- conditions — merged to main 2026-10-19 (fast-forward, owner Q9 of campfire-core); was on `feat/conditions` (api 44e08b5, 2e52ef3, 7974da3 · web f84fc3f · app 92887f9, D1 fixes
   c01c7e5, 23e2895, 4eaca16 → 70998f6). Hourly Open-Meteo job + status rules, public condition endpoint, admin
   closures/overrides/recompute, web Conditions page, app condition card + weather + hazards now + Explore chips.
   QA: core 7/7 P0 pass (run 1216 + TC-009 retest 1320), D1 fixed; full run not done. From now on testing is manual
   by the owner (Q13). Owner checks pending: AC1–AC8 by hand, web admin, iOS (2026-10-18)
 
-- levels — on `feat/levels` (stacked on `feat/conditions`), not merged (api 841e4c6, 4f051a5, bd33bdd · app 302b72e,
+- levels — merged to main 2026-10-19 (fast-forward); was on `feat/levels` (api 841e4c6, 4f051a5, bd33bdd · app 302b72e,
   2fb47df · web no change). XP ledger + GameConfig (levels.table, xp.dailyCaps) + level engine + LevelFact counters for
   lessons/check-ins/spots; /v1/levels, /v1/me/level, level-up seen, QA grant (`QA_TOOLS_ENABLED`); optional auth on
   public routes; real level on Place, /v1/me and admin users. App: Level, Companions, LevelUp (placeholder evolution),
   Profile badge, Explore lock chips, `irbis://debug/levels/grant`. Manual test by owner pending: AC1–AC8, iOS (2026-10-18)
+
+- campfire-core — on irbis-app `feat/campfire-core` (from main), not merged (app a15a377, 78b24b7, 8d198e7, a15d20a ·
+  api/web no change). Community tab = Feed · Groups (coming soon) · Campfire games; CampHub (games, trip group, badges
+  coming soon), player sheet, Android local-only hotspot (native CampNet) or Wi-Fi host, iOS Personal Hotspot guide,
+  TCP room server :47821 + zeroconf, QR / code join (Bonjour → /24 scan), live lobby (15 incl. host, remove, close),
+  reconnect same seat, host resume 12 h, battery ≤20% banner. 248/248 tests. Manual test by owner pending: AC1–AC8 on
+  two+ Android phones and iOS (2026-10-19)
 
 ## In progress
 - (none)
@@ -38,6 +45,14 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- campfire-core placeholders: fox cheering on CampHub = neutral `companionFox`; iOS hotspot guide = text steps, no
+  picture — swap when the owner drops files in `design/media/campfire-core/` (2026-10-19)
+- campfire-core: real phone-to-phone networking only unit-tested with fakes; 10 s silence → "reconnecting…" has no
+  test; iOS never built (pods not installed) — CampNet.swift, Hotspot entitlement, vision-camera/wifi-reborn/tcp/zeroconf
+  pods untested; vision-camera pinned 4.7.3 (5.x drops Android code scanner); wifi-reborn built via
+  `android/third-party-gradle/react-native-wifi-reborn.gradle` (its own gradle fails on Gradle 9.4.1) — recheck on
+  Gradle/RN upgrades; device-info API confirmed by typecheck only; `ACCESS_FINE_LOCATION` left uncapped (maps uses it)
+  (2026-10-19)
 - levels placeholders: LevelUp evolution is a Reanimated sequence — 10 handing/catching poses + `levelup-evolution.json`
   Lottie missing (only fox→ibex art is real); backpack is the onboarding placeholder — swap when the owner drops files in
   `design/media/levels/` (2026-10-18)

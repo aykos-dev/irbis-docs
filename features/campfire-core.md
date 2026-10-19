@@ -1,6 +1,6 @@
 # campfire-core
 
-- Status: Approved
+- Status: Done
 - Surfaces: app (no api, no web: play is phone-to-phone over a local network; XP and badges come with `campfire-party`)
 - Related ADRs: ADR-001 (guest-first: offline games need no account)
 - Requirements: Product Overview § Campfire games (offline) · Screens: `design/canvas/CampSpec.dc.html`,
