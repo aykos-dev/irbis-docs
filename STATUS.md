@@ -37,14 +37,28 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   reconnect same seat, host resume 12 h, battery ≤20% banner. 248/248 tests. Manual test by owner pending: AC1–AC8 on
   two+ Android phones and iOS (2026-10-19)
 
+- campfire-party — on irbis-app `feat/campfire-party` (from `feat/campfire-core`), not merged (app 7a2e344, 19b8710,
+  a11e606, 5c135c1 · api/web no change). Protocol v2; lobby game picker + settings; Imposter (hold-to-reveal word /
+  imposter card, host Reveal + New round), Who am I? (others' characters, Show mine), Would you rather (20 per round,
+  live count, reveal bars, defend line); Android FLAG_SECURE, iOS capture cover; 8 bundled uz/ru/en packs, no repeats
+  per pack on the host phone. No XP / badges (owner). 276/276 tests. Manual test by owner pending: AC1–AC8 on 3+
+  Android phones and iOS (2026-10-19)
+
 ## In progress
 - (none)
 
 ## Next
+- campfire-party-2 — pass-and-play (one phone) for Imposter / Who am I / Would you rather + campfire badges + campfire XP (split from campfire-party, Q1)
 - places-admin — web CRUD for places (split from places, Q1)
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- campfire-party: content packs (design/media/campfire-party/packs, 8 files) are Claude drafts — owner review of
+  uz/ru/en wording pending; a few Who am I items repeat Imposter words (plov, camel, snow leopard). Game code lives in
+  `src/features/campfire-core/games/` (eslint-boundaries). WYR reveal = one heavy haptic, no drumroll. iOS not built
+  (CampCapture/`isCaptured` untested). Player Back on a game screen returns to the lobby while the round runs.
+  Unused copy `lobby.start` / `lobby.startSoon` left in camp.json. 5 campfire-core tests edited for protocol v2 (Q10)
+  (2026-10-19)
 - campfire-core placeholders: fox cheering on CampHub = neutral `companionFox`; iOS hotspot guide = text steps, no
   picture — swap when the owner drops files in `design/media/campfire-core/` (2026-10-19)
 - campfire-core: real phone-to-phone networking only unit-tested with fakes; 10 s silence → "reconnecting…" has no

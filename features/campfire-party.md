@@ -1,6 +1,6 @@
 # campfire-party
 
-- Status: Approved
+- Status: Done
 - Surfaces: app only (no api, no web: games run on the host phone over the campfire-core room; no XP, no badges — Q4, Q8)
 - Related ADRs: ADR-001 (guest-first: offline games need no account)
 - Requirements: Product Overview § Campfire games (offline) · Screens: `design/canvas/CampLobby.dc.html` (game picker +
@@ -127,6 +127,9 @@ vectors). Drumroll sound → haptic only (Q7, not a placeholder: no sound in thi
   feature → feature imports and the games need the room engine; moving the room to `shared/` would be a refactor
   outside scope (main session).
 - Protocol bumped to v2 so campfire-core-only builds get "Update Irbis to join this room" (main session).
+
+- Q10 (owner, 2026-10-19): accepted slice-1 edits to 5 campfire-core tests (protocol v2, Start reason text,
+  coming-soon toast now on the Mafia tile) — they follow from this spec.
 
 ## Open questions
 - none

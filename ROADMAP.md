@@ -66,7 +66,7 @@ proposal — reorder freely. Screens refer to `design/canvas/`.
 | 25  | `bu-qayer`       | Daily geo-guess: 360° view, pin, score, daily complete, reveal → save to path   | GameHub, GameRound, GameGuess, GameResult, GameSummary |
 | 26  | `bu-qayer-modes` | Friend duel, region / seasonal packs, practice, game badges, entry points       | GameDuel, GameBadges, GameEntry                        |
 | 27  | `campfire-core`  | Offline hosting: hotspot + QR, local server, lobby, join, reconnect             | CampHub, CampLobby, CampJoin                           |
-| 28  | `campfire-party` | Imposter, Who am I?, Would you rather (+ pass-and-play)                         | Imp*, WhoAmI, WYR                                      |
+| 28  | `campfire-party` | Imposter, Who am I?, Would you rather (pass-and-play → campfire-party-2)                      | Imp*, WhoAmI, WYR                                      |
 | 29  | `campfire-mafia` | Mafia: roles + balance meter, narration, night actions, day vote                | Maf*                                                   |
 | 30  | `leagues`        | Weekly elevation leagues (~15 people), promotion / demotion                     | Leagues                                                |
 | 31  | `seasons`        | Seasonal collections + limited badges                                           | Badges                                                 |
