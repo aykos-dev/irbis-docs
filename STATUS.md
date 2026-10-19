@@ -44,6 +44,14 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   per pack on the host phone. No XP / badges (owner). 276/276 tests. Manual test by owner pending: AC1–AC8 on 3+
   Android phones and iOS (2026-10-19)
 
+- campfire-mafia — on irbis-app `feat/campfire-mafia` (from `feat/campfire-party`), not merged (app 283c98c, e0fb351,
+  92d28b7, 1f521f6 · api/web no change). Protocol v3; Mafia setup (11 roles, civilians auto-fill, balance hint, reveal
+  role when out), random deal (host = narrator, no role), hold-to-reveal role card + I'm ready, host control (killed /
+  exiled / back, Night/Day steps), player out list + out banner, win suggestion (maniac → town → mafia) + Game over
+  with all roles, Play again. `npm run android:apk` (devRelease + Wi-Fi QR via scripts/serve-apk.js), real app icon
+  (Android legacy/round/adaptive, iOS set). No XP / badges. 303/303 tests. Manual test by owner pending: AC1–AC8 on
+  6+ phones (5 players + host) and iOS (2026-10-19)
+
 ## In progress
 - (none)
 
@@ -53,6 +61,14 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- campfire-mafia: Sniper / Journalist / Immortal glyphs + colours are placeholders (design/media/campfire-mafia);
+  role texts uz/ru are Claude drafts — owner review pending; balance thresholds (floor(n/4)..floor(n/3)) and default
+  counts are guesses; mid-game join "Game in progress" text has no UI test; no " (you)" marker on Game over;
+  End game keeps testID `camp.game.end` (not `maf.end`); 1 campfire-core test edited for protocol v3 + 3 for the
+  live Mafia tile + 1 type rename (slice 1), 1 mafia test edited (Q9); iOS icon set generated, iOS not built;
+  serve-apk has no automated test (2026-10-19)
+- irbis-app flaky test: `src/app/__tests__/campfire-core/whoami.test.tsx:105-106` builds an unescaped RegExp from a
+  random character name — fails when the name has brackets (e.g. "Ibn Sina (Avicenna)"); needs `/bugfix` (2026-10-19)
 - campfire-party: content packs (design/media/campfire-party/packs, 8 files) are Claude drafts — owner review of
   uz/ru/en wording pending; a few Who am I items repeat Imposter words (plov, camel, snow leopard). Game code lives in
   `src/features/campfire-core/games/` (eslint-boundaries). WYR reveal = one heavy haptic, no drumroll. iOS not built

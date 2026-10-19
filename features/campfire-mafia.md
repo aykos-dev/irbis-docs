@@ -1,6 +1,6 @@
 # campfire-mafia
 
-- Status: Approved
+- Status: Done
 - Surfaces: app only (no api, no web: the game runs on the host phone over the campfire-core room; no XP, no badges)
 - Related ADRs: ADR-001 (guest-first: offline games need no account)
 - Requirements: Product Overview § Campfire games (offline) · Screens: `design/canvas/MafSetup.dc.html` (setup),
@@ -121,6 +121,8 @@ and colours are placeholders (Q8, STATUS known issue); app icon final.
 - No XP / badges (owner brief). Voting and talking in person (owner brief).
 - Code in `irbis-app/src/features/campfire-core/games/mafia/` (same reason as campfire-party) (main session).
 - Balance thresholds lo/hi and default counts are main-session guesses — change in one constant (main session).
+- Q9 (owner, 2026-10-19): accepted the slice-3 edit to `mafia.test.tsx` (End game now passes through Game over,
+  then Lobby) — follows AC6.
 
 ## Open questions
 - none
