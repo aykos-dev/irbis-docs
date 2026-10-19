@@ -112,7 +112,7 @@ pick at `auth`: SMS provider for reset codes.
 | Is the 3-second SOS hold switchable off (Safety screen toggle)                                                                              | `active-trip`, `safety-center` |
 | Offline storage numbers don't add up (540 MB shown vs 492 MB listed)                                                                        | `safety-center`                |
 | Spot verification: is the official review mandatory, and is +150 paid at community 3/3 or at official review; +5/visit before verification? | `spot-verification`            |
-| Campfire badge count 2/8 vs 5 named                                                                                                         | `campfire-party`               |
+| Campfire badge count 2/8 vs 5 named                                                                                                         | `campfire-party-2`             |
 | Free tier: "Daily + 3 duels" (paywall) vs no limit shown on Game hub                                                                        | `bu-qayer-modes`, `irbis-plus` |
 
 
