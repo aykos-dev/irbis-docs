@@ -1,6 +1,6 @@
 # lessons
 
-- Status: Approved (2026-10-20)
+- Status: Done (2026-10-20) — manual test by owner pending
 - Surfaces: api | app (web: no change — content is edited in `lessons-admin`)
 - Related ADRs: ADR-001 (guest-first, guest merge), ADR-002, ADR-003, ADR-005 (question images)
 - Requirements: Product Overview § Lessons (tiers, multiple-choice cards with hearts), § XP ("Safety lesson 10–15"),

@@ -65,17 +65,33 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   Web: Lessons tiers page, tier page, lesson editor. api 163 unit + 165 e2e, web 65 tests green. Manual test by owner
   pending: AC1–AC8 in the admin panel (2026-10-20)
 
+- lessons — on `feat/lessons` in api + app (from main; lessons-admin fast-forwarded into main first, Q14), not merged
+  (api ddfbb98 · app 3472e0e, 429861c, 1a96a46, 4c6acc8 · web no change). Public catalog + lesson detail, server-graded
+  completions (10 / 15 XP once, level fact, daily goal), guest-merge `lessons`; app LessonsHub (goal ring, tiers, START),
+  daily hearts on the phone (5 / Tashkent day), Quiz (re-ask wrong, sheets, haptics + Kenney CC0 sounds, mute), practice
+  replays, lesson complete, offline lesson cache + completion queue, LevelUp "Next: <tier>" line. api 170 unit + 172 e2e,
+  app 235/235 green; 1 shell test edited (Q16). Manual test by owner pending: AC1–AC8 on Android, iOS (2026-10-20)
+
 ## In progress
 - (none)
 
 ## Next
-- lessons — app LessonsHub + Quiz play, public lesson endpoints, hearts, XP, guest merge (owner answers already in `features/lessons.md`)
 - weekly-path — next after `lessons` (owner asked 2026-10-20)
 - campfire-party-2 — pass-and-play (one phone) for Imposter / Who am I / Would you rather + campfire badges + campfire XP (split from campfire-party, Q1)
 - places-admin — web CRUD for places (split from places, Q1)
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- lessons: nothing shows in the app until the owner publishes lessons (all 18 seeds are drafts) — empty hub until then;
+  missing cheering poses (L2, L4–L7), concerned poses and the completion burst are placeholders (neutral + Reanimated) —
+  swap when files land in `design/media/lessons/`; correct sheet uses teal AppButton (no green variant); iOS: no
+  `pod install` for `react-native-audio-api` 0.13.6 (iOS sound untested), Android has no silent-switch check (media
+  volume); hearts don't sync across devices (by design, Q9); question images only cached by RN Image (offline may hide
+  them); api completion = award → fact → row without one transaction (all idempotent); GuestMergeDto.lessons only
+  shape-checked (handler validates); slice-4 touched shared `guestStore.ts` + `auth.tsx` (onMerged / notifySignInSettled);
+  fallback copy `levels.up.tierName` / `tierFirstAid` (uz/ru/en) needs owner OK; untested: hub day flip while open,
+  200-item guest cap, foreground sync trigger, LevelUp line in ru/uz; Jest "worker failed to exit" warning seen once,
+  not from lessons; `graphify` not on PATH — graphs not refreshed (2026-10-20)
 - lessons-admin: 18 draft lessons (180 questions, uz/ru/en) are Claude drafts — owner review before publishing;
   until a tier has published lessons its level gate is unmet (L3+ cannot be reached), seed tiers' `levels.table` sizes
   are now ignored. Owner fills `S3_*` in irbis-api `.env` and runs `docker compose up -d minio minio-init`; MinIO
