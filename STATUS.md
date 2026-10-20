@@ -58,15 +58,31 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   VisionCamera/CameraX/ML Kit. 306/306 tests; 1 join test edited (owner, 2026-10-20). Owner check on phone pending:
   release APK scan works (2026-10-20)
 
+- lessons-admin — on `feat/lessons-admin` in api + web (from main), not merged (api bdbf013, 37604ab, 30a5c39 ·
+  web e7f98b3, 3eba4ed · app no change). Admin API for tiers → lessons → questions (uz/ru/en, publish rules 5–15
+  questions, all locales), question images via api → MinIO/S3 (ADR-005, sharp re-encode, EXIF stripped), level tier
+  gates = published lessons per tier (empty tier blocks its gate), 6 tiers + 18 Claude-drafted draft lessons (180 Q).
+  Web: Lessons tiers page, tier page, lesson editor. api 163 unit + 165 e2e, web 65 tests green. Manual test by owner
+  pending: AC1–AC8 in the admin panel (2026-10-20)
+
 ## In progress
 - (none)
 
 ## Next
+- lessons — app LessonsHub + Quiz play, public lesson endpoints, hearts, XP, guest merge (owner answers already in `features/lessons.md`)
+- weekly-path — next after `lessons` (owner asked 2026-10-20)
 - campfire-party-2 — pass-and-play (one phone) for Imposter / Who am I / Would you rather + campfire badges + campfire XP (split from campfire-party, Q1)
 - places-admin — web CRUD for places (split from places, Q1)
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- lessons-admin: 18 draft lessons (180 questions, uz/ru/en) are Claude drafts — owner review before publishing;
+  until a tier has published lessons its level gate is unmet (L3+ cannot be reached), seed tiers' `levels.table` sizes
+  are now ignored. Owner fills `S3_*` in irbis-api `.env` and runs `docker compose up -d minio minio-init`; MinIO
+  images on `latest` (Q10); orphan uploads not cleaned. Test edits: 3 approved (Q9) + levels.e2e setup-only (Q10);
+  web `test/session.tsx` ADMIN_ME fixture got `level`/`xpTotal` after gen:api without asking (no assertion change).
+  Editor unsaved-guard misses programmatic `router.push`; "Remove its lessons first" uses native `title` tooltip.
+  `graphify` not on PATH in the session shell — graphs not refreshed for api/web (2026-10-20)
 - campfire-mafia: Sniper / Journalist / Immortal glyphs + colours are placeholders (design/media/campfire-mafia);
   role texts uz/ru are Claude drafts — owner review pending; balance thresholds (floor(n/4)..floor(n/3)) and default
   counts are guesses; mid-game join "Game in progress" text has no UI test; no " (you)" marker on Game over;

@@ -1,6 +1,6 @@
 # lessons-admin
 
-- Status: Approved (owner, 2026-10-20)
+- Status: Done (2026-10-20) — manual test by owner pending
 - Surfaces: api | web (app: none — lesson play is `lessons`, next)
 - Related ADRs: ADR-002, ADR-003, ADR-005 (object storage, new)
 - Requirements: Product Overview § Lessons (tiers, multiple-choice cards with hearts), § Levels (tier gates), § XP ·
