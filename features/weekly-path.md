@@ -1,6 +1,6 @@
 # weekly-path
 
-- Status: Approved
+- Status: Done
 - Surfaces: api | app
 - Related ADRs: ADR-001 (guest-first), ADR-004 (jobs, Open-Meteo)
 - Requirements: Product Overview § How the app works → Every week; § Weekly chest; § Condition statuses ·
@@ -123,6 +123,11 @@ the open chest (lid-tilted closed chest) and Reanimated chest-open, coin shower 
 - Q6 (owner, 2026-10-20): calendar month in Tashkent. Title "This Month's Path".
 - Q7 (owner, 2026-10-20): header shows XP only. Streak, boot and gems come later.
 - Q8 (owner, 2026-10-20): placeholders OK, canvas inline art final.
+- Q9 (owner, 2026-10-20): merge the unmerged branches into main first — api main ff to feat/lessons (ddfbb98);
+  app main ff to fix/camp-camera (campfire chain, b34714e) + merge feat/lessons (f7290a3); weekly-path rebased on it.
+- Q10 (owner, 2026-10-20): shell.test.tsx AC1 (merge) asserts the real Lessons + Community screens.
+- Q11 (owner, 2026-10-20): 4 tests updated for the real Path tab (shell cold start → `path.screen` + only GET /v1/path,
+  session:190 → `path.screen`, Status:107/141 count `/health` calls only).
 - Main session: weather strip location = Tashkent (no user location in the doc); interest → type mapping for
   waterfall/canyon; ranking origin = Tashkent.
 

@@ -72,16 +72,34 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   replays, lesson complete, offline lesson cache + completion queue, LevelUp "Next: <tier>" line. api 170 unit + 172 e2e,
   app 235/235 green; 1 shell test edited (Q16). Manual test by owner pending: AC1–AC8 on Android, iOS (2026-10-20)
 
+- weekly-path — on `feat/weekly-path` in api + app (from main after Q9 merges), not merged (api 6cdfbe9, 8741af9 · app
+  d8ffee6, 0e066b9, 196ae8e · web no change). Monthly path (owner Q1): 3 places by level / interests / season, nearest
+  Tashkent, frozen per Tashkent month (guests rebuilt from phone interests), live weekend status rings, smart swap
+  suggest-only card, done nodes via `recordVisit` (QA route + `irbis://debug/path/visit/<placeId>` until check-in),
+  monthly chest +50 XP (`path.config`), Fri–Sun Tashkent weather (PathWeatherJob). api 184 unit + 179 e2e, app 349/349
+  green; 4 app tests edited (Q11). Manual test by owner pending: AC1–AC8 on Android, iOS (2026-10-20)
+- merges (owner Q9 of weekly-path, 2026-10-20): api main = ddfbb98 (lessons); app main = f7290a3 (campfire-core →
+  party → mafia → camp-camera fast-forward, then lessons merge; shell AC1 test edited, Q10)
+
 ## In progress
 - (none)
 
 ## Next
-- weekly-path — next after `lessons` (owner asked 2026-10-20)
 - campfire-party-2 — pass-and-play (one phone) for Imposter / Who am I / Would you rather + campfire badges + campfire XP (split from campfire-party, Q1)
 - places-admin — web CRUD for places (split from places, Q1)
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- weekly-path: placeholders — open chest (lid tilt + sparkle), coin shower, rain/sway are Reanimated; swap card shows a
+  place-type tile (no place photo in the API); dark ring tints in `shared/constants/colors.ts` (`pathColors`) are agent
+  picks not in design.md — owner OK; 3-node + chest layout adapted by Claude (canvas has 7 nodes); mascot / popover
+  positions approximate — check on device; chest log-in prompt uses the generic `xp` reason ("Keep your XP"), not
+  "Keep your chest XP"; coin shower only plays when Path is open as the node flips; done only via QA visit until
+  `check-in` calls `WeeklyPathService.recordVisit`; check-in at a swap place doesn't count toward the chest; weather
+  strip + ranking use Tashkent; Product Overview + canvas still say weekly / 7 nodes — owner updates the doc;
+  `path.offline` copy added (not in brief); Tashkent weather uses its own hourly Open-Meteo call (not the conditions
+  batch); app d8ffee6 message says check red (fixed by 0e066b9); api e2e Postgres containers time out under heavy load
+  (rerun passes) (2026-10-20)
 - lessons: nothing shows in the app until the owner publishes lessons (all 18 seeds are drafts) — empty hub until then;
   missing cheering poses (L2, L4–L7), concerned poses and the completion burst are placeholders (neutral + Reanimated) —
   swap when files land in `design/media/lessons/`; correct sheet uses teal AppButton (no green variant); iOS: no
