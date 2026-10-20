@@ -85,6 +85,8 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - (none)
 
 ## Next
+- campfire-xo — X and O duel over Campfire, score kept across games until the host ends (owner asked 2026-10-20); rules questions listed in the weekly-path session reply
+- campfire-crocodile — describe-the-word game over Campfire (owner asked 2026-10-20)
 - campfire-party-2 — pass-and-play (one phone) for Imposter / Who am I / Would you rather + campfire badges + campfire XP (split from campfire-party, Q1)
 - places-admin — web CRUD for places (split from places, Q1)
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants

@@ -69,6 +69,8 @@ proposal — reorder freely. Screens refer to `design/canvas/`.
 | 27  | `campfire-core`  | Offline hosting: hotspot + QR, local server, lobby, join, reconnect             | CampHub, CampLobby, CampJoin                           |
 | 28  | `campfire-party` | Imposter, Who am I?, Would you rather (pass-and-play → campfire-party-2)                      | Imp*, WhoAmI, WYR                                      |
 | 29  | `campfire-mafia` | Mafia: roles + balance meter, narration, night actions, day vote                | Maf*                                                   |
+| 29a | `campfire-xo`    | X and O duel (host + 1 joiner, 3×3, 3 in a row), auto next game, running score until host ends (owner 2026-10-20) | — (no board; owner sketch) |
+| 29b | `campfire-crocodile` | Crocodile: describer sees a word (animals, movie heroes, famous people), others guess (owner 2026-10-20) | — (no board) |
 | 30  | `leagues`        | Weekly elevation leagues (~15 people), promotion / demotion                     | Leagues                                                |
 | 31  | `seasons`        | Seasonal collections + limited badges                                           | Badges                                                 |
 | 32  | `gems`           | Gems wallet, chest / streak / badge rewards, spends (hints, freezes, cosmetics) | —                                                      |
