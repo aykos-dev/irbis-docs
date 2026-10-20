@@ -43,9 +43,8 @@
   `publishedAt` only if null. PUT on a published lesson validates publish rules (422, nothing saved). Unpublish →
   draft. DELETE published → 409 LESSON_PUBLISHED; draft → 204.
 - All routes `@Roles('admin')` under `/v1/admin`; 401 no token, 403 non-admin.
-- Leave `image` handling for slice 2: accept `image: null` only in this slice (shape `{ key } | null` in DTO,
-  non-null → VALIDATION_FAILED "images arrive in slice 2" is NOT acceptable — instead just store nothing and add a
-  clear typed hook point in the service for slice 2 to validate keys).
+- Images: DTO accepts `image: { key } | null`; store `imageKey` as given (no existence check yet — slice 2
+  adds key validation and the `url`). Responses return `image: { key, url: null }` until slice 2.
 
 ## API
 Exactly the table in the spec "API" section (lesson-tiers, lessons; not lesson-images). Error body per PROJECT.md.
