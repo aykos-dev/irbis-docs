@@ -111,6 +111,10 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- campfire games emulator pass (owner ask, 2026-10-20): 67 cases, 61 pass; 6 bugs open in
+  `qa/campfire-games/BUG-REPORT.md` — CORE-1 join by code "Room not found" after found, CORE-2 joiner crash
+  `No socket with id`, CORE-3 last host message lost (removed player rejoins), XO-1 joiner Back stuck on waiting (major);
+  MAF-1 night leave shows "exiled · Day 1", MAF-2 left player loses name/avatar (minor) → `/bugfix <ID>` (2026-10-21)
 - campfire-crocodile: 3 word packs (180 words,
   uz/ru/en) are Claude drafts — owner review (famous-people picks, uz spellings e.g. «Nu, pogodi!», "Oppoqoy");
   no sounds (sound player is still in `lessons` on main — add after campfire-xo merges); protocol v5 vs xo v4 —
