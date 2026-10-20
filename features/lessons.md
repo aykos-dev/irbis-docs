@@ -135,6 +135,8 @@ placeholders (neutral pose + Reanimated) — STATUS known issue (Q11). Sounds: 3
   web 3eba4ed).
 - Q15 (Claude, 2026-10-20): question order as the admin set it, options not shuffled; hub has no "you" tier marker or
   level names (tiers are not tied to the player's level any more).
+- Q16 (owner, 2026-10-20): `src/app/__tests__/auth/shell.test.tsx` "AC1: Lessons and Community show the same
+  empty state" — remove `lessons` from its loop (Community keeps the ComingSoon assertion); nothing else changed.
 
 ## Open questions
 - none

@@ -12,6 +12,11 @@
 - Read: `../irbis-docs/design/media/lessons/LAYOUT.md` § Quiz, `src/shared/components/levels/CompanionArt.tsx`,
   `Mascot.tsx` (`pandaCheering`), `src/shared/utils/haptics.ts`, slice-2 `heartsStore.ts` / `catalogStore.ts`.
 
+## First (owner Q16)
+- In `src/app/__tests__/auth/shell.test.tsx` ("AC1: Lessons and Community show the same empty state") remove
+  only `lessons` from the loop; Community keeps its ComingSoon assertion. Commit separately: `test(auth): lessons tab
+  is no longer coming soon (owner Q16)`. Tests live in `src/app/__tests__/lessons/` (boundaries), as slice 2 did.
+
 ## Behaviour
 - AC5 — `useLessonsGet(lessonId)`; on success save the lesson to `lessonCache` (MMKV, by id); offline / error →
   cached copy, else "Connect to the internet to open this lesson" + Retry. Layout per LAYOUT.md § Quiz. Questions in
