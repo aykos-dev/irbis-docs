@@ -1,6 +1,6 @@
 # campfire-xo
 
-- Status: Approved
+- Status: Done
 - Surfaces: app only (no api, no web: the game runs on the host phone over the campfire-core room; no XP, no badges)
 - Related ADRs: ADR-001 (guest-first: offline games need no account)
 - Requirements: ROADMAP 29a (owner 2026-10-20): X and O duel, host + 1 joiner, 3×3, 3 in a row, next game, running

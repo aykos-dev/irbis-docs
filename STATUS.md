@@ -81,17 +81,28 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - merges (owner Q9 of weekly-path, 2026-10-20): api main = ddfbb98 (lessons); app main = f7290a3 (campfire-core →
   party → mafia → camp-camera fast-forward, then lessons merge; shell AC1 test edited, Q10)
 
+- campfire-xo — on irbis-app `feat/campfire-xo` (from main), not merged (app e1adc61, 8aad34f · api/web no change).
+  Protocol v4; X and O tile (host + exactly 1 joiner), shared 3×3 board, host-validated turns, 8-line win / draw,
+  "Next game" by either player (X/O swap, X first), score bar + draws, pause on joiner drop / resume same seat, host
+  End → Final score (win / lose / tie, confetti, Play again / Lobby); lessons sound player moved to `src/shared/sounds`
+  (win/lose/draw clips + shared mute). No XP / badges. 347/347 tests; 12 campfire-core tests edited for protocol v4
+  only. Manual test by owner pending: AC1–AC8 on 2 Android phones, iOS (2026-10-20)
+
 ## In progress
 - (none)
 
 ## Next
-- campfire-xo — X and O duel over Campfire, score kept across games until the host ends (owner asked 2026-10-20)
 - campfire-crocodile — describe-the-word game over Campfire (owner asked 2026-10-20)
 - campfire-party-2 — pass-and-play (one phone) for Imposter / Who am I / Would you rather + campfire badges + campfire XP (split from campfire-party, Q1)
 - places-admin — web CRUD for places (split from places, Q1)
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- campfire-xo: tile glyph is a code-drawn placeholder (design/media/campfire-xo); copy `camp.games.xoMeta` "2 · 1–5 min"
+  (ru/uz) added by the agent — owner OK pending; a third phone sees the Mafia "Game in progress" text for the whole
+  series; joiner-side final score / "Waiting for the host" covered by a component test only; mute stays under the
+  `lessons.muted` key (shared with lessons); ConfirmSheet got `cancelLabel`, Mafia `Confetti` exported for reuse;
+  iOS not built; `graphify` not on PATH — app graph not refreshed (2026-10-20)
 - weekly-path: placeholders — open chest (lid tilt + sparkle), coin shower, rain/sway are Reanimated; swap card shows a
   place-type tile (no place photo in the API); dark ring tints in `shared/constants/colors.ts` (`pathColors`) are agent
   picks not in design.md — owner OK; 3-node + chest layout adapted by Claude (canvas has 7 nodes); mascot / popover
