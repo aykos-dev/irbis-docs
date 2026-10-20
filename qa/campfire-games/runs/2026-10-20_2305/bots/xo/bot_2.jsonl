@@ -1,0 +1,6 @@
+{"t": 1792522442.771, "dir": "out", "msg": {"v": 4, "type": "hello", "code": "6753", "nickname": "bot_2", "avatar": "ibex"}}
+{"t": 1792522442.781, "dir": "in", "msg": {"v": 4, "type": "welcome", "seatId": "p2", "seatToken": "SEAT_TOKEN", "room": {"code": "6753"}}}
+{"t": 1792522442.781, "dir": "in", "msg": {"v": 4, "type": "roster", "players": [{"seatId": "host", "nickname": "host_1", "avatar": "fox", "host": true, "status": "connected"}, {"seatId": "p1", "nickname": "bot_1", "avatar": "bear", "host": false, "status": "connected"}, {"seatId": "p2", "nickname": "bot_2", "avatar": "ibex", "host": false, "status": "connected"}]}}
+{"t": 1792522448.662, "dir": "out", "msg": {"v": 4, "type": "leave"}}
+{"t": 1792522448.671, "dir": "in", "msg": {"v": 4, "type": "roster", "players": [{"seatId": "host", "nickname": "host_1", "avatar": "fox", "host": true, "status": "connected"}, {"seatId": "p1", "nickname": "bot_1", "avatar": "bear", "host": false, "status": "connected"}]}}
+{"t": 1792522448.672, "dir": "event", "msg": {"closed": true}}

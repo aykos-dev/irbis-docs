@@ -1,0 +1,3 @@
+{"t": 1792522231.637, "dir": "out", "msg": {"v": 5, "type": "hello", "code": "6841", "nickname": "bot_18", "avatar": "bear"}}
+{"t": 1792522231.649, "dir": "in", "msg": {"v": 5, "type": "rejected", "reason": "full"}}
+{"t": 1792522231.649, "dir": "event", "msg": {"closed": true}}
