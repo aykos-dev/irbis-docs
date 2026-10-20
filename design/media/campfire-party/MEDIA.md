@@ -12,4 +12,4 @@
 | Campfire badge emblems ×5 | Poker Face, Sharp Detective, Life Saver, Mind Reader, Campfire Host (hexagon + glyph) | CampHub badges card, badge unlock | inline hexagon in code / final art | needed only if badges are in scope (placeholder OK: canvas hexagon + glyph) |
 | Content packs | Imposter word packs, Who am I characters, WYR questions — uz / ru / en | all three games | bundled JSON in app | needed — text, not art (ask who writes) |
 
-Owner art (2026-10-20), not in the app yet (badges come with `campfire-party-2`): `badge-poker-face.png`, `badge-life-saver.png`, `badge-campfire-host.png`. Still missing: Sharp Detective, Mind Reader.
+Owner art (2026-10-20), not in the app yet (badges come with `campfire-party-2`): `badge-poker-face.png`, `badge-life-saver.png`, `badge-campfire-host.png`, `badge-sharp-detective.png`, `badge-mind-reader.png` (all 5).

@@ -150,8 +150,7 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   web `test/session.tsx` ADMIN_ME fixture got `level`/`xpTotal` after gen:api without asking (no assertion change).
   Editor unsaved-guard misses programmatic `router.push`; "Remove its lessons first" uses native `title` tooltip.
   `graphify` not on PATH in the session shell — graphs not refreshed for api/web (2026-10-20)
-- campfire-mafia: Sniper / Journalist / Immortal colours are main-session picks (glyphs now owner art, campfire-art);
-  role texts uz/ru are Claude drafts — owner review pending; balance thresholds (floor(n/4)..floor(n/3)) and default
+- campfire-mafia: role texts uz/ru are Claude drafts — owner review pending; balance thresholds (floor(n/4)..floor(n/3)) and default
   counts are guesses; mid-game join "Game in progress" text has no UI test; no " (you)" marker on Game over;
   End game keeps testID `camp.game.end` (not `maf.end`); 1 campfire-core test edited for protocol v3 + 3 for the
   live Mafia tile + 1 type rename (slice 1), 1 mafia test edited (Q9); iOS icon set generated, iOS not built;
