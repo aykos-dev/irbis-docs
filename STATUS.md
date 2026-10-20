@@ -96,6 +96,12 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   354/354 tests; 12 campfire tests edited for protocol 3 → 5 only. Manual test by owner pending: AC1–AC8 on 3+
   Android phones, iOS (2026-10-20)
 
+- campfire-art — owner art swapped in irbis-app (2026-10-20): `fix/campfire-art` from main (e1b1346: CampHub cheering
+  fox, iPhone hotspot picture, Sniper/Journalist/Immortal glyphs, 11 Mafia role card illustrations on the role card),
+  `feat/campfire-xo` 76654d4 (XO tile glyph), `feat/campfire-crocodile` d3a398e (Crocodile tile glyph). Checks green
+  (332 / 348 / 355 tests), no test edited. Manual check by owner pending: CampHub, iPhone guide, Mafia role card, XO and
+  Crocodile tiles on device
+
 ## In progress
 - (none)
 
@@ -105,14 +111,14 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
-- campfire-crocodile: tile glyph is a code-drawn placeholder (design/media/campfire-crocodile); 3 word packs (180 words,
+- campfire-crocodile: 3 word packs (180 words,
   uz/ru/en) are Claude drafts — owner review (famous-people picks, uz spellings e.g. «Nu, pogodi!», "Oppoqoy");
   no sounds (sound player is still in `lessons` on main — add after campfire-xo merges); protocol v5 vs xo v4 —
   whichever merges second bumps again; after a host restart a `ready` turn keeps its describer even if they never
   return (host can only End); timer ring colours unchecked on device; `crocTurn` app test sets `jest.setTimeout(20000)`
   (5 s timeouts under heavy machine load, also seen in levels/places/lessons/auth suites); `mafia/GameOver.tsx`
   exports `Confetti`; iOS not built; `graphify` not on PATH — app graph not refreshed (2026-10-20)
-- campfire-xo: tile glyph is a code-drawn placeholder (design/media/campfire-xo); copy `camp.games.xoMeta` "2 · 1–5 min"
+- campfire-xo: copy `camp.games.xoMeta` "2 · 1–5 min"
   (ru/uz) added by the agent — owner OK pending; a third phone sees the Mafia "Game in progress" text for the whole
   series; joiner-side final score / "Waiting for the host" covered by a component test only; mute stays under the
   `lessons.muted` key (shared with lessons); ConfirmSheet got `cancelLabel`, Mafia `Confetti` exported for reuse;
@@ -144,7 +150,7 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   web `test/session.tsx` ADMIN_ME fixture got `level`/`xpTotal` after gen:api without asking (no assertion change).
   Editor unsaved-guard misses programmatic `router.push`; "Remove its lessons first" uses native `title` tooltip.
   `graphify` not on PATH in the session shell — graphs not refreshed for api/web (2026-10-20)
-- campfire-mafia: Sniper / Journalist / Immortal glyphs + colours are placeholders (design/media/campfire-mafia);
+- campfire-mafia: Sniper / Journalist / Immortal colours are main-session picks (glyphs now owner art, campfire-art);
   role texts uz/ru are Claude drafts — owner review pending; balance thresholds (floor(n/4)..floor(n/3)) and default
   counts are guesses; mid-game join "Game in progress" text has no UI test; no " (you)" marker on Game over;
   End game keeps testID `camp.game.end` (not `maf.end`); 1 campfire-core test edited for protocol v3 + 3 for the
@@ -158,8 +164,6 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   (CampCapture/`isCaptured` untested). Player Back on a game screen returns to the lobby while the round runs.
   Unused copy `lobby.start` / `lobby.startSoon` left in camp.json. 5 campfire-core tests edited for protocol v2 (Q10)
   (2026-10-19)
-- campfire-core placeholders: fox cheering on CampHub = neutral `companionFox`; iOS hotspot guide = text steps, no
-  picture — swap when the owner drops files in `design/media/campfire-core/` (2026-10-19)
 - campfire-core: real phone-to-phone networking only unit-tested with fakes; 10 s silence → "reconnecting…" has no
   test; iOS never built (pods not installed) — CampNet.swift, Hotspot entitlement, vision-camera/wifi-reborn/tcp/zeroconf
   pods untested; vision-camera pinned 4.7.3 (5.x drops Android code scanner); wifi-reborn built via

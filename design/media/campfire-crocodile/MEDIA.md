@@ -5,7 +5,7 @@ No canvas board for Crocodile (roadmap 29b, owner 2026-10-20). Look and feel fol
 
 | File | What | Used on | Format / size | Status |
 |---|---|---|---|---|
-| Crocodile tile glyph | tile image for CampHub grid + lobby picker (like the other game tiles) | CampHub, CampLobby | inline SVG 24×24 glyph, campTheme colour | needed · placeholder OK? (glyph drawn in code) |
+| Crocodile tile glyph | tile image for CampHub grid + lobby picker (like the other game tiles) | CampHub, CampLobby | PNG @1x–3x 26 px, tinted white (`glyph-croc.png`) | exists · final (owner 2026-10-20) |
 | Word card | word on the describer's phone (hold-to-reveal like Imposter) | describer turn | existing `SecretCard` | exists |
 | Turn timer ring | countdown ring / bar | turn screen | react-native-svg + Reanimated | needed · drawn in code |
 | Companion avatars ×6 | player avatars on the score list | turn, scores | SVG in app (`companion*`) | exists |
