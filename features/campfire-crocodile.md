@@ -1,6 +1,6 @@
 # campfire-crocodile
 
-- Status: Approved
+- Status: Done
 - Surfaces: app only (no api, no web: the game runs on the host phone over the campfire-core room; no XP, no badges)
 - Related ADRs: ADR-001 (guest-first: offline games need no account)
 - Requirements: ROADMAP 29b (owner 2026-10-20): Crocodile, the describer sees a word (animals, movie heroes, famous

@@ -88,16 +88,30 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   (win/lose/draw clips + shared mute). No XP / badges. 347/347 tests; 12 campfire-core tests edited for protocol v4
   only. Manual test by owner pending: AC1–AC8 on 2 Android phones, iOS (2026-10-20)
 
+- campfire-crocodile — on irbis-app `feat/campfire-crocodile` (from main), not merged (app 2659073, 1867acb · api/web no
+  change). Protocol v5 (v4 = campfire-xo); Crocodile tile (3–15 incl. host), lobby timer 30/60/90 s + pack ticks,
+  host picks who shows, hold-to-reveal word (capture blocked) + Skip / Start, timer on all phones (host decides
+  time-up, warning last 10 s, haptics last 5 s), Guessed! / Time's up! with the word, describer drop → turn cancelled,
+  host End → group summary (guessed · skipped · turns) + Play again / Lobby. Mime only, no score, no sounds, no XP.
+  354/354 tests; 12 campfire tests edited for protocol 3 → 5 only. Manual test by owner pending: AC1–AC8 on 3+
+  Android phones, iOS (2026-10-20)
+
 ## In progress
 - (none)
 
 ## Next
-- campfire-crocodile — describe-the-word game over Campfire (owner asked 2026-10-20)
 - campfire-party-2 — pass-and-play (one phone) for Imposter / Who am I / Would you rather + campfire badges + campfire XP (split from campfire-party, Q1)
 - places-admin — web CRUD for places (split from places, Q1)
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- campfire-crocodile: tile glyph is a code-drawn placeholder (design/media/campfire-crocodile); 3 word packs (180 words,
+  uz/ru/en) are Claude drafts — owner review (famous-people picks, uz spellings e.g. «Nu, pogodi!», "Oppoqoy");
+  no sounds (sound player is still in `lessons` on main — add after campfire-xo merges); protocol v5 vs xo v4 —
+  whichever merges second bumps again; after a host restart a `ready` turn keeps its describer even if they never
+  return (host can only End); timer ring colours unchecked on device; `crocTurn` app test sets `jest.setTimeout(20000)`
+  (5 s timeouts under heavy machine load, also seen in levels/places/lessons/auth suites); `mafia/GameOver.tsx`
+  exports `Confetti`; iOS not built; `graphify` not on PATH — app graph not refreshed (2026-10-20)
 - campfire-xo: tile glyph is a code-drawn placeholder (design/media/campfire-xo); copy `camp.games.xoMeta` "2 · 1–5 min"
   (ru/uz) added by the agent — owner OK pending; a third phone sees the Mafia "Game in progress" text for the whole
   series; joiner-side final score / "Waiting for the host" covered by a component test only; mute stays under the
