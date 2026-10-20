@@ -140,6 +140,8 @@ content.
 - Q9 (owner, 2026-10-20): slice 2 may update 3 existing tests to the AC4/AC5 contract — levels-api.e2e tier
   `required: 6` (lines 70/92), game-config.spec stub repo (published-count method), lessons-admin.e2e fake image key
   (lines 186–200) — and add `S3_*` placeholders to `test/setup/postgres.ts` e2eEnv. No deletions or skips.
+- Q10 (owner, 2026-10-20): `test/levels.e2e-spec.ts:95` gets setup only (6 published tier-2 lessons before the
+  award), assertions unchanged. MinIO docker images stay on `latest`.
 
 ## Open questions
 - none
