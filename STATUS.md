@@ -52,6 +52,12 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   (Android legacy/round/adaptive, iOS set). No XP / badges. 303/303 tests. Manual test by owner pending: AC1–AC8 on
   6+ phones (5 players + host) and iOS (2026-10-19)
 
+- camp camera (CampJoin QR scan) — fixed on irbis-app `fix/camp-camera` (from `feat/campfire-mafia`), app b34714e:
+  first tap shows the OS camera dialog (Android reports 'denied' before any request), Settings only after a denied
+  request; `VisionCamera_enableCodeScanner=true` (ML Kit was not linked → black preview) + R8 keep rules for
+  VisionCamera/CameraX/ML Kit. 306/306 tests; 1 join test edited (owner, 2026-10-20). Owner check on phone pending:
+  release APK scan works (2026-10-20)
+
 ## In progress
 - (none)
 
