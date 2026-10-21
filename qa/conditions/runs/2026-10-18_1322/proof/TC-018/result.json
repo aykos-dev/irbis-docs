@@ -1,0 +1,79 @@
+{
+ "meta": {
+  "title": "Card shows at most 3 reason lines, worst first (Thunderstorm leads)",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC7 + AC2 — up to 3 reasons, worst first, from templates",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE, no hazards; Sun: weather code 95, wind 40, rain chance 70 %, max 36 °C (four triggers); Sat MILD"
+  ],
+  "steps": [
+   "Seed the four-trigger fixture",
+   "Cold-start, open the place → check: card shown",
+   "Read the reason lines"
+  ],
+  "expected": [
+   "Chip 'Not now' with worried Irbis (`place.condition-mascot`) — UI tree + screenshot",
+   "`place.condition-reason.1` = 'Thunderstorm on Sunday'; reasons 2 and 3 exist; `place.condition-reason.4` is absent — UI tree",
+   "Reasons 2 and 3 are template lines of triggered rules (Strong wind / Rain likely / Heat) — UI tree"
+  ],
+  "caption": {
+   "expected": "Chip 'Not now' with worried Irbis (`place.condition-mascot`) — UI tree"
+  },
+  "focus": "place.condition",
+  "tc": "TC-018",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-018--p1--card-shows-at-most-3-reason-lines-worst-first-thunderstorm-leads"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 37.3,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE, no hazards; Sun: weather code 95, wind 40, rain chance 70 %, max 36 °C (four triggers); Sat MILD",
+  "1. seed",
+  "2. open place",
+  "3. read reasons"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "chip 'Not now'",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 31.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "reasons ['Thunderstorm on Sunday', 'Strong wind on Sunday — 40 km/h', 'Rain likely on Sunday — 70%']",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 36.8
+  },
+  "3": {
+   "ok": true,
+   "observed": "reasons 2-3 ['Strong wind on Sunday — 40 km/h', 'Rain likely on Sunday — 70%']",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 36.8
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "condition card shown",
+   "ok": true,
+   "seen": "place.condition",
+   "t": 29.5
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_card.png"
+ ]
+}

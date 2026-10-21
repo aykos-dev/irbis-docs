@@ -1,0 +1,78 @@
+{
+ "meta": {
+  "title": "Seasonal lock beats the forecast: 'Closed for the season · Opens in {Month}'",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 + AC3 — season bar closed this month → Seasonal lock, opensMonth = next non-closed month (wrapping)",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE, season bar: current Tashkent month and the next one 'closed', the other ten 'possible'",
+   "MILD forecast, no closure/override"
+  ],
+  "steps": [
+   "set_place season, seed MILD",
+   "Cold-start, open the place → check: card shown",
+   "Read the card"
+  ],
+  "expected": [
+   "Chip reads 'Seasonal lock' and title equals 'Closed for the season · Opens in {month after next}' — UI tree + screenshot",
+   "`place.condition-updated` ends with '· season' and no 'Good weather' line is shown (season beats forecast) — UI tree",
+   "QA event `condition_viewed` {status: seasonal_lock, source: season} — event log"
+  ],
+  "caption": {
+   "expected": "Chip reads 'Seasonal lock' and title equals 'Closed for the season · O"
+  },
+  "focus": "place.condition",
+  "tc": "TC-003",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-003--p0--seasonal-lock-beats-the-forecast-closed-for-the-season--opens-in-month"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 35.6,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE, season bar: current Tashkent month and the next one 'closed', the other ten 'possible' · MILD forecast, no closure/override",
+  "1. season + seed",
+  "2. open place",
+  "3. read card"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "chip 'Seasonal lock', title 'Closed for the season · Opens in December', want 'Closed for the season · Opens in December'",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 34.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "updated 'Updated just now · season'",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 35.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "event {'slug': 'patandazboshi-1824', 'status': 'seasonal_lock', 'source': 'season', 'ageMin': 0}",
+   "proof": [],
+   "t": 35.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "condition card shown",
+   "ok": true,
+   "seen": "place.condition",
+   "t": 32.3
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_card.png"
+ ]
+}

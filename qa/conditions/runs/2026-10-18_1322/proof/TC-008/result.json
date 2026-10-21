@@ -1,0 +1,59 @@
+{
+ "meta": {
+  "title": "Condition fetch error: the card shows error + retry, the rest of Place still renders, retry recovers",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC8 — error card + retry; rest of Place renders",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done, location granted + mock Tashkent",
+   "Peak PLACE with a Go forecast",
+   "Explore list loaded (place data cached), then the API is made unreachable with `adb reverse --remove` (app still thinks it is online)"
+  ],
+  "steps": [
+   "Seed, open Explore → check: list loaded",
+   "Remove the adb reverse, tap the place card → check: `place.screen` and `place.name` shown (else Blocked)",
+   "Read the card",
+   "Restore the reverse, tap `place.condition-retry`"
+  ],
+  "expected": [
+   "`place.condition-error` shows 'Couldn't load the condition' with `place.condition-retry` — UI tree + screenshot",
+   "`place.name` and the level card (`place.screen`) are still rendered — UI tree",
+   "After the reverse is back and Retry is tapped, `place.condition` shows within 10 s — UI tree"
+  ],
+  "caption": {
+   "expected": "`place.condition-error` shows 'Couldn't load the condition' with `plac"
+  },
+  "focus": "place.condition-error",
+  "tc": "TC-008",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-008--p1--condition-fetch-error-the-card-shows-error--retry-the-rest-of-place-still-renders-retry-recovers"
+ },
+ "status": "blocked",
+ "reason": "checkpoint 'place opened with its name' did not hold: place.screen/name missing (place detail needs the API)",
+ "proposed": "Blocked",
+ "duration_s": 32.8,
+ "events": 6,
+ "done": [
+  "Guest, onboarding done, location granted + mock Tashkent · Peak PLACE with a Go forecast · Explore list loaded (place data cached), then the API is made unreachable with `adb reverse --remove` (app still thinks it is online)",
+  "1. seed + Explore",
+  "2. API unreachable, open place"
+ ],
+ "results": {},
+ "checkpoints": [
+  {
+   "name": "Explore opened",
+   "ok": true,
+   "seen": "no explore.count",
+   "t": 14.5
+  },
+  {
+   "name": "place opened with its name",
+   "ok": false,
+   "seen": "place.screen/name missing (place detail needs the API)",
+   "t": 32.5
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

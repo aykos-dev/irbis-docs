@@ -1,0 +1,8 @@
+13:29:01.025 tab_opened {"tab": "path"}
+13:29:01.575 tab_opened {"tab": "profile"}
+13:29:11.796 tab_opened {"tab": "path"}
+13:29:12.360 tab_opened {"tab": "explore"}
+13:29:12.372 location_permission {"result": "granted"}
+13:29:12.565 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
+13:29:36.250 place_viewed {"slug": "axsarsoy-1519", "requiredLevel": 2, "qualifies": false}
+13:29:36.286 condition_viewed {"slug": "axsarsoy-1519", "status": "go", "source": "forecast", "ageMin": 0}

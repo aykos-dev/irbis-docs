@@ -1,0 +1,38 @@
+13:29:59.139 tab_opened {"tab": "path"}
+13:29:59.793 tab_opened {"tab": "profile"}
+13:30:04.503 tab_opened {"tab": "path"}
+13:30:04.950 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:04.950 condition_viewed {"slug": "patandazboshi-1824", "status": "go", "source": "forecast", "ageMin": 0}
+13:30:06.839 tab_opened {"tab": "path"}
+13:30:07.399 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:07.399 condition_viewed {"slug": "patandazboshi-1824", "status": "caution", "source": "forecast", "ageMin": 0}
+13:30:09.646 tab_opened {"tab": "path"}
+13:30:10.175 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:10.218 condition_viewed {"slug": "patandazboshi-1824", "status": "go", "source": "forecast", "ageMin": 0}
+13:30:12.234 tab_opened {"tab": "path"}
+13:30:12.622 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:12.622 condition_viewed {"slug": "patandazboshi-1824", "status": "not_now", "source": "forecast", "ageMin": 0}
+13:30:15.154 tab_opened {"tab": "path"}
+13:30:15.731 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:15.731 condition_viewed {"slug": "patandazboshi-1824", "status": "go", "source": "forecast", "ageMin": 0}
+13:30:17.624 tab_opened {"tab": "path"}
+13:30:18.163 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:18.163 condition_viewed {"slug": "patandazboshi-1824", "status": "not_now", "source": "forecast", "ageMin": 0}
+13:30:20.700 tab_opened {"tab": "path"}
+13:30:21.242 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:21.242 condition_viewed {"slug": "patandazboshi-1824", "status": "go", "source": "forecast", "ageMin": 0}
+13:30:23.207 tab_opened {"tab": "path"}
+13:30:23.777 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:23.777 condition_viewed {"slug": "patandazboshi-1824", "status": "caution", "source": "forecast", "ageMin": 0}
+13:30:26.014 tab_opened {"tab": "path"}
+13:30:26.589 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:26.589 condition_viewed {"slug": "patandazboshi-1824", "status": "go", "source": "forecast", "ageMin": 0}
+13:30:28.512 tab_opened {"tab": "path"}
+13:30:29.042 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:29.042 condition_viewed {"slug": "patandazboshi-1824", "status": "caution", "source": "forecast", "ageMin": 0}
+13:30:31.442 tab_opened {"tab": "path"}
+13:30:32.106 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:32.106 condition_viewed {"slug": "patandazboshi-1824", "status": "go", "source": "forecast", "ageMin": 0}
+13:30:34.032 tab_opened {"tab": "path"}
+13:30:34.461 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:30:34.461 condition_viewed {"slug": "patandazboshi-1824", "status": "caution", "source": "forecast", "ageMin": 0}

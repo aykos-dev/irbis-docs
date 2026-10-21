@@ -1,0 +1,53 @@
+{
+ "meta": {
+  "title": "Place without hazards keeps 'Hazards not set yet'",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC7 — places without hazards keep the empty line",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE with hazards = [] and a MILD forecast"
+  ],
+  "steps": [
+   "set_place hazards [], seed",
+   "Cold-start, open the place, scroll to the hazards section"
+  ],
+  "expected": [
+   "Text 'Hazards not set yet' is shown and no `place.hazard.<h>` row exists — UI tree + screenshot"
+  ],
+  "caption": {
+   "expected": "Text 'Hazards not set yet' is shown and no `place.hazard.<h>` row exis"
+  },
+  "focus": "place.screen",
+  "tc": "TC-007",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-007--p1--place-without-hazards-keeps-hazards-not-set-yet"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 23.1,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE with hazards = [] and a MILD forecast",
+  "1. seed",
+  "2. open place"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "empty line True, rows []",
+   "proof": [
+    "1_hazards.png"
+   ],
+   "t": 22.8
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": [
+  "0_open.png",
+  "1_hazards.png"
+ ]
+}

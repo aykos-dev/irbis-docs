@@ -1,0 +1,87 @@
+{
+ "meta": {
+  "title": "Closure beats a mild forecast: Not now, admin text (uz fallback in English), worried Irbis",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 + AC3 — closure → Not now, source closure, admin text in app locale with uz fallback, mascot",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE with MILD forecast",
+   "Admin closure created via API: official, reason uz 'QA Yopiq: toshqin', no ru/en text"
+  ],
+  "steps": [
+   "Seed MILD, create the closure through the admin API",
+   "Cold-start, open the place → check: card shown",
+   "Read the card"
+  ],
+  "expected": [
+   "Chip reads 'Not now', title 'Not now this weekend', `place.condition-mascot` present — UI tree + screenshot",
+   "`place.condition-updated` ends with '· closure' — UI tree",
+   "`place.condition-reason.1` equals the uz text 'QA Yopiq: toshqin' (no en text → uz fallback) and there is no reason.2 and no 'Good weather' line — UI tree",
+   "QA event `condition_viewed` {status: not_now, source: closure} — event log"
+  ],
+  "caption": {
+   "expected": "Chip reads 'Not now', title 'Not now this weekend', `place.condition-m"
+  },
+  "focus": "place.condition",
+  "tc": "TC-002",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-002--p0--closure-beats-a-mild-forecast-not-now-admin-text-uz-fallback-in-english-worried-irbis"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 42.6,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE with MILD forecast · Admin closure created via API: official, reason uz 'QA Yopiq: toshqin', no ru/en text",
+  "1. seed + closure",
+  "2. open place",
+  "3. read card"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "chip 'Not now', mascot True",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 38.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "updated 'Updated just now · closure'",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 38.7
+  },
+  "3": {
+   "ok": true,
+   "observed": "reason.1 'QA Yopiq: toshqin'",
+   "proof": [
+    "1_card.png"
+   ],
+   "t": 42.1
+  },
+  "4": {
+   "ok": true,
+   "observed": "event {'slug': 'patandazboshi-1824', 'status': 'not_now', 'source': 'closure', 'ageMin': 0}",
+   "proof": [],
+   "t": 42.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "condition card shown",
+   "ok": true,
+   "seen": "place.condition",
+   "t": 34.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_card.png"
+ ]
+}

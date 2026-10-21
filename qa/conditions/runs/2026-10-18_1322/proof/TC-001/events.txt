@@ -1,0 +1,4 @@
+13:23:36.423 tab_opened {"tab": "path"}
+13:23:46.868 tab_opened {"tab": "path"}
+13:23:54.116 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:23:54.117 condition_viewed {"slug": "patandazboshi-1824", "status": "go", "source": "forecast", "ageMin": 0}

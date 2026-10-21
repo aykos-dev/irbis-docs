@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "title": "Weather card: per window day temps, wind + rain chance of the worst day, Open-Meteo credit",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 + AC2 — 'Weather this weekend', '{day} {max}° / {min}°', worst-day wind and rain, credit; window = coming weekend (Sunday → Sun only)",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE, no hazards, season open",
+   "Forecast: Sat 27°/14°; Sun 31°/18°, wind 40 km/h (Caution WIND), rain chance 45 %; Sat wind 10, rain 10 %. Worst day = Sun"
+  ],
+  "steps": [
+   "Seed the fixture",
+   "Cold-start, open the place, scroll to the weather card → check: `place.weather` shown",
+   "Read the card"
+  ],
+  "expected": [
+   "For each day of the window (Sat+Sun, or Sun only when today is Sunday in Tashkent) `place.weather-day.<sat|sun>` shows '{Sat|Sun} {max}° / {min}°' (27°/14°, 31°/18°); `place.weather-day.sat` is absent when the window is Sun only — UI tree + screenshot",
+   "`place.weather-summary` contains 'Wind 40 km/h' and 'Rain 45%' (worst day = Sun) — UI tree",
+   "'Weather data by Open-Meteo.com' is shown — UI tree"
+  ],
+  "caption": {
+   "expected": "For each day of the window (Sat+Sun, or Sun only when today is Sunday "
+  },
+  "focus": "place.weather",
+  "tc": "TC-004",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-004--p0--weather-card-per-window-day-temps-wind--rain-chance-of-the-worst-day-open-meteo-credit"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 34.4,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE, no hazards, season open · Forecast: Sat 27°/14°; Sun 31°/18°, wind 40 km/h (Caution WIND), rain chance 45 %; Sat wind 10, rain 10 %. Worst day = Sun",
+  "1. seed",
+  "2. open place",
+  "3. read card"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "window ['sun'], got {'sat': None, 'sun': 'Sun 31° / 18°'}",
+   "proof": [
+    "1_weather.png"
+   ],
+   "t": 32.7
+  },
+  "2": {
+   "ok": true,
+   "observed": "summary 'Wind 40 km/h · Rain 45%'",
+   "proof": [
+    "1_weather.png"
+   ],
+   "t": 33.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "credit text present",
+   "proof": [
+    "1_weather.png"
+   ],
+   "t": 34.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "weather card shown",
+   "ok": true,
+   "seen": "no place.weather",
+   "t": 30.0
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "0_open.png",
+  "1_weather.png"
+ ]
+}

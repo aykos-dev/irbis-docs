@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Forecast older than 6 h keeps the last status and shows its age",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC4 + AC7 — stale (> 6 h) keeps status; 'Updated 7 h ago'. The time is set in the DB, not waited",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE with a Caution forecast (Sun wind 40); place_conditions.computed_at set to 7 h ago in the LOCAL DB"
+  ],
+  "steps": [
+   "Seed Caution with computed_at 7 h back",
+   "Cold-start, open the place → check: card shown"
+  ],
+  "expected": [
+   "Chip still reads 'Caution' (status kept) and `place.condition-updated` reads 'Updated 7 h ago · forecast' — UI tree + screenshot",
+   "QA event `condition_viewed` {status: caution, ageMin between 415 and 425} — event log"
+  ],
+  "caption": {
+   "expected": "Chip still reads 'Caution' (status kept) and `place.condition-updated`"
+  },
+  "focus": "place.condition",
+  "tc": "TC-012",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-012--p1--forecast-older-than-6-h-keeps-the-last-status-and-shows-its-age"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 32.4,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE with a Caution forecast (Sun wind 40); place_conditions.computed_at set to 7 h ago in the LOCAL DB",
+  "1. seed stale",
+  "2. open place"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "chip 'Caution', updated 'Updated 7 h ago · forecast'",
+   "proof": [
+    "1_stale.png"
+   ],
+   "t": 32.0
+  },
+  "2": {
+   "ok": true,
+   "observed": "event {'slug': 'patandazboshi-1824', 'status': 'caution', 'source': 'forecast', 'ageMin': 422}",
+   "proof": [],
+   "t": 32.0
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "condition card shown",
+   "ok": true,
+   "seen": "place.condition",
+   "t": 30.6
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_stale.png"
+ ]
+}

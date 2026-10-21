@@ -1,0 +1,58 @@
+{
+ "meta": {
+  "title": "Offline with nothing cached: condition card shows the offline message + Try again, retry recovers",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC8 — nothing cached offline → offline message + retry",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done, location granted + mock Tashkent",
+   "A waterfall PLACE the app has not opened before (picked by time offset; a warm cache → Blocked)",
+   "Explore list loaded online (place list data cached)"
+  ],
+  "steps": [
+   "Open Explore online → check: list loaded",
+   "Wi-Fi and data off, tap the place card → check: `place.screen`, `place.name`",
+   "Read the card",
+   "Network on, tap `place.condition-retry`"
+  ],
+  "expected": [
+   "`place.condition-offline` shows the text You're offline — condition not loaded with `place.condition-retry` — UI tree + screenshot",
+   "After network on and Retry, `place.condition` or `place.condition-empty` shows within 10 s — UI tree"
+  ],
+  "caption": {
+   "expected": "`place.condition-offline` shows the text You're offline — condition no"
+  },
+  "focus": "place.condition-offline",
+  "tc": "TC-010",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-010--p1--offline-with-nothing-cached-condition-card-shows-the-offline-message--try-again-retry-recovers"
+ },
+ "status": "blocked",
+ "reason": "checkpoint 'place opened offline' did not hold: place data not available offline",
+ "proposed": "Blocked",
+ "duration_s": 39.1,
+ "events": 8,
+ "done": [
+  "Guest, onboarding done, location granted + mock Tashkent · A waterfall PLACE the app has not opened before (picked by time offset; a warm cache → Blocked) · Explore list loaded online (place list data cached)",
+  "1. Explore online",
+  "2. offline, open place"
+ ],
+ "results": {},
+ "checkpoints": [
+  {
+   "name": "Explore opened",
+   "ok": true,
+   "seen": "no explore.count",
+   "t": 14.4
+  },
+  {
+   "name": "place opened offline",
+   "ok": false,
+   "seen": "place data not available offline",
+   "t": 36.7
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

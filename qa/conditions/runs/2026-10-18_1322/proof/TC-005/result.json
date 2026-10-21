@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "title": "Hazards now lists each place hazard with its level (Raised / Open)",
+  "priority": "P0",
+  "group": "Core",
+  "requirement": "AC7 + AC2 — hazard levels: rain 12 mm → mudslide/flood Raised, road Open",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE with hazards mudslide, flood, road; season open",
+   "Forecast: window day Sun rain 12 mm (≥10 → Caution, < 30), everything else MILD"
+  ],
+  "steps": [
+   "set_place hazards, seed the fixture",
+   "Cold-start, open the place, scroll to 'Hazards now' → check: `place.hazards-now` shown",
+   "Read the three rows"
+  ],
+  "expected": [
+   "`place.hazard.mudslide` and `place.hazard.flood` exist and their `.level` reads 'Raised' — UI tree + screenshot",
+   "`place.hazard.road` exists and its `.level` reads 'Open' — UI tree",
+   "The three levels equal the API `GET /v1/places/{id}/condition` hazards (raised, raised, open) and no row for a hazard the place lacks (`place.hazard.heat`) — API + UI tree"
+  ],
+  "caption": {
+   "expected": "`place.hazard.mudslide` and `place.hazard.flood` exist and their `.lev"
+  },
+  "focus": "place.hazards-now",
+  "tc": "TC-005",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-005--p0--hazards-now-lists-each-place-hazard-with-its-level-raised--open"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 37.5,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE with hazards mudslide, flood, road; season open · Forecast: window day Sun rain 12 mm (≥10 → Caution, < 30), everything else MILD",
+  "1. seed",
+  "2. open place",
+  "3. read rows"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "levels {'mudslide': 'Raised', 'flood': 'Raised', 'road': 'Open'}",
+   "proof": [
+    "1_hazards.png"
+   ],
+   "t": 36.3
+  },
+  "2": {
+   "ok": true,
+   "observed": "road 'Open'",
+   "proof": [
+    "1_hazards.png"
+   ],
+   "t": 36.3
+  },
+  "3": {
+   "ok": true,
+   "observed": "api {'mudslide': 'raised', 'flood': 'raised', 'road': 'open'}, heat row False",
+   "proof": [
+    "1_hazards.png"
+   ],
+   "t": 37.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "hazards list shown",
+   "ok": true,
+   "seen": "no place.hazards-now",
+   "t": 33.9
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "0_open.png",
+  "1_hazards.png"
+ ]
+}

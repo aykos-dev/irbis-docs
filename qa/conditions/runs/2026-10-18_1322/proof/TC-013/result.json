@@ -1,0 +1,117 @@
+{
+ "meta": {
+  "title": "Rule boundaries seen on the card: wind 34/35, gusts 59/60, rain 19/20 mm, chance 59/60 %, max 34/35 °C, min -9/-10 °C",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC2 — thresholds are inclusive (≥ / ≤); Go below, Caution/Not now at the value",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE, no hazards, season open; each fixture changes one field on Sun (window-safe) and leaves the rest MILD"
+  ],
+  "steps": [
+   "For each pair seed the below-value fixture, cold-start and read the chip; seed the at-value fixture, cold-start and read the chip"
+  ],
+  "expected": [
+   "Wind 34 → 'Go', 35 → 'Caution' — chip",
+   "Gusts 59 → 'Go', 60 → 'Not now' — chip",
+   "Precipitation 19 mm → 'Go', 20 mm → 'Not now' — chip",
+   "Rain chance 59 % → 'Go', 60 % → 'Caution' — chip",
+   "Max temperature 34 → 'Go', 35 → 'Caution' — chip",
+   "Min temperature -9 → 'Go', -10 → 'Caution' — chip"
+  ],
+  "caption": {
+   "expected": "Wind 34 → 'Go', 35 → 'Caution' — chip"
+  },
+  "focus": "place.condition-status",
+  "tc": "TC-013",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-013--p1--rule-boundaries-seen-on-the-card-wind-3435-gusts-5960-rain-1920-mm-chance-5960--max-3435-c-min--9-10-c"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 38.9,
+ "events": 38,
+ "done": [
+  "Guest, onboarding done · Peak PLACE, no hazards, season open; each fixture changes one field on Sun (window-safe) and leaves the rest MILD",
+  "1. wind_speed_10m_max: 34 then 35",
+  "2. wind_gusts_10m_max: 59 then 60",
+  "3. precipitation_sum: 19 then 20",
+  "4. precipitation_probability_max: 59 then 60",
+  "5. temperature_2m_max: 34 then 35",
+  "6. temperature_2m_min: -9 then -10"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "wind_speed_10m_max: 34→'Go', 35→'Caution'",
+   "proof": [
+    "1_last.png"
+   ],
+   "t": 11.4
+  },
+  "2": {
+   "ok": true,
+   "observed": "wind_gusts_10m_max: 59→'Go', 60→'Not now'",
+   "proof": [
+    "2_last.png"
+   ],
+   "t": 16.9
+  },
+  "3": {
+   "ok": true,
+   "observed": "precipitation_sum: 19→'Go', 20→'Not now'",
+   "proof": [
+    "3_last.png"
+   ],
+   "t": 22.4
+  },
+  "4": {
+   "ok": true,
+   "observed": "precipitation_probability_max: 59→'Go', 60→'Caution'",
+   "proof": [
+    "4_last.png"
+   ],
+   "t": 27.8
+  },
+  "5": {
+   "ok": true,
+   "observed": "temperature_2m_max: 34→'Go', 35→'Caution'",
+   "proof": [
+    "5_last.png"
+   ],
+   "t": 33.1
+  },
+  "6": {
+   "ok": true,
+   "observed": "temperature_2m_min: -9→'Go', -10→'Caution'",
+   "proof": [
+    "6_last.png"
+   ],
+   "t": 38.6
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": [
+  "1_wind_speed_10m_max_34.png",
+  "1_wind_speed_10m_max_35.png",
+  "1_last.png",
+  "2_wind_gusts_10m_max_59.png",
+  "2_wind_gusts_10m_max_60.png",
+  "2_last.png",
+  "3_precipitation_sum_19.png",
+  "3_precipitation_sum_20.png",
+  "3_last.png",
+  "4_precipitation_probability_max_59.png",
+  "4_precipitation_probability_max_60.png",
+  "4_last.png",
+  "5_temperature_2m_max_34.png",
+  "5_temperature_2m_max_35.png",
+  "5_last.png",
+  "6_temperature_2m_min_-9.png",
+  "6_temperature_2m_min_-10.png",
+  "6_last.png"
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "meta": {
+  "title": "Recompute now (live Open-Meteo): 202, forecasts stored for every place, weekend matches the window",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC1 + AC5 — recompute fetches the Open-Meteo forecast, stores it, recomputes every place",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "API up, 71 places, internet reachable (checkpoint: else Blocked)",
+   "QA admin token"
+  ],
+  "steps": [
+   "POST /v1/admin/conditions/recompute",
+   "Poll the DB ≤ 10 s until place_forecasts holds a row for every place",
+   "GET a place condition"
+  ],
+  "expected": [
+   "Response 202 with `startedAt` — API response",
+   "place_forecasts rows = place count and place_conditions rows = place count within 10 s — LOCAL DB",
+   "GET /v1/places/{id}/condition: `forecastAt` within the last 5 min and `weekend` has one entry per day of the window (Sun only → 1, otherwise 2) — API response"
+  ],
+  "caption": {
+   "expected": "Response 202 with `startedAt` — API response"
+  },
+  "tc": "TC-014",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-014--p1--recompute-now-live-open-meteo-202-forecasts-stored-for-every-place-weekend-matches-the-window"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 7.7,
+ "events": 2,
+ "done": [
+  "API up, 71 places, internet reachable (checkpoint: else Blocked) · QA admin token",
+  "1. recompute",
+  "2. poll DB",
+  "3. read place"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "status 202",
+   "proof": [],
+   "t": 5.8
+  },
+  "2": {
+   "ok": true,
+   "observed": "forecasts 71/71, conditions 71/71",
+   "proof": [],
+   "t": 7.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "forecast age 2s, weekend days 1, window 1",
+   "proof": [],
+   "t": 7.4
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "Open-Meteo reachable (forecasts stored)",
+   "ok": true,
+   "seen": "71 forecasts",
+   "t": 7.1
+  }
+ ],
+ "notes": [],
+ "shots": []
+}

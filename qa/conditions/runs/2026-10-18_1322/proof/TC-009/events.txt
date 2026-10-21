@@ -1,0 +1,14 @@
+13:28:28.542 place_viewed {"slug": "patandazboshi-1824", "requiredLevel": 2, "qualifies": false}
+13:28:28.543 condition_viewed {"slug": "patandazboshi-1824", "status": "go", "source": "forecast", "ageMin": 0}
+13:28:29.972 tab_opened {"tab": "path"}
+13:28:30.610 tab_opened {"tab": "profile"}
+13:28:41.193 tab_opened {"tab": "path"}
+13:28:41.741 tab_opened {"tab": "explore"}
+13:28:41.749 location_permission {"result": "granted"}
+13:28:41.928 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
+13:28:43.064 place_viewed {"slug": "ozodbosh-1014", "requiredLevel": 1, "qualifies": true}
+13:28:43.064 condition_viewed {"slug": "ozodbosh-1014", "status": "caution", "source": "forecast", "ageMin": 0}
+13:28:48.518 tab_opened {"tab": "path"}
+13:28:54.517 tab_opened {"tab": "explore"}
+13:28:54.529 location_permission {"result": "granted"}
+13:28:57.022 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}

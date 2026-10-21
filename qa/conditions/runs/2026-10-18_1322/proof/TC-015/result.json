@@ -1,0 +1,63 @@
+{
+ "meta": {
+  "title": "Public condition endpoint and list field: no token, 404 / 400, conditionStatus on list items",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC4 — GET /v1/places/{id}/condition public; 404 PLACE_NOT_FOUND; 400 non-uuid; list items carry conditionStatus",
+  "env": "API · auto (no device)",
+  "precondition": [
+   "API up, 71 places",
+   "Peak PLACE with a Go forecast fixture (seeded), another with the forecast cleared"
+  ],
+  "steps": [
+   "GET the condition without a token",
+   "GET with an unknown uuid and with 'not-a-uuid'",
+   "GET /v1/places and read both places' items"
+  ],
+  "expected": [
+   "200 and the body has placeId, status 'go', source 'forecast', reasons, hazards, weekend, forecastAt, computedAt — API response",
+   "Unknown uuid → 404 code PLACE_NOT_FOUND; 'not-a-uuid' → 400 code VALIDATION_FAILED — API response",
+   "List item of the Go place has conditionStatus 'go'; item of the cleared place has it null or absent — API response"
+  ],
+  "caption": {
+   "expected": "200 and the body has placeId, status 'go', source 'forecast', reasons,"
+  },
+  "tc": "TC-015",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-015--p1--public-condition-endpoint-and-list-field-no-token-404--400-conditionstatus-on-list-items"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 6.4,
+ "events": 2,
+ "done": [
+  "API up, 71 places · Peak PLACE with a Go forecast fixture (seeded), another with the forecast cleared",
+  "1. no token",
+  "2. 404 / 400",
+  "3. list"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "status 200, keys missing []",
+   "proof": [],
+   "t": 6.1
+  },
+  "2": {
+   "ok": true,
+   "observed": "404 PLACE_NOT_FOUND, 400 VALIDATION_FAILED",
+   "proof": [],
+   "t": 6.1
+  },
+  "3": {
+   "ok": true,
+   "observed": "A go, B None",
+   "proof": [],
+   "t": 6.1
+  }
+ },
+ "checkpoints": [],
+ "notes": [],
+ "shots": []
+}

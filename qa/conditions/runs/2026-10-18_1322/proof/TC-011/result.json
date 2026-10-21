@@ -1,0 +1,66 @@
+{
+ "meta": {
+  "title": "Status null: grey 'Condition not available yet', no chip",
+  "priority": "P1",
+  "group": "Variants",
+  "requirement": "AC7 — status null → grey empty card",
+  "env": "Android · auto (adb)",
+  "precondition": [
+   "Guest, onboarding done",
+   "Peak PLACE with no forecast, no closure/override, season open (status null)"
+  ],
+  "steps": [
+   "set_place season open, delete the forecast and recompute",
+   "Cold-start, open the place → check: a card testID shows"
+  ],
+  "expected": [
+   "`place.condition-empty` shows 'Condition not available yet'; `place.condition-status` is absent — UI tree + screenshot",
+   "API `GET /v1/places/{id}/condition` status is null — API"
+  ],
+  "caption": {
+   "expected": "`place.condition-empty` shows 'Condition not available yet'; `place.co"
+  },
+  "focus": "place.condition-empty",
+  "tc": "TC-011",
+  "plan": "Test_conditions.md",
+  "anchor": "tc-011--p1--status-null-grey-condition-not-available-yet-no-chip"
+ },
+ "status": "done",
+ "reason": null,
+ "proposed": "Pass",
+ "duration_s": 9.3,
+ "events": 5,
+ "done": [
+  "Guest, onboarding done · Peak PLACE with no forecast, no closure/override, season open (status null)",
+  "1. clear forecast",
+  "2. open place"
+ ],
+ "results": {
+  "1": {
+   "ok": true,
+   "observed": "card place.condition-empty",
+   "proof": [
+    "1_empty.png"
+   ],
+   "t": 8.9
+  },
+  "2": {
+   "ok": true,
+   "observed": "api status None",
+   "proof": [],
+   "t": 9.1
+  }
+ },
+ "checkpoints": [
+  {
+   "name": "a condition card shown",
+   "ok": true,
+   "seen": "place.condition-empty",
+   "t": 8.7
+  }
+ ],
+ "notes": [],
+ "shots": [
+  "1_empty.png"
+ ]
+}

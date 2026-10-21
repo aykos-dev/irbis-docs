@@ -1,0 +1,4 @@
+13:36:24.522 tab_opened {"tab": "path"}
+13:36:24.911 tab_opened {"tab": "explore"}
+13:36:24.922 location_permission {"result": "granted"}
+13:36:25.158 explore_loaded {"count": 71, "origin": "device", "withStatus": 70}
