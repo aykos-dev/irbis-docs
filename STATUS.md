@@ -3,6 +3,11 @@
 Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item.
 
 ## Done
+- active-trip (2026-10-21): ActiveTrip screen (map, live km / climb / elapsed, foreground tracking), 5-min location
+  pings, public live link + irbis-web page `/t/{token}`, free waypoint check-ins (+10 XP, 500 m / 10 min / max 5,
+  offline queue), SOS 3 s hold (server SMS, offline SMS app, call button to `SOS_CALL_NUMBER`), check out + summary.
+  api `feat/active-trip` 3ef742c, 6139f92 · app `feat/active-trip` 1588a6c, a85febe · web `feat/active-trip` 89d75c4
+  · docs 013a3f9. Branches stack on `feat/trip-plan` (api, app). Manual test by owner pending.
 - trip-plan (2026-10-21): plan from Place ("Start adventure"), date/time pickers, sunset buffer, emergency contact
   (encrypted, prefilled), server gear rules, save ahead or start (one active), share sheet, start location fix, Home
   trip card (check-out, change return time, planned start/edit/delete), auto-alert SMS job at back-by + 60 min.
@@ -123,6 +128,16 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- active-trip: owner OK pending for one test assertion edit (app `trip-plan/card.test.tsx:215`, `trip_checked_out`
+  gains `from: 'card'`, asked by the brief) and web fixture `test/session.tsx` (new MeResponseDto fields, synthetic
+  values); owner adds `# SOS_CALL_NUMBER=+998XXXXXXXXX` to irbis-api `.env.example` (agents can't open `.env*`) and
+  the real value to `.env` — no number = no call button; confirm that line is staffed 24/7 (replaces 112); SOS SMS
+  goes through the fake SmsSender; `WEB_PUBLIC_URL` must point at a public irbis-web deploy before contacts can open
+  links; tracking is foreground only (screen off = no distance); live page title says "Irbis Admin", `<html lang>`
+  stays en, late badge is yellow, retry text from `common.errors.retry`; summary shows "+0 XP" when the daily cap
+  trims a waypoint; Home-card check-out doesn't clear the stored track (ignored by the next trip); waypoint save +
+  XP award are not one transaction (idempotent); SOS cooldown counts failed sends; ru/uz copy is Claude drafts;
+  iOS not built (2026-10-21)
 - trip-plan: auto-alert goes through the **fake** SmsSender (logs only) — real provider + ADR needed before launch;
   `SmsSender.sendText` added to auth (fake logs user id + text length); "Open it" link on the 409 "trip in progress"
   toast not built (would need the slice-1 plan.test toast assertion changed — owner call); flaky app test

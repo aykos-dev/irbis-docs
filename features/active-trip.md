@@ -1,6 +1,6 @@
 # active-trip
 
-- Status: Approved
+- Status: Done
 - Surfaces: api | app | web (one public page only)
 - Related ADRs: ADR-001 (log-in for trips; SOS never needs an account), ADR-003 (api style), ADR-004 (jobs)
 - Requirements: Product Overview § Core loop step 4 (Active trip), § Safety (Active trip, SOS), § XP (Waypoint 10) ·
