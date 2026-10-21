@@ -9,6 +9,11 @@ pass, 3 fail, 1 blocked, 2 not run**, and found **6 bugs: 0 blocker, 4 major, 2 
 
 The core bugs (CORE-*) belong to the shared Campfire join/room layer, so they affect every game.
 
+**Fix status (2026-10-21): all 6 fixed.** The shared fixes (CORE-1..3, MAF-1..2 and the shared XO-1 lobby/Back
+guard) are in irbis-app `fix/campfire-bugs` (from `feat/campfire-crocodile`) `e4ab3a3`, cherry-picked to
+`fix/campfire-bugs-xo` (from `feat/campfire-xo`) `07396bd`; the XO regression test is `9213400` on the same branch.
+`npm run check` is green on both branches (72 suites, 354 tests on `fix/campfire-bugs-xo`). Nothing is pushed.
+
 ---
 
 ## CORE-1: Joining by code fails with "Room not found" right after the room was found
@@ -30,6 +35,8 @@ The core bugs (CORE-*) belong to the shared Campfire join/room layer, so they af
 - **Evidence:** `proof/core_join_error_B.jpg`, `logs/core_join_B_logcat.txt`, `logs/relay.log` (23:12:35 attempt:
   probe only).
 - **Reproducibility:** 4/4 when tapped within 12 s. 4/4 succeeded when Join was tapped 30 s after the card appeared.
+- **Status:** fixed in `fix/campfire-bugs` `e4ab3a3` / `fix/campfire-bugs-xo` `07396bd` (native `connectTimeout`
+  on probes, first join attempt waits 15 s, reconnects 4 s).
 - **Possible area:** `join/discovery.ts` `scanSubnet` stops starting new probes but leaves up to `SCAN_PARALLEL` (32)
   native connects queued. `join/playerClient.ts` `connect()` gives up after `RETRY_INTERVAL_MS` (2 s), before its own
   connect reaches a free native thread. The tcp-socket native executor looks like it has 2 threads (from logcat).
@@ -49,6 +56,8 @@ The core bugs (CORE-*) belong to the shared Campfire join/room layer, so they af
 - **Evidence:** `logs/core_crash_B_1.txt`, `logs/core_crash_B_2.txt`, `logs/core_crash_B_3.txt`,
   `proof/core_join_found_B.jpg` (home screen after the crash).
 - **Reproducibility:** 4 crashes in 6 failed-join sequences.
+- **Status:** fixed in `fix/campfire-bugs` `e4ab3a3` / `fix/campfire-bugs-xo` `07396bd` (new `connectCamp` helper
+  destroys only after the native connect attempt has settled).
 - **Possible area:** a JS `destroy()` / `write()` on a socket the native side already dropped (the join socket that
   timed out in CORE-1). The native module throws on its executor thread, which kills the process.
 
@@ -73,6 +82,8 @@ The core bugs (CORE-*) belong to the shared Campfire join/room layer, so they af
   connection closes with no data), `proof/core_removed_B_try2.jpg` (try 2: B went to CampHub).
 - **Reproducibility:** `removed` lost 2/3 (B 1/2, bot 1/1). `rejected` lost 3/10 direct, 6/10 via relay. **Please
   confirm on two real phones:** part of this could come from the emulator `adb forward` path.
+- **Status:** fixed in `fix/campfire-bugs` `e4ab3a3` / `fix/campfire-bugs-xo` `07396bd` (last messages flush
+  before hang-up; freed seat tokens are tombstoned so a retry gets `removed`, never a new seat).
 - **Possible area:** `room/hostServer.ts`: `freed()` / the `rejected` path call `send(conn, …)` and then `hangUp(conn)`
   right away. A `destroy()` straight after `write()` can drop unflushed data. Ending the socket after the write
   flushes (`end()`), or a short delay, would keep it. Also, the client keeps retrying with a token the host has freed.
@@ -92,6 +103,8 @@ The core bugs (CORE-*) belong to the shared Campfire join/room layer, so they af
 - **Evidence:** `proof/maf22_exiled_night_label_A.jpg`, `proof/maf22_left_row_A_r2.jpg`,
   `proof/maf22_left_out_B_r2.jpg`, `bots/s1/bot_1.jsonl` (`out` entry with `kind: night`).
 - **Reproducibility:** 2/2
+- **Status:** fixed in `fix/campfire-bugs` `e4ab3a3` / `fix/campfire-bugs-xo` `07396bd` (a night exit renders
+  `left · Night n`; day exits stay `exiled · Day n`).
 - **Possible area:** `games/mafia/OutList.tsx` `fateLabel()` picks the copy from `reason` only, so "exiled" always
   renders as "Day {n}".
 
@@ -108,6 +121,8 @@ The core bugs (CORE-*) belong to the shared Campfire join/room layer, so they af
 - **Expected:** AC5 / AC6 rows show the player's nickname (and avatar).
 - **Evidence:** `proof/maf22_exiled_night_label_A.jpg`, `proof/maf22_left_out_B_r2.jpg`, `proof/maf18_over_none_A.jpg`.
 - **Reproducibility:** 2/2 (fresh round and after host resume)
+- **Status:** fixed in `fix/campfire-bugs` `e4ab3a3` / `fix/campfire-bugs-xo` `07396bd` (Mafia out entries keep an
+  optional `player: { nickname, avatar }` snapshot; host list, Out list and game over fall back to it).
 - **Possible area:** the rows look up nickname/avatar from the live roster, and a seat that leaves is removed from it.
   The game state could keep a name snapshot per dealt seat.
 
@@ -127,6 +142,9 @@ The core bugs (CORE-*) belong to the shared Campfire join/room layer, so they af
 - **Evidence:** `proof/xo_back_B_lobby.jpg`, `proof/xo_back_B_retry.jpg`, `proof/xo_back_B_after_end.jpg`,
   `proof/xo_back_A_after_playagain.jpg`.
 - **Reproducibility:** 2/2 (XO build). Not checked on Mafia or Crocodile, which share the player lobby. Likely the same.
+- **Status:** fixed in `fix/campfire-bugs` `e4ab3a3` / `fix/campfire-bugs-xo` `07396bd` (player Back is blocked
+  while a game runs; the player lobby re-enters a running game when refocused). XO regression test
+  `xoJoin.test.tsx` on `fix/campfire-bugs-xo` `9213400`.
 - **Possible area:** `screens/CampLobbyScreen.tsx` `PlayerLobby` navigates to `CampGame` in an effect only when
   `inGame` changes, so a lobby reached by Back while a game runs never navigates again. The game route has no
   Back guard for players (the host has one: the End sheet).

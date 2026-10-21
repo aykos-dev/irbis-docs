@@ -102,6 +102,14 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   (332 / 348 / 355 tests), no test edited. Manual check by owner pending: CampHub, iPhone guide, Mafia role card, XO and
   Crocodile tiles on device
 
+- campfire bug fixes — irbis-app `fix/campfire-bugs` from `feat/campfire-crocodile` (e4ab3a3) and
+  `fix/campfire-bugs-xo` from `feat/campfire-xo` (07396bd, XO regression test 9213400): CORE-1..3, MAF-1..2 and
+  XO-1 from `qa/campfire-games/BUG-REPORT.md`. Joining waits for the native connect (no crash, no false "Room not
+  found"), last host messages flush before hang-up, freed seat tokens stay removed, Mafia night exits read
+  `left · Night n` with a name/avatar snapshot, and the XO joiner's Back no longer leaves the running board.
+  `npm run check` green (72 suites, 360 tests on the crocodile fix branch; 72 suites, 354 tests on the XO fix
+  branch). Nothing pushed; owner phone retest pending
+
 ## In progress
 - (none)
 
@@ -111,10 +119,12 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
-- campfire games emulator pass (owner ask, 2026-10-20): 67 cases, 61 pass; 6 bugs open in
+- campfire games emulator pass (owner ask, 2026-10-20): 67 cases, 61 pass; 6 bugs found in
   `qa/campfire-games/BUG-REPORT.md` — CORE-1 join by code "Room not found" after found, CORE-2 joiner crash
   `No socket with id`, CORE-3 last host message lost (removed player rejoins), XO-1 joiner Back stuck on waiting (major);
-  MAF-1 night leave shows "exiled · Day 1", MAF-2 left player loses name/avatar (minor) → `/bugfix <ID>` (2026-10-21)
+  MAF-1 night leave shows "exiled · Day 1", MAF-2 left player loses name/avatar (minor). **All 6 fixed 2026-10-21**
+  on `fix/campfire-bugs` (e4ab3a3) and `fix/campfire-bugs-xo` (07396bd, XO test 9213400); checks green, nothing
+  pushed. Owner phone retest pending
 - campfire-crocodile: 3 word packs (180 words,
   uz/ru/en) are Claude drafts — owner review (famous-people picks, uz spellings e.g. «Nu, pogodi!», "Oppoqoy");
   no sounds (sound player is still in `lessons` on main — add after campfire-xo merges); protocol v5 vs xo v4 —
@@ -124,7 +134,8 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   exports `Confetti`; iOS not built; `graphify` not on PATH — app graph not refreshed (2026-10-20)
 - campfire-xo: copy `camp.games.xoMeta` "2 · 1–5 min"
   (ru/uz) added by the agent — owner OK pending; a third phone sees the Mafia "Game in progress" text for the whole
-  series; joiner-side final score / "Waiting for the host" covered by a component test only; mute stays under the
+  series; joiner-side final score / "Waiting for the host" was covered by a component test only (now also an
+  integration test on `fix/campfire-bugs-xo`, 9213400); mute stays under the
   `lessons.muted` key (shared with lessons); ConfirmSheet got `cancelLabel`, Mafia `Confetti` exported for reuse;
   iOS not built; `graphify` not on PATH — app graph not refreshed (2026-10-20)
 - weekly-path: placeholders — open chest (lid tilt + sparkle), coin shower, rain/sway are Reanimated; swap card shows a
