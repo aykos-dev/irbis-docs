@@ -197,8 +197,7 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   End game keeps testID `camp.game.end` (not `maf.end`); 1 campfire-core test edited for protocol v3 + 3 for the
   live Mafia tile + 1 type rename (slice 1), 1 mafia test edited (Q9); iOS icon set generated, iOS not built;
   serve-apk has no automated test (2026-10-19)
-- irbis-app flaky test: `src/app/__tests__/campfire-core/whoami.test.tsx:105-106` builds an unescaped RegExp from a
-  random character name — fails when the name has brackets (e.g. "Ibn Sina (Avicenna)"); needs `/bugfix` (2026-10-19)
+- irbis-app flaky whoami test (names with brackets in RegExp) fixed 2026-10-21: `fix/whoami-test-regex` 0c3bf77 (from main), cherry-picked to `feat/active-trip` e3987d7 — owner-approved test edit, assertion unchanged
 - campfire-party: content packs (design/media/campfire-party/packs, 8 files) are Claude drafts — owner review of
   uz/ru/en wording pending; a few Who am I items repeat Imposter words (plov, camel, snow leopard). Game code lives in
   `src/features/campfire-core/games/` (eslint-boundaries). WYR reveal = one heavy haptic, no drumroll. iOS not built
