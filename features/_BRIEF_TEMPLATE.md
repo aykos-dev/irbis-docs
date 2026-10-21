@@ -3,13 +3,14 @@
 <!-- 60–80 lines max. Everything the dev agent needs for THIS slice and nothing else; it reads only
      ../<repo>/RULES.md, this brief and the files listed under "Files". Written by the main session from the spec. -->
 
-- Spec: features/<slug>.md · ACs in this slice: AC1, AC3 (2–5 ACs)
+- Spec: features/<slug>.md · ACs in this brief: AC1, AC3 (the repo's whole share when ≤5 ACs; else a 3–5 AC slice)
 - Repo / branch: <repo> · `feat/<slug>` (create from main if missing; slices stack on it)
 - Depends on: brief <slug>-<n-1>-… (merged on the branch) | none
 
 ## Files
 - Touch: `src/features/<slug>/…` (new) · `src/app/navigation/…` (edit: add route X)
 - Read for patterns (don't change): `src/features/health/…` (reference feature)
+- Copy: `irbis-docs/features/briefs/<slug>-copy.md` (if the slice has UI text)
 
 ## Behaviour (the ACs, concrete)
 - AC3 — … exact rule, numbers, limits …
@@ -18,9 +19,8 @@
 | Method | Path | Request | Response | Errors (code → status) |
 |---|---|---|---|---|
 
-## Copy (i18n keys, en / ru / uz)
-| key | en | ru | uz |
-|---|---|---|---|
+## Copy
+Keys used in this brief: `…` — texts in en / ru / uz are in `features/briefs/<slug>-copy.md` (read it; don't open the canvas).
 
 ## testIDs · QA events
 `…` · `event_name { prop }`

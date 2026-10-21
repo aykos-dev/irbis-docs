@@ -1,6 +1,6 @@
 ---
 description: Fix a bug — reproduce with a failing test first, then fix
-argument-hint: <slug>/D{n} (a defect logged by /qa-run) | <repo?> <error/log line> — <failing behaviour, expected behaviour>
+argument-hint: <slug>/D{n} (an older logged defect) | <repo?> <error/log line> — <failing behaviour, expected behaviour>
 ---
 Bug: $ARGUMENTS
 
@@ -9,8 +9,7 @@ with placeholders.
 
 If the argument is a defect ref (`check-in/D3`): resolve it with
 `python3 scripts/qa/case/bugs.py find <ref>` and read that `D{n}_{name}.md` — its Steps, Actual, Expected,
-the quoted AC and "Cause in code" are the bug report. Do not edit the bug file; verification happens on the device
-with `/qa-retest <ref>`, which re-runs the defect's `Cases`.
+the quoted AC and "Cause in code" are the bug report. Do not edit the bug file; the owner verifies on the device.
 
 1. Locate: identify the owning repo(s). Delegate to that repo's dev subagent with the bug file (or a ≤20-line fix
    brief) as its brief — it reads RULES.md, the brief and the files the bug's "Cause in code" names.

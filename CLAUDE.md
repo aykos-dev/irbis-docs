@@ -36,9 +36,11 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 
 ## Code map (graphify)
 - Each code repo has a code-only graph in `graphify-out/` (git-ignored locally; built by tree-sitter, no LLM).
-  Before grepping or opening files to find where something lives, ask the graph:
-  `graphify explain "<Symbol>"` · `graphify path "<A>" "<B>"` · `graphify query "<question>"` (run in that repo).
-  Open only the files it points to. Read `graphify-out/GRAPH_REPORT.md` instead of browsing a repo.
+  Hand-written source only: `.graphifyignore` drops generated API clients, tests, JSON, docs and native folders.
+- Call the CLI directly (run in that repo); do not load the graphify skill. Cheapest first:
+  `graphify explain "<Symbol>"` (~100 tokens) · `graphify affected "<Symbol>"` (what a change breaks) ·
+  `graphify path "<A>" "<B>"` · `graphify query "<question>" --budget 500` (never the 2000 default).
+  Open only the files it points to. Do not read `graphify-out/GRAPH_REPORT.md` (5k tokens, mostly hub noise).
 - Refresh after code changes: `graphify update .` in each touched repo (free, seconds).
 
 ## Hard rules
