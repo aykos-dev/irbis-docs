@@ -50,7 +50,7 @@
 | GET | /v1/places/{id}/trip-preview | query startAt, backBy (ISO) | TripPreviewDto { sunsetAt, daylightBufferMin\|null, gear[] } | PLACE_NOT_FOUND 404, validation 400, TRIP_TIMES_INVALID 422 |
 | GET | /v1/me/emergency-contact | — | EmergencyContactDto \| 204 | — |
 | PUT | /v1/me/emergency-contact | { name, relation, phone } | EmergencyContactDto | 400 |
-| POST | /v1/trips | { placeId, startAt, backBy, alertEnabled, start } | TripDto | 404, 409 TRIP_ALREADY_ACTIVE, 422 ×2 |
+| POST | /v1/trips | { placeId, startAt, backBy, alertEnabled, start, location? {lat,lng,accuracyM} (stored only when start) } | TripDto | 404, 409 TRIP_ALREADY_ACTIVE, 422 ×2 |
 | GET | /v1/trips/current | — | { active: TripDto\|null, planned: TripDto[] } | — |
 All routes need a signed-in user (no `@Public()`), AccountStatusGuard as other user routes. operationIds:
 `getTripPreview`, `getEmergencyContact`, `putEmergencyContact`, `createTrip`, `getCurrentTrips`.

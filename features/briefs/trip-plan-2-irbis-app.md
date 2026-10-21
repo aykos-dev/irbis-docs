@@ -20,9 +20,7 @@
   for all three; chip just records the channel). QA `trip_shared { channel }`. On Start: request when-in-use location
   once (rationale text on Android), `getCurrentPosition` with 10 s timeout, high accuracy off; send `{lat,lng,accuracyM}`
   to createTrip/startTrip if obtained; denied / timeout / error → start without it, no toast. `trip_started.hasLocation`.
-  `createTrip` with start:true has no location field — so Start = createTrip(start:false) then startTrip(location)?
-  No: check the generated DTO; if createTrip has no location, call `startTrip` after creating as planned. Keep one
-  toast and one haptic.
+  New plan → `createTrip({ start: true, location })`; saved plan → `startTrip({ location })`. One toast, one haptic.
 - AC7 — TripCard (`home.trip-card`) from `getCurrentTrips`: active → place name, `card.backBy`, `home.trip.checkout`
   (checkOutTrip → success haptic + toast `welcomeBack`; QA `trip_checked_out { tripId, late }`, late = now > backBy),
   `home.trip.backby` (only when alertSentAt null) → date/time picker, value must be > now and ≤ start + 72 h →
