@@ -1,6 +1,6 @@
 # trip-plan
 
-- Status: Draft
+- Status: Done
 - Surfaces: api | app
 - Related ADRs: ADR-001 (auth, log-in for trip plans), ADR-003 (api style), ADR-004 (jobs, Asia/Tashkent cron)
 - Requirements: Product Overview § Core loop step 3, § Safety (Trip plan, Auto-alert) · Screens: `design/canvas/TripPlan.dc.html`

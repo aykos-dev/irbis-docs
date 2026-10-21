@@ -3,6 +3,10 @@
 Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item.
 
 ## Done
+- trip-plan (2026-10-21): plan from Place ("Start adventure"), date/time pickers, sunset buffer, emergency contact
+  (encrypted, prefilled), server gear rules, save ahead or start (one active), share sheet, start location fix, Home
+  trip card (check-out, change return time, planned start/edit/delete), auto-alert SMS job at back-by + 60 min.
+  api `feat/trip-plan` d932b6e, c584a24 · app `feat/trip-plan` 0a1e89f, 298c0aa · docs 3d88dc1. Manual test by owner pending.
 <!-- - check-in — api a1b2c3d, web d4e5f6a, app 7b8c9d0 (2026-10-20) -->
 - Workflow prepared: brain repo, agents, commands, per-repo Claude settings (2026-10-16)
 - Android QA loop: /qa-plan, /qa-run, /qa-retest + scripts/qa toolkit (2026-10-16); screenshots-only evidence, emulator default with phone emulation (2026-10-17)
@@ -119,6 +123,14 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- trip-plan: auto-alert goes through the **fake** SmsSender (logs only) — real provider + ADR needed before launch;
+  `SmsSender.sendText` added to auth (fake logs user id + text length); "Open it" link on the 409 "trip in progress"
+  toast not built (would need the slice-1 plan.test toast assertion changed — owner call); flaky app test
+  `src/app/__tests__/trip-plan/plan.test.tsx` "AC4: without a contact…" (~2/8, footnote found before contact query
+  settles) → `/bugfix`; uz/ru copy is Claude drafts (owner review); 72 h max trip and 14 days plan-ahead are Claude caps
+  (GameConfig `trip.config`); location accuracy limit 100 km (not 10 km per brief); gear icons fall back to a generic
+  check where `Icon` lacks one; datetimepicker 9.2.1 + geolocation need `pod install` — iOS not built; migration SQL
+  written by diff (docker compose needs S3 vars), applied fine in e2e; edit mode covered by one card test (2026-10-21)
 - campfire games emulator pass (owner ask, 2026-10-20): 67 cases, 61 pass; 6 bugs found in
   `qa/campfire-games/BUG-REPORT.md` — CORE-1 join by code "Room not found" after found, CORE-2 joiner crash
   `No socket with id`, CORE-3 last host message lost (removed player rejoins), XO-1 joiner Back stuck on waiting (major);
