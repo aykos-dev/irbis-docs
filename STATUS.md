@@ -3,6 +3,15 @@
 Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item.
 
 ## Done
+- check-in + streaks (2026-10-30): one branch chain per repo, not merged, nothing pushed. api `feat/check-in`
+  d4f2ebe check-in endpoint (GPS radius per type, 40–120 XP once per place per Tashkent month, level fact, path
+  visit), b7ef93c + 427b027 demo accounts (ADR-006: `POST /v1/auth/demo`, `POST /v1/me/secure` with terms) → api
+  `feat/streaks` 75a03b2 flame / boot / 2 shared freezes a month + `GET /v1/me/streaks`, 114d619 admin tie-break
+  test timestamp (owner-approved), 9c1c199 weather shield (Sat/Sun 12:00 snapshot job). app `feat/check-in` c900739
+  Check in button + offline queue + Summit, 46e921b guest check-ins → demo account + Secure your account → app
+  `feat/streaks` 8c0a3a9 Path chips, streak sheet, Summit week tile, lessons line, Profile row. api check green;
+  app green except the known pack failures. Manual test by owner pending: AC1–AC8 (check-in), AC1–AC7 (streaks),
+  Android + iOS.
 - open-bug fixes (2026-10-29), branch `fix/open-bugs-1029` in each repo, not merged, nothing pushed:
   app (from `fix/owner-1022`) 9d4078c Home-card check-out clears track / waypoint queue / SOS contact, f71d857
   plan footnote waits for the contact (fixes flaky plan.test AC4, 6/6 runs green) · api (from `feat/active-trip`)
@@ -135,6 +144,12 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- check-in / streaks: art placeholders — Summit uses the fox cheering pose (L3) or neutral companions, streak sheet
+  uses worried Irbis for "broken" (sad pose not in the app yet) → prompts in `design/media/IMAGE-PROMPTS.md` § F;
+  `checkInRadiusM` only on place detail (list e2e asserts exact keys); admin user DTOs have no `isDemo` (same
+  reason); Summit → LevelUp relies on the LevelUp host, untested; demo-account cleanup job not built; flaky app test
+  `active-trip/waypoint-sos.test.tsx` "AC6: a check-in posts…" (2/13 on base, 5/8 on `feat/streaks`; "Next:
+  Waypoint 2" races the XP chip) → `/bugfix`; ru/uz copy is Claude drafts; iOS not built
 - irbis-app: uncommitted owner word-pack edits (`croc-*.json`, `imposter-animals.json`) fail 4 campfire tests
   (party, croc ×2 suites) — check is green without them; brief 1022 item 1 (`serve-apk.js` + `env/apk.env`) is
   still uncommitted in the app working tree
