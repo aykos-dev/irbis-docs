@@ -16,7 +16,7 @@ path. A Summit celebration follows. Works offline (queued) and for guests (demo 
 |---|---|---|---|---|---|
 | POST | `/v1/check-ins` | user | `{ clientId (uuid), placeId, lat, lng, accuracyM, recordedAt }` | 201 `CheckInResultDto` (200 on a repeated `clientId`) | 404 `PLACE_NOT_FOUND`, 422 `CHECK_IN_TOO_FAR {distanceM, radiusM}`, 422 `LOCATION_INACCURATE`, 422 `CHECK_IN_TOO_OLD`, 400 `VALIDATION_FAILED` (future `recordedAt` > 2 min skew) |
 | POST | `/v1/auth/demo` | public, throttled | `{ locale }` | 201 same as sign-up (tokens + me) | 429 `RATE_LIMITED`, 429 `DEMO_LIMIT` |
-| POST | `/v1/me/secure` | user (demo only) | `{ username, password }` | 200 `MeResponseDto` | 409 `NOT_DEMO`, 409 `USERNAME_TAKEN`, 400 `VALIDATION_FAILED` |
+| POST | `/v1/me/secure` | user (demo only) | `{ username, password, acceptTerms }` | 200 `MeResponseDto` | 409 `NOT_DEMO`, 409 `USERNAME_TAKEN`, 400 `VALIDATION_FAILED` |
 
 `CheckInResultDto = { id, placeId, recordedAt, counted, xp, levelUps, pathVisited }` · `PlaceDetailDto` gains
 `checkInRadiusM` · `MeResponseDto` gains `isDemo`.
@@ -60,7 +60,7 @@ Migration `demo_accounts`: `User.passwordHash` nullable, `User.isDemo` bool defa
   sheet: "I checked in at {place} on Irbis!") and Continue (back). Level-up after a check-in goes to LevelUp first.
   League elevation and Badge tiles are not shown until those features exist.
 - **AC8 — Demo account.** `/v1/me` returns `isDemo`. The account Profile shows the demo username and a **Secure
-  your account** card → form (username, password, confirm; sign-up rules) → `POST /v1/me/secure`. Log-in with a
+  your account** card → form (username, password, confirm, terms checkbox; sign-up rules) → `POST /v1/me/secure`. Log-in with a
   demo username fails like a wrong password. Sign out of a demo account asks first: "You'll lose {username}'s
   progress unless you secure it."
 
@@ -95,3 +95,5 @@ demo-account cleanup job, web admin view of check-ins.
 - Q6: Summit shows XP + week streak only (week tile added by `streaks`).
 - Q7: title per type.
 - Q8: guests: stored, demo account on first sync with a visible username + Secure your account (ADR-006).
+- Q9 (owner, 2026-10-29): demo accounts accept the terms on Secure your account (termsAcceptedAt null until then).
+- Q10 (owner, 2026-10-29): `isDemo` added to the /v1/me exact-keys test in auth-recovery e2e.

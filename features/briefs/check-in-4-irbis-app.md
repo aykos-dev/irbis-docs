@@ -19,7 +19,7 @@
   Never create two demo accounts concurrently (single-flight). QA event `demo_account_created {}`.
 - AC8 — `me.isDemo`: account Profile shows the username and `profile.secure-card` "Secure your account — set a
   username and password so you can log in on any phone." → SecureAccountScreen: `secure.username` (prefilled with
-  the demo username, editable), `secure.password`, `secure.confirm`, `secure.submit` → `useMeSecure`; 409
+  the demo username, editable), `secure.password`, `secure.confirm`, `secure.terms` (same terms checkbox + link as sign-up, owner 2026-10-29), `secure.submit` → `useMeSecure` with `acceptTerms`; 400 TERMS_REQUIRED → same message as sign-up; 409
   USERNAME_TAKEN → field error; success → toast "Account secured", back, refresh me; QA `account_secured {}`.
   Sign out while isDemo → confirm sheet "You'll lose {username}'s progress unless you secure it." (Sign out /
   Secure account).
