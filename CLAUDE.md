@@ -28,10 +28,8 @@ You are launched from `irbis-docs` (the project brain) with the code repos added
 - Design tokens: `design/design.md` is the source of truth for web and app.
 
 ## Commands
-- `/feature <slug>`: read doc + canvas → **ask rules and media (stop)** → spec (short approval) → api → app/web →
-  manual test checklist for the owner (no reviewer subagent, owner 2026-10-18) → wrap up and **stop** (next feature only when the owner says so).
 - `/bugfix <error/log + failing behaviour> | <slug>/D{n}`: reproduce with a failing test, then fix.
-- Testing is manual by the owner (Android + iOS); no `/qa-*` commands or qa-tester agent (owner, 2026-10-18).
+- Testing is manual by the owner (Android + iOS); no `/feature` or `/qa-*` commands, no qa-tester agent or QA toolkit (owner, 2026-10-18; removed 2026-10-29).
 - Every repo: `npm run check` (quiet: lint + typecheck + tests + slop grep). `npm run gen:api` in web/app.
 
 ## Code map (graphify)

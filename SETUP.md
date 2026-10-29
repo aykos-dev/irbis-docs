@@ -3,15 +3,12 @@
 ## Already prepared (2026-10-16)
 - `irbis/` plain folder with four sibling git repos (`main` branch, nothing pushed).
 - `irbis-docs`: CLAUDE.md, PROJECT.md, ROADMAP.md, STATUS.md, ADR-001..003, spec template,
-  `/feature` + `/bugfix` commands, agents `api-dev`, `web-dev`, `app-dev` (sonnet), `reviewer` (opus).
+  `/bugfix` command, agents `api-dev`, `web-dev`, `app-dev` (sonnet), `reviewer` (opus).
 - Hooks: PreToolUse blocks `.env*`, key files, `node_modules`/build dirs; Stop runs `npm run check`
   in every repo with changes (blocks once, then lets Claude report).
 - Each code repo: short CLAUDE.md, `docs/architecture.md`, `docs/engineering-standards.md`, and
   `.claude/settings.json` (same deny rules + its own Stop hook).
 - User-level (global): plugin `andrej-karpathy-skills`, MCP `context7` (current framework docs).
-- Android device QA (2026-10-16): `scripts/qa/` toolkit (adapted from the Bellissimo QA runner), commands
-  `/qa-plan`, `/qa-run`, `/qa-retest`, workspace `qa/`. Installed: scrcpy, ffmpeg, venv `~/.claude/venvs/qa`.
-  Details: `scripts/qa/README.md`.
 
 ## Launch
 ```bash
@@ -58,12 +55,6 @@ Generators refuse non-empty folders, so scaffold into a temp dir and copy over (
 9. **Reference feature** `health` end to end by hand (API endpoint → openapi → gen:api → web + app screen
    with all four states). Every later feature copies this pattern.
 
-## Before the first /qa-run
-- Set the real Android `applicationId` in `qa/qa.config.json` (placeholder `com.irbis`).
-- App scaffold includes `src/shared/utils/qaLog.ts` + `location_received` event (app standards §16).
-- Phone: USB debugging on, device UI in English, test account signed in. Export `IRBIS_QA_PHONE` /
-  `IRBIS_QA_OTP` in your shell profile only if scripts must type them.
-
 ## Admin account (before using the admin web, feature `auth`)
 The first admin is created from the API repo; there is no public way to make one.
 1. Start the local database and apply migrations: `cd ../irbis-api && docker compose up -d db && npx prisma migrate deploy`
@@ -80,4 +71,4 @@ set in the secrets manager — never pasted into chat. The fake SMS sender refus
 ## Later (not day one)
 - **Graphify**: once a repo is big enough that Claude wanders, build the graph and enable its post-commit hook.
   First build costs tokens; not worth it on a near-empty repo.
-- Bug-sized work: `/bugfix`. Feature-sized: `/feature`. `/clear` after each.
+- Bug-sized work: `/bugfix`. `/clear` after each.

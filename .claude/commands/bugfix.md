@@ -7,8 +7,8 @@ Bug: $ARGUMENTS
 Read STATUS.md. If the bug report contains a secret or personal data, say so first and continue
 with placeholders.
 
-If the argument is a defect ref (`check-in/D3`): resolve it with
-`python3 scripts/qa/case/bugs.py find <ref>` and read that `D{n}_{name}.md` — its Steps, Actual, Expected,
+If the argument is a defect ref (`check-in/D3`): find its file under
+`qa/<slug>/bugs/` (`D{n}_{name}.md`) and read it — its Steps, Actual, Expected,
 the quoted AC and "Cause in code" are the bug report. Do not edit the bug file; the owner verifies on the device.
 
 1. Locate: identify the owning repo(s). Delegate to that repo's dev subagent with the bug file (or a ≤20-line fix

@@ -32,8 +32,6 @@
       "Bash(adb get-state:*)",
       "Bash(adb reverse:*)",
       "Bash(adb pull:*)",
-      "Bash(python3 scripts/qa/:*)",
-      "Bash(~/.claude/venvs/qa/bin/python:*)",
       "Bash(scrcpy --version:*)"
     ]
   },
