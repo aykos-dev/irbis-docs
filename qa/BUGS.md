@@ -1,10 +1,10 @@
 # Defects — all features
 
-Built by `scripts/qa/case/bugs.py index`. Open first, then by severity. Retest open ones with `/qa-retest open`.
+Hand-maintained since the QA toolkit was removed (2026-10-29). Open first, then by severity. The owner retests by hand.
 
 | Ref | Severity | Defect | Status |
 |---|---|---|---|
-| [auth/D1](auth/bugs/D1_deeplink-intent-filter/D1_deeplink-intent-filter.md) | 2 - High | irbis:// deep links do not open the app (no Android intent-filter) | Open · found 2026-10-17 |
+| [auth/D1](auth/bugs/D1_deeplink-intent-filter/D1_deeplink-intent-filter.md) | 2 - High | irbis:// deep links do not open the app (no Android intent-filter) | Fixed · app bf03271, in main · retest by owner |
 | [onboarding/D2](onboarding/bugs/D2_welcome_font2/D2_welcome_font2.md) | 2 - High | Meet Irbis at font scale 2.0: Get started and I already have an account are pushed off-screen and unreachable | Closed · not retested (owner dropped font-scale QA, 2026-10-17) |
 | [places/D1](places/bugs/D1_empty-state-blank/D1_empty-state-blank.md) | 2 - High | Explore empty state renders blank: no text, no Reset filters button | Fixed · retest 2026-10-17 |
 | [conditions/D1](conditions/bugs/D1_explore-offline-no-cache/D1_explore-offline-no-cache.md) | 3 - Medium | Explore shows a connection error offline instead of the cached list with condition chips | Fixed · retest 2026-10-18 |

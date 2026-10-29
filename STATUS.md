@@ -3,6 +3,13 @@
 Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item.
 
 ## Done
+- open-bug fixes (2026-10-29), branch `fix/open-bugs-1029` in each repo, not merged, nothing pushed:
+  app (from `fix/owner-1022`) 9d4078c Home-card check-out clears track / waypoint queue / SOS contact, f71d857
+  plan footnote waits for the contact (fixes flaky plan.test AC4, 6/6 runs green) · api (from `feat/active-trip`)
+  ba70721 failed SOS sends start no cooldown (+ e2e) · web (from `feat/active-trip`) ab24793 live page tab title in
+  the visitor's language; d641eda XO-1 test presses Stay on the "Leave the game?" sheet (owner-approved test edit,
+  assertions unchanged). `npm run check` green in api, web and app (app: 452/452 without the owner's uncommitted
+  word-pack edits).
 - active-trip (2026-10-21): ActiveTrip screen (map, live km / climb / elapsed, foreground tracking), 5-min location
   pings, public live link + irbis-web page `/t/{token}`, free waypoint check-ins (+10 XP, 500 m / 10 min / max 5,
   offline queue), SOS 3 s hold (server SMS, offline SMS app, call button to `SOS_CALL_NUMBER`), check out + summary.
@@ -128,21 +135,22 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - onboarding-quiz — experienced-user safety quiz (split from onboarding, Q5); after `lessons`, needs a new ADR on what passing grants
 
 ## Known issues
+- irbis-app: uncommitted owner word-pack edits (`croc-*.json`, `imposter-animals.json`) fail 4 campfire tests
+  (party, croc ×2 suites) — check is green without them; brief 1022 item 1 (`serve-apk.js` + `env/apk.env`) is
+  still uncommitted in the app working tree
 - active-trip: owner OK pending for one test assertion edit (app `trip-plan/card.test.tsx:215`, `trip_checked_out`
   gains `from: 'card'`, asked by the brief) and web fixture `test/session.tsx` (new MeResponseDto fields, synthetic
   values); owner adds `# SOS_CALL_NUMBER=+998XXXXXXXXX` to irbis-api `.env.example` (agents can't open `.env*`) and
   the real value to `.env` — no number = no call button; confirm that line is staffed 24/7 (replaces 112); SOS SMS
   goes through the fake SmsSender; `WEB_PUBLIC_URL` must point at a public irbis-web deploy before contacts can open
-  links; tracking is foreground only (screen off = no distance); live page title says "Irbis Admin", `<html lang>`
-  stays en, late badge is yellow, retry text from `common.errors.retry`; summary shows "+0 XP" when the daily cap
-  trims a waypoint; Home-card check-out doesn't clear the stored track (ignored by the next trip); waypoint save +
-  XP award are not one transaction (idempotent); SOS cooldown counts failed sends; ru/uz copy is Claude drafts;
+  links; tracking is foreground only (screen off = no distance); `<html lang>` on the live page
+  stays en (content `div` carries the visitor's lang), late badge is yellow, retry text from `common.errors.retry`; summary shows "+0 XP" when the daily cap
+  trims a waypoint; waypoint save +
+  XP award are not one transaction (idempotent); ru/uz copy is Claude drafts;
   iOS not built (2026-10-21)
 - trip-plan: auto-alert goes through the **fake** SmsSender (logs only) — real provider + ADR needed before launch;
   `SmsSender.sendText` added to auth (fake logs user id + text length); "Open it" link on the 409 "trip in progress"
-  toast not built (would need the slice-1 plan.test toast assertion changed — owner call); flaky app test
-  `src/app/__tests__/trip-plan/plan.test.tsx` "AC4: without a contact…" (~2/8, footnote found before contact query
-  settles) → `/bugfix`; uz/ru copy is Claude drafts (owner review); 72 h max trip and 14 days plan-ahead are Claude caps
+  toast not built (would need the slice-1 plan.test toast assertion changed — owner call); uz/ru copy is Claude drafts (owner review); 72 h max trip and 14 days plan-ahead are Claude caps
   (GameConfig `trip.config`); location accuracy limit 100 km (not 10 km per brief); gear icons fall back to a generic
   check where `Icon` lacks one; datetimepicker 9.2.1 + geolocation need `pod install` — iOS not built; migration SQL
   written by diff (docker compose needs S3 vars), applied fine in e2e; edit mode covered by one card test (2026-10-21)
@@ -237,6 +245,6 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
 - iOS: `lottie-react-native` 7.5.0 added but `pod install` never run in irbis-app (no Podfile.lock) — iOS build untested
 - Guest merge runs once per device: a second account created on the same phone (after sign-out) doesn't get the onboarding choices — revisit with lessons/XP guest data
 - Auth QA cases that clear app data must call `irbis://debug/onboarding/done` first (fresh install now opens onboarding)
-- auth/D1 irbis:// deep links not delivered on Android (no VIEW intent-filter) — fix committed app bf03271 on feat/auth, awaiting retest (`/qa-retest auth/D1`)
+- auth/D1 irbis:// deep links not delivered on Android (no VIEW intent-filter) — fix bf03271 is in app main, awaiting the owner's manual retest
 - STD-TEXT now switches the in-app language via dev/staging link `irbis://debug/lang/<uz|ru|en>` (app 46b279c on feat/auth); re-run STD-TEXT on the auth screens in the full run
 - iOS: Info.plist has no `irbis` URL scheme, so deep links won't open the app on iOS — follow-up, not logged as a defect yet
