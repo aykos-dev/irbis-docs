@@ -3,6 +3,17 @@
 Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item.
 
 ## Done
+- badges + profile + search (2026-10-30): one local stacked branch chain per api/app/docs, not merged and nothing
+  pushed: `feat/badges` → `feat/profile-phase1` → `feat/search`. Badges ships 64 (15 places + 12 regions + 8
+  seasons + 10 social + 19 milestones); the canvas names 45, so the owner-approved Milestones group fills 19.
+  Release cutoff is `badges.config.startAt`, four earned showcase picks, no XP/gems. Profile implements the
+  approved 8-AC app surfaces, gallery-only avatar via `react-native-image-picker`, public profiles, preferences,
+  empty notifications and delete-account; search always shows All/Places/People/Groups/Tours, with public + findable
+  people only and Groups/Tours coming soon. API `66a3286` → `56f3681` → `bb1c577`; app `a7912eb` → `5530049` →
+  `2e76ab0` + `acbe09f`; docs `cc56fb7` → `ec6128e` → final search commit. API check green (53 unit suites / 294
+  tests, 30 e2e suites / 234 tests). App lint/typecheck/slop green; 467/471 tests pass, with the same 4 failures
+  caused by the owner's uncommitted Crocodile/Imposter word-pack edits. Badge/profile/search copy is agent-drafted;
+  owner review and iOS/device QA pending.
 - check-in + streaks (2026-10-30): one branch chain per repo, not merged, nothing pushed. api `feat/check-in`
   d4f2ebe check-in endpoint (GPS radius per type, 40–120 XP once per place per Tashkent month, level fact, path
   visit), b7ef93c + 427b027 demo accounts (ADR-006: `POST /v1/auth/demo`, `POST /v1/me/secure` with terms) → api

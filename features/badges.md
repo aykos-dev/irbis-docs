@@ -24,5 +24,5 @@ catalogue entries use a code-native locked/star fallback.
 
 ## Verification
 API catalogue/service unit tests cover group totals, stable keys, English titles, release cutoff, progress,
-awarding and showcase rules. Database e2e exists but needs Docker/Testcontainers. App renders loading, error,
+awarding and showcase rules. The full API check is green, including PostgreSQL e2e. App renders loading, error,
 guest, locked/progress, earned and four-pick states. iOS has not been built.

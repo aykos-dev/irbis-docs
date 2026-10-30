@@ -34,10 +34,10 @@ proposal — reorder freely. Screens refer to `design/canvas/`.
 | ✅   | 9   | `active-trip`   | Live distance / elevation / time, waypoint check-ins (+10 XP), SOS hold 3 s, check out safely                                   | ActiveTrip                                                         | api, app      |
 | ✅   | 10  | `check-in`      | Verified check-in at a place, XP by difficulty, summit celebration                                                              | Summit                                                             | api, app      |
 | ✅   | 11  | `streaks`       | Daily flame, weekly explorer boot, weather shield                                                                               | Home, Profile                                                      | api, app      |
-| ⬜   | 12  | `badges`        | Badge catalogue, progress, profile showcase of 4                                                                                | Badges, Profile                                                    | api, app      |
-| ⬜   | 13  | `profile`       | Profile (light/dark), edit profile, settings, notification preferences                                                          | Profile*, EditProfile, Settings, Notifs                            | api, app      |
+| ✅   | 12  | `badges`        | Badge catalogue, progress, profile showcase of 4                                                                                | Badges, Profile                                                    | api, app      |
+| ✅   | 13  | `profile`       | Profile (light/dark), edit profile, settings, notification preferences                                                          | Profile*, EditProfile, Settings, Notifs                            | api, app      |
 | ⬜   | 14  | `safety-center` | Offline maps per region (free: 2), emergency contacts, safety tips                                                              | Safety                                                             | api, app      |
-| ⬜   | 15  | `search`        | Search places / people                                                                                                          | Search                                                             | api, app      |
+| ✅   | 15  | `search`        | Search places / people                                                                                                          | Search                                                             | api, app      |
 
 
 
