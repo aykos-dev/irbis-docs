@@ -10,10 +10,11 @@ Updated by `/feature` and `/bugfix` at wrap-up. Keep it short: one line per item
   approved 8-AC app surfaces, gallery-only avatar via `react-native-image-picker`, public profiles, preferences,
   empty notifications and delete-account; search always shows All/Places/People/Groups/Tours, with public + findable
   people only and Groups/Tours coming soon. API `66a3286` → `56f3681` → `bb1c577`; app `a7912eb` → `5530049` →
-  `2e76ab0` + `acbe09f`; docs `cc56fb7` → `ec6128e` → final search commit. API check green (53 unit suites / 294
+  `2e76ab0` + `acbe09f` + `df83379`; docs `cc56fb7` → `ec6128e` → `08ea403`. API check green (53 unit suites / 294
   tests, 30 e2e suites / 234 tests). App lint/typecheck/slop green; 467/471 tests pass, with the same 4 failures
-  caused by the owner's uncommitted Crocodile/Imposter word-pack edits. Badge/profile/search copy is agent-drafted;
-  owner review and iOS/device QA pending.
+  caused by the owner's uncommitted Crocodile/Imposter word-pack edits. The 90-suite run excluding those three
+  pack suites passed 457/458, and the known flaky active-trip waypoint test passed alone (11/11). Badge/profile/search
+  copy is agent-drafted; owner review and iOS/device QA pending.
 - check-in + streaks (2026-10-30): one branch chain per repo, not merged, nothing pushed. api `feat/check-in`
   d4f2ebe check-in endpoint (GPS radius per type, 40–120 XP once per place per Tashkent month, level fact, path
   visit), b7ef93c + 427b027 demo accounts (ADR-006: `POST /v1/auth/demo`, `POST /v1/me/secure` with terms) → api
