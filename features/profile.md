@@ -1,6 +1,6 @@
 # profile
 
-- Status: Approved
+- Status: Built on local `feat/profile-phase1` branches (not merged or pushed); owner device QA pending
 - Surfaces: api | app
 - Related ADRs: ADR-001 (auth), ADR-003 (api style), ADR-005 (object storage)
 - Requirements: Product Overview § Accounts & profile · Screens: `design/canvas/Profile.dc.html`,
